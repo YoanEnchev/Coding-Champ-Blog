@@ -1,0 +1,71 @@
+        <div>
+        <p class="note">Inside <b>Interfaces</b> only methods can be defined.</p>
+        <p class="note">The methods don't have body and must be declared in the classes that
+            implement the interface.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+        <p>Defining interfaces:</p>
+        <textarea class="tutorial-example">interface InterfaceName
+{
+    // code
+}</textarea>
+        <p>Implementing interface:</p>
+        <textarea class="tutorial-example">class ClassName : InterfaceName</textarea>
+
+        <h2 class="h4 my-3">Example</h2>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    interface Vehicle
+    {
+        // Function that must be defined in
+        // each class that extends the interface
+        double getInsuranceCost(int months);
+    }
+
+    class Car : Vehicle
+    {
+        // Implementation of interface.
+        public double getInsuranceCost(int months)
+        {
+            return 25 * months;
+        }
+    }
+
+    class Bicycle : Vehicle
+    {
+        // Implementation of interface.
+        public double getInsuranceCost(int months)
+        {
+            return 0;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car();
+            Console.WriteLine("Car's Year Insurance: " + car.getInsuranceCost(12) + " $");
+
+            Bicycle bicycle = new Bicycle();
+            Console.WriteLine("Bike's Year Insurance: " + bicycle.getInsuranceCost(12) + " $");
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Car's Year Insurance: 300 $
+Bike's Year Insurance: 0 $</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>An interface is defined at <code>lines 5 - 10</code>.</li>
+            <li>At <code>line 9</code> a method is declared.
+                This method must be declared in each class that implements the interface.</li>
+            <li>At <code>line 12 and 21</code> the classes
+                <code>Car</code> and <code>Bicycle</code> implement the interface.
+                For this reason they must define the function <code>getInsuranceCost</code>.
+                If this is not done then the code won't compile.</li>
+        </ul>
+    </div>

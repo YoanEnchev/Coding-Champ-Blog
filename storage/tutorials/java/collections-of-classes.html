@@ -1,0 +1,196 @@
+        <div>
+        <p class="note"><b>ArrayList</b> and <b>List</b> are array-like collections.
+            Unlike arrays, the elements count can be dynamic - there is
+            no need to specify it.</p>
+        <h2 class="h4 my-3">ArrayList</h2>
+        <h3 class="h6">Package to import</h3>
+        <textarea class="tutorial-example">import java.util.ArrayList;</textarea>
+
+        <h3 class="h6">Creation syntax</h3>
+        <textarea class="tutorial-example">ArrayList<Type> arrListName = new ArrayList<Type>();</textarea>
+
+
+        <h3 class="h6">Example</h3>
+        <textarea class="tutorial-example numeric-rows">import java.util.ArrayList;
+
+class Car
+{
+    private String model;
+    private double price;
+
+    Car(String model, double price)
+    {
+        this.model = model;
+        this.price = price;
+    }
+
+    public void printData()
+    {
+        System.out.println("Model: " + this.model);
+        System.out.println("Price: " + this.price);
+    }
+}
+
+class CarDealership
+{
+    public ArrayList<Car> cars;
+
+    CarDealership()
+    {
+        System.out.println("ArrayList creation.");
+
+        // Create ArrayList of cars:
+        this.cars = new ArrayList<Car>();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        CarDealership carDealership = new CarDealership();
+
+        Car car_1 = new Car("Toyota Corolla", 26000);
+        Car car_2 = new Car("Ford Fiesta", 20000);
+        Car car_3 = new Car("Renault Clio", 18000);
+
+        carDealership.cars.add(car_1);
+        carDealership.cars.add(car_2);
+        carDealership.cars.add(car_3);
+
+        for (Car car: carDealership.cars) {
+            System.out.println("--------");
+            car.printData();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">ArrayList creation.
+--------
+Model: Toyota Corolla
+Price: 26000.0
+--------
+Model: Ford Fiesta
+Price: 20000.0
+--------
+Model: Renault Clio
+Price: 18000.0</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 23</code> an ArrayList member is declared.</li>
+            <li>At <code>line 30</code> an ArrayList is created.</li>
+            <li>At <code>lines 43 - 45</code> elements are added to the ArrayList.</li>
+            <li>At <code>lines 47 - 50</code> all elements of the ArrayList are looped.</li>
+        </ul>
+
+        <h2 class="h4 my-3">List</h2>
+        <h3 class="h6">Packages to import</h3>
+        <textarea class="tutorial-example">import java.util.ArrayList;
+import java.util.List;</textarea>
+
+        <h3 class="h6">Creation syntax</h3>
+        <textarea class="tutorial-example">List<Type> listName = new ArrayList<Type>();</textarea>
+
+        <h3 class="h6">Example</h3>
+        <textarea class="tutorial-example numeric-rows">import java.util.ArrayList;
+import java.util.List;
+
+class Student
+{
+    private String name;
+    private int years;
+
+    Student(String name, int years)
+    {
+        this.name = name;
+        this.years = years;
+    }
+
+    public void printData()
+    {
+        System.out.println("Name: " + this.name);
+        System.out.println("Years: " + this.years);
+    }
+}
+
+class School
+{
+    public List<Student> students;
+
+    School()
+    {
+        System.out.println("List creation.");
+
+        // Create List of students:
+        this.students = new ArrayList<Student>();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        School school = new School();
+
+        Student student_1 = new Student("Emily", 17);
+        Student student_2 = new Student("Alex", 18);
+        Student student_3 = new Student("John", 16);
+
+        school.students.add(student_1);
+        school.students.add(student_2);
+        school.students.add(student_3);
+
+        for (Student student: school.students) {
+            System.out.println("--------");
+            student.printData();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">List creation.
+--------
+Name: Emily
+Years: 17
+--------
+Name: Alex
+Years: 18
+--------
+Name: John
+Years: 16</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 24</code> a List member is declared.</li>
+            <li>At <code>line 31</code> a List is created.</li>
+            <li>At <code>lines 44 - 46</code> elements are added to the List.</li>
+            <li>At <code>lines 48 - 51</code> all elements of the List are looped.</li>
+        </ul>
+
+        <h2 class="h4 my-3">ArrayList VS List</h2>
+        <h3 class="h6">Differences:</h3>
+        <div class="row comparisons">
+            <div class="col-12 col-md-6 pr-md-2">
+                <div class="pink px-3 py-2 h-100">
+                    <h3 class="h6 mt-3">List</h3>
+                    <ul>
+                        <li>List is an Interface.</li>
+                        <li>List cannot be instantiated.</li>
+                        <li>equals method can be applied (covered in one of the next lessons).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 pl-md-2 mt-2 mt-md-0">
+                <div class="blue px-3 py-2 h-100">
+                    <h3 class="h6 mt-3">ArrayList</h3>
+                    <ul>
+                        <li>ArrayList is a Class.</li>
+                        <li>ArrayList can be instantiated.</li>
+                        <li>equals method cannot be applied (covered in one of the next lessons).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="h6 mt-3">Similarities:</h3>
+        <ul>
+            <li>compareTo method can be applied for both List And ArrayList (covered in one of the next lessons).</li>
+            <li>Both of them can have dynamic elements count.</li>
+        </ul>
+    </div>

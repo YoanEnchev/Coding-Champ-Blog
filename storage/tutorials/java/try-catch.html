@@ -1,0 +1,59 @@
+        <div>
+        <p class="note">During program execution an error can be thrown.
+            Instead of ending the program <code>an error can be caught</code> and a certain
+            code can be executed.</p>
+
+        <h2 class="h4 my-3">Error Throwing And Handling</h2>
+        <p>Syntax for handling error:</p>
+        <textarea class="tutorial-example">try
+{
+    // code that may throw exception.
+}
+catch (ExceptionType exceptionName)
+{
+    // handling the error
+}</textarea>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">public class Main {
+
+    public static void main(String[] args) {
+        try
+        {
+            System.out.println("Executing try block code");
+
+            throw new Exception("My error message.");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Catching an error:");
+            System.out.println(e.getMessage());
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Executing try block code
+Catching an error:
+My error message.</textarea>
+        <p>Since an error is thrown in the try block,
+            the code from the catch block is called.</p>
+
+        <h2 class="h4 my-3">Handling Runtime Exceptions</h2>
+        <p>Such example is division by zero:</p>
+        <textarea class="tutorial-example numeric-rows">public class Main {
+
+    public static void main(String[] args) {
+        try
+        {
+            int a = 3;
+            int b = 0;
+            int c = a / b;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">/ by zero</textarea>
+    </div>

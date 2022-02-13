@@ -1,0 +1,119 @@
+        <div>
+            <p class="note"><b>Virtual functions</b> are functions in a parent class that
+                are meant to be overwritten in the children classes.</p>
+
+            <h2 class="h4 my-3">Example</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Vehicle
+{
+public:
+	// virtual function
+	virtual double getInsuranceCost(int months)
+	{
+		return 0;
+	}
+};
+
+class Car : public Vehicle
+{
+public:
+	// overwrite of virtual function
+	double getInsuranceCost(int months)
+	{
+		return months * 15;
+	}
+};
+
+void main()
+{
+	Car car;
+	cout << "Car's monthly insurance: " <<
+		car.getInsuranceCost(12) << " $";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Car's monthly insurance: 180 $</textarea>
+
+            <h2 class="h4 my-3">Virtual Functions VS Non-virtual Functions</h2>
+            <p class="note">The difference can be spotted when pointers are used.
+                <b>Virtual functions</b> have <b>late binding</b>. Non virtual
+                functions have <b>early binding</b>.</p>
+            <p>This can be understood by an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Figure
+{
+public:
+	// virtual function:
+	virtual double getPerimeter()
+	{
+		return 0;
+	}
+
+	// non virtual function:
+	double getArea()
+	{
+		return 0;
+	}
+};
+
+class Square : public Figure
+{
+private:
+	double side;
+
+public:
+	Square(double sideValue)
+	{
+		side = sideValue;
+	}
+
+	// overwrite of virtual function
+	double getPerimeter()
+	{
+		return 4 * side;
+	}
+
+	double getArea()
+	{
+		return side * side;
+	}
+};
+
+void main()
+{
+	Square *square_1 = new Square(5);
+	cout << "Perimeter = " <<
+		square_1->getPerimeter() << endl;
+	cout << "Area = " <<
+		square_1->getArea() << endl;
+
+	cout << "----" << endl;
+
+	Figure *square_2 = new Square(3);
+	cout << "Perimeter = " <<
+		square_2->getPerimeter() << endl;
+	cout << "Area = " <<
+		square_2->getArea();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Perimeter = 20
+Area = 25
+----
+Perimeter = 12
+Area = 0</textarea>
+            <p>Couple of things to spot:</p>
+            <ul>
+                <li>Two pointers are used - <code>square_1</code> with type <code>Square</code>
+                    and <code>square_2</code> with type <code>Figure</code>.</li>
+                <li><code>getPerimeter</code> function is declared as virtual. This means that the code the
+                    child class (<code>Square</code>) executes for both pointers.</li>
+                <li><code>getArea</code> function is non-virtual function.
+                    So for the pointer <code>square_2</code> the code
+                    from the parent class (<code>Figure</code>) will be executed.</li>
+            </ul>
+        </div>

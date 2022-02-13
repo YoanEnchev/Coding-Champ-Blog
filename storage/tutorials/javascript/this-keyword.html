@@ -1,0 +1,46 @@
+        <div>
+        <p class="note">Inside the class body <b>this</b> refers to the current
+            class object.</p>
+        <p class="note">It can be used to access / modify properties and call functions
+            inside the class.</p>
+
+        <h2 class="h4 my-3">Example</h2>
+        <textarea class="tutorial-example numeric-rows">class Rectangle
+{
+    calcArea()
+    {
+        // Access properties:
+        return this.height * this.width;
+    }
+
+    printData()
+    {
+        console.log("Width = " + this.width);
+        console.log("Height = " + this.height);
+
+        // Access class function:
+        let area = this.calcArea();
+        console.log("Area = " + area);
+    }
+}
+
+var rectangle = new Rectangle();
+
+rectangle.width = 3;
+rectangle.height = 2;
+
+rectangle.printData();</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example">Width = 3
+Height = 2
+Area = 6</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 22, 23</code> values are set to the properties
+                <code>width</code> and <code>height</code>.</li>
+            <li>At <code>line 25</code> the <code>printData</code>
+                function is called. <code>this</code> points to the class object.
+            </li>
+        </ul>
+    </div>

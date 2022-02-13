@@ -1,0 +1,85 @@
+        <div>
+            <p class="note"><b>Set</b> is a collection containing
+                only unique elements.</p>
+
+            <p>Sets are not supported by older browsers such as internet explorer.</p>
+
+
+            <h2>Creation</h2>
+            <h3 class="h5 my-4">Empty Set</h3>
+            <textarea class="tutorial-example">let emptySet = new Set();</textarea>
+
+            <h3 class="h5 my-4">Initial Values</h3>
+            <textarea class="tutorial-example">let names = new Set(["John", "Smith", "Alex"]);</textarea>
+
+            <h2>Inserting Data</h2>
+            <p>Insertion is done via the <code>add</code> function. Like in the following example:</p>
+            <textarea class="tutorial-example">let cities = new Set();
+
+cities.add("Tokyo");
+cities.add("Chicago");
+cities.add("Tokyo");
+cities.add("Madrid");
+
+console.log(cities);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Set(3) {"Tokyo", "Chicago", "Madrid"}</textarea>
+            <p>Notice that <code>Tokyo</code> is contained only once, since no duplicates are allowed.</p>
+
+            <h2>Size</h2>
+            <p class="note">Size is the count of Set's elements. It's accessed via the <code>size</code> property.</p>
+            <textarea class="tutorial-example">let names = new Set();
+
+names.add("John");
+names.add("Smith");
+names.add("Smith");
+names.add("Bell");
+console.log(names.size);</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example">3</textarea>
+
+            <h2>Remove Element</h2>
+            <p>Certain values can be removed via the <code>delete</code> function.</p>
+
+            <textarea class="tutorial-example">var names = new Set();
+
+names.add("Emily");
+names.add("Lily");
+names.add("Teo");
+
+names.delete("Teo");
+console.log(names);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Set(2) {"Emily", "Lily"}</textarea>
+
+
+            <h2>Contains</h2>
+            <p>A value can be checked if contained via the <code>has</code> method.</p>
+            <textarea class="tutorial-example">let names = new Set();
+
+names.add("Leo");
+names.add("Shone");
+names.add("Alice");
+
+console.log(names.has("Shone"));</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">true</textarea>
+
+            <h2>Loop Through</h2>
+            <p>It can be iterated via <code>forEach</code>:</p>
+            <textarea class="tutorial-example">var makes = new Set();
+
+makes.add("Volvo");
+makes.add("Ford");
+makes.add("Audi");
+
+makes.forEach(function(make) {
+    console.log(make);
+});</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Volvo
+Ford
+Audi</textarea>
+        </div>

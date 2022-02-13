@@ -1,0 +1,114 @@
+        <div>
+            <p class="note">
+                <b>Friend Class</b> can access <b>private or protected
+                members and functions</b> of other class that specifies it as a friend.
+            </p>
+
+            <p>Syntax for specifying friend class:</p>
+            <textarea class="tutorial-example">friend class ClassName;</textarea>
+
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Phone
+{
+private:
+	// Private members that can be accessed
+	// inside friend class body:
+	string model;
+	double price;
+
+public:
+	Phone(string modelValue, double priceValue)
+	{
+		model = modelValue;
+		price = priceValue;
+	}
+
+	Phone() {};
+
+	// Specifying friend class:
+	friend class Store;
+};
+
+class Store
+{
+private:
+	// Declaring array of phones:
+	Phone phones[5];
+
+public:
+	void listPhones()
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			Phone phone = phones[i];
+
+			// The private members model and price can be
+			// accessed in the friend class body (Store).
+			cout << "Model: " << phone.model << endl;
+			cout << "Price: " << phone.price << endl;
+			cout << endl;
+		}
+	}
+
+	void setPhoneAtIndex(Phone phone, int index)
+	{
+		phones[index] = phone;
+	}
+
+	Store() {};
+};
+
+void main()
+{
+	Store store;
+
+	Phone phone_1("Samsung Galaxy S 20", 1300);
+	Phone phone_2("Samsung Galaxy Fold", 2400);
+	Phone phone_3("Iphone 11", 2600);
+	Phone phone_4("Oneplus 7", 1200);
+	Phone phone_5("Xiaomi Redmi Note 7", 1000);
+
+	store.setPhoneAtIndex(phone_1, 0);
+	store.setPhoneAtIndex(phone_2, 1);
+	store.setPhoneAtIndex(phone_3, 2);
+	store.setPhoneAtIndex(phone_4, 3);
+	store.setPhoneAtIndex(phone_5, 4);
+
+	store.listPhones();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Model: Samsung Galaxy S 20
+Price: 1300
+
+Model: Samsung Galaxy Fold
+Price: 2400
+
+Model: Iphone 11
+Price: 2600
+
+Model: Oneplus 7
+Price: 1200
+
+Model: Xiaomi Redmi Note 7
+Price: 1000</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>At<code>line 24</code> we declare a <b>friend class</b>.
+                    Inside the class <code>Store</code> any private / protected
+                    member or function of the class <code>Phone</code> can be accessed.</li>
+                <li>
+                    At <code>line 31</code> an array of phones is declared. It's filled
+                    with elements at <code>lines 66 - 70</code>.
+                </li>
+                <li>At <code>lines 42 and 43</code> private members of the <code>Phone</code> class are accessed.
+                    This is possible only due to the declaration of a <b>friend class</b>
+                    at <code>line 24</code>.</li>
+            </ul>
+
+        </div>

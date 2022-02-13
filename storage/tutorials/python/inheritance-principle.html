@@ -1,0 +1,111 @@
+                <div>
+                    <p class="note">
+                        <b>Inheritance</b> is a way of extending class.
+                        The new class (child class) builds logic on the top of the parent
+                        class (super class).
+                    </p>
+                    <p>Here's an example:</p>
+                    <textarea class="tutorial-example numeric-rows">class Vehicle:
+    def representation(self):
+        print(self.__make, self.__model);
+            
+    def getInsuranceCost(self, months):
+        return 0;
+            
+    def getMake(self):
+        return self.__make;
+            
+    def setMake(self, value):
+        self.__make = value;
+            
+    def getModel(self):
+        return self.__model;
+            
+    def setModel(self, value):
+        self.__model = value;
+            
+# Car inherits Vehicle:
+class Car(Vehicle):
+    # Overwriting method:
+    def getInsuranceCost(self, months):
+        return months * 25;
+            
+    # Adding constructor:
+    def __init__(self, makeValue, modelValue, doorsCountValue):
+        self.setMake(makeValue);
+        self.setModel(modelValue);
+        self.setDoorsCount(doorsCountValue);
+            
+    # Method extension:
+    def representation(self):
+        super().representation();
+        print("Doors count:", self.__doorsCount);
+            
+    # Adding new methods:
+    def getDoorsCount(self):
+        return self.__doorsCount;
+            
+    def setDoorsCount(self, value):
+        self.__doorsCount = value;
+
+            
+car = Car("Toyota", "Corolla", 4);
+            
+# Method that was extended:
+car.representation();
+            
+print("------");
+# getter that was added:
+print(car.getDoorsCount());
+print("------");
+            
+# Methods that weren't changed:
+print("Make: " + car.getMake());
+print("Model: " + car.getModel());
+print("------");
+            
+# Method that was overwritten:
+print("Insurance cost:", car.getInsuranceCost(12), "$");</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">Toyota Corolla
+Doors count: 4
+------
+4
+------
+Make: Toyota
+Model: Corolla
+------
+Insurance cost: 300 $</textarea>
+                    <p class="note">Basically the child class can add, extend, rewrite or use
+                        the inherited logic from the parent.</p>
+                    <p>For this example:</p>
+                    <ul>
+                        <li>
+                            Added logic:
+                            <ul>
+                                <li>getter for doorsCount (<code>line 38</code>)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Extended logic:
+                            <ul>
+                                <li><code>representation</code> method (<code>line 33</code>)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Entirely rewritten logic:
+                            <ul>
+                                <li><code>getInsuranceCost</code> (<code>line 23</code>)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Not modified logic:
+                            <ul>
+                                <li><code>getter for make</code> (<code>line 8</code>)</li>
+                                <li><code>getter for model</code> (<code>line 14</code>)</li>
+                                <li><code>setter for make</code> (<code>line 11</code>)</li>
+                                <li><code>setter for model</code> (<code>line 17</code>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>

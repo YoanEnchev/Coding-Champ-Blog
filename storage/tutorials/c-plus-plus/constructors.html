@@ -1,0 +1,332 @@
+        <div>
+            <p class="note"><b>Constructor</b> is used to create objects. It is a function
+                that executes when object is created.</p>
+            <p>There are different types of constructors.</p>
+
+            <h2 class="h4 my-3">Default Constructor</h2>
+            <p class="note"><b>Default constructor</b> can be used without defining it.</p>
+            <p class="note">If defined it sets default values to class members.</p>
+            <p>Syntax of default constructor:</p>
+            <textarea class="tutorial-example">ClassName()
+{
+    // code
+}</textarea>
+
+            <p>Syntax of creating object using default constructor:</p>
+            <textarea class="tutorial-example">ClassName objName;</textarea>
+
+            <p>Example of default constructor usage without defining it:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+	int age;
+
+public:
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+};
+
+void main()
+{
+	// creating object via
+	// default constructor:
+	Person person;
+	cout << "Name: " <<
+	person.getName() << endl;
+
+	cout << "Age: " <<
+	person.getAge() << endl;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Name:
+Age: -858993460</textarea>
+            <p>An object is created via default constructor at <code>line 28</code></p>
+            <p>The <code>name</code> and <code>age</code> members have pretty weird
+                values even for default ones. For this reason we can define default
+                constructor to set default values.</p>
+
+            <p>Example of defining and using default constructor:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+	int age;
+
+public:
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+
+	// default constructor:
+	Person()
+	{
+        cout << "Object creation." << endl;
+
+		name = "Unknown";
+		age = 0;
+	}
+};
+
+void main()
+{
+	// creating object via
+	// default constructor:
+	Person person;
+	cout << "Name: " <<
+	person.getName() << endl;
+
+	cout << "Age: " <<
+	person.getAge() << endl;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Object creation.
+Name: Unknown
+Age: 0</textarea>
+            <p>There are couple of things to notice:</p>
+            <ul>
+                <li>The default constructor is defined at <code>lines 24 - 30</code>.</li>
+                <li>At <code>line 37</code> an object is created via the default constructor.
+                    The code of the default constructor executes and "Object creation." is printed.</li>
+                <li>The printed name and age (<code>lines 39 and 42</code>) are the same as the
+                    ones set in the default constructor (<code>lines 28 and 29</code>).</li>
+            </ul>
+
+            <h2 class="h4 my-3">Parameterized Constructor</h2>
+            <p class="note">The <b>parameterized constructor</b> accepts parameters which
+                usually are used to set value for the object's members.</p>
+            <p class="note">Also one class may have more than one parameterized constructors.</p>
+            <p>Syntax for parameterized constructor:</p>
+            <textarea class="tutorial-example">
+ClassName(arg 1, arg 2 ...)
+{
+    // code
+}</textarea>
+            <p>Syntax of creating objects using parameterized constructor:</p>
+            <textarea class="tutorial-example">ClassName objName(arg 1, arg 2 ...)</textarea>
+            <p>Example of class using parameterized constructors:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+private:
+	// default value for members:
+	string name = "Unknown";
+	int age = 0;
+
+public:
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+
+	void setName(string nameNewValue)
+	{
+		name = nameNewValue;
+	}
+
+	void setAge(int ageNewValue)
+	{
+		age = ageNewValue;
+	}
+
+	// Parameterized constructor - 1 argument
+	Person(int ageValue)
+	{
+		cout << "Constructor with 1 parameter."
+			<< endl;
+
+		setAge(ageValue);
+	}
+
+	// Parameterized constructor - 2 arguments
+	Person(string nameValue, int ageValue)
+	{
+		cout << "Constructor with 2 parameters."
+			<< endl;
+
+		setName(nameValue);
+		setAge(ageValue);
+	}
+
+	void printData()
+	{
+		cout << "Name: " << getName()
+			<< endl;
+
+		cout << "Age: " << getAge()
+			<< endl;
+	}
+};
+
+void main()
+{
+	// creating object via
+	// parameterized constructors:
+	Person person_1(17);
+	Person person_2("Alex" ,21);
+
+	person_1.printData();
+	cout << "------" << endl;
+	person_2.printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Constructor with 1 parameter.
+Constructor with 2 parameters.
+Name:
+Age: 17
+------
+Name: Alex
+Age: 21</textarea>
+            <p>There are a couple of things to notice:</p>
+            <ul>
+                <li>At <code>lines 35 - 41</code> there is a constructor accepting only one parameter.
+                    At <code>lines 44 - 51</code> there is a constructor accepting two parameters.</li>
+                <li>The constructor with one parameter is used at <code>line 67</code> and thus
+                    "Constructor with 1 parameter." is printed (due to <code>line 37</code>).</li>
+                <li>The constructor with two parameters is used at <code>line 68</code> and thus
+                    "Constructor with 2 parameters." is printed (due to <code>line 46</code>).</li>
+            </ul>
+
+            <h2 class="h4 my-3">Copy Constructor</h2>
+            <p class="note">
+                <b>Copy constructor</b> is used to create a duplicate of an object. It accepts an object
+                to duplicate as a parameter.
+            </p>
+            <p>Syntax of defining a copy instructor:</p>
+            <textarea class="tutorial-example">ClassName(ClassName &objectName)
+{
+    // code
+}</textarea>
+            <p>Syntax of using copy constructor:</p>
+            <textarea class="tutorial-example">ClassName objectName(objectToCopy);</textarea>
+            <p>Example of copy constructor usage:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+private:
+	// default value for members:
+	string name = "Unknown";
+	int age = 0;
+
+public:
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+
+	void setName(string nameNewValue)
+	{
+		name = nameNewValue;
+	}
+
+	void setAge(int ageNewValue)
+	{
+		age = ageNewValue;
+	}
+
+	// Parameter constructor:
+	Person(string name, int age)
+	{
+		cout << "Parameter constructor." << endl;
+
+		setName(name);
+		setAge(age);
+	}
+
+	// Copy constructor:
+	Person(Person &personObj)
+	{
+		cout << "Copy constructor."
+			<< endl;
+
+		setAge(personObj.getAge());
+		setName(personObj.getName());
+	}
+
+	void printData()
+	{
+		cout << "Name: " << getName()
+			<< endl;
+
+		cout << "Age: " << getAge()
+			<< endl;
+	}
+};
+
+void main()
+{
+	// creating object via
+	// parameterized constructor:
+	Person person_1("Alex", 21);
+
+	// creating object via
+	// copy constructor:
+	Person person_2(person_1);
+
+	person_1.printData();
+	cout << "------" << endl;
+	person_2.printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Parameter constructor.
+Copy constructor.
+Name: Alex
+Age: 21
+------
+Name: Alex
+Age: 21</textarea>
+            <p>There are a couple of things to notice:</p>
+            <ul>
+                <li>
+                    At <code>line 67</code> an object named <code>person_1</code>
+                    is created via parameterized constructor.
+                </li>
+                <li>
+                    At <code>line 71</code> an object named <code>person_2</code>
+                    is created via copy constructor.
+                    This triggers the code at <code>lines 44 - 51</code>.
+                    It duplicates the passed as parameter <code>person_1</code> object.
+                </li>
+            </ul>
+        </div>

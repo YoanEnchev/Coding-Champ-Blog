@@ -1,0 +1,62 @@
+        <div>
+            <h2>Break</h2>
+            <p class="note"><b>break</b> is used to forcefully stop loop even if it's
+                condition is met.</p>
+
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int sum = 0;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (sum > 20)
+                {
+                    break;
+                }
+
+                sum += i;
+            }
+
+            Console.Write(sum);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">21</textarea>
+            <p><code>line 15</code> ends the loop though it's condition is fulfilled.</p>
+            <p>Value of <code>sum</code> is formed by adding <code>i</code> to it (1 + 2 + 3 + 4 + 5 + 6 = 21).</p>
+
+            <h2>Continue</h2>
+            <p class="note"><b>Continue</b> skips the current iteration of the loop.</p>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 6; i++)
+            {
+                if (i == 4)
+                {
+                    continue;
+                }
+
+                Console.Write(i + " ");
+            }
+        }
+    }
+}
+</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 2 3 5 6</textarea>
+            <p><code>line 13</code>stops the current iteration thus 4 isn't printed.</p>
+            <p>Unlike <code>break</code>it doesn't skip the entire loop.</p>
+        </div>

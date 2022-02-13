@@ -1,0 +1,178 @@
+        <div>
+            <p class="note">In C++ a class can inherit one or more classes.</p>
+            <h2 class="h4 my-3">Inheriting multiple classes</h2>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class A
+{
+protected:
+	string a;
+
+public:
+	string getA()
+	{
+		return a;
+	}
+};
+
+class B
+{
+protected:
+	string b;
+
+public:
+	string getB()
+	{
+		return b;
+	}
+};
+
+class C : public A, public B
+{
+private:
+	string c;
+
+public:
+	C(string aValue, string bBalue, string cValue)
+	{
+		a = aValue;
+		b = bBalue;
+		c = cValue;
+	}
+
+	string getC()
+	{
+		return c;
+	}
+};
+
+void main()
+{
+	C cObject("AValue", "BValue", "CValue");
+	cout << cObject.getA() << endl;
+	cout << cObject.getB() << endl;
+	cout << cObject.getC();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">AValue
+BValue
+CValue</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>line 30</code> class <code>C</code> inherits two classes
+                    - <code>A</code> and <code>B</code>.</li>
+                <li>Because of that class <code>C</code> has 3 properties
+                    - <code>a</code>, <code>b</code>, <code>c</code>
+                    and 3 functions - <code>getA</code>, <code>getB</code>
+                    and <code>getC</code>.</li>
+            </ul>
+
+            <h2 class="h4 my-3">Multilevel Inheritance</h2>
+            <p class="note">A class can inherit a class that inherits other
+                class. A long chain can be formed.</p>
+            <p class="note">Each child in the chain inherits
+                functions and members from the ones before it (it's parents grandparents etc...).</p>
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class A
+{
+protected:
+	string a;
+
+public:
+	string getA()
+	{
+		return a;
+	}
+};
+
+class B : public A
+{
+protected:
+	string b;
+
+public:
+	string getB()
+	{
+		return b;
+	}
+};
+
+class C : public B
+{
+protected:
+	string c;
+
+public:
+
+	string getC()
+	{
+		return c;
+	}
+};
+
+class D : public C
+{
+private:
+	string d;
+
+public:
+	string getD()
+	{
+		return d;
+	}
+
+	D(string aValue, string bValue,
+		string cValue, string dValue) {
+		a = aValue;
+		b = bValue;
+		c = cValue;
+		d = dValue;
+	}
+};
+
+void main()
+{
+	D sampleObject("AValue", "BValue", "CValue", "DValue");
+	cout << sampleObject.getA() << endl;
+	cout << sampleObject.getB() << endl;
+	cout << sampleObject.getC() << endl;
+	cout << sampleObject.getD();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">AValue
+BValue
+CValue
+DValue</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>There is an inheritance chain: <code>A</code> is inherited by <code>B</code>.
+                    <code>B</code> is inherited by <code>C</code>.
+                    <code>C</code> is inherited by <code>D</code>.
+                </li>
+                <li>
+                    At <code>line 18</code> class <code>B</code> inherits class <code>A</code>.
+                </li>
+                <li>At <code>line 30</code> class <code>C</code> inherits class <code>B</code>.
+                    <code>Class C</code>
+                    inherits the members from <code>B</code> and <code>A</code>.
+                    So class <code>C</code> has
+                    members - <code>a</code>, <code>b</code> and <code>c</code>.
+                </li>
+                <li>At <code>line 43</code> class <code>D</code>
+                    inherits class <code>C</code>. Class <code>D</code> is at
+                    the bottom of the inherit chain. So it inherits members
+                    from <code>A</code>, <code>B</code> and <code>C</code>.
+                    Class <code>D</code> has members <code>a</code>,
+                    <code>b</code>, <code>c</code> and <code>d</code>.
+                </li>
+            </ul>
+        </div>

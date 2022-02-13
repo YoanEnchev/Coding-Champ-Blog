@@ -1,0 +1,102 @@
+                <div>
+                    <p class="note">Associative arrays are called dictionaries in python and they may have non-numeric indexes.</p>
+        
+                    <h2>Creation</h2>
+                    <p>The <b>dict</b> keyword is used to create dictionaries:</p>
+                    <textarea class="tutorial-example">dictName = dict();</textarea>
+                    
+                    <h2>Inserting Data</h2>
+                    <p>Data can be inserted by specifying certain key and value.</p>
+                    <p>Example:</p>
+                    <textarea class="tutorial-example">scores = dict();
+        
+scores["Smith"] = 89;
+scores["Alex"] = 85;</textarea>
+                    <p>In this example, 2 records have been inserted.</p>
+        
+                    <h2>Accessing Values</h2>
+                    <p class="note">Values can be accessed via their keys.</p>
+                    <p>Let's look at the following example:</p>
+                    <textarea class="tutorial-example numeric-rows">drinks = dict();
+
+drinks["Coke"] = 1.55;
+drinks["Water"] = 0.80;
+        
+print(drinks["Coke"]);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example">1.55</textarea>
+                    <p>The key-value pair for <code>Coke</code> is set at <code>line 3</code>
+                        and accessed at <code>line 6</code>.</p>
+        
+        
+                    <h3 class="h5 my-4">Not Set Key</h3>
+                    <p class="note">Accessing key that's not set in the array results in KeyError.</p>
+                    <p>Let's look at the following example:</p>
+                    <textarea class="tutorial-example numeric-rows">drinks = dict();
+
+drinks["Orange Juice"] = 1.55;
+drinks["Water"] = 0.80;
+        
+drinks["Coke"];</textarea>
+                    <p>The dictionary doesn't contain any <code>Coke</code> key, so <code>drinks["Coke"]</code> causes an exception.</p>
+        
+                    <h2>Iterating Elements</h2>
+                    <p>Let's have a program in which students scores are stored in dictionary and printed afterwards.</p>
+                    <textarea class="tutorial-example">scores = dict();
+        
+scores["Smith"] =  89;
+scores["Alex"] = 75;
+scores["John"] = 87;
+
+for key, value in scores.items():
+    print(key, value);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">Smith 89
+Alex 75
+John 87</textarea>
+        <p>The following code is suitable for Python 3 but if you use Python 2, you need to replace
+            <code>items()</code> with <code>iteritems()</code>.</p>
+        
+                    <h2>Removing Elements</h2>
+                    <p>That's done via the <code>del</code> keyword like in this example:</p>
+                    <textarea class="tutorial-example">drinks = dict();
+
+drinks['Coke'] = 1.65;
+        
+del drinks['Coke'];</textarea>
+                        <p>If unexisting key is attempted to be removed (like <code>del drinks['Juice'];</code>)
+                        then a KeyError is thrown.</p>
+        
+                        <h2>Checking if key exists</h2>
+                        <p>It can be done via the <code>in</code> keyword like in the following code:</p>
+                        <textarea class="tutorial-example">drinks = dict();
+drinks['Juice'] = 1.58;
+        
+if 'Juice' in drinks:
+    print('Juice');
+    
+    
+if 'Water' in drinks: 
+    print('Water');</textarea>
+                            <p>Output:</p>
+                            <textarea class="tutorial-example text-only">Juice</textarea>
+                            <p><code>Water</code> key is not set thus <code>Water</code> is not printed.</p>
+        
+                    <h2>Size</h2>
+                    <p class="note"><b>Size</b> is the count of the key-value pairs.</p>
+                    <p>It can be accessed via the <code>len</code> function.</p>
+                    <p>Let's look at this example:</p>
+                    <textarea class="tutorial-example">drinks = dict();
+
+drinks["Coke"] = 1.50;
+drinks["Orange Juice"] = 2.30;
+drinks["Water"] = 0.80;
+drinks["Apple Juice"] = 2.35;
+        
+del drinks["Coke"];
+        
+print(len(drinks));</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">3</textarea>
+                    <p>4 records were inserted and 1 is deleted afterwards. This makes for 3 key-value pairs.</p>
+                </div>

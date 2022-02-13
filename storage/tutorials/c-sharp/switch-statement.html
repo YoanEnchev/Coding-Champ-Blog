@@ -1,0 +1,163 @@
+        <div>
+            <p class="note">
+                <b>Switch statement</b> accepts expression (like variable or constant) and executes one of many
+                code blocks.
+            </p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">
+switch (expression)
+{
+    case val1:
+    	// code to execute if expression is equal to val1
+    	break;
+    case val2:
+    	// code to execute if expression is equal to val2
+    	break;
+    case val3:
+    	// code to execute if expression is equal to val3
+    	break;
+    default:
+    	// code to execute if expression is NOT equal to
+        // val1, val2 nor val3
+    	break;
+}</textarea>
+            <p><code>case</code> specifies the value to check.</p>
+            <p><code>break</code> separates code blocks.</p>
+            <p><code>default</code>is used to handle cases when expression's value
+                doesn't match any of the cases. It's not mandatory to specify</p>
+
+            <h2>Basic Example</h2>
+            <p>Let's look at a program that converts number into traffic light color.</p>
+            <p>Rules are the following:</p>
+            <ul>
+                <li>1 - red</li>
+                <li>2 - yellow</li>
+                <li>3 - green</li>
+            </ul>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = 2;
+            string color = "";
+
+            switch (number)
+            {
+                case 1:
+                    color = "red";
+                    break;
+                case 2:
+                    color = "yellow";
+                    break;
+                case 3:
+                    color = "green";
+                    break;
+            }
+
+            Console.WriteLine(color);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">yellow</textarea>
+            <p>Since the value of <code>number</code> is <code>2</code>, the code at
+                <code>lines 18</code> executes.</p>
+
+            <h2>Default Example</h2>
+            <p>Let's analyze a program that depending on angles count prints shape name.</p>
+            <p>Rules are the following:</p>
+            <ul>
+                <li>3 - Triangle</li>
+                <li>4 - Quadrilateral</li>
+                <li>5 - Pentagon</li>
+                <li>Any other value is considered invalid</li>
+            </ul>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int anglesCount = 2;
+            string shape;
+
+            switch (anglesCount)
+            {
+                case 3:
+                    shape = "Triangle";
+                    break;
+                case 4:
+                    shape = "Quadrilateral";
+                    break;
+                case 5:
+                    shape = "Pentagon";
+                    break;
+                default:
+                    shape = "Invalid";
+                    break;
+            }
+
+            Console.WriteLine(shape);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">Invalid</textarea>
+            <p>Since <code>anglesCount</code> is neither of the cases value (3, 4, 5)
+                the code at <code>line 24</code> executes.</p>
+
+            <h2>Multiple Values Case</h2>
+            <p>A code block inside case can be executed for one or more values.</p>
+            <p>Let's have a program that rates performance depending on it's score.</p>
+            <p>Rules are the following:</p>
+            <ul>
+                <li>0 to 3 - low</li>
+                <li>4 to 7 - medium</li>
+                <li>8 to 10 - high</li>
+            </ul>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int performance = 8;
+            string rate = "";
+
+            switch (performance)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    rate = "low";
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    rate = "average";
+                    break;
+                case 8:
+                case 9:
+                case 10:
+                    rate = "high";
+                    break;
+            }
+            Console.WriteLine(rate);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">high</textarea>
+            <p><code>performance</code> value is matched by <code>case 8</code>
+                and thus <code>line 29</code> executes.</p>
+        </div>

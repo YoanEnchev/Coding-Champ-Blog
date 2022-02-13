@@ -1,0 +1,107 @@
+        <div>
+        <p>A class may have a member that is array and contains class instances.</p>
+
+        <p>Example</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Car {
+    private $model;
+    private $price;
+
+    public function __construct($model, $price) {
+        $this->model = $model;
+        $this->price = $price;
+    }
+
+    public function printData() {
+        echo "Model: " . $this->model . "\n";
+        echo "Price: " . $this->price . "\n";
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+}
+
+class CarDealership {
+    public $cars = [];
+
+    public function sortByPrice() {
+        // sort cars by price:
+        usort($this->cars, function ($a, $b) {
+            if($a->getPrice() < $b->getPrice()) {
+                return -1;
+            }
+            else if ($a->getPrice() === $b->getPrice()) {
+                return 0;
+            }
+
+            return 1;
+        });
+    }
+}
+
+$carDealership = new CarDealership();
+
+$car_1 = new Car("Ford Fiesta", 20000);
+$car_2 = new Car("Toyota Corolla", 26000);
+$car_3 = new Car("Renault Clio", 18000);
+
+// Add elements to the array:
+$carDealership->cars[] = $car_1;
+$carDealership->cars[] = $car_2;
+$carDealership->cars[] = $car_3;
+
+echo "Before Sorting: \n \n";
+
+foreach ($carDealership->cars as $car) {
+    echo "--------\n";
+    $car->printData();
+}
+
+$carDealership->sortByPrice();
+echo "\n \nAfter Sorting: \n \n";
+
+foreach ($carDealership->cars as $car) {
+    echo "--------\n";
+    $car->printData();
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Before Sorting:
+
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000
+--------
+Model: Renault Clio
+Price: 18000
+
+
+After Sorting:
+
+--------
+Model: Renault Clio
+Price: 18000
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 22</code> an empty array is declared.</li>
+            <li>At <code>lines 46 - 48</code> elements are added to the array.
+            This can be done also via the function <code>array_push</code>.</li>
+            <li>At <code>lines 52 and 60</code> all elements of the array
+            are looped.</li>
+            <li>At <code>lines 26 - 35 </code> the array is sorted ascending by price.
+            If at <code>line 27</code> the sign <code><</code> is
+            replaced with <code>></code>, then the sorting would be descending.</li>
+        </ul>
+
+    </div>

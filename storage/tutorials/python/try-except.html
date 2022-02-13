@@ -1,0 +1,63 @@
+        <div>
+            <p class="note">During program execution an error can be thrown.
+                Instead of ending the program <code>an error can be caught</code> and a certain
+                code can be executed.</p>
+    
+            <h2 class="h4 my-3">Error Handling</h2>
+            <p>Syntax for handling error:</p>
+            <textarea class="tutorial-example">try:
+    # code that may throw exception.
+except:
+    # handling the error</textarea>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">try:
+    print("Executing try block code.");
+    
+    raise Exception("My error message.");
+except Exception as e:
+    print("Catching an error:");
+    print(str(e));</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Executing try block code.
+Catching an error:
+My error message.</textarea>
+            <p>Since an error is thrown in the try block,
+                the code from the except block is called.</p>
+    
+            <h2 class="h4 my-3">Classes and Error Handling</h2>
+            <p>An error can be thrown when a validation fails in setter.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    def get__age(self):
+        return self.__age;
+    
+    def set__age(self, ageValue):
+        if ageValue < 0:
+            raise Exception("Age cannot be less than zero.");
+
+        self.__age = ageValue;
+    
+    def get__name(self):
+        return self.__name;
+    
+    def set__Name(self, nameValue):
+        self.__name = nameValue;
+    
+    def __init__(self, usernameValue, ageValue):
+        self.set__Name(usernameValue);
+        self.set__age(ageValue);
+    
+try:
+    personObj = Person("Alex", -1);
+except Exception as e:
+    print("Object creation failed:");
+    print(str(e));</textarea>
+    
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Object creation failed:
+Age cannot be less than zero.</textarea>
+    
+            <p>At <code>line 22</code> a negative number (<code>-1</code>)
+                is passed for age of the person object. This causes
+                an error to be throw (due to <code>line 7</code>).</p>
+        </div>

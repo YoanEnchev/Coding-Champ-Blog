@@ -1,0 +1,48 @@
+.CodeMirror {
+    margin: 20px 0px;
+    border: 1px solid #eee;
+    height: auto;
+}
+
+
+.CodeMirror {
+   /* background-color: rgb(251, 251, 255) !important; */
+    background: linear-gradient(15deg, rgba(254,254,255,1) 0%, rgba(252,250,255,1) 0%, rgba(249,249,255,1) 100%) !important;
+    border-radius: 5px;
+}
+
+.CodeMirror-scroll {
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.CodeMirror-cursors {
+    visibility: hidden !important;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+  }
+
+.swiper-slide .CodeMirror-lines {
+    text-align: left;
+}
+
+.swiper-slide button {
+  background-color: #7629f8;
+  font-size: 20px;
+  font-weight: bold;
+}
+body {
+  background-color: aliceblue;
+}
+
+ 

@@ -1,0 +1,142 @@
+        <div>
+        <p class="note">
+            <b>Inheritance</b> is a way of extending class.
+            The new class (child class) builds logic on the top of the parent
+            class (super class).
+        </p>
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Vehicle
+    {
+        protected String make;
+        protected String model;
+
+        public void representation()
+        {
+            Console.WriteLine(this.make + " " + this.model);
+        }
+
+        public double getInsuranceCost(int months)
+        {
+            return 0;
+        }
+
+        public String getMake()
+        {
+            return this.make;
+        }
+
+        public String getModel()
+        {
+            return this.model;
+        }
+    }
+
+    // Car inherits Vehicle:
+    class Car : Vehicle
+    {
+        // Adds class member:
+        private int doorsCount;
+
+        // Overwriting method:
+        public double getInsuranceCost(int months)
+        {
+            return months * 25;
+        }
+
+        // Adding constructor:
+        public Car(String makeValue, String modelValue,
+        int doorsCountValue)
+        {
+            this.make = makeValue;
+            this.model = modelValue;
+            this.doorsCount = doorsCountValue;
+        }
+
+        // Method extension:
+        public void representation()
+        {
+            base.representation();
+            Console.WriteLine( "Doors count: " + doorsCount);
+        }
+
+        // Adding new method:
+        public int getDoorsCount()
+        {
+            return this.doorsCount;
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car("Toyota", "Corolla", 4);
+
+            // Method that was extended:
+            car.representation();
+
+            Console.WriteLine("------");
+            // Method that was added:
+            Console.WriteLine(car.getDoorsCount());
+            Console.WriteLine("------");
+
+            // Methods that weren't changed:
+            Console.WriteLine("Make: " + car.getMake());
+            Console.WriteLine("Model: " + car.getModel());
+            Console.WriteLine("------");
+
+            // Method that was overwritten:
+            Console.WriteLine("Insurance cost: " +
+                    car.getInsuranceCost(12) + " $");
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Toyota Corolla
+Doors count: 4
+------
+4
+------
+Make: Toyota
+Model: Corolla
+------
+Insurance cost: 300 $</textarea>
+        <p class="note">Basically the child class can add, extend, rewrite or use
+            the inherited logic from the parent.</p>
+        <p>For this example:</p>
+        <ul>
+            <li>
+                Added logic:
+                <ul>
+                    <li>member - <code>doorsCount</code> (<code>line 36</code>)</li>
+                    <li>parametrized constructor (<code>line 45</code>)</li>
+                    <li>getter for doorsCount (<code>line 61</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Extended logic:
+                <ul>
+                    <li><code>representation</code> method (<code>line 54</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Entirely rewritten logic:
+                <ul>
+                    <li><code>getInsuranceCost</code> (<code>line 39</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Not modified logic:
+                <ul>
+                    <li><code>getMake</code> (<code>line 21</code>)</li>
+                    <li><code>getModel</code> (<code>line 26</code>)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>

@@ -1,0 +1,61 @@
+        <div>
+            <p class="note"><b>Reference passing</b> allows variable to be modified
+                by the function it's passed to.</p>
+
+            <h2>Passing By Value</h2>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example"><?php
+
+$num = 0;
+incrementValue($num);
+
+echo $num;
+
+function incrementValue($num) {
+	$num++;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">0</textarea>
+
+            <p><code>num</code> is incremented by 1 in the<code>incrementValue</code> function. Since it's passed
+                by value it remains <code>0</code> outside of the <code>incrementValue</code> function.</p>
+
+
+            <h2>Passing By Reference</h2>
+            <p>To pass by reference, the symbol <code>&</code> needs to be added before argument's name:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+
+function incrementValue(&$num) {
+	$num++;
+}
+
+$num = 0;
+incrementValue($num);
+
+echo $num;
+</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example">1</textarea>
+            <p>Since <code>num</code> is passed by reference at <code>line 3</code>, it's value has incremented
+                outside the <code>incrementValue</code> function too.</p>
+
+            <h2>Array Arguments</h2>
+            <p class="note">Unlike other languages, arrays are not passed by reference by default.</p>
+
+            <textarea class="tutorial-example numeric-rows"><?php
+
+$arr = [1, 2];
+modifyArray($arr);
+
+echo $arr[0] . " " . $arr[1];
+
+function modifyArray($arrayArg)
+{
+	$arrayArg[0] = 3;
+	$arrayArg[1] = 4;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 2</textarea>
+            <p>To modify the array <code>&</code> needs to be placed at <code>line 8</code>.</p>
+        </div>

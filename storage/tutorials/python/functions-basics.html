@@ -1,0 +1,80 @@
+        <div>
+            <p class="note"><b>Function</b> is a code block that executes certain task.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">def funcName():
+    # Code to execute.</textarea>
+
+            <h2>Void Example</h2>
+            <p class="note">A void function doesn't return any value.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example">def printHi():
+    print("Hi!");
+     
+ printHi(); # Calling a function:</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hi!</textarea>
+
+            <h2>Returning Result</h2>
+            <p class="note">Via the <b>return</b> keyword a result can be returned.</p>
+            <p>Let's have an example in which rectangle's area is calculated by passing arguments
+                about it's sides.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">def calcRectangleArea(widthArg, heightArg):
+    return widthArg * heightArg;
+    
+area = calcRectangleArea(3, 4);
+print(area);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">12</textarea>
+
+            <p>There are couple of things to mark:</p>
+            <ul>
+                <li>A functions is defined at <code>lines 1 - 2</code>. It accepts two arguments -
+                    <code>widthArg</code> and <code>heightArg</code>.</li>
+                <li>The function <code>calcRectangleArea</code> returns a result.</li>
+                <li><code>calcRectangleArea</code> is called at <code>line 4</code>.</li>
+                <li>It's returned value is set in the variable <code>area</code>.</li>
+            </ul>
+
+
+            <h2>Not passing argument</h2>
+            <p class="note">If a function requires more arguments than the passed ones, an exception is thrown. </p>
+            <textarea class="tutorial-example">def printArgs(a, b, c):
+    print(a, b, c);
+
+printArgs(3, 4);</textarea>
+
+
+            <p>The function <code>printArgs</code> expects 3 arguments but the last one
+                (<code>c</code>) is not passed. For that reason an exception is thrown.</p>
+
+
+
+            <h2>Default Value</h2>
+            <p class="note">Default value may be specified for function parameters.</p>
+            <p>Let's look at the following:</p>
+            <textarea class="tutorial-example numeric-rows">def printArg(arg = 3):
+    print(arg);
+
+printArg(5);
+printArg();</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">5
+3</textarea>
+            <p>At <code>line 5</code> the function argument is not passed thus it
+                takes the default value - <code>3</code> specified at <code>line 1</code>.</p>
+            <p>If <code>arg</code> didn't have default value (3), then the code would result in exception due to <code>line 5</code>.</p>
+
+
+                <h2>Call Before Definition</h2>
+                <p class="note">Calling function before it's definition results in exception.</p>
+                <p>Example:</p>
+                <textarea class="tutorial-example">sayHi();
+
+def sayHi():
+    print("Hi");</textarea>
+    <p>The line <code>sayHi();</code> needs to be the last line of the code in order to avoid error.</p>
+
+        </div>

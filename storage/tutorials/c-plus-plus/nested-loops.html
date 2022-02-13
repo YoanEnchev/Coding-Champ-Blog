@@ -1,0 +1,73 @@
+        <div>
+            <p class="note"><b>Nested Loop</b> is located inside other loop block.</p>
+
+            <h2>Nested for Loop</h2>
+            <p>Let's have a program that prints each combination of 2 dice rolls.</p>
+
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    // Outer loop:
+	for (int i = 1; i <= 6; i++)
+	{
+        // Inner Loop:
+		for (int j = 1; j <= 6; j++)
+		{
+			cout << i << " " << j << endl;
+		}
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 1
+1 2
+1 3
+1 4
+1 5
+1 6
+2 1
+2 2
+...
+6 4
+6 5
+6 6</textarea>
+            <p>Each iteration of the outer loop executes the inner loop. Basically the outer loop repeats 6 times
+            and the inner loop 36 (6 x 6).</p>
+
+            <h2>Nested while Loop</h2>
+            <p>Via nested loops figures like pyramids, triangles and others patterns can be printed.</p>
+            <p>Let's have a program which prints a rectangle with specific width and height</p>
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int width = 5;
+	int height = 3;
+
+	int heightIndex = 0;
+
+	while (heightIndex < height)
+	{
+		int widthIndex = 0;
+
+		while (widthIndex < width)
+		{
+			cout << "* ";
+			widthIndex++;
+		}
+
+		cout << endl;
+
+		heightIndex++;
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">* * * * *
+* * * * *
+* * * * *</textarea>
+            <p class="note">Any type of loop (while, do-while, for) can be nested inside other loop.</p>
+        </div>

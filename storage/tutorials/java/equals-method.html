@@ -1,0 +1,166 @@
+        <div>
+        <p class="note">The <b>equals</b> method is used to determine
+            whether 2 objects of a class are the same.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+        <textarea class="tutorial-example">boolean equals(Object objName) {
+    // code
+}        </textarea>
+
+        <h2 class="h4 my-3">Objects equality</h2>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">class Smartphone
+{
+    private String model;
+    private double price;
+
+    Smartphone(String model, double price)
+    {
+        this.model = model;
+        this.price = price;
+    }
+
+    public boolean equals(Object o) {
+        // Casting the passed object to Smartphone:
+        Smartphone smartphone = (Smartphone) o;
+
+        // two smartphones are considered identical if
+        // they are the same model and have the same price:
+        return this.getModel().equals(smartphone.getModel()) &&
+                this.getPrice() == smartphone.getPrice();
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Smartphone phone_1 = new Smartphone("Iphone 11", 2500);
+        Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+        Smartphone phone_3 = new Smartphone("Iphone 11", 2600);
+        Smartphone phone_4 = new Smartphone("Samsung Galaxy Fold", 2600);
+
+        if(phone_1.equals(phone_2)) {
+            System.out.println("Phone 1 and Phone 2 are the same.");
+        }
+
+        if(phone_2.equals(phone_3)) {
+            System.out.println("Phone 2 and Phone 3 are the same.");
+        }
+
+        if(phone_3.equals(phone_4)) {
+            System.out.println("Phone 3 and Phone 4 are the same.");
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Phone 2 and Phone 3 are the same.</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 12 - 20</code> the <code>equals</code> method
+                is defined. Two <code>Smartphone</code> objects are considered identical if they have
+            the same model and price.</li>
+            <li>That's why only <code>phone_2</code> and <code>phone_3</code>
+            are considered identical.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Equals And Contains Methods</h2>
+        <p class="note">It can be
+        checked whether an object is contained in <code>List</code> collections
+            via the <code>equals</code> and <code>contains</code> methods.</p>
+
+        <p class="note">The rule whether an object is contained in the array
+        is specified in the <code>equals</code> method.</p>
+
+        <h3 class="h6">Example:</h3>
+        <textarea class="tutorial-example numeric-rows">import java.util.ArrayList;
+import java.util.List;
+
+class Smartphone
+{
+    private String model;
+    private double price;
+
+    Smartphone(String model, double price)
+    {
+        this.model = model;
+        this.price = price;
+    }
+
+    public boolean equals(Object o) {
+        // Casting the passed object to Smartphone:
+        Smartphone smartphone = (Smartphone) o;
+
+        // two smartphones are considered identical if
+        // they are the same model.
+        return this.getModel().equals(smartphone.getModel());
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Smartphone phone_1 = new Smartphone("Iphone 11", 2500);
+        Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+        Smartphone phone_3 = new Smartphone("Oneplus 7", 1200);
+        Smartphone phone_4 = new Smartphone("Samsung Galaxy Fold", 2600);
+        Smartphone phone_5 = new Smartphone("Samsung Galaxy S20", 1700);
+
+        List<Smartphone> smartphones = new ArrayList<Smartphone>();
+        smartphones.add(phone_1);
+        smartphones.add(phone_4);
+
+        if(smartphones.contains(phone_1)) {
+            System.out.println("phone_1's model is contained in the array");
+        }
+
+        if(smartphones.contains(phone_2)) {
+            System.out.println("phone_2's model is contained in the array");
+        }
+
+        if(smartphones.contains(phone_3)) {
+            System.out.println("phone_3's model is contained in the array");
+        }
+
+        if(smartphones.contains(phone_4)) {
+            System.out.println("phone_4's model is contained in the array");
+        }
+
+        if(smartphones.contains(phone_5)) {
+            System.out.println("phone_5's model is contained in the array");
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">phone_1's model is contained in the array
+phone_2's model is contained in the array
+phone_4's model is contained in the array</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 15</code> the <code>equals</code>
+            method states that two <code>Smartphone</code> objects are considered
+            identical if their model is the same.</li>
+            <li>The <code>contains</code> method at <code>lines
+            46, 50, 54, 58, 62</code> relies on the equals method.</li>
+            <li>This means that a <code>Smartphone</code> object
+            is considered to be contained in the list, if the list
+            has an object with the same model.</li>
+        </ul>
+    </div>

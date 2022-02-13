@@ -1,0 +1,166 @@
+        <div>
+        <p class="note">The <b>Equals</b> method is used to determine
+            whether 2 objects of a class are the same.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+        <textarea class="tutorial-example">bool Equals(ClassName objName) {
+    // code
+}        </textarea>
+
+        <h2 class="h4 my-3">Objects equality</h2>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Smartphone : IEquatable<Smartphone>
+    {
+        public string model;
+        public double price;
+
+        public Smartphone(string model, double price)
+        {
+            this.model = model;
+            this.price = price;
+        }
+
+        public bool Equals(Smartphone smartphone)
+        {
+            // two smartphones are considered identical if
+            // they are the same model and have the same price:
+            return this.model == smartphone.model &&
+                    this.price == smartphone.price;
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Smartphone phone_1 = new Smartphone("Iphone 11", 2500);
+            Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+            Smartphone phone_3 = new Smartphone("Iphone 11", 2600);
+            Smartphone phone_4 = new Smartphone("Samsung Galaxy Fold", 2600);
+
+            if (phone_1.Equals(phone_2))
+            {
+                Console.WriteLine("Phone 1 and Phone 2 are the same.");
+            }
+
+            if (phone_2.Equals(phone_3))
+            {
+                Console.WriteLine("Phone 2 and Phone 3 are the same.");
+            }
+
+            if (phone_3.Equals(phone_4))
+            {
+                Console.WriteLine("Phone 3 and Phone 4 are the same.");
+            }
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Phone 2 and Phone 3 are the same.</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 16 - 22</code> the <code>Equals</code> method
+                is defined. Two <code>Smartphone</code> objects are considered identical if they have
+                the same model and price.</li>
+            <li>That's why only <code>phone_2</code> and <code>phone_3</code>
+                are considered identical.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Equals And Contains Methods</h2>
+        <p class="note">It can be
+            checked whether an object is contained in <code>List</code> collections
+            via the <code>Equals</code> and <code>Contains</code> methods.</p>
+
+        <p class="note">The rule whether an object is contained in the array
+            is specified in the <code>Equals</code> method.</p>
+
+        <h3 class="h6">Example:</h3>
+        <textarea class="tutorial-example numeric-rows">using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Smartphone : IEquatable<Smartphone>
+    {
+        public string model;
+        public double price;
+
+        public Smartphone(string model, double price)
+        {
+            this.model = model;
+            this.price = price;
+        }
+
+        public bool Equals(Smartphone smartphone)
+        {
+            // two smartphones are considered identical if
+            // they are the same model.
+            return this.model == smartphone.model;
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Smartphone phone_1 = new Smartphone("Iphone 11", 2500);
+            Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+            Smartphone phone_3 = new Smartphone("Oneplus 7", 1200);
+            Smartphone phone_4 = new Smartphone("Samsung Galaxy Fold", 2600);
+            Smartphone phone_5 = new Smartphone("Samsung Galaxy S20", 1700);
+
+            List<Smartphone> smartphones = new List<Smartphone>();
+            smartphones.Add(phone_1);
+            smartphones.Add(phone_4);
+
+            if (smartphones.Contains(phone_1))
+            {
+                Console.WriteLine("phone_1's model is contained in the array");
+            }
+
+            if (smartphones.Contains(phone_2))
+            {
+                Console.WriteLine("phone_2's model is contained in the array");
+            }
+
+            if (smartphones.Contains(phone_3))
+            {
+                Console.WriteLine("phone_3's model is contained in the array");
+            }
+
+            if (smartphones.Contains(phone_4))
+            {
+                Console.WriteLine("phone_4's model is contained in the array");
+            }
+
+            if (smartphones.Contains(phone_5))
+            {
+                Console.WriteLine("phone_5's model is contained in the array");
+            }
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">phone_1's model is contained in the array
+phone_2's model is contained in the array
+phone_4's model is contained in the array</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 21</code> the <code>Equals</code>
+                method states that two <code>Smartphone</code> objects are considered
+                identical if their model is the same.</li>
+            <li>The <code>Contains</code> method at <code>lines
+                40, 45, 50, 55, 60</code> relies on the Equals method.</li>
+            <li>This means that a <code>Smartphone</code> object
+                is considered to be contained in the list, if the list
+                has an object with the same model.</li>
+        </ul>
+    </div>

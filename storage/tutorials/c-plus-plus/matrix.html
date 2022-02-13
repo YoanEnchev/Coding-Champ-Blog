@@ -1,0 +1,73 @@
+        <div>
+            <p class="note"><b>Matrix</b> is multidimensional array. Basically array containing arrays.</p>
+
+            <p>The simplest matrix is the two-dimensional Array. In general it looks something like this:</p>
+            <img src="../../imgs/tutorials/matrix.png" alt="matrix" style="width: 100%">
+            <p>Each element is located at certain row and column.</p>
+
+            <h2>Initializing Matrix</h2>
+            <p>Let's create the matrix from the above picture:</p>
+            <textarea class="tutorial-example">int matrix[3][5] = {
+    {2, 4, 9, 1, 15} ,  // elements of row 1
+    {12, 21, 4, 8, 9} ,  // elements of row 2
+    {1, 5, 4, 6, 7}  // elements of row 3
+};</textarea>
+            <p>This matrix has 3 rows and 5 columns.</p>
+
+            <h2>Accessing elements</h2>
+            <p>In order to access element the index of the row and column must be specified.</p>
+            <p>Let's print the element of the matrix that's located in the 2nd row (index 1) and 4th column (index 3).</p>
+            <img src="../../imgs/tutorials/access-matrix-element.png" alt="access-matrix-element" style="width: 100%">
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int matrix[3][5] = {
+		{2, 4, 9, 1, 15} ,  // elements of row 1
+		{12, 21, 4, 8, 9} ,  // elements of row 2
+		{1, 5, 4, 6, 7}  // elements of row 3
+	};
+
+	cout << matrix[1][3];
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">8</textarea>
+            <p>Notice that the first index corresponds to the row (<code>1</code>)
+                and the last one to the column (<code>3</code>).</p>
+
+            <h2>Printing Elements Of A matrix:</h2>
+            <p>Nested loops are suitable for iterating matrix elements.</p>
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	const int rows = 3;
+	const int cols = 5;
+
+	int matrix[rows][cols] = {
+		{2, 4, 9, 1, 15} ,  // elements of row 1
+		{12, 21, 4, 8, 9} ,  // elements of row 2
+		{1, 5, 4, 6, 7}  // elements of row 3
+	};
+
+	for (int row = 0; row < rows; row++)
+	{
+		for (int col = 0; col < cols; col++)
+		{
+			cout << matrix[row][col] << "\t";
+		}
+
+		// Print each row on a new line.
+		cout << endl;
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">
+2       4       9       1       15
+12      21      4       8       9
+1       5       4       6       7</textarea>
+        </div>

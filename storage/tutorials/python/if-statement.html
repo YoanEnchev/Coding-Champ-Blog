@@ -1,0 +1,160 @@
+        <div>
+            <p class="note">Code Fragment can be executed only if a
+                certain condition is met.
+            </p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">if condition
+    # Code to execute if condition is met.</textarea>
+            <p><code>condition</code> has a boolean type (<code>True</code> or <code>False</code>).</p>
+            <h2>Basic Example</h2>
+            <textarea class="tutorial-example numeric-rows">if True:
+    print("a");
+
+if False:
+    print("b");
+
+varName = True;
+
+if varName:
+    print("c");</textarea>
+
+                <p>Output:</p>
+            <textarea class="tutorial-example text-only">a
+c</textarea>
+
+            <p>if condition is <code>True</code> - execute the code inside <code>if</code> fragment.</p>
+
+            <h2>Comparison Operators</h2>
+            <section class="horizontal-scroller-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3">==</td>
+                        <td rowspan="3">Equal to</td>
+                        <td>5 == 5</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>4 == 5</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>'4' == 4</td>
+                        <td>False</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td rowspan="3">!=</td>
+                        <td rowspan="3">Not equal to</td>
+                        <td>7 != 5</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>4 != 4</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>True != False</td>
+                        <td>True</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3">></td>
+                        <td rowspan="3">Greater than</td>
+                        <td>5 &gt; 0</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>5 &gt; 5</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>10 &gt; 0</td>
+                        <td>True</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">>=</td>
+                        <td rowspan="3">Greater than or equal to</td>
+                        <td>3 &gt;= 3</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>5 &gt;= 4</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>3 &gt;= 5</td>
+                        <td>False</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3"> &lt; </td>
+                        <td rowspan="3">Less than</td>
+                        <td>3 &lt; 5</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>5 &lt; 6</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>5 &lt; 5</td>
+                        <td>False</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3"> &lt;= </td>
+                        <td rowspan="3">Less than or equal to</td>
+                        <td>2 &lt;= 0</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>5 &lt;= 5</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>5 &lt; 1</td>
+                        <td>False</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <p>Let's create a program that uses <b>comparisons operators</b>.</p>
+            <p>Determine whether person is adult (age >= 21) or child (age < 13) depending on his/her age.</p>
+            <textarea class="tutorial-example numeric-rows">age = 25;
+if age >= 21:
+    print("Adult");
+
+if age < 13:
+    print("Child");</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Adult</textarea>
+            <p>Since <code>age</code> is greater than 21, <code>line 3</code> executes.</p>
+            <p>Because age is not less than 13, <code>line 6</code> is not executed.</p>
+        
+            <h2>Indentation</h2>
+            <p>If statement, without indentation, causes error:</p>
+            <textarea class="tutorial-example">name = 'Clover';
+
+if name == 'Clover':
+print("Adult");</textarea>
+<p>In order to not throw exception, it needs to be rewritten like this:</p>
+<textarea class="tutorial-example">name = 'Clover';
+
+if name == 'Clover':
+    print("Adult");</textarea>
+        
+        </div>

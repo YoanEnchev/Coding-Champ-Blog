@@ -1,0 +1,40 @@
+        <div>
+            <h2>Difference between i++ and ++i</h2>
+            <p>Both of them will add 1 to a numeric value but return different results.</p>
+
+            <p class="note"><b>i++</b> returns the original value (before increment).</p>
+            <p class="note"><b>++i</b> returns the incremented value.</p>
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">public class Main {
+    public static void main(String[] args) {
+        int a = 0;
+        int b = 0;
+
+        System.out.println(a++ + " " + ++b);
+
+        System.out.println(a + " " + b);
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">0 1
+1 1</textarea>
+            <p><code>Line 6</code> shows the main difference between post and pre increment - the returned result</p>
+            <p>The same logic applies to <code>i--</code> and <code>--i</code>.</p>
+
+            <h2>Semicolon after 'for' loop</h2>
+            <p class="note"><b>For loop</b> with no body will still repeat many times as long as it's condition is met.</p>
+            <p>This means that variable's modifications such as <code>i++</code>, <code>i--</code> are still performed.</p>
+            <p>Let's look at the example:</p>
+            <textarea class="tutorial-example">public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        for (; i < 5; i++);
+
+        System.out.print(i);
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">5</textarea>
+            <p>In this example the loop repeats 5 times until <code>i</code> reaches value of 5.</p>
+        </div>

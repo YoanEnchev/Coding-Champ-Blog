@@ -1,0 +1,258 @@
+        <div>
+            <p class="note">
+                With <b>templates</b> a class or function
+                can be created that works with different
+                data types.
+            </p>
+
+            <h2 class="h4 my-3">Function Templates</h2>
+            <p class="note">The <b>function template</b> can work with
+                <b>different type of arguments</b>.
+            </p>
+            <p>Syntax for defining <b>Template Function</b>:</p>
+            <textarea class="tutorial-example">TempName funcName(T arg1, T arg2 ...)
+{
+    // code
+}</textarea>
+
+            <p>Syntax for calling <b>Template Function</b>:</p>
+            <textarea class="tutorial-example">funcName<argTypes>(args)</textarea>
+
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+template<typename T>
+T maxElem(T a, T b)
+{
+	if (a > b)
+	{
+		return a;
+	}
+
+	return b;
+}
+
+void main()
+{
+	int intElem1 = 3;
+	int intElem2 = 10;
+
+	cout << maxElem<int>(intElem1, intElem2) << endl;
+
+	double doubleElem_1 = 1.4;
+	double doubleElem_2 = 3.7;
+
+	cout << maxElem<double>(doubleElem_1, doubleElem_2) << endl;
+
+	char charElem1 = 'a';
+	char charElem2 = 'z';
+
+	cout << maxElem<char>(charElem1, charElem2) << endl;
+
+	cout << maxElem<int>(charElem1, charElem2) << endl;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">10
+3.7
+z
+122</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 5 - 14</code> a template that returns the bigger
+                    of the 2 arguments is defined.</li>
+                <li>At <code>line 21</code> the template function is called for
+                    integer arguments, <code>line 26</code> - double,
+                    <code>line 31</code> - char.</li>
+                <li>When chars are passed to the template, the chars arguments are
+                    compared by ascii code. Thus <code>z</code> is consider bigger than <code>a</code>.
+                </li>
+                <li>
+                    <code>Line 33</code> is a bit more interesting. The arguments are of type
+                    char but are defined as integer. So the char arguments are
+                    converted to their ascii code.
+                </li>
+            </ul>
+
+            <h2 class="h4 my-3">Class Templates</h2>
+            <p class="note">
+                <b>Class templates</b> can work with <b>members of different types</b>.
+            </p>
+
+            <p>Syntax for defining class templates:</p>
+            <textarea class="tutorial-example">template <class T>
+class Calculator
+{
+    // defining member:
+	T memberName;
+
+    // code
+}</textarea>
+
+            <p>Syntax for creating class template object (via default constructor):</p>
+            <textarea class="tutorial-example">ClassName<argTypes>objName</textarea>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+template <class T>
+class Calculator
+{
+private:
+	T num1;
+	T num2;
+
+public:
+	// parameterized constructor:
+	Calculator(T num1Val, T num2Val)
+	{
+		num1 = num1Val;
+		num2 = num2Val;
+	}
+
+	T add() {
+		return num1 + num2;
+	}
+
+	T subtract() {
+		return num1 - num2;
+	}
+
+	T multiply() {
+		return num1 * num2;
+	}
+
+	T divide() {
+		return num1 / num2;
+	}
+};
+
+void main()
+{
+	Calculator<int> intCalc(3, 8);
+	Calculator<float> floatCalc(2.4, 1.2);
+	Calculator<double> doubleCalc(3.9, 1.2);
+
+	cout << "3 + 8  = " <<
+		intCalc.add() << endl;
+
+	cout << "2.4 - 1.2  = " <<
+		floatCalc.subtract() << endl;
+
+	cout << "3.9 * 1.2  = " <<
+		doubleCalc.multiply() << endl;
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3 + 8  = 11
+2.4 - 1.2  = 1.2
+3.9 * 1.2  = 4.68</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 39 - 41</code> are created 3 <b>template class
+                    object</b> of 3 types (int, float, double).</li>
+                <li><code>Lines 44, 47 and 50</code> call members of the class.</li>
+            </ul>
+
+            <h2 class="h4 my-3">Why using templates?</h2>
+            <p class="note">They are suitable for larger apps are are flexible.
+            <p class="note">With them one code can be executed for different types
+                of arguments / class members.</p>
+
+            <p class="note">Instead of defining many functions with the same name
+                and logic but different types of arguments, a <b>template</b> can be used.</p>
+
+            <p>A value swapping program:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+void swapVariables(int &num1, int &num2)
+{
+	int buffer = num2;
+	num2 = num1;
+	num1 = buffer;
+}
+
+void swapVariables(string &str1, string &str2)
+{
+	string buffer = str2;
+	str2 = str1;
+	str1 = buffer;
+}
+
+
+void main()
+{
+	int num1 = 1;
+	int num2 = 2;
+
+	string str1 = "a";
+	string str2 = "b";
+
+	cout << "Before swap: " << endl;
+	cout << num1 << " " << num2 << endl;
+	cout << str1 << " " << str2 << endl;
+
+	swapVariables(num1, num2);
+	swapVariables(str1, str2);
+
+	cout << "After swap: " << endl;
+	cout << num1 << " " << num2 << endl;
+	cout << str1 << " " << str2 << endl;
+
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Before swap:
+1 2
+a b
+After swap:
+2 1
+b a</textarea>
+            <p>The program above can be rewritten using templates like this:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+template<typename T>
+void swapValue(T &a, T &b)
+{
+	T buffer = b;
+	b = a;
+	a = buffer;
+}
+
+void main()
+{
+	int num1 = 1;
+	int num2 = 2;
+
+	string str1 = "a";
+	string str2 = "b";
+
+	cout << "Before swap: " << endl;
+	cout << num1 << " " << num2 << endl;
+	cout << str1 << " " << str2 << endl;
+
+	swapValue<int>(num1, num2);
+	swapValue<string>(str1, str2);
+
+	cout << "After swap: " << endl;
+	cout << num1 << " " << num2 << endl;
+	cout << str1 << " " << str2 << endl;
+
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Before swap:
+1 2
+a b
+After swap:
+2 1
+b a</textarea>
+        </div>

@@ -1,0 +1,75 @@
+        <div>
+            <h2 class="h4 my-3">Class Definition</h2>
+            <p class="note"><b>Class</b> is a blueprint in which characteristics (members) and behaviors (functions)
+                are defined.</p>
+
+            <p>An example of class definition is:</p>
+            <textarea class="tutorial-example numeric-rows">
+class Person
+{
+public:
+	string name;
+	int age;
+};</textarea>
+            <p>In the example:</p>
+            <ul>
+                <li><code>class</code> is the keyword for class defining.</li>
+                <li><code>Person</code> - the name of the class.</li>
+                <li>On <code>lines 4 and 5</code> class members are declared - the properties that
+                    characterize the class.</li>
+                <li>At <code>line 3</code> we define the <code>public</code> parts of the class.
+                    public could be replaced with private or protected.
+                    The difference between
+                    <code>public</code>, <code>private</code> and <code>protected</code> is explained in other tutorials.</li>
+            </ul>
+            <h2 class="h4 my-3">Object Creation</h2>
+            <p class="note"><b>Object</b> is an instance created from a class.</p>
+            <p>Using the defined class we can create objects and set properties.</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+public:
+    string name;
+    int age;
+
+    void introduceYourself()
+    {
+        cout << "I'm " << name <<
+            " and I'm " << age <<
+			"years old.";
+    }
+};
+
+int main()
+{
+    // create object
+    Person personObject;
+
+    // set properties
+    personObject.name = "John";
+    personObject.age = 20;
+
+    personObject.introduceYourself();
+    return 0;
+}</textarea>
+            <p class="mb-1">Output:</p>
+            <textarea class="tutorial-example text-only">I'm John and I'm 20 years old.</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>
+                    At <code>lines 6 - 18</code> a class is defined. It's members
+                    are <code>name</code> and <code>age</code> defined at <code>lines 9 and 10</code>.
+                </li>
+                <li>The class also has a function <code>introduceYourself</code>
+                    that uses the members.</li>
+                <li>At <code>line 23</code> an object is created.</li>
+                <li>At <code>lines 26 and 27</code> values are set to the members.</li>
+                <li>At <code>lines 29</code> the function <code>introduceYourself</code> is called
+                    and a message is printed.</li>
+            </ul>
+        </div>

@@ -1,0 +1,76 @@
+        <div>
+        <p class="note">Inside the class body <b>this</b> refers to the current
+            class object.</p>
+        <p class="note">It can be used to access / modify members and call functions
+            inside the class.</p>
+
+        <h2 class="h4 my-3">Example</h2>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Rectangle
+    {
+        private double width;
+        private double height;
+
+        public void setWidth(double width)
+        {
+            // Modify object's member:
+            this.width = width;
+        }
+
+        public void setHeight(double height)
+        {
+            // Modify object's member:
+            this.height = height;
+        }
+
+        public double calcArea()
+        {
+            // Access class members:
+            return this.height * this.width;
+        }
+
+        public void printData()
+        {
+            Console.WriteLine("Width = " + this.width);
+            Console.WriteLine("Height = " + this.height);
+
+            // Access class function:
+            double area = this.calcArea();
+            Console.WriteLine("Area = " + area);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rectangle = new Rectangle();
+
+            rectangle.setWidth(3);
+            rectangle.setHeight(2);
+
+            rectangle.printData();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example">Width = 3
+Height = 2
+Area = 6</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 13, 19</code> values are set to the members
+                <code>width</code> and <code>height</code>.</li>
+
+            <li>At <code>lines 25, 30 and 31</code> members are accessed.</li>
+            <li>At <code>line 34</code> a class function is called.</li>
+            <li>At <code>line 43</code> an object is created.</li>
+            <li>At <code>lines 45 and 46</code> in which width and height
+                are set, <code>this</code> points to the object created
+                at <code>line 43</code>.</li>
+        </ul>
+    </div>

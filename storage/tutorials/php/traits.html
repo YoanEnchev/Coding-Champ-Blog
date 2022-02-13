@@ -1,0 +1,75 @@
+        <div>
+        <p class="note"><b>Traits</b> can contain members,
+            methods and abstract methods</p>
+        <p class="note">
+            Class can inherit only one class but one class can
+            use many traits.
+        </p>
+        <p class="note">Traits can be used to implement multiple behaviours in one class.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+        <p>Declaring trait:</p>
+        <textarea class="tutorial-example">trait TraitName {
+    // code
+}</textarea>
+
+        <p>Using trait:</p>
+        <textarea class="tutorial-example">use TraitName;</textarea>
+
+        <h2 class="h4 my-3">Example</h2>
+        <textarea class="tutorial-example numeric-rows"><?php
+trait Person {
+    private $name;
+    private $age;
+
+    public function introduce() {
+        echo "Hello, I am " . $this->name . " and "
+            . "I am " , $this->age . " years old. \n";
+    }
+}
+
+trait ReceivesGrades {
+    private $grades = [];
+
+    public function addGrade($grade) {
+        // add element to the array
+        $this->grades[] = $grade;
+    }
+
+    public function getGrades() {
+        // show grades in one row (like A, E, C ...)
+        return implode(', ', $this->grades);
+    }
+}
+
+
+
+class Student {
+    use Person, ReceivesGrades;
+
+    public function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}
+
+$student = new Student("Clover", 16);
+$student->addGrade("A");
+$student->addGrade("C");
+$student->addGrade("B");
+
+$student->introduce();
+echo "My grades are: " . $student->getGrades();</textarea>
+
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Hello, I am Clover and I am 16 years old.
+My grades are: A, C, B</textarea>
+
+        <p>Explanation</p>
+        <ul>
+            <li>At <code>line 29</code> the class <code>Student</code>
+            uses both of the templates.</li>
+            <li>This means that the <code>Student</code> class
+            inherits all of the traits members and functions.</li>
+        </ul>
+    </div>

@@ -1,0 +1,75 @@
+        <div>
+            <h2 class="h4 my-3">Pure Virtual Function</h2>
+            <p class="note"> <b>Pure Virtual Function</b> are virtual functions
+                that are assigned value of zero. They make for the characteristics of the
+                <b>abstract classes</b>.</p>
+
+
+            <h2 class="h4 my-3">Abstract Class</h2>
+            <p class="note"><b>Abstract Class</b> is a class which contains at least one
+                <b>pure virtual function</b> in it.</p>
+
+            <p>Syntax:</p>
+            <textarea class="tutorial-example">class AbstractClassName
+{
+    // class body
+
+    // pure virtual function:
+	virtual funcType funcName(args) = 0;
+};</textarea>
+
+            <p>Due to the virtual functions in the abstract class:</p>
+            <ul>
+                <li>Instances of <b>abstract classes</b> cannot be created.</li>
+                <li>If the child of abstract class doesn't extend all
+                    <b>pure virtual functions</b> in the parent, then instances of
+                    the child class cannot be created.</li>
+            </ul>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Vehicle
+{
+public:
+	// pure virtual function:
+	virtual double getInsuranceCost(int months) = 0;
+};
+
+class Car : public Vehicle
+{
+public:
+	// extending class that extends
+	// the pure virtual function
+	double getInsuranceCost(int months)
+	{
+		return months * 15;
+	}
+};
+
+class Truck : public Vehicle
+{
+	// extending class that doesn't
+	// extend the pure virtual function
+};
+
+void main()
+{
+	// create instances:
+	Car carObj;
+	// Vehicle vehicle;
+	// Truck truck;
+
+	cout << carObj.getInsuranceCost(12);
+}</textarea>
+            <p>Couple of things to notice:</p>
+            <ul>
+                <li>Both classes <code>Car</code> and <code>Truck</code> extend class <code>Vehicle</code>.</li>
+                <li>If we uncomment <code>lines 33 and 34</code> the the code won't compile.
+                    That's because objects of those classes cannot be created.</li>
+                <li>If <code>Truck</code> class overwrites the pure virtual function
+                    from the parent class (like in the <code>Car</code> class), then <code>Truck</code> object
+                    can be created (by uncommenting <code>line 34</code>).</li>
+            </ul>
+        </div>

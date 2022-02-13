@@ -1,0 +1,256 @@
+        <div>
+        <p class="note"><b>Constructor</b> is used to create objects. It is a function
+            that executes when object is created.</p>
+        <p>There are different types of constructors.</p>
+
+        <h2 class="h4 my-3">Default Constructor</h2>
+        <p class="note"><b>Default constructor</b> can be used without defining it.</p>
+        <p class="note">If defined it sets default values to class members.</p>
+        <p>Syntax of default constructor:</p>
+        <textarea class="tutorial-example">ClassName()
+{
+    // code
+}</textarea>
+
+        <p>Syntax of creating object using default constructor:</p>
+        <textarea class="tutorial-example">ClassName objName = new ClassName();</textarea>
+
+        <p>Example of default constructor usage without defining it:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person person = new Person();
+            Console.WriteLine("Name: " + person.name);
+            Console.WriteLine("Age: " + person.age);
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Name:
+Age: 0</textarea>
+        <p>An object is created via default constructor at <code>line 15</code>.</p>
+        <p>The <code>name</code>  member has pretty weird
+            value even for default one (""). For this reason we can define default
+            constructor to set default values.</p>
+
+        <p>Example of defining and using default constructor:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+
+        // default constructor:
+        public Person()
+        {
+            Console.WriteLine("Object creation.");
+
+            name = "Unknown";
+            age = 0;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person person = new Person();
+            Console.WriteLine("Name: " + person.name);
+            Console.WriteLine("Age: " + person.age);
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Object creation.
+Name: Unknown
+Age: 0</textarea>
+        <p>There are couple of things to notice:</p>
+        <ul>
+            <li>The default constructor is defined at <code>lines 11 - 17</code>.</li>
+            <li>At <code>line 24</code> an object is created via the default constructor.
+                The code of the default constructor executes and "Object creation." is printed.</li>
+            <li>The printed name and age (<code>lines 25 and 26</code>) are the same as the
+                ones set in the default constructor (<code>lines 15 and 16</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Parameterized Constructor</h2>
+        <p class="note">The <b>parameterized constructor</b> accepts parameters which
+            usually are used to set value for the object's members.</p>
+        <p class="note">Also one class may have more than one parameterized constructors.</p>
+        <p>Syntax for parameterized constructor:</p>
+        <textarea class="tutorial-example">
+ClassName(arg 1, arg 2 ...)
+{
+    // code
+}</textarea>
+        <p>Syntax of creating objects using parameterized constructor:</p>
+        <textarea class="tutorial-example">ClassName objName = new ClassName(arg 1, arg 2 ...);</textarea>
+        <p>Example of class using parameterized constructors:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+
+        // Parameterized constructor - 1 argument
+        public Person(int ageValue)
+        {
+            Console.WriteLine("Constructor with 1 parameter.");
+
+            this.age = ageValue;
+        }
+
+        // Parameterized constructor - 2 arguments
+        public Person(string nameValue, int ageValue)
+        {
+            Console.WriteLine("Constructor with 2 parameters.");
+
+            this.name = nameValue;
+            this.age = ageValue;
+        }
+
+        public void printData()
+        {
+            Console.WriteLine("Name: " + this.name);
+            Console.WriteLine("Age: " + this.age);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // creating object via
+            // parameterized constructors:
+            Person person_1 = new Person(17);
+            Person person_2 = new Person("Alex", 21);
+
+            person_1.printData();
+            Console.WriteLine("------");
+            person_2.printData();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Constructor with 1 parameter.
+Constructor with 2 parameters.
+Name:
+Age: 17
+------
+Name: Alex
+Age: 21</textarea>
+        <p>There are a couple of things to notice:</p>
+        <ul>
+            <li>At <code>lines 11 - 16</code> there is a constructor accepting only one parameter.
+                At <code>lines 19 - 25</code> there is a constructor accepting two parameters.</li>
+            <li>The constructor with one parameter is used at <code>line 40</code> and thus
+                "Constructor with 1 parameter." is printed (due to <code>line 13</code>).</li>
+            <li>The constructor with two parameters is used at <code>line 41</code> and thus
+                "Constructor with 2 parameters." is printed (due to <code>line 21</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Copy Constructor</h2>
+        <p class="note">
+            <b>Copy constructor</b> is used to create a duplicate of an object. It accepts an object
+            to duplicate as a parameter.
+        </p>
+        <p>Syntax of defining a copy instructor:</p>
+        <textarea class="tutorial-example">ClassName(ClassName &objectName)
+{
+    // code
+}</textarea>
+        <p>Syntax of using copy constructor:</p>
+        <textarea class="tutorial-example">ClassName objectName = new ClassName(objectToCopy);</textarea>
+        <p>Example of copy constructor usage:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+
+        // Parameterized constructor:
+        public Person(string nameValue, int ageValue)
+        {
+            Console.WriteLine("Parameter constructor.");
+
+            this.name = nameValue;
+            this.age = ageValue;
+        }
+
+        // Copy constructor:
+        public Person(Person personObj)
+        {
+            Console.WriteLine("Copy constructor.");
+
+            this.age = personObj.age;
+            this.name = personObj.name;
+        }
+
+        public void printData()
+        {
+            Console.WriteLine("Name: " + this.name);
+            Console.WriteLine("Age: " + this.age);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // creating object via
+            // parameterized constructor:
+            Person person_1 = new Person("Alex", 21);
+
+            // creating object via
+            // copy constructor:
+            Person person_2 = new Person(person_1);
+
+            person_1.printData();
+            Console.WriteLine("------");
+            person_2.printData();
+        }
+    }
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Parameter constructor.
+Copy constructor.
+Name: Alex
+Age: 21
+------
+Name: Alex
+Age: 21</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>
+                At <code>line 41</code> an object named <code>person_1</code>
+                is created via parameterized constructor.
+            </li>
+            <li>
+                At <code>line 45</code> an object named <code>person_2</code>
+                is created via copy constructor.
+                This triggers the code at <code>lines 22 - 25</code>.
+                It duplicates the passed as parameter <code>person_1</code> object.
+            </li>
+        </ul>
+    </div>

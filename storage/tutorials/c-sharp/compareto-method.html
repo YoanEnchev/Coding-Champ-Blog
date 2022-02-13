@@ -1,0 +1,214 @@
+        <div>
+        <p class="note">The <b>compareTo</b> method is used
+            for sorting collection of class instances.</p>
+
+        <p class="note">The method is also an implementation
+            of the <b>Comparable interface</b>. It can be applied
+            to lists.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+
+        <h3 class="h6">Interface implementation:</h3>
+        <textarea class="tutorial-example">class ClassName : IComparable</textarea>
+
+        <h3 class="h6">CompareTo method:</h3>
+        <textarea class="tutorial-example">int CompareTo(object objName) {
+    // code
+}</textarea>
+
+        <h3 class="h6">Sorting class collection via the compareTo method:</h3>
+        <textarea class="tutorial-example">list.Sort();</textarea>
+
+        <h2 class="h4 my-3">Examples</h2>
+        <h3 class="h6">Ascending Sort</h3>
+        <textarea class="tutorial-example numeric-rows">using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Smartphone : IComparable
+    {
+        public string model { get; set; }
+        public double price { get; set; }
+
+        public Smartphone(string model, double price)
+        {
+            this.model = model;
+            this.price = price;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Smartphone smartphone = (Smartphone)obj;
+
+            if (smartphone.price > this.price)
+            {
+                return -1;
+            }
+            else if (smartphone.price == this.price)
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+    }
+
+    class Shop
+    {
+        public List<Smartphone> smartphones;
+
+        public Shop()
+        {
+            this.smartphones = new List<Smartphone>();
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Shop shop = new Shop();
+
+            Smartphone phone_1 = new Smartphone("Samsung Galaxy S 20", 1300);
+            Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+            Smartphone phone_3 = new Smartphone("Samsung Galaxy Fold", 2400);
+
+            shop.smartphones.Add(phone_1);
+            shop.smartphones.Add(phone_2);
+            shop.smartphones.Add(phone_3);
+
+            // Sorting collection via the compareTo method:
+            shop.smartphones.Sort();
+
+            foreach (Smartphone smartphone in shop.smartphones)
+            {
+                Console.WriteLine("--------");
+                Console.WriteLine(smartphone.model);
+                Console.WriteLine(smartphone.price);
+            }
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">--------
+Samsung Galaxy S 20
+1300
+--------
+Samsung Galaxy Fold
+2400
+--------
+Iphone 11
+2600</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 17 - 31</code> the <code>CompareTo</code> method is
+                defined. It's used to sort the phones by price ascending.</li>
+            <li>
+                If at <code>line 21</code> the sign <code>></code>
+                is changed to <code><</code>, the phones will be sorted by
+                descending.
+            </li>
+            <li>
+                At <code>line 60</code> the collection of phones is sorted.
+                The sorting uses the <code>CompareTo</code> method.
+            </li>
+        </ul>
+
+        <h3 class="h6">Descending Sort</h3>
+        <textarea class="tutorial-example numeric-rows">using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Smartphone : IComparable
+    {
+        public string model { get; set; }
+        public double price { get; set; }
+
+        public Smartphone(string model, double price)
+        {
+            this.model = model;
+            this.price = price;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Smartphone smartphone = (Smartphone)obj;
+
+            if (smartphone.price < this.price)
+            {
+                return -1;
+            }
+            else if (smartphone.price == this.price)
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+    }
+
+    class Shop
+    {
+        public List<Smartphone> smartphones;
+
+        public Shop()
+        {
+            this.smartphones = new List<Smartphone>();
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Shop shop = new Shop();
+
+            Smartphone phone_1 = new Smartphone("Samsung Galaxy S 20", 1300);
+            Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+            Smartphone phone_3 = new Smartphone("Samsung Galaxy Fold", 2400);
+
+            shop.smartphones.Add(phone_1);
+            shop.smartphones.Add(phone_2);
+            shop.smartphones.Add(phone_3);
+
+            // Sorting collection via the compareTo method:
+            shop.smartphones.Sort();
+
+            foreach (Smartphone smartphone in shop.smartphones)
+            {
+                Console.WriteLine("--------");
+                Console.WriteLine(smartphone.model);
+                Console.WriteLine(smartphone.price);
+            }
+        }
+    }
+}</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>This example has the almost the same code as the ascending
+                sort example</li>
+            <li>
+                There is only 1 difference - the comparision
+                sign at <code>line 21</code> is
+                changed from <code>></code> to <code><</code>.
+                That's why the sorting is changed from ascending
+                to descending.
+            </li>
+        </ul>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">--------
+Iphone 11
+2600
+--------
+Samsung Galaxy Fold
+2400
+--------
+Samsung Galaxy S 20
+1300</textarea>
+    </div>

@@ -1,0 +1,52 @@
+        <div>
+            <p class="note"><b>Nested Loop</b> is located inside other loop block.</p>
+
+            <h2>Nested for Loop</h2>
+            <p>Let's have a program that prints each combination of 2 dice rolls.</p>
+
+            <textarea class="tutorial-example"># Outer loop:
+for i in range(1, 7):
+    # Inner Loop:
+    for j in range(1, 7):
+        print(i, j);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 1
+1 2
+1 3
+1 4
+1 5
+1 6
+2 1
+2 2
+...
+6 4
+6 5
+6 6</textarea>
+            <p>Each iteration of the outer loop executes the inner loop. Basically the outer loop repeats 6 times
+                and the inner loop 36 (6 x 6).</p>
+
+            <h2>Nested while Loop</h2>
+            <p>Via nested loops figures like pyramids, triangles and others patterns can be printed.</p>
+            <p>Let's have a program which prints a rectangle with specific width and height</p>
+            <textarea class="tutorial-example">width = 5;
+height = 3;
+
+heightIndex = 0;
+
+while heightIndex < height:
+    widthIndex = 0;
+    row = "";
+
+    while (widthIndex < width):
+        row += "* ";
+        widthIndex += 1;
+
+    print(row);
+
+    heightIndex += 1;</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">* * * * *
+* * * * *
+* * * * *</textarea>
+            <p class="note">Any type of loop (while, for) can be nested inside other loop.</p>
+        </div>

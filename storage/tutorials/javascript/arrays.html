@@ -1,0 +1,95 @@
+        <div>
+            <p class="note"><b>Array</b> stores multiple values.</p>
+
+            <h2>Initialization</h2>
+            <p>There are couple of ways to initialize array:</p>
+
+            <h3 class="h5 my-4">Empty array</h3>
+            <textarea class="tutorial-example">let arrayName = [];</textarea>
+
+            <h3 class="h5 my-4">Initial values</h3>
+            <textarea class="tutorial-example">let colors = ["red", "green", "blue"];</textarea>
+            <p>In this example an array with 3 elements is created.</p>
+
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of elements in array.</p>
+            <p>It's accessed via the <code>length</code> property.</p>
+
+            <textarea class="tutorial-example">let prices = [15, 20, 30];
+console.log(prices.length);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+
+
+
+            <h2>Accessing values</h2>
+            <p class="note">Array's values can be accessed via indexes <b>starting from 0</b>.</p>
+            <p>If we declare the following array:</p>
+            <textarea class="tutorial-example">let scores = [ 60, 78, 95, 88 ];</textarea>
+            <p>It's elements are:</p>
+            <img src="../../imgs/tutorials/array-indexing.png" alt="array-indexing" style="width: 100%">
+
+            <p class="mt-2">So if we type the following line:</p>
+            <textarea class="tutorial-example">console.log(scores[0] + ' ' + scores[1]);</textarea>
+            <p>It will print:</p>
+            <textarea class="tutorial-example text-only">60 78</textarea>
+
+            <h3 class="h5 my-4">Index out of Bounds</h3>
+            <p class="note">Accessing index outside of the array results in <code>undefined</code>
+                value</p>
+
+            <p>Let's have an array with 4 elements. If we access the
+                4th or higher index <code>undefined</code> will be returned.</p>
+            <p>Such example is:</p>
+            <textarea class="tutorial-example numeric-rows">let scores = [ 60, 78, 95, 88 ];
+console.log(scores[4]);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">undefined</textarea>
+
+            <h3 class="h5 my-4">Printing All Elements</h3>
+            <p>Let's have an example in which all elements of array are printed.</p>
+            <textarea class="tutorial-example">let scores = [60, 78, 95, 88];
+
+for(let i = 0; i < scores.length; i++) {
+  console.log(scores[i]);
+}</textarea>
+                <p>Output:</p>
+            <textarea class="tutorial-example text-only">60
+78
+95
+88</textarea>
+            <p>Other way to do it is via the <code>forEach</code>.</p>
+            <textarea class="tutorial-example">let scores = [60, 78, 95, 88];
+scores.forEach(function(score) {
+  console.log(score);
+});</textarea>
+            <p>Notice that <code>forEach</code> is not supported by the older browsers such as
+            Internet Explorer.</p>
+
+
+            <h2>Inserting Elements</h2>
+            <p class="note">Elements can be inserted using the <code>push</code> function.</p>
+
+            <p>Let's have a program which fills array with values:</p>
+            <textarea class="tutorial-example">let ages = [];
+ages.push(15);
+ages.push(25);
+ages.push(28);</textarea>
+
+                <h2>Product Of Elements</h2>
+            <p>Let's have a program which calculates the product of all even numbers:</p>
+            <textarea class="tutorial-example">let numbers = [2,3,4,5];
+
+let multiplication = 1;
+numbers.forEach(function(num) {
+    if(num % 2 === 0) { // If number is even.
+        multiplication *= num;
+    }
+});
+
+console.log(multiplication);</textarea>
+                <p>Output:</p>
+            <textarea class="tutorial-example text-only">8</textarea>
+                <p>The only even numbers in the array are 2 and 4 which are multiplied.</p>
+        </div>

@@ -1,0 +1,106 @@
+        <div>
+            <p class="note">Arrays may have non-numeric indexes.</p>
+
+            <h2>Inserting Data</h2>
+            <p>Data can be inserted by specifying certain key and value.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example">$scores = [];
+
+$scores["Smith"] = 89;
+$scores["Alex"] = 85;</textarea>
+            <p>In this example, 2 records have been inserted.</p>
+
+            <h2>Accessing Values</h2>
+            <p class="note">Values can be accessed via their keys.</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$drinks = [];
+
+$drinks["Coke"] = 1.55;
+$drinks["Water"] = 0.80;
+
+echo $drinks["Coke"];</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">1.55</textarea>
+            <p>The key-value pair for <code>Coke</code> is set at <code>line 4</code>
+                and accessed at <code>line 7</code>.</p>
+
+
+            <h3 class="h5 my-4">Not Set Key</h3>
+            <p class="note">Accessing key that's not set in the array results in warning and null value.</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$drinks = [];
+
+$drinks["Orange Juice"] = 1.55;
+$drinks["Water"] = 0.80;
+
+if($drinks["Coke"] === null) {
+    echo 'Not set';
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Notice: Undefined index: Coke in index.php on line 7
+Not set</textarea>
+            <p>The array doesn't contain any <code>Coke</code> key, so <code>$drinks["Coke"]</code> has a value of null.</p>
+
+            <h2>Iterating Elements</h2>
+            <p>Let's have a program in which students scores are stored in array and printed afterwards.</p>
+            <textarea class="tutorial-example"><?php
+$scores = [];
+
+$scores["Smith"] =  89;
+$scores["Alex"] = 75;
+$scores["John"] = 87;
+
+foreach($scores as $key => $value) {
+    echo $key . " " . $value;
+    echo "<br>";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Smith 89
+Alex 75
+John 87</textarea>
+
+            <h2>Removing Elements</h2>
+            <p>That's done via the <code>unset</code> function like in this example:</p>
+            <textarea class="tutorial-example"><?php
+$drinks = [];
+$drinks['Coke'] = 1.65;
+
+unset($drinks['Coke']);</textarea>
+
+                <h2>Checking if key exists</h2>
+                <p>It can be done via the <code>isset</code> function like in the following code:</p>
+                <textarea class="tutorial-example"><?php
+$drinks = [];
+$drinks['Juice'] = 1.58;
+
+if(isset($drinks['Juice'])) {
+    echo 'Juice';
+}
+
+if(isset($drinks['Water'])) {
+    echo 'Water';
+}</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">Juice</textarea>
+                    <p><code>Water</code> key is not set thus <code>Water</code> is not printed.</p>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of the key-value pairs.</p>
+            <p>It can be accessed via the <code>count</code> function.</p>
+            <p>Let's look at this example:</p>
+            <textarea class="tutorial-example"><?php
+
+$drinks["Coke"] = 1.50;
+$drinks["Orange Juice"] =2.30;
+$drinks["Water"] = 0.80;
+$drinks["Apple Juice"] = 2.35;
+
+unset($drinks["Coke"]);
+
+echo count($drinks);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+            <p>4 records were inserted and 1 is deleted afterwards. This makes for 3 key-value pairs.</p>
+        </div>

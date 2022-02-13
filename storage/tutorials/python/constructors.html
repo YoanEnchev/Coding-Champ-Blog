@@ -1,0 +1,96 @@
+        <div>
+            <p class="note"><b>Constructor</b> is used to create objects. It is a function
+                that executes when object is created.</p>
+            <p>There are different types of constructors.</p>
+    
+            <h2 class="h4 my-3">Syntax</h2>
+            <p>Defining constructor:</p>
+            <textarea class="tutorial-example">def __init__(self):
+    # code</textarea>
+    
+            <h2 class="h4 my-3">Default Constructor</h2>
+            <p class="note"><b>Default constructor</b> does not accept any arguments.
+                It can be used without defining it.</p>
+            <p class="note">If defined it sets default values to class members.</p>
+    
+            <p>Example of default constructor usage without defining it:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    pass;
+    
+person = Person();
+person.name = "Smith";
+person.age = 23;
+    
+print("Name:", person.name);
+print("Age:", person.age);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Name: Smith
+Age: 23</textarea>
+            <p>An object is created via default constructor at <code>line 4</code>.</p>
+    
+            <p>Example of defining and using default constructor:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    def __init__(self):
+        print('Object Creation');
+    
+        self.name = "Unknown";
+        self.age = 0;
+    
+    def printData(self):
+            print('Name:', self.name);
+            print('Age:', self.age);
+            
+    
+person1 = Person();
+person1.printData();
+    
+person2 = Person();
+person2.name = "Smith";
+person2.age = 23;
+person2.printData();</textarea>
+    
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Object Creation
+Name: Unknown
+Age: 0
+Object Creation
+Name: Smith
+Age: 23</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>The default constructor is defined at <code>lines 2 - 6</code>.</li>
+                <li>At <code>line 13 and 16</code> an object is created via the default constructor.
+                    The code of the default constructor executes and "Object creation." is printed.</li>
+                <li><code>person1</code> object does not overwrite <code>name</code> and <code>age</code>.
+                    It's properties
+                have the same values as those set in the default constructor.</li>
+            </ul>
+    
+            <h2 class="h4 my-3">Parameterized Constructor</h2>
+            <p class="note">The <b>parameterized constructor</b> accepts parameters which
+                usually are used to set value for the object's members.</p>
+    
+            <p>Example of class using parameterized constructor:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    def __init__(self, name, age):
+        print('Object Creation');
+    
+        self.name = name;
+        self.age = age;
+    
+    def printData(self):
+        print('Name:', self.name);
+        print('Age:', self.age);
+    
+personObj = Person("John", 22);
+personObj.printData();</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Object Creation
+Name: John
+Age: 22</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 2 - 6</code> a parametrized constructor is defined.</li>
+                <li>At <code>line 12</code> an object is created via the parametrized constructor.</li>
+            </ul>
+        </div>

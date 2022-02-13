@@ -1,0 +1,49 @@
+        <div>
+            <h2 class="h4 my-3">Class Definition</h2>
+            <p class="note"><b>Class</b> is a blueprint in which characteristics (properties) and behaviors (functions)
+                are defined.</p>
+    
+            <p>An example of class definition is:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    pass;</textarea>
+                <p>In the example:</p>
+            <ul>
+                <li><code>class</code> is the keyword for class defining.</li>
+                <li><code>Person</code> - the name of the class.</li>
+                <li><code>pass</code> is used only if the class body is empty (it avoids exception throw).</li>
+            </ul>
+
+            <h2 class="h4 my-3">Object Creation</h2>
+            <p class="note"><b>Object</b> is an instance created from a class.</p>
+            <p>Using the defined class we can create objects and set properties.</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    def introduceYourself(self):
+        print("I'm", self.name , "and I'm", self.age, "years old.");
+
+# create object
+personObject = Person();
+    
+# set properties
+personObject.name = "John";
+personObject.age = 20;
+    
+personObject.introduceYourself();</textarea>
+            <p class="mb-1">Output:</p>
+            <textarea class="tutorial-example text-only">I'm John and I'm 20 years old.</textarea>
+    
+            <p>Explanation:</p>
+            <ul>
+                <li>
+                    At <code>lines 1 - 3</code> a class is defined.
+                </li>
+                <li>The class has a function <code>introduceYourself</code>
+                    that uses the properties of a class object via the <code>self</code> parameter.</li>
+                <li>Notice that class function must always have at least 1 parameter. That's because the
+                    first argument (<code>self</code>) points to the class object.
+                </li>
+                <li>At <code>line 6</code> an object is created.</li>
+                <li>At <code>lines 9 and 10</code> values are set to the properties.</li>
+                <li>At <code>lines 12</code> the function <code>introduceYourself</code> is called
+                    and a message is printed.</li>
+            </ul>
+        </div>

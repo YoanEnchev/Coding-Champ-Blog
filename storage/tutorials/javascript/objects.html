@@ -1,0 +1,73 @@
+        <div>
+            <p class="note">Objects store key-value pairs of data
+            and can define behaviour via functions.</p>
+
+            <h2>Creation</h2>
+            <h3 class="h5 my">Empty Object</h3>
+            <textarea class="tutorial-example">let person = {};</textarea>
+
+            <h3 class="h5 my">Object With values</h3>
+            <textarea class="tutorial-example">let person = {
+    name: 'Emily',
+    age: 26
+};</textarea>
+
+            <h2>Accessing Values</h2>
+            <p class="note">Values are accessed through keys.</p>
+            <textarea class="tutorial-example">let person = {
+    name: 'Emily',
+    age: 26
+};
+
+console.log(person.name);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Emily</textarea>
+
+            <h2>Setting Keys</h2>
+            <p>Let's add key-value pair to object and then modify it:</p>
+            <textarea class="tutorial-example">let car = {};
+
+// Add key-value to object:
+car.hp = 90;
+console.log(car.hp);
+
+// Edit value
+car.hp = 100;
+console.log(car.hp);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">90
+100</textarea>
+
+            <h2>Function</h2>
+            <p>An object may contain function in which <code>this</code> points to the object itself.</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example">let person = {
+    name: "Jo",
+    city: "Chicago",
+    present: function() {
+        console.log("Hello, I'm " + this.name + " from " + this.city );
+    }
+};
+
+person.present();</textarea>
+            <p>In order to access object's property (<code>name</code> and <code>city</code>)
+            the keyword <code>this</code> is used.</p>
+
+            <h2>Iterating</h2>
+            <p>In order to loop through object's keys and values <code>Object.entries</code>
+            can be used.</p>
+            <textarea class="tutorial-example">let drinks = {
+  'Orange Juice': 2.45,
+  'Water': 0.80,
+  'Coke': 1.45
+};
+
+for (const [key, value] of Object.entries(drinks)) {
+  console.log(key + ': ' + value);
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Orange Juice: 2.45
+Water: 0.8
+Coke: 1.45</textarea>
+            <p>Notice: <code>Object.entries</code> cannot be used in Internet Explorer.</p>
+        </div>

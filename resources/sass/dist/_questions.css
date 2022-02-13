@@ -1,0 +1,52 @@
+.questions-form-modal .answer {
+  margin-right: 35px;
+}
+
+section.opened-test {
+  max-width: 800px;
+}
+section.opened-test .wrapper {
+  background-color: aliceblue;
+}
+section.opened-test .answers-listing .answer {
+  margin: 10px 0px;
+}
+section.opened-test .wrapper .questions-navigation,
+section.opened-test .wrapper .question-row,
+section.opened-test .wrapper .answers-listing .answer {
+  background-color: #7629f8;
+  border-radius: 5px;
+  color: white;
+}
+section.opened-test .answers-listing .answer.selected {
+  background: black;
+}
+section.opened-test .CodeMirror {
+  margin-bottom: 7px;
+  /*
+  width: 100% !important;
+  height: 193px !important;
+  */
+}
+section.opened-test div.question-row p {
+  font-size: 25px;
+}
+section.opened-test .answers-listing .answer p {
+  font-size: 25px;
+  font-weight: 500;
+}
+section.opened-test .question-container.swiper-slide {
+  max-width: 450px;
+}
+section.opened-test .delete-question-btn {
+  background: red;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 0px;
+}
+section.opened-test .edit-question-btn {
+  background: blueviolet;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 0px;
+}

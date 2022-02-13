@@ -1,0 +1,97 @@
+        <div>
+            <p class="note"><b>Encapsulation</b> is one of the 4 main OOP principles.</p>
+            <p class="note">
+                It protects the class data from access outside the class body.
+            </p>
+
+            <h2 class="h4 my-3">Example of encapsulation</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+private:
+	// data inaccessible outside the class body:
+	string model;
+	int manifactureYear;
+
+public:
+	string getModel()
+	{
+		return model;
+	}
+
+	int getManifactureYear()
+	{
+		return manifactureYear;
+	}
+
+	void setModel(string modelValue)
+	{
+		model = modelValue;
+	}
+
+	void setManifactureYear(int manifactureYearValue)
+	{
+		manifactureYear = manifactureYearValue;
+	}
+};
+
+void main()
+{
+	Car car;
+	car.setModel("Toyota Corolla");
+	car.setManifactureYear(2020);
+
+	// cout << "Model: " << car.model;
+
+	cout << "Year: " << car.getManifactureYear()
+		<< endl;
+
+	cout << "Model: " << car.getModel();
+}</textarea>
+            <p>Result:</p>
+            <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>The private members can only be accessed / modified by
+                    functions defined inside the class (in this case getters and setters).</li>
+                <li>If we uncomment <code>line 41</code> the code won't compile. A direct access
+                    to private members cannot be done outside the class body.</li>
+            </ul>
+
+            <h2 class="h4 my-3">Example of no encapsulation</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+public:
+	string model;
+	int manifactureYear;
+};
+
+void main()
+{
+	Car car;
+	car.model = "Toyota Corolla";
+	car.manifactureYear = 2020;
+
+	cout << "Year: " << car.manifactureYear
+		<< endl;
+
+	cout << "Model: " << car.model
+		<< endl;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+            <p>All members are accessible outside the class body.</p>
+        </div>

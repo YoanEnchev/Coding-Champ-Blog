@@ -1,0 +1,139 @@
+        <div>
+        <p class="note">
+            <b>Inheritance</b> is a way of extending class.
+            The new class (child class) builds logic on the top of the parent
+            class (super class).
+        </p>
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows">class Vehicle
+{
+    representation()
+    {
+        console.log(this.make + " " + this.model);
+    }
+
+    getInsuranceCost(months)
+    {
+        return 0;
+    }
+
+    get make()
+    {
+        return this._make;
+    }
+
+    set make(value)
+    {
+        this._make = value;
+    }
+
+    get model()
+    {
+        return this._model;
+    }
+
+    set model(value)
+    {
+        this._model = value;
+    }
+}
+
+// Car inherits Vehicle:
+class Car extends Vehicle
+{
+    // Overwriting method:
+    getInsuranceCost(months)
+    {
+        return months * 25;
+    }
+
+    // Adding constructor:
+    constructor(makeValue, modelValue, doorsCountValue)
+    {
+        super();
+
+        this.make = makeValue;
+        this.model = modelValue;
+        this.doorsCount = doorsCountValue;
+    }
+
+    // Method extension:
+    representation()
+    {
+        super.representation();
+        console.log( "Doors count: " + this.doorsCount);
+    }
+
+    // Adding new methods:
+    get doorsCount()
+    {
+        return this._doorsCount;
+    }
+
+    set doorsCount(value)
+    {
+        this._doorsCount = value;
+    }
+}
+
+let car = new Car("Toyota", "Corolla", 4);
+
+// Method that was extended:
+car.representation();
+
+console.log("------");
+// getter that was added:
+console.log(car.doorsCount);
+console.log("------");
+
+// Methods that weren't changed:
+console.log("Make: " + car.make);
+console.log("Model: " + car.model);
+console.log("------");
+
+// Method that was overwritten:
+console.log("Insurance cost: " +
+car.getInsuranceCost(12) + " $");</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Toyota Corolla
+Doors count: 4
+------
+4
+------
+Make: Toyota
+Model: Corolla
+------
+Insurance cost: 300 $</textarea>
+        <p class="note">Basically the child class can add, extend, rewrite or use
+            the inherited logic from the parent.</p>
+        <p>For this example:</p>
+        <ul>
+            <li>
+                Added logic:
+                <ul>
+                    <li>parametrized constructor (<code>line 44</code>)</li>
+                    <li>getter for doorsCount (<code>line 61</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Extended logic:
+                <ul>
+                    <li><code>representation</code> method (<code>line 54</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Entirely rewritten logic:
+                <ul>
+                    <li><code>getInsuranceCost</code> (<code>line 38</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Not modified logic:
+                <ul>
+                    <li><code>getter for make</code> (<code>line 13</code>)</li>
+                    <li><code>getter for model</code> (<code>line 23</code>)</li>
+                    <li>The setters for make and model.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>

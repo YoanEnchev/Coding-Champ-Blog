@@ -1,0 +1,102 @@
+        <div>
+        <p>Getters and Setters may accept more than 1 arguments and have customized logic.</p>
+        <p>To do that functions acting as getters and setters need to be created.</p>
+
+        <h2 class="h4 my-3">Customized Getter</h2>
+        <textarea class="tutorial-example numeric-rows">class Square {
+    // Customized getter:
+    getSide(roundUp) {
+        if(roundUp) {
+            return Number.parseFloat(this._side.toFixed(2))
+        }
+
+        return this._side;
+    }
+
+    get area() {
+        return this._side * this._side;
+    }
+
+    set side(sideValue) {
+        this._side = sideValue;
+    }
+}
+
+let square = new Square();
+square.side = 1.0002;
+
+console.log('Side = ' + square.getSide(false));
+console.log('Round up side = ' +  square.getSide(true));
+console.log('Area = ' + square.area);</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Side = 1.0002
+Round up side = 1
+Area = 1.00040004</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>The customized getter (defined at <code>lines 3 - 9</code>)
+                accepts one parameter - <code>roundUp</code>.</li>
+
+            <li>The getter for area property is used at <code>line 25</code>.
+            It's function does not accept any arguments. This means that the function
+                behaviour cannot be dependant on arguments (like <code>roundUp</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Customized Setter</h2>
+        <textarea class="tutorial-example numeric-rows">class Person {
+    // Customized setter:
+    setNames(firstName, middleName, lastName) {
+        this._firstName = firstName;
+        this._middleName = middleName;
+        this._lastName = lastName;
+    }
+
+    get firstName() {
+        return this._firstName;
+    }
+
+    get middleName() {
+        return this._middleName;
+    }
+
+    get lastName() {
+        return this._lastName;
+    }
+
+    get age()
+    {
+        return this._age;
+    }
+
+    set age(ageValue) {
+        this._age = ageValue;
+    }
+}
+
+let person = new Person();
+
+person.age = 23;
+person.setNames('Emily', 'Johnson', 'Smith');
+
+console.log('First Name: ' + person.firstName);
+console.log('Middle Name: ' + person.middleName);
+console.log('Last Name: ' + person.lastName);
+console.log('Age: ' + person.age);</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">First Name: Emily
+Middle Name: Johnson
+Last Name: Smith
+Age: 23</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 33</code> the age setter (defined at <code>lines 26 - 28</code>)
+            is used. It accepts only one parameter.</li>
+            <li>The <code>setNames</code> setter accepts many parameters and can
+            have a behaviour based on the accepted parameters.</li>
+        </ul>
+
+    </div>

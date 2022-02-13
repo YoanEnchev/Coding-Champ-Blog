@@ -1,0 +1,44 @@
+        <div>
+        <p class="note">
+            <b>Abstraction</b> is one of the 4 main OOP principles.
+        </p>
+        <p class="note">
+            The objective is to present only the necessary information to the user.
+            The unnecessary details remain hidden.
+        </p>
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows">class Triangle
+ {
+    constructor(aVal, bVal, cVal)
+    {
+        this.a = aVal;
+        this.b = bVal;
+        this.c = cVal;
+    }
+
+    calcArea()
+    {
+        // Get triangles side:
+        let a = this.a;
+        let b = this.b;
+        let c = this.c;
+
+        // Calculate Area
+        let p = (a + b + c) / 2;
+        let area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+        return area;
+    }
+}
+
+let triangle = new Triangle(3, 4, 5);
+console.log("Area = " + triangle.calcArea());</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+        <p>In this example the person who uses the class is only concerned about the area
+            of the triangle.</p>
+        <p>The one who uses the class doesn't care about the way an area
+            is calculated. The important information is the calculated area.
+            The details that remain hidden are the calculations for the area.</p>
+    </div>

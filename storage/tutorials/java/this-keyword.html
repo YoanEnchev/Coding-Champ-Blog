@@ -1,0 +1,72 @@
+        <div>
+        <p class="note">Inside the class body <b>this</b> refers to the current
+            class object.</p>
+        <p class="note">It can be used to access / modify members and call functions
+        inside the class.</p>
+
+        <h2 class="h4 my-3">Example</h2>
+        <textarea class="tutorial-example numeric-rows">class Rectangle
+{
+    private
+    double width;
+    double height;
+
+    void setWidth(double width)
+    {
+        // Modify object's member:
+        this.width = width;
+    }
+
+    void setHeight(double height)
+    {
+        // Modify object's member:
+        this.height = height;
+    }
+
+    double calcArea()
+    {
+        // Access class members:
+        return this.height * this.width;
+    }
+
+    public
+    void printData()
+    {
+        System.out.println("Width = " + this.width);
+        System.out.println("Height = " + this.height);
+
+        // Access class function:
+        double area = this.calcArea();
+        System.out.println("Area = " + area);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle();
+
+        rectangle.setWidth(3);
+        rectangle.setHeight(2);
+
+        rectangle.printData();
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example">Width = 3.0
+Height = 2.0
+Area = 6.0</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 10, 16</code> values are set to the members
+            <code>width</code> and <code>height</code>.</li>
+
+            <li>At <code>lines 22, 28 and 29</code> members are accessed.</li>
+            <li>At <code>line 32</code> a class function is called.</li>
+            <li>At <code>line 40</code> an object is created.</li>
+            <li>At <code>lines 42 and 43</code> in which width and height
+                are set, <code>this</code> points to the object created
+                at <code>line 40</code>.</li>
+        </ul>
+    </div>

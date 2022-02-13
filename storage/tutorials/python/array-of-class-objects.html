@@ -1,0 +1,87 @@
+        <div>
+            <p>A class may have a property that is array and contains class instances.</p>
+    
+            <p>Example</p>
+            <textarea class="tutorial-example numeric-rows">class Car:
+    def __init__(self, model, price):
+        self.model = model;
+        self.price = price;
+    
+    def printData(self):
+        print("Model:", self.model);
+        print("Price:", self.price);
+    
+class CarDealership:
+    def __init__(self):
+        self.cars = [];
+    
+    def sortByPrice(self):
+        # sort cars by price:
+        self.cars.sort(key=lambda x: x.price);
+    
+    def listCarsData(self):
+        for car in self.cars:
+            print("--------");
+            car.printData();
+    
+carDealership = CarDealership();
+    
+car_1 = Car("Ford Fiesta", 20000);
+car_2 = Car("Toyota Corolla", 26000);
+car_3 = Car("Renault Clio", 18000);
+    
+carDealership.cars = [];
+    
+# Add elements to the array:
+carDealership.cars.append(car_1);
+carDealership.cars.append(car_2);
+carDealership.cars.append(car_3);
+    
+print("Before Sorting:");
+print('');
+    
+carDealership.listCarsData();
+    
+carDealership.sortByPrice();
+print('');
+print("After Sorting:");
+print('');
+    
+carDealership.listCarsData();</textarea>
+    
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Before Sorting:
+    
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000
+--------
+Model: Renault Clio
+Price: 18000
+
+
+After Sorting:
+
+--------
+Model: Renault Clio
+Price: 18000
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000</textarea>
+    
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>line 12</code> an empty array is created.</li>
+                <li>At <code>lines 32 - 34</code> elements are added to the array.</li>
+                <li>At <code>line 16</code> the array is sorted ascending by price.
+                    If we replace <code>line 16</code> with
+                    <code>self.cars.sort(key=lambda x: x.price, reverse=True);</code>,
+                    then the sorting would be descending.</li>
+            </ul>
+        </div>

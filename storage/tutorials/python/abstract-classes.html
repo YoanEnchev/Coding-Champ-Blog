@@ -1,0 +1,82 @@
+        <div>
+            <h2 class="h4 my-3">Abstract Class</h2>
+            <p class="note"><b>Abstract Class</b> is a class that can contain one or more
+                <b>abstract methods</b>.</p>
+
+            <p class="note">Instancing <b>abstract class</b> which contains abstract method results in exception.</p>
+
+            <p>It's supposed to represent something abstract and not specific.</p>
+    
+            <h2 class="h4 my-3">Imports:</h2>
+            <p>In order to use abstract class and abstract methods the following modules need to be imported:</p>
+            <textarea class="tutorial-example">from abc import ABC, abstractmethod</textarea>
+    
+            <h2 class="h4 my-3">Syntax:</h2>
+            <p>The syntax for defining abstract class is:</p>
+            <textarea class="tutorial-example">class className(ABC):</textarea>
+
+            <h2 class="h4 my-3">Abstract methods</h2>
+            <p class="note"><b>Abstract methods</b> can be defined
+                only in abstract classes and have no body.</p>
+            <p class="note">If child class does not implement the <b>abstract methods</b> from
+            the parent class, then instancing the child class causes exception.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">from abc import ABC, abstractmethod;
+ 
+# defining abstract class
+class Figure(ABC):
+    # defining abstract method
+    @abstractmethod
+    def calcArea(self):
+        pass;
+
+class Square(Figure):
+    # Implementation of abstract method:
+    def calcArea(self):
+        return self.side * self.side;
+    
+    
+class Rectangle (Figure):
+    
+    # Implementation of interface:
+    def calcArea(self):
+        return self.width * self.height;
+    
+square = Square();
+square.side = 2;
+
+
+rectangle = Rectangle();
+rectangle.width = 3;
+rectangle.height = 2;
+
+#figure = Figure();
+    
+print("Square's area:", square.calcArea());
+print("Rectangle's area:", rectangle.calcArea());</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Square's area: 4
+Rectangle's area: 6</textarea>
+    
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 6 - 7</code> the abstract method
+                    <code>calcArea</code> is defined.
+                </li>
+                <li>
+                    Since <code>calcArea</code> is an abstract method, classes that
+                    inherit the abstract class <code>Figure</code> must implement
+                    the method. If not done then the code will result in exception.
+                </li>
+                <li>
+                    At <code>lines 12 - 13</code> and <code>lines 19 - 20</code>
+                    the abstract method is implemented.
+                </li>
+                <li>
+                    If we uncomment <code>line 30</code>, then the code will result
+                    in exception. That's because an abstract class containing abstract method cannot be instanced.
+                </li>
+            </ul>
+    
+        </div>

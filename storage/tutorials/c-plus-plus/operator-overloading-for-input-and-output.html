@@ -1,0 +1,256 @@
+        <div>
+            <p class="note">
+                Input and output operators (<code>>></code> and <code><<</code>) can be predefined too.
+                Those operators can only be predefined outside the class.
+            </p>
+
+            <h2 class="h4 my-3">Input operator</h2>
+            <p>Syntax:</p>
+            <textarea class="tutorial-example">istream& operator>>(istream &stream, ClassName &classObjectParam)
+{
+    // code
+    return stream;
+}</textarea>
+            <p class="note">Notice that the class object is passed by reference (using <code>&</code>).
+                This way the class object can be modified inside the function.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+	int age;
+public:
+	void setName(string nameVal)
+	{
+		name = nameVal;
+	}
+
+	void setAge(int ageVal)
+	{
+		age = ageVal;
+	}
+
+	void printData()
+	{
+		cout << "Name: " << name << endl;
+		cout << "Age: " << age << endl;
+	}
+};
+
+// Predefining operator ">>":
+istream& operator>>(istream &stream, Person &personObj)
+{
+	string name;
+	stream >> name;
+
+	int age;
+	stream >> age;
+
+	personObj.setName(name);
+	personObj.setAge(age);
+
+	return stream;
+}
+
+void main()
+{
+	Person person;
+	cin >> person;
+
+	person.printData();
+}</textarea>
+            <p>User's input:</p>
+            <textarea class="tutorial-example text-only">Michel
+19</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Name: Michel
+Age: 19</textarea>
+
+            <p><code>>></code> operator is called at <code>line 47</code> and
+                predefined at lines <code>30 - 42</code>.</p>
+
+            <h2 class="h4 my-3">Output operator</h2>
+            <p>Syntax:</p>
+            <textarea class="tutorial-example">ostream& operator<<(ostream &stream, ClassName &classObj)
+{
+    // code
+    return stream;
+}        </textarea>
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+	int age;
+public:
+	Person(string nameValue, int ageValue)
+	{
+		name = nameValue;
+		age = ageValue;
+	}
+
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+};
+
+// Predefining operator "<<":
+ostream& operator<<(ostream &stream, Person personObj)
+{
+	stream << "Name: " << personObj.getName() << endl;
+	stream << "Age: " << personObj.getAge();
+
+	return stream;
+}
+
+void main()
+{
+	Person person("Alex", 22);
+	cout << person;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Name: Alex
+Age: 22</textarea>
+
+            <p><code><<</code> operator is called at <code>line 41</code>
+                and predefined at <code>lines 30 - 36</code>.</p>
+
+            <h2 class="h4 my-3">File Stream Example</h2>
+            <p>So far the only stream that was used is the console - through <code>cin</code>
+                and <code>cout</code>.</p>
+            <p class="note">Except the console we can also use other streams (like the file stream)
+                for the predefined input and output operators.</p>
+
+            <p>Let's use the file stream.</p>
+            <p>So if we have <code>input-file.txt</code> with content:</p>
+            <textarea class="tutorial-example text-only">Alex
+20</textarea>
+
+            <p>And the following cpp code:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+// so files can be red/written
+#include <fstream>
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+	int age;
+public:
+
+	string getName()
+	{
+		return name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+
+	void setName(string nameValue)
+	{
+		name = nameValue;
+	}
+
+	void setAge(int ageValue)
+	{
+		age = ageValue;
+	}
+};
+
+// Predefining operator "<<":
+ostream& operator<<(ostream &stream, Person personObj)
+{
+	stream << "Name: " << personObj.getName() << endl;
+	stream << "Age: " << personObj.getAge();
+
+	return stream;
+}
+
+// Predefining operator ">>":
+istream& operator>>(istream &stream, Person &personObj)
+{
+	string name;
+	stream >> name;
+
+	int age;
+	stream >> age;
+
+	personObj.setName(name);
+	personObj.setAge(age);
+
+	return stream;
+}
+
+void main()
+{
+	// Reading from file:
+	Person personFromInputFile;
+
+	ifstream readFileStream;
+	readFileStream.open("input-file.txt");
+	readFileStream >> personFromInputFile;
+
+	cout << "Object from input file: " << endl;
+	cout << personFromInputFile;
+
+
+	// Saving to file:
+	Person personToSaveInOutputFile;
+	personToSaveInOutputFile.setName("Emily");
+	personToSaveInOutputFile.setAge(24);
+
+	ofstream writeFileStream;
+	writeFileStream.open("output-file.txt");
+	writeFileStream << personToSaveInOutputFile;
+}</textarea>
+
+            <p>Then the console result would be:</p>
+            <textarea class="tutorial-example text-only">Object from input file:
+Name: Alex
+Age: 20</textarea>
+
+            <p>Also a file named <code>output-file.txt</code> will be created with content:</p>
+            <textarea class="tutorial-example text-only">Name: Emily
+Age: 24</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 66</code> <code>input-file.txt</code> file is opened.</li>
+                <li>At <code>line 67</code>
+                    the file content is red and member's values are set
+                    for the <code>personFromInputFile</code> object.
+                </li>
+                <li>
+                    The way the file is red is defined in the
+                    <code>operator>></code> function (<code>lines 46 - 58</code>).
+                </li>
+                <li>At <code>line 70</code> <code>personFromInputFile</code> object is
+                    printed. It's <code>name</code> and age are the same as those specified
+                    in the <code>input-file.txt</code> file.</li>
+                <li>At <code>line 80</code> the name and age are written in the
+                    <code>"output-file.txt</code>. The way the are written
+                    is specified in the <code>operator<<</code> function
+                    (<code>lines 37 - 43</code>).</li>
+            </ul>
+        </div>

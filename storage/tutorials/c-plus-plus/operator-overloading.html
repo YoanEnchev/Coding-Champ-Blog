@@ -1,0 +1,179 @@
+        <div>
+            <p class="note">
+                Via <b>operator overloading</b> we can use operators
+                among class instances.
+            </p>
+
+            <p>The key for operator predefining is to create function named
+                specifically via the keyword <code>operator</code>.</p>
+
+            <p>For example a <code>+</code> operator can be predefined via a function named
+                <code>operator+</code></p>
+            <p><code>></code> operator can be predefined via a function named
+                <code>operator></code> and so on.</p>
+
+            <h2 class="h4 my-3">Arithmetic Operator Example</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Car
+{
+private:
+	string model;
+	double price;
+public:
+	Car(string modelValue, double priceValue)
+	{
+		model = modelValue;
+		price = priceValue;
+	}
+
+    // Operator "+" predefining:
+	double operator+(Car rightCar)
+	{
+        // price of left side object
+        // + price of right side object:
+		return price + rightCar.price;
+	}
+};
+
+void main()
+{
+	Car toyotaCar("Toyota Corolla", 35000);
+	Car renaultCar("Renault Clio", 18000);
+
+	cout << "Price of both cars:" << endl;
+	cout << toyotaCar + renaultCar << " $";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Price of both cars:
+53000 $</textarea>
+            <p><code>Line 32</code> sums two class objects.
+                This executes the code of the predefining operator function
+                <code>(lines 18 - 23)</code>.</p>
+
+            <h2 class="h4 my-3">Comparision Operator Example</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+private:
+	string model;
+	double price;
+public:
+	Car(string modelValue, double priceValue)
+	{
+		model = modelValue;
+		price = priceValue;
+	}
+
+	// Predefining operator "==":
+	bool operator==(Car rightCar)
+	{
+		// price of left side object
+		// == price of right side object
+		return price == rightCar.price;
+	}
+};
+
+void main()
+{
+	Car toyotaCar("Toyota Corolla", 35000);
+	Car peugeotCar("Peugeot 308", 35000);
+	Car renaultCar("Renault Clio", 18000);
+
+	if (toyotaCar == peugeotCar)
+	{
+		cout << "Toyota Car = Peugeot Car";
+	}
+
+	if (peugeotCar == renaultCar)
+	{
+		cout << "Peugeot Car = Renault Car";
+	}
+
+	if (renaultCar == toyotaCar)
+	{
+		cout << "Renault Car = Toyota Car";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Toyota Car = Peugeot Car</textarea>
+            <p><code>Lines 33, 38 and 43</code> compare objects via the operator <code>==</code>.
+                To compare them the code from the operator predefined function
+                is used (<code>lines 19 - 24</code>).</p>
+
+            <h2 class="h4 my-3">Assignment Operator Example</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+private:
+	string model;
+	double price;
+public:
+	Car(string modelValue, double priceValue)
+	{
+		model = modelValue;
+		price = priceValue;
+	}
+
+	// Predefining operator "=":
+	void operator=(Car rightCar)
+	{
+		model = rightCar.model;
+		price = rightCar.price;
+	}
+
+	void printData()
+	{
+		cout << "Model: " << model << endl;
+		cout << "Price: " << price
+			<< " $" << endl;;
+	}
+};
+
+void main()
+{
+	Car carObj1("Toyota Corolla", 35000);
+	Car carObj2("Ford  Fiesta", 25000);
+
+	cout << "Before Assignment: " << endl;
+
+	carObj1.printData();
+	cout << "- - - - -" << endl;
+	carObj2.printData();
+
+	carObj1 = carObj2;
+
+	cout << endl << endl;
+
+	cout << "After Assignment: " << endl;
+
+	carObj1.printData();
+	cout << "- - - - -" << endl;
+	carObj2.printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Before Assignment:
+Model: Toyota Corolla
+Price: 35000 $
+- - - - -
+Model: Ford  Fiesta
+Price: 25000 $
+
+
+After Assignment:
+Model: Ford  Fiesta
+Price: 25000 $
+- - - - -
+Model: Ford  Fiesta
+Price: 25000 $</textarea>
+        </div>

@@ -1,0 +1,44 @@
+                <div>
+                    <p class="note">Inside the class body <b>self</b> refers to the current
+                        class object.</p>
+                    <p class="note">It can be used to access / modify properties and call functions
+                        inside the class.</p>
+
+                        <p><code>self</code> is not a keyword, it's simply the name of the first parameter
+                        of a class function. It can have some other name but the naming convention suggests using 'self'.</p>
+            
+                    <h2 class="h4 my-3">Example</h2>
+                    <textarea class="tutorial-example numeric-rows">class Rectangle:
+    def calcArea(self):
+        # Access properties:
+        return self.height * self.width;
+            
+    def printData(self):
+        print("Width =", self.width);
+        print("Height =", self.height);
+            
+        # Access class function:
+        area = self.calcArea();
+        print("Area =", area);
+
+            
+rectangle = Rectangle();
+            
+rectangle.width = 3;
+rectangle.height = 2;
+            
+rectangle.printData();</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example">Width = 3
+Height = 2
+Area = 6</textarea>
+            
+                    <p>Explanation:</p>
+                    <ul>
+                        <li>At <code>lines 17 and 18</code> values are set to the properties
+                            <code>width</code> and <code>height</code>.</li>
+                        <li>At <code>line 20</code> the <code>printData</code>
+                            function is called. <code>self</code> points to the class object.
+                        </li>
+                    </ul>
+                </div>

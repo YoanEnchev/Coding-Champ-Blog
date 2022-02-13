@@ -1,0 +1,65 @@
+        <div>
+            <p class="note"><b>Friend functions</b> are declared outside the class body.
+                They have access to all private and protected members of the class.</p>
+            <h2 class="h4 my-3">Syntax:</h2>
+            <textarea class="tutorial-example">
+class ClassName
+{
+    // class body
+
+    // marking functions as friend
+    friend funcType funcName(args);
+};
+
+// defining the function
+funcType funcName(args)
+{
+    // function body
+}</textarea>
+
+            <h2 class="h4 my-3">Example:</h2>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Rectangle
+{
+private:
+	double width;
+	double height;
+
+public:
+    // friend function with no body
+	friend double area(Rectangle rect);
+
+	Rectangle(double widthValue, double heightValue)
+	{
+		width = widthValue;
+		height = heightValue;
+	}
+};
+
+// defining function's body
+double area(Rectangle rect)
+{
+	return rect.width * rect.height;
+}
+
+
+void main()
+{
+	Rectangle rect(3, 2);
+	cout << "Area = " << area(rect);
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>line 13</code> a function is marked as "friend". It has no body inside the class.</li>
+                <li>At <code>lines 23 - 26</code> the friend function is declared. The body of a
+                    friend function is declared outside the class.</li>
+                <li>At <code>line 32</code> the friend function is called.</li>
+            </ul>
+        </div>

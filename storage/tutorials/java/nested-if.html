@@ -1,0 +1,35 @@
+        <div>
+            <p class="note">Nested if statement is placed inside other if block.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">if(condition1) {
+    // code to execute if condition1 is true
+    if(condition2) {
+        // code to execute if condition1 is true and condition2 is true
+    }
+}</textarea>
+
+            <h2>Basic example</h2>
+            <p>Let's validate the price of a product in smartphone store and print proper messages about it.</p>
+            <p>The rule is that price must be above 500 $ and below 2000 $.</p>
+            <textarea class="tutorial-example numeric-rows">public class Main {
+    public static void main(String[] args) {
+        double price = 3000;
+
+        if (price >= 500) {
+            System.out.println("Price is above the minimum.");
+
+            if (price > 2000) {
+                System.out.println("But needs to be lower than 2000.");
+            }
+        }
+        else {
+            System.out.println("Price is too low.");
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Price is above the minimum.
+But needs to be lower than 2000.</textarea>
+            <p>Since both conditions at <code>line 5 and 8</code> are true, the code at
+                <code>line 9</code> is executed.</p>
+        </div>

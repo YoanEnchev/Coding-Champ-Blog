@@ -1,0 +1,277 @@
+        <div>
+            <p class="note">Objects of a class can be stored into
+                array-like collections. For <b>List</b> and
+                <b>Vector</b>, unlike arrays, the elements count
+                is not necessary to be specified.</p>
+
+            <h2 class="h4 my-3">Vector VS List</h2>
+
+            <p>There are many differences between both of them.
+                Most important them are:</p>
+            <div class="row comparisons">
+                <div class="col-12 col-md-6 pr-md-2">
+                    <div class="pink px-3 py-2 h-100">
+                        <h3 class="h6 mt-3">List</h3>
+                        <ul>
+                            <li>Element at random index cannot be accessed.
+                                To do it an iterator must be used.</li>
+                            <li>It's suitable for large sets of data.</li>
+                            <li>A size (elements count) cannot be defined.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 pl-md-2 mt-2 mt-md-0">
+                    <div class="blue px-3 py-2 h-100">
+                        <h3 class="h6 mt-3">Vector</h3>
+                        <ul>
+                            <li>Element at random index can easily be accessed.</li>
+                            <li>It's suitable for small sets of data.</li>
+                            <li>A size can be defined but it's not mandatory to specify it.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="h4 my-3">List</h2>
+            <p>To use list we should add the following include:</p>
+            <textarea class="tutorial-example">#include <list></textarea>
+
+            <p>If we want to iterate him via an iterator, we need to add
+                this one too:</p>
+            <textarea class="tutorial-example">#include <iterator></textarea>
+
+            <p>Syntax for defining list:</p>
+            <textarea class="tutorial-example">list<type> listName</textarea>
+
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+// So list can be used.
+#include <list>
+
+// With iterator we can access
+// element at specific index:
+#include <iterator>
+
+using namespace std;
+
+class Student
+{
+private:
+	string name;
+	int age;
+public:
+	Student(string nameValue, int ageValue)
+	{
+		name = nameValue;
+		age = ageValue;
+	}
+
+	void printData()
+	{
+		cout << "Name: " << name << endl;
+		cout << "Age: " << age << endl;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+};
+
+class School
+{
+private:
+	list<Student> students;
+
+public:
+	list<Student> getStudents()
+	{
+		return students;
+	}
+
+	void addStudent(Student student)
+	{
+        // Add student as last element of the list;
+		students.push_back(student);
+	}
+};
+
+void main()
+{
+	School school;
+
+	// Arrays of names and ages
+	string names[5] = {"Emily", "John", "Sydney", "Alex", "Sean"};
+	int ages[5] = {15, 16, 17, 14, 13};
+
+	// Creating and adding student objects to array:
+	for (int i = 0; i < 5; i++)
+	{
+		Student student(names[i], ages[i]);
+		school.addStudent(student);
+	}
+
+	list<Student> students = school.getStudents();
+	cout << "Total Students: " << students.size() << endl;
+
+	cout << "Students with age over 15 years: " << endl;
+
+	// Looping through all of the elements:
+	for (Student student : students)
+	{
+		if (student.getAge() > 15) {
+			cout << endl;
+			student.printData();
+		}
+	}
+
+
+	cout << "Student at index 3: " << endl;
+
+	// Using iterator, reach element at index 3:
+	auto studentsIterator = students.begin();
+	advance(studentsIterator, 3);
+
+	Student student = *studentsIterator;
+	student.printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Total Students: 5
+Students with age over 15 years:
+
+Name: John
+Age: 16
+
+Name: Sydney
+Age: 17
+Student at index 3:
+Name: Alex
+Age: 14</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>In the for loop <code>at lines 64 - 68</code>
+                    students object are created and added to school's
+                    list of student.</li>
+                <li>Using <code>size()</code> <code>at line 71</code> the
+                    count of list elements is printed.</li>
+                <li>At <code>lines 76 - 82</code> all list elements are looped and
+                    only the students older than 15 years old are printed.</li>
+                <li>At <code>line 88</code> an iterator is created that points to the
+                    beginning of the list.</li>
+                <li><code>Line 89</code> moves the iterator 3 positions ahead.
+                    This way the element at the 3rd index (0 + 3) is reached</li>
+            </ul>
+
+            <h2 class="h4 my-3">Vector</h2>
+            <p>To use <b>vector</b> the following include has to be added:</p>
+            <textarea class="tutorial-example text-only">#include <vector></textarea>
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+// So a vector can be used.
+#include <vector>
+
+using namespace std;
+
+class Car
+{
+private:
+	string model;
+	double price;
+public:
+	Car(string modelValue, double priceValue)
+	{
+		model = modelValue;
+		price = priceValue;
+	}
+
+	void printData()
+	{
+		cout << "Model: " << model << endl;
+		cout << "Price: " << price << endl;
+	}
+
+	int getPrice()
+	{
+		return price;
+	}
+};
+
+class CarDealership
+{
+private:
+	vector<Car> cars;
+
+public:
+	vector<Car> getCars()
+	{
+		return cars;
+	}
+
+	void addCar(Car car)
+	{
+		cars.push_back(car);
+	}
+};
+
+void main()
+{
+	CarDealership carDealership;
+
+	// Arrays of names and ages
+	string models[5] = {"Toyota Corolla", "Volkswagen Polo",
+		"Mercedes C Class", "Peugeot 308", "Renault Clio"};
+	double prices[5] = {30000, 22000, 38000, 28000, 20000};
+
+	// Creating and adding cars objects to array:
+	for (int i = 0; i < 5; i++)
+	{
+		Car car(models[i], prices[i]);
+		carDealership.addCar(car);
+	}
+
+	vector<Car> cars = carDealership.getCars();
+	cout << "Total Cars: " << cars.size() << endl;
+
+	cout << "Cars with price lower than 25000 $: " << endl;
+
+	// looping through  all of the elements:
+	for (Car car : cars)
+	{
+		if (car.getPrice() < 25000) {
+			cout << endl;
+			car.printData();
+		}
+	}
+
+	// It's easy to access element at certain index:
+	cout << endl;
+	cout << "Car at index 3: " << endl;
+	cars[3].printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Total Cars: 5
+Cars with price lower than 25000 $:
+
+Model: Volkswagen Polo
+Price: 22000
+
+Model: Renault Clio
+Price: 20000
+
+Car at index 3:
+Model: Peugeot 308
+Price: 28000</textarea>
+
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>lines 60 - 64</code> car objects are created and
+                    added to the <b>vector</b>.</li>
+                <li>At <code>lines 72 - 78</code> all elements of the
+                    vector are looped. Cars with price lower than 25000 are printed.</li>
+                <li>At <code>line 83</code> the car at index 3 is printed.</li>
+            </ul>
+        </div>

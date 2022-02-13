@@ -1,0 +1,79 @@
+        <div>
+            <p class="note"><b>Function</b> is a code block that executes certain task.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">function funcName(args)
+{
+    // Code to execute.
+}</textarea>
+
+            <h2>Void Example</h2>
+            <p class="note">A void function doesn't return any value.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example"><?php
+
+// Calling a function:
+printHi();
+
+function printHi() {
+    echo "Hi!";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hi!</textarea>
+
+            <h2>Returning Result</h2>
+            <p class="note">Via the <b>return</b> keyword a result can be returned.</p>
+            <p>Let's have an example in which rectangle's area is calculated by passing arguments
+                about it's sides.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$area = calcRectangleArea(3, 4);
+echo $area;
+
+function calcRectangleArea($widthArg, $heightArg) {
+    return $widthArg * $heightArg;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">12</textarea>
+
+            <p>There are couple of things to mark:</p>
+            <ul>
+                <li>A functions is defined at <code>lines 5 - 7</code>. It accepts two arguments -
+                    <code>widthArg</code> and <code>heightArg</code>.</li>
+                <li>The function <code>calcRectangleArea</code> returns a result.</li>
+                <li><code>calcRectangleArea</code> is called at <code>line 2</code>.</li>
+                <li>It's returned value is set in the variable <code>area</code>.</li>
+            </ul>
+
+            <h2>Arguments Count Mismatch</h2>
+            <p class="note">If arguments count is mismatched an exception is thrown.</p>
+            <textarea class="tutorial-example"><?php
+
+calcTrapezoidArea(3, 4);
+
+function calcTrapezoidArea($a, $b, $h) {
+    return ($a + $b) / 2 * $h;
+}</textarea>
+            <p>The function <code>calcTrapezoidArea</code> expects 3 arguments but only 2 are passed to it
+            thus exception is thrown.</p>
+
+            <h2>Default Value</h2>
+            <p class="note">Default value may be specified for function parameters.</p>
+            <p>Let's look at the following:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+
+printArg(5);
+echo "<br>"; // Print new line.
+printArg();
+
+function printArg($arg = 3) {
+    echo $arg;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">5
+3</textarea>
+            <p>At <code>line 5</code> the function argument is not passed thus it
+                takes the default value - <code>3</code> specified at <code>line 7</code>.</p>
+
+        </div>

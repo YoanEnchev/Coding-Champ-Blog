@@ -1,0 +1,78 @@
+                <div>
+                    <p class="note"><b>Set</b> is a collection containing
+                        only unique elements.</p>
+        
+                    <h2>Creation</h2>
+                    <h3 class="h5 my-4">Empty Set</h3>
+                    <textarea class="tutorial-example">emptySet = set();</textarea>
+        
+                    <h2>Inserting Data</h2>
+                    <p>Insertion is done via the <code>add</code> function. Like in the following example:</p>
+                    <textarea class="tutorial-example">cities = set();
+        
+cities.add("Tokyo");
+cities.add("Chicago");
+cities.add("Tokyo");
+cities.add("Madrid");
+        
+print(cities);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">{'Chicago', 'Madrid', 'Tokyo'}</textarea>
+                    <p>Notice that <code>Tokyo</code> is contained only once, since no duplicates are allowed.</p>
+        
+                    <h2>Size</h2>
+                    <p class="note">Size is the count of Set's elements. It's accessed via the <code>len</code> function.</p>
+                    <textarea class="tutorial-example">names = set();
+        
+names.add("John");
+names.add("Smith");
+names.add("Smith");
+names.add("Bell");
+print(len(names));</textarea>
+        
+                    <p>Output:</p>
+                    <textarea class="tutorial-example">3</textarea>
+        
+                    <h2>Remove Element</h2>
+                    <p>Certain values can be removed via the <code>remove</code> function.</p>
+        
+                    <textarea class="tutorial-example">names = set();
+        
+names.add("Emily");
+names.add("Lily");
+names.add("Teo");
+        
+names.remove("Teo");
+print(names);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">{'Lily', 'Emily'}</textarea>
+        
+        
+                    <h2>Contains</h2>
+                    <p>A value can be checked if contained via the <code>in</code> keyword.</p>
+                    <textarea class="tutorial-example">names = set();
+        
+names.add("Leo");
+names.add("Shone");
+names.add("Alice");
+        
+print("Shone" in names);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">True</textarea>
+        
+                    <h2>Loop Through</h2>
+                    <p>It can be iterated via <code>for in</code> loop:</p>
+                    <textarea class="tutorial-example">makes = set();
+        
+makes.add("Volvo");
+makes.add("Ford");
+makes.add("Audi");
+        
+for m in makes:
+    print(m);</textarea>
+        
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">Audi
+Volvo
+Ford</textarea>
+                </div>

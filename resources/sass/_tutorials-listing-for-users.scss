@@ -1,0 +1,40 @@
+div.tutorials-listing-page {
+    .tutorial-list-item { 
+        > div{
+            background: #8e54e9;
+            background: linear-gradient(to right, #4776e6, #8e54e9);
+            border-radius: 5px;
+            height:100%;
+        }
+
+        .tutorial-number {
+            color: white;
+            font-weight: bold;
+            padding: 2px 8px;
+            color: white;
+            background: rgba(80, 35, 198, 0.3);
+            border-radius: 5px;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        h3 {
+            padding-bottom: 1.8rem!important;
+        }
+
+        text-decoration: none;
+    }
+
+    .tutorial-list-item :hover {
+        background: black;
+    }
+
+    max-width: 1300px;
+
+    .swiper-slide {
+        height: calc(100vh - 190px) !important;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+}

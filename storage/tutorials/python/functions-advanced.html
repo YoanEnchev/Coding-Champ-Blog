@@ -1,0 +1,70 @@
+        <div>
+            <h2>Arbitrary Arguments</h2>
+            <p class="note">Via arbitrary arguments a function can receive
+                a dynamic count of arguments.</p>
+
+                <p>They're specified by adding a <code>*</code> prefix.</p>
+
+                <p>Let's look at the following example:</p>
+                <textarea class="tutorial-example numeric-rows">def printData(*numbers):
+  argCount = len(numbers);    
+  print("Arguments count: ", argCount);
+  print("0 ->", numbers[0]);
+  print("1 ->", numbers[1]);
+
+printData(1,4,7);
+printData(2,9,3,8);</textarea>
+<p>Output:</p>
+<textarea class="tutorial-example text-only">Arguments count:  3
+0 -> 1
+1 -> 4
+Arguments count:  4
+0 -> 2
+1 -> 9</textarea>
+    <p>Multiple arguments are passed to <code>printData</code> but all of them are accessed
+    only by the single <code>*numbers</code> argument.</p>
+
+    <p>At <code>line 2</code> the <code>len</code> function is used to get the count of the passed arguments.</p>
+    <p>At <code>lines 4 and 5</code> the passed arguments are accessed via indexes starting from 0.</p>
+        
+    <h2>Keyword Arguments</h2>
+    <p class="note">For such arguments the order doesn't matter and they
+        can be set via "key = value" syntax.</p>
+
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">def printPersonData(name, surname, age):
+  print("Name:", name);
+  print("Surname:", surname);
+  print("Age:", age);
+
+printPersonData(age = 20, surname = "Emil", name = "Bill");</textarea>
+<p>Output:</p>
+<textarea class="tutorial-example text-only">Name: Bill
+Surname: Emil
+Age: 20</textarea>
+<p>The order of the passed arguments is not the same as the arguments order of the function definition.</p>
+<p><code>age = 20</code> sets value of <code>20</code> to the <code>age</code> argument.</p>
+
+
+<h2>Arbitrary Keyword Arguments</h2>
+    <p class="note">Suitable if the count of keyword arguments is unknown.</p>
+
+    <p>They're specified by adding a <code>**</code> prefix.</p>
+    <p>Example:</p>
+    <textarea class="tutorial-example">def printCarsData(**data):
+  print("Make:", data["make"]);
+  print("Model:", data["model"]);
+  print("Hp:", data["hp"]);
+
+printCarsData(hp = 90, make = "Toyota", model = "Corolla");</textarea>
+<p>Output:</p>
+<textarea class="tutorial-example text-only">Make: Toyota
+Model: Corolla
+Hp: 90</textarea>
+
+<p>The values for the passed arguments is stored inside <code>data</code>.</p>
+<p><code>data["make"]</code> accesses the passed value for <code>make</code> which is <code>"Toyota"</code>.</p>
+    
+
+
+</div>

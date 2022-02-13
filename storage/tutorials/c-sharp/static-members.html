@@ -1,0 +1,117 @@
+        <div>
+        <p class="note"><b>Static functions and properties</b> are declared in the class body
+            but don't need created instances for their usage.</p>
+
+        <h2 class="h4 my-3">Static Properties</h2>
+        <p class="note"><b>Static properties</b> store value about the class. The value
+            is specific for the class.</p>
+
+        <p>Static properties are declared via the keyword <code>static</code>.</p>
+        <p>The syntax for declaring static member:</p>
+        <textarea class="tutorial-example">static memberType memberName;</textarea>
+
+        <p>The syntax for setting value to static member is:</p>
+        <textarea class="tutorial-example">ClassName.memberName = value;</textarea>
+
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Car
+    {
+        private string model;
+
+        public Car(String modelValue)
+        {
+            Console.WriteLine("Object created.");
+
+            model = modelValue;
+
+            // Increment static member:
+            carsCount++;
+        }
+
+        public static int carsCount;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Set value to static member:
+            Car.carsCount = 0;
+
+            Console.WriteLine("Initial Cars Count: " +
+                    Car.carsCount);
+
+            // create instances:
+            Car carobj1 = new Car("Toyota Corolla");
+            Car carobj2 = new Car("Peugeot 508");
+            Car carobj3 = new Car("Renault Clio");
+
+            Console.WriteLine("Final Cars Count: " +
+                    Car.carsCount);
+        }
+    }
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Initial Cars Count: 0
+Object created.
+Object created.
+Object created.
+Final Cars Count: 3</textarea>
+
+        <p>Couple of things to notice:</p>
+        <ul>
+            <li>When an object is created via the parametrized constructor (<code>lines 10 - 18</code>),
+                then the static member value is incremented (due to <code>line 17</code>).</li>
+            <li>At <code>line 28</code> an initial value is set to the static member.</li>
+            <li>When the static member is printed for the first time (<code>line 31</code>), it's value
+                is zero.</li>
+            <li>After objects were created via the parametrized constructor, it's value has
+                reached <code>3</code> - the count of the created objects.</li>
+        </ul>
+        <h2 class="h4 my-3">Static Functions</h2>
+        <p class="note"><b>Static functions</b> cannot use non-static
+            class member though declared in class.
+        </p>
+        <p>They are defined via the keyword <code>static</code>.</p>
+
+        <p>Syntax for defining:</p>
+        <textarea class="tutorial-example">static funcType funcName(args)
+{
+    // code
+}</textarea>
+        <p>Syntax for calling:</p>
+        <textarea class="tutorial-example">ClassName.funcName(args);</textarea>
+
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Person
+    {
+        private string name;
+
+        public static void printHi()
+        {
+            Console.WriteLine("Hello!");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person.printHi();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Hello!</textarea>
+    </div>

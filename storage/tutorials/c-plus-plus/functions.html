@@ -1,0 +1,166 @@
+        <div>
+            <p class="note"><b>Function</b> is a code block that executes certain task.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">funcType funcName(args)
+{
+    // Code to execute.
+}</textarea>
+
+            <h2>Void Example</h2>
+            <p class="note">A void function doesn't return any value.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+void printHi()
+{
+	cout << "Hi!";
+}
+
+int main()
+{
+    // Calling a function:
+	printHi();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hi!</textarea>
+            <p>Notice that <code>printHi</code> is defined before the main function which calls it.</p>
+
+            <h2>Returning Result</h2>
+            <p class="note">Via the <b>return</b> keyword a result can be returned.</p>
+            <p>Let's have an example in which rectangle's area is calculated by passing arguments
+            about it's sides.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+double calcRectangleArea(double widthArg, double heightArg)
+{
+	return widthArg * heightArg;
+}
+
+int main()
+{
+	double area = calcRectangleArea(3, 4);
+	cout << area;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">12</textarea>
+
+            <p>There are couple of things to mark:</p>
+            <ul>
+                <li>A functions is defined at <code>lines 5 - 8</code>. It accepts two arguments -
+                    <code>widthArg</code> and <code>heightArg</code> both of type <code>double</code>.</li>
+                <li>The function <code>calcRectangleArea</code> returns a <code>double</code> result.</li>
+                <li><code>calcRectangleArea</code> is called at <code>line 12</code>.</li>
+                <li>It's returned value is set in the variable <code>area</code>.</li>
+            </ul>
+
+            <h2>Common Exceptions</h2>
+            <h3 class="h5 my-4">Return Mismatch</h3>
+            <p>If a function returns value different than the specified type, it causes an exception.</p>
+            <textarea class="tutorial-example">string returnName()
+{
+	return 5; // Causes exception.
+}</textarea>
+            <p>In this case <code>5</code> should be replaced with string value.</p>
+            <h3 class="h5 my-4">Arguments Type Mismatch</h3>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+
+using namespace std;
+
+int functionName(int arg)
+{
+	return 5;
+}
+
+int main()
+{
+	functionName("John"); // causes exception
+}</textarea>
+            <p>At<code>line 5</code> the function expects argument of type <code>int</code>.</p>
+            <p>At <code>line 12</code> an argument of string type is passed.</p>
+            <p>The passed argument at <code>line 12</code> should be replaced with integer value.</p>
+
+            <h3 class="h5 my-4">Arguments Count Mismatch</h3>
+            <textarea class="tutorial-example">int calcTrapezoidArea(double a, double b, double h)
+{
+	return (a + b) / 2 * h;
+}
+
+int main()
+{
+	calcTrapezoidArea(3,4); // causes exception
+}</textarea>
+            <p>The function <code>calcTrapezoidArea</code> expects 3 arguments but only 2 are passed to it.</p>
+
+            <h3 class="h5 my-4">Calling function before it's definition</h3>
+            <p>In C++ a function must be defined before it's call. Let's look at the following code:</p>
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	printHi(); // causes exception
+}
+
+void printHi()
+{
+	cout << "Hi!";
+}</textarea>
+            <p>In this case the function<code>printHi</code> should be moved above the main function.</p>
+
+
+
+            <h2>Function Prototype</h2>
+            <p class="note"><b>Function Prototype</b> allows function to be called before it's definition..</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+void printHi(); // Defining prototype
+
+int main()
+{
+	printHi();
+}
+
+void printHi()
+{
+	cout << "Hi!";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hi!</textarea>
+            <p>At <code>line 5</code> a function prototype is defined. For this reason
+                we can call the <code>printHi</code> function though the function is defined (<code>lines 12 - 15</code>) after it's call (<code>line 9</code>).</p>
+
+            <h2>Default Value</h2>
+            <p class="note">Default value may be specified for function parameters.</p>
+            <p>Let's look at the following:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+void print(int arg = 3)
+{
+	cout << arg << endl;
+}
+
+int main()
+{
+	print(5);
+	print();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">5
+3</textarea>
+            <p>At <code>line 13</code> the function argument is not passed thus it
+            takes the default value - <code>3</code> specified at <code>line 5</code>.</p>
+
+        </div>

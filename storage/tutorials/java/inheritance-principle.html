@@ -1,0 +1,135 @@
+        <div>
+        <p class="note">
+            <b>Inheritance</b> is a way of extending class.
+            The new class (child class) builds logic on the top of the parent
+            class (super class).
+        </p>
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows">// Base class:
+class Vehicle
+{
+    protected String make;
+    protected String model;
+
+    public void representation()
+    {
+        System.out.println(this.make + " " + this.model);
+    }
+
+    public double getInsuranceCost(int months)
+    {
+        return 0;
+    }
+
+    public String getMake()
+    {
+        return this.make;
+    }
+
+    public String getModel()
+    {
+        return this.model;
+    }
+}
+
+// Car inherits Vehicle:
+class Car extends Vehicle
+{
+    // Adds class member:
+    private int doorsCount;
+
+    // Overwriting method:
+    public double getInsuranceCost(int months)
+    {
+        return months * 25;
+    }
+
+    // Adding constructor:
+    Car(String makeValue, String modelValue,
+    int doorsCountValue)
+    {
+        this.make = makeValue;
+        this.model = modelValue;
+        this.doorsCount = doorsCountValue;
+    }
+
+    // Method extension:
+    public void representation()
+    {
+        super.representation();
+        System.out.println( "Doors count: " + doorsCount);
+    }
+
+    // Adding new method:
+    public int getDoorsCount()
+    {
+        return this.doorsCount;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Car car = new Car("Toyota", "Corolla", 4);
+
+        // Method that was extended:
+        car.representation();
+
+        System.out.println("------");
+        // Method that was added:
+        System.out.println(car.getDoorsCount());
+        System.out.println("------");
+
+        // Methods that weren't changed:
+        System.out.println("Make: " + car.getMake());
+        System.out.println("Model: " + car.getModel());
+        System.out.println("------");
+
+        // Method that was overwritten:
+        System.out.println("Insurance cost: " +
+                car.getInsuranceCost(12) + " $");
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Toyota Corolla
+Doors count: 4
+------
+4
+------
+Make: Toyota
+Model: Corolla
+------
+Insurance cost: 300.0 $</textarea>
+        <p class="note">Basically the child class can add, extend, rewrite or use
+            the inherited logic from the parent.</p>
+        <p>For this example:</p>
+        <ul>
+            <li>
+                Added logic:
+                <ul>
+                    <li>member - <code>doorsCount</code> (<code>line 32</code>)</li>
+                    <li>parametrized constructor (<code>line 41</code>)</li>
+                    <li>getter for doorsCount (<code>line 57</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Extended logic:
+                <ul>
+                    <li><code>representation</code> method (<code>line 50</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Entirely rewritten logic:
+                <ul>
+                    <li><code>getInsuranceCost</code> (<code>line 35</code>)</li>
+                </ul>
+            </li>
+            <li>
+                Not modified logic:
+                <ul>
+                    <li><code>getMake</code> (<code>line 17</code>)</li>
+                    <li><code>getModel</code> (<code>line 22</code>)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>

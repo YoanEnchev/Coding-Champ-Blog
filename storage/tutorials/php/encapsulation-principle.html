@@ -1,0 +1,76 @@
+        <div>
+        <p class="note"><b>Encapsulation</b> is one of the 4 main OOP principles.</p>
+        <p class="note">
+            It protects the class data from access outside the class body.
+        </p>
+
+        <h2 class="h4 my-3">Example of encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Car
+{
+    // data inaccessible outside the class body:
+    private $model;
+    private $manifactureYear;
+
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    public function getManifactureYear()
+    {
+        return $this->manifactureYear;
+    }
+
+    public function setModel($modelValue)
+    {
+        $this->model = $modelValue;
+    }
+
+    public function setManifactureYear($manifactureYearValue)
+    {
+        $this->manifactureYear = $manifactureYearValue;
+    }
+}
+
+$car = new Car();
+$car->setModel("Toyota Corolla");
+$car->setManifactureYear(2020);
+
+// echo "Model: " + $car->model;
+
+echo "Year: " . $car->getManifactureYear() . "\n";
+echo "Model: " . $car->getModel() . "\n";</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>The private members can only be accessed / modified by
+                functions defined inside the class (in this case getters and setters).</li>
+            <li>If we uncomment <code>line 33</code> the code won't compile. A direct access
+                to private members cannot be done outside the class body.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Example of no encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Car
+{
+    // data accessible outside the class body:
+    public $model;
+    public $manifactureYear;
+}
+
+$car = new Car();
+$car->model = "Toyota Corolla";
+$car->manifactureYear = 2020;
+
+echo "Year: " . $car->manifactureYear . "\n";
+echo "Model: " . $car->model . "\n";</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>All members are accessible outside the class body.</p>
+    </div>

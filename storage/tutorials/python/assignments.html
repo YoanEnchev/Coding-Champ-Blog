@@ -1,0 +1,66 @@
+<div>
+    <h2>Multiple Assignment</h2>
+    <p class="note">A variable can be assigned value multiple times.</p>
+    <p>Let's look at this example:</p>
+    <textarea class="tutorial-example numeric-rows">num = 1;
+print(num);
+
+num = 2;
+num = 5;
+print(num);
+
+anotherNum = num;
+anotherNum = anotherNum + 2; # 5 + 2
+print(anotherNum);</textarea>
+
+    <p>Output:</p>
+    <textarea class="tutorial-example text-only">1
+5
+7</textarea>
+        <p>In this case <code>num</code> has been assigned value multiple times.</p>
+        <p>Variables can be assigned values of other variables (<code>line 8</code>).</p>
+        <p>Also a variable can receive a new value by using it's current value (<code>line 9</code>).</p>
+
+
+        <h2>Assignment operators</h2>
+        <p>They assign values and make the code shorter.</p>
+
+        <h3>+= operator</h3>
+        <p><code>num += 2</code> is the same as <code>num = num + 2</code>.</p>
+        <p>Example:</p>
+        <textarea class="tutorial-example">num = 3;
+num += 1;
+print(num);</textarea>
+<p>Output:</p>    
+<textarea class="tutorial-example text-only">4</textarea>
+
+
+<h3>-= operator</h3>
+<p><code>num -= 5</code> is the same as <code>num = num - 5</code>.</p>
+<p>Example:</p>
+<textarea class="tutorial-example">num = 4;
+num -= 3;
+print(num);</textarea>
+<p>Output:</p>    
+<textarea class="tutorial-example text-only">1</textarea>
+
+
+<h3>*= operator</h3>
+<p><code>num *= 7</code> is the same as <code>num = num * 7</code>.</p>
+<p>Example:</p>
+<textarea class="tutorial-example">num = 8;
+num *= 3;
+print(num);</textarea>
+<p>Output:</p>    
+<textarea class="tutorial-example text-only">24</textarea>
+
+
+<h3>/= operator</h3>
+<p><code>num /= 10</code> is the same as <code>num = num / 10</code>.</p>
+<p>Example:</p>
+<textarea class="tutorial-example">num = 24;
+num /= 4;
+print(num);</textarea>
+<p>Output:</p>    
+<textarea class="tutorial-example text-only">6</textarea>
+</div>

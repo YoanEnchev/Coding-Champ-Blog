@@ -1,0 +1,144 @@
+        <div>
+            <p class="note">
+                <b>Inheritance</b> is a way of extending class.
+                The new class (child class) builds logic on the top of the parent
+                class (super class).
+            </p>
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base class:
+class Vehicle
+{
+protected:
+	string make;
+	string model;
+
+public:
+	void representation()
+	{
+		cout << make << " " << model << endl;
+	}
+
+	double getInsuranceCost(int months)
+	{
+		return 0;
+	}
+
+	string getMake()
+	{
+		return make;
+	}
+
+	string getModel()
+	{
+		return model;
+	}
+};
+
+// Car inherits Vehicle:
+class Car : public Vehicle
+{
+private:
+	// Adds class member:
+	int doorsCount;
+public:
+	// Overwriting method:
+	double getInsuranceCost(int months)
+	{
+		return months * 25;
+	}
+
+	// Adding constructor:
+	Car(string makeValue, string modelValue,
+		int doorsCountValue)
+	{
+		make = makeValue;
+		model = modelValue;
+		doorsCount = doorsCountValue;
+	}
+
+	// Method extension:
+	void representation()
+	{
+		Vehicle::representation();
+
+		cout << "Doors count: "
+			<< doorsCount << endl;
+	}
+
+	// Adding new method:
+	int getDoorsCount()
+	{
+		return doorsCount;
+	}
+};
+
+void main()
+{
+	Car car("Toyota", "Corolla", 4);
+
+	// Method that was extended:
+	car.representation();
+
+	cout << "------" << endl;
+	// Method that was added:
+	cout << car.getDoorsCount() << endl;
+	cout << "------" << endl;
+
+	// Methods that weren't changed:
+	cout << "Make: " << car.getMake() << endl;
+	cout << "Model: " << car.getModel() << endl;
+	cout << "------" << endl;
+
+	// Method that was overwritten:
+	cout << "Insurance cost: " <<
+		car.getInsuranceCost(12) << " $";
+
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Toyota Corolla
+Doors count: 4
+------
+4
+------
+Make: Toyota
+Model: Corolla
+------
+Insurance cost: 300 $</textarea>
+            <p class="note">Basically the child class can add, extend, rewrite or use
+                the inherited logic from the parent.</p>
+            <p>For this example:</p>
+            <ul>
+                <li>
+                    Added logic:
+                    <ul>
+                        <li>member - <code>doorsCount</code> (<code>line 40</code>)</li>
+                        <li>parametrized constructor (<code>line 49</code>)</li>
+                        <li>getter for doorsCount (<code>line 67</code>)</li>
+                    </ul>
+                </li>
+                <li>
+                    Extended logic:
+                    <ul>
+                        <li><code>representation</code> method (<code>line 58</code>)</li>
+                    </ul>
+                </li>
+                <li>
+                    Entirely rewritten logic:
+                    <ul>
+                        <li><code>getInsuranceCost</code> (<code>line 43</code>)</li>
+                    </ul>
+                </li>
+                <li>
+                    Not modified logic:
+                    <ul>
+                        <li><code>getMake</code> (<code>line 24</code>)</li>
+                        <li><code>getModel</code> (<code>line 29</code>)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>

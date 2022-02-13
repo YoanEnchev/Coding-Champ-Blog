@@ -1,0 +1,142 @@
+        <div>
+        <h2 class="h4 my-3">Abstract Class</h2>
+        <p class="note"><b>Abstract Class</b> is a class that can't
+            be instantiated (objects cannot be created) and may contain
+            <b>abstract methods</b>.</p>
+        <p>It's supposed to represent something abstract and not specific.</p>
+
+        <h2 class="h4 my-3">Syntax:</h2>
+        <textarea class="tutorial-example">abstract class ClassName
+{
+    // code
+}</textarea>
+
+        <h2 class="h4 my-3">Basic Example</h2>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">abstract class Vehicle
+{
+private
+    double getInsuranceCost(int months){
+        return  0;
+    }
+}
+
+class Car extends Vehicle
+{
+    // Overwriting method.
+    public double getInsuranceCost(int months)
+    {
+        return 25 * months;
+    }
+}
+
+class Bicycle extends Vehicle
+{
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Vehicle vehicle = new Vehicle();
+        Car car = new Car();
+        System.out.println( "Car's Year Insurance: " + car.getInsuranceCost(12) + " $");
+
+        Bicycle bicycle = new Bicycle();
+        System.out.println( "Bike's Year Insurance: " + bicycle.getInsuranceCost(12) + " $");
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Car's Year Insurance: 300 $
+Bike's Year Insurance: 0 $</textarea>
+        <p>Explanation</p>
+        <ul>
+            <li>The abstract class <code>Vehicle</code>
+            is defined at <code>lines 1-7</code>.</li>
+            <li>The name of the abstract class is <code>Vehicle</code>.
+            This is something indefinite and it's inherited by other classes.</li>
+            <li>If we uncomment <code>line 25</code> the code won't
+            compile. That's because an abstract class cannot be instanced.</li>
+        </ul>
+        <h2 class="h4 my-3">Abstract methods</h2>
+        <p class="note"><b>Abstract methods</b> can be defined
+        only in abstract classes and have no body.</p>
+        <p class="note">An <b>abstract method</b> in parent class
+        must be overwritten in the child class.</p>
+        <p>Syntax:</p>
+        <textarea class="tutorial-example">abstract funcType funcName();</textarea>
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows">abstract class Figure
+{
+    abstract double calcArea();
+}
+
+class Square extends Figure
+{
+    private
+    double side;
+
+    Square(double sideValue)
+    {
+        this.side = sideValue;
+    }
+
+    public
+
+    // Implementation of abstract method:
+    double calcArea()
+    {
+        return side * side;
+    }
+}
+
+class Rectangle extends Figure
+{
+    private
+    double width;
+    double height;
+
+    public
+    Rectangle(double widthValue, double heightValue)
+    {
+        this.width = widthValue;
+        this.height = heightValue;
+    }
+
+    // Implementation of abstract method:
+    double calcArea()
+    {
+        return width * height;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Square square = new Square(2);
+        Rectangle rectangle = new Rectangle(3, 2);
+
+        System.out.println( "Square's area: " + square.calcArea());
+        System.out.println( "Rectangle's area: " + rectangle.calcArea());
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Square's area: 4.0
+Rectangle's area: 6.0</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 3</code> the abstract method
+                <code>calcArea</code> is defined.
+            </li>
+            <li>
+                Since <code>calcArea</code> is an abstract method, classes that
+                inherit the abstract class <code>Figure</code> must implement
+                the method. If not done then the code won't compile.
+            </li>
+            <li>
+                At <code>lines 19 - 22</code> and <code>lines 39 - 42</code>
+                the abstract method is implemented.
+            </li>
+        </ul>
+
+    </div>

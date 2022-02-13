@@ -1,0 +1,105 @@
+                <div>
+                    <p class="note"><b>Logical Operators</b> return
+                        boolean result which makes them suitable for if statements.</p>
+        
+                    <section class="horizontal-scroller-table">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Description</th>
+                                <th>Examples</th>
+                                <th>Result</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td rowspan="3">not</td>
+                                <td rowspan="3">Inverse the value.</td>
+                                <td>not True</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>not False</td>
+                                <td>True</td>
+                            </tr>
+                            <tr>
+                                <td>not (2 + 3 == 5)</td>
+                                <td>False</td>
+                            </tr>
+        
+                            <tr>
+                                <td rowspan="3">and</td>
+                                <td rowspan="3">
+                                    <ul>
+                                        <li>True if all statements are True. </li>
+                                        <li>False - if one or more statements are False.</li>
+                                    </ul>
+                                </td>
+                                <td>True and True and True</td>
+                                <td>True</td>
+                            </tr>
+                            <tr>
+                                <td>False and False and False</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>True and False</td>
+                                <td>False</td>
+                            </tr>
+        
+                            <tr>
+                                <td rowspan="3">or</td>
+                                <td rowspan="3">
+                                    <ul>
+                                        <li>True if one or more statements are True. </li>
+                                        <li>False - if all statements are False.</li>
+                                    </ul>
+                                </td>
+                                <td>True or True or True</td>
+                                <td>True</td>
+                            </tr>
+                            <tr>
+                                <td>False or False or False</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>True or False</td>
+                                <td>True</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+        
+                    <h2>Example</h2>
+                    <p>Let's look at the following example. Depending on a test score, determine whether the score
+                        is low, medium, high or invalid following these rules:</p>
+                    <ul>
+                        <li>0 to 50 - low</li>
+                        <li>51 to 75 - medium</li>
+                        <li>76 to 100 - high</li>
+                        <li>less than 0 or more than 100 - invalid</li>
+                    </ul>
+                    <textarea class="tutorial-example numeric-rows">score = 80;
+        
+if score >= 0 and score <= 50:
+    print("low");
+        
+if score >= 51 and score <= 75:
+    print("medium");
+        
+if score >= 76 and score <= 100:
+    print("high");
+        
+if score < 0 or score > 100:
+    print("invalid");</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">high</textarea>
+                    <p>Explanation:</p>
+                    <ul>
+                        <li>To check whether a number is between 2 values <code>and</code> operator can be used.</li>
+                        <li><code>Line 3</code> checks whether number is greater or equal to 0
+                            and if it's less or equal to 50.</li>
+                        <li><code>Line 12</code> checks whether number is less than 0 or if it's greater than 100.</li>
+                    </ul>
+                </div>

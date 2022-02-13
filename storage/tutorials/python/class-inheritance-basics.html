@@ -1,0 +1,158 @@
+                <div>
+                    <p class="note"><b>Class Inheritance</b> is a way to extend a class.
+                        The new class (child class) builds or overwrites logic
+                        from the parent class (super class).</p>
+            
+                    <p>The syntax for class extension is:</p>
+                    <textarea class="tutorial-example">class ChildClass (ParentClass)</textarea>
+                    
+                    <h2 class="h4 my-3">Overwriting methods:</h2>
+                    <p class="note"><b>Overwritten method</b> is a method that has been
+                        inherited from the parent but it's logic is changed in the child.</p>
+            
+                    <p>Syntax for overwriting function:</p>
+                    <textarea class="tutorial-example">class ParentClass:
+    
+    def funcName(args):
+        # code
+
+class ChildClass (ParentClass):
+                
+    def funcName(args):
+        # overwriting function</textarea>
+            
+                    <p>Let's have a base class <code>Vehicle</code> and child classes - <code>Car</code>,
+                        <code>Scooter</code>, <code>Bicycle</code>. We'll set a simplified formula for the
+                        insurance cost.</p>
+                    <textarea class="tutorial-example numeric-rows">class Vehicle:
+    def getInsuranceCost(self, months):
+        return 0;
+            
+# Scooter inherits Vehicle.
+class Scooter (Vehicle):
+    # overwriting method
+    def getInsuranceCost(self, months):
+        return months * 15;
+            
+
+# Car inherits Vehicle.
+class Car (Vehicle):
+    # overwriting method
+    def getInsuranceCost(self, months):
+        return months * 25;
+            
+ # Bicycle inherits Vehicle.
+class Bicycle (Vehicle):
+    pass; # pass is used to avoid exception when class is empty
+
+# the class uses getInsuranceCost()
+# inherited from Vehicle.
+            
+scooter = Scooter();
+print("Scooter Year Insurance:", scooter.getInsuranceCost(12), "$");
+            
+car = Car();
+print("Car Year Insurance:", car.getInsuranceCost(12), "$");
+            
+bike = Bicycle();
+print("Bicycle Year Insurance:", bike.getInsuranceCost(12), "$");</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only>">Scooter Year Insurance: 180 $
+Car Year Insurance: 300 $
+Bicycle Year Insurance: 0 $</textarea>
+                    <p>Explanation:</p>
+                    <ul>
+                        <li>At <code>line 6</code> the class <code>Scooter</code> inherits the <code>Vehicle</code> class.
+                            And at <code>lines 8 and 9</code> the function
+                            <code>getInsuranceCost</code> is overwritten.
+                        </li>
+                        <li>
+                            At <code>line 13</code> the class <code>Car</code> extends the
+                            <code>Vehicle</code> class.
+                            The <code>Car</code> class overwrites <code>getInsuranceCost</code> function at
+                            <code>lines 15 - 16</code>.</li>
+                        <li>
+                            At <code>line 19</code> the <code>Bicycle</code> class
+                            extends <code>Vehicle</code>. It doesn't overwrite
+                            the <code>getInsuranceCost</code> method. When called
+                            (<code>line 32</code>) the code from the base class is executed.
+                        </li>
+                    </ul>
+            
+                    <h2 class="h4 my-3">Extending functions and constructors:</h2>
+                    <p class="note">A child's class constructor can call parent's class constructor via the <code>super</code> keyword.</p>
+            
+                    <p>Let's have a base class <code>Vehicle</code> and child class <code>Car</code>.
+                        The child class will extend it's parent constructor
+                        and a function called <code>representation</code>.</p>
+                    <textarea class="tutorial-example numeric-rows">class Vehicle:
+    def __init__(self, brandValue, modelValue):
+        self.brand = brandValue;
+        self.model = modelValue;
+
+        print("Vehicle constructor");
+
+    def representation(self):
+        print("Brand:", self.brand);
+
+class Car (Vehicle):
+    def __init__(self, brandValue, modelValue, horsePowersValue):
+        super().__init__(brandValue, modelValue);
+        print("Car constructor");
+
+        self.horsePowers = horsePowersValue;
+
+    def representation(self):
+        super().representation();
+        print("Model:", self.model);
+        print("Horse Powers:", self.horsePowers);
+
+
+sampleBicycle = Vehicle("Merida ", "ONE-FORTY 800");
+sampleBicycle.representation();
+print("--------------------");
+
+fordCar = Car("Ford", "Fiesta", 80);
+fordCar.representation();
+print("--------------------");
+
+toyotaCar = Car("Toyota", "Corolla", 100);
+toyotaCar.representation();</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">Vehicle constructor
+Brand: Merida
+--------------------
+Vehicle constructor
+Car constructor
+Brand: Ford
+Model: Fiesta
+Horse Powers: 80
+--------------------
+Vehicle constructor
+Car constructor
+Brand: Toyota
+Model: Corolla
+Horse Powers: 100</textarea>
+                    <p>Explanation:</p>
+                    <ul>
+                        <li>
+                            At <code>line 11</code> the class <code>Car</code> inherits <code>Vehicle</code>.
+                        </li>
+                        <li>
+                            The <code>Car</code> class constructor calls the <code>Vehicle</code> constructor at
+                            <code>line 13</code> via the <code>super</code> keyword.
+                            When car object is created (<code>lines 28 and 32</code>) the code from the parent's class
+                            constructor (<code>lines 3 - 6</code>)
+                            executes first and afterwards the code from child's constructor (<code>lines 13 - 16</code>).
+                        </li>
+                        <li>
+                            At <code>line 19</code> the <code>representation</code> function of the parent class is called.
+                            When <code>representation</code> function is called for a <code>Vehicle</code> object at
+                            <code>line 25</code>, only the brand is printed.
+                        </li>
+                        <li>
+                            When <code>representation</code> function is called for a <code>Car</code> object at
+                            <code>lines 29 and 33</code>, all 3 properties (make, model, horsePowers) are printed.
+                        </li>
+                    </ul>
+                </div>

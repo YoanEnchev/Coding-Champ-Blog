@@ -1,0 +1,145 @@
+        <div>
+        <h2 class="h4 my-3">Getters</h2>
+        <p class="note"><b>Getters</b> give public access to private data. They may also make
+            a small modification of the returned result.</p>
+        <p>Let's look the following example:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Square
+{
+    // default value for side
+    private $side = 1;
+
+    public function getSide() {
+        return $this->side;
+    }
+}
+
+$square = new Square();
+
+// $square->side;
+echo $square->getSide();</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">1</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>If we uncomment <code>line 14</code> the code will not compile. That's because
+                a private member (declared at <code>line 5</code>) cannot be directly accessed
+                outside the class body.</li>
+            <li>At <code>line 15</code> a private member is accessed outside the class body.
+                That's not done directly (like in <code>line 14</code>) but through a public function
+                - a getter. This is how a private member can be accessed outside the class body.
+            </li>
+        </ul>
+        <p>Let's add more stuff:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Square
+{
+    // default value for side
+    private $side = 2.5;
+
+    public function getSide()
+    {
+        return $this->side;
+    }
+
+    public function getPerimeter()
+    {
+        return $this->side * 4;
+    }
+
+    public function getArea()
+    {
+        return $this->side * $this->side;
+    }
+}
+
+$square = new Square();
+
+echo "Side = " . $square->getSide() . "\n";
+echo "Perimeter = " . $square->getPerimeter() . "\n";
+echo "Area = " . $square->getArea() . "\n";</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Side = 2.5
+Perimeter = 10
+Area = 6.25</textarea>
+        <p>The only things that were added are 2 getters - <code>getPerimeter</code> and
+            <code>getArea</code>. Simply they are getters that return a private member
+            with a small modification.</p>
+
+        <h2 class="h4 my-3">Setters</h2>
+        <p class="note"><b>Setters</b> allow for a private variable to be modified.
+            They are important since they can provide validation
+            before a value is set.</p>
+        <p> Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Person
+{
+    private $name;
+    private $age;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    // basic setter function:
+    public function setName($nameNewValue)
+    {
+        $this->name = $nameNewValue;
+    }
+
+    // setter function with validation:
+    public function setAge($ageNewValue)
+    {
+        if ($ageNewValue < 0) {
+            $this->age = 0;
+        }
+
+        // set the new value
+        $this->age = $ageNewValue;
+    }
+
+    public function printData()
+    {
+        echo "Name: " . $this->name . "\n";
+        echo "Age: " .  $this->age . "\n";
+    }
+}
+
+$person = new Person();
+$person->setName("Emily");
+$person->setAge(20);
+// $person->setAge(-1);
+$person->printData();</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Name: Emily
+Age: 20</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>Value of the private member <code>name</code> is
+                modified at <code>line 20</code> without any validation.
+            </li>
+            <li>At <code>lines 24 - 32</code> is defined a setter that has validation.
+                If the validation fails a value of <code>0</code> is set at <code>line 27</code>. If validation passes
+                <code>(age >= 0)</code> then the passed value is set (<code>line 31</code>).
+            </li>
+            <li>
+                If we uncomment <code>line 52</code>, then
+                the person object's age will have a value of zero. That's due to the validation at <code>line 26</code>.
+            </li>
+        </ul>
+
+        <h2 class="h4 my-3">Why using getters and setters?</h2>
+        <p class="note">Because private members can have validation before modification (setter) and
+            controlled access (getter).</p>
+        <p>It seems easier to have only public members. This way there is no need for getters
+            and setters. It's a better practice to have private members that are
+            accessed with getter and modified through setter. This way a validation can be
+            provided in a setter and the public access can be done only to some members -
+            those which have getters.</p>
+    </div>

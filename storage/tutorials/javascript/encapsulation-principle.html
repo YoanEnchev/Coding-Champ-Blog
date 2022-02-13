@@ -1,0 +1,69 @@
+        <div>
+        <p class="note"><b>Encapsulation</b> is one of the 4 main OOP principles.</p>
+        <p class="note">
+            It protects the class data from access outside the class body.
+        </p>
+        <p class="note">Members that are supposed to be accessed only in the class
+        are labeled with <code>_</code> prefix.</p>
+
+        <h2 class="h4 my-3">Example of encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows">class Car {
+    // Getter and setters that control access
+    // to the private members:
+
+    get model()
+    {
+        return this._model;
+    }
+
+    set model(value)
+    {
+        this._model = value;
+    }
+
+    get manifactureYear()
+    {
+        return this._manifactureYear;
+    }
+
+    set manifactureYear(value)
+    {
+        this._manifactureYear = value;
+    }
+}
+
+let car = new Car();
+car.model = "Toyota Corolla";
+car.manifactureYear = 2020;
+
+console.log("Year: " + car.manifactureYear);
+console.log("Model: " + car.model);</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>The private members (<code>_model</code> and <code>_manifactureYear</code>)
+                are supposed to be accessed / modified by
+                functions defined inside the class (in this case getters and setters).
+            </li>
+            <li>Access outside the class body is done the get and set functions
+            (<code>model</code> and <code>manifactureYear</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Example of no encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows">class Car {}
+
+let car = new Car();
+car.model = "Toyota Corolla";
+car.manifactureYear = 2020;
+
+console.log("Year: " + car.manifactureYear);
+console.log("Model: " + car.model);</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>All members are accessed outside the class body.</p>
+    </div>

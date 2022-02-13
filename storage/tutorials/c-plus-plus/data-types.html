@@ -1,0 +1,106 @@
+        <div>
+            <h2>Data Types</h2>
+            <p class="note">Data types define what information is stored</p>
+            <p>The most used of them are:</p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">int</th>
+                        <td scope="3">Whole number.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">double</th>
+                        <td scope="3">Floating point number.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">string</th>
+                        <td scope="3">Sequence of characters (text). In order to be used the
+                        line <code>#include&lt;string&gt;</code> must be added.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">char</th>
+                        <td scope="3">Represents a single symbol.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">bool</th>
+                        <td scope="3">Can have only 2 values - <code>true</code> or <code>false</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Reading And Printing Data</h2>
+            <ul>
+                <li><code>cin</code> - reading data, followed by <code> >> </code> operator.</li>
+                <li><code>cout</code> - printing data, followed by <code> << </code> operator.</li>
+            </ul>
+
+            <p>In order to use them the line
+                <code>#include&lt;iostream&gt;</code> needs to be added. </p>
+
+            <h2>Variables</h2>
+            <p class="note">The variables are used to store data of certain type.</p>
+            <p>Their value can be changed any time.</p>
+
+            <p>Example of variables definitions:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+
+using namespace std;
+
+int main()
+{
+    // Declaring variable with value:
+	int num1 = 5;
+
+    // Declaring variable and setting value later:
+	int num2;
+	num2 = -3;
+
+    // String values are set between double quotes.
+	string name = "Alex";
+
+    // Char values are set between single quotes.
+	char letter = 'c';
+
+	bool boolVariable1 = true;
+	bool boolVariable2 = false;
+}</textarea>
+
+
+            <h2>Basic program example:</h2>
+            <p>Write a program that prints "Starting the program."
+            Afterwards it must read a word and print it back.</p>
+
+            <p>Solution:</p>
+            <textarea class="tutorial-example numeric-rows">// So strings can be used:
+#include <string>
+
+// So cin and cout can be used:
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	cout << "Starting the program." << endl;
+
+	// Read user's input:
+	string read;
+	cin >> read;
+
+	// Print back the user's input:
+	cout << read;
+}</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-only">blue</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Starting the program.
+blue</textarea>
+
+            <p>Explanation: </p>
+            <ul>
+                <li> <code>#include&lt;iostream&gt;</code> is added so <code>cin</code> and <code>cout</code>
+                can be used.</li>
+                <li> <code> &lt;&lt; endl</code> is used to print a new line.</li>
+            </ul>
+        </div>

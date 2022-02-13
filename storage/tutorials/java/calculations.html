@@ -1,0 +1,182 @@
+        <div>
+            <div class="horizontal-scroller-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Operator</th>
+                        <th>Examples</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3">Addition</td>
+                        <td rowspan="3">+</td>
+                        <td>1 + 3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>2 + 4</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>"ab" + "cd"</td>
+                        <td>abcd</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Subtraction</td>
+                        <td rowspan="3">-</td>
+                        <td>5 - 3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2 - 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3 - 5</td>
+                        <td>-2</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Multiplication</td>
+                        <td rowspan="3">*</td>
+                        <td>2 * 2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 5</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 0</td>
+                        <td>0</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Division</td>
+                        <td rowspan="3">/</td>
+                        <td>10 / 2</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>0 / 3</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>5 / 0</td>
+                        <td>Exception - cannot divide by 0.</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td rowspan="3">Remainder Of Division</td>
+                        <td rowspan="3">%</td>
+                        <td>10 % 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4 % 3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>17 % 6</td>
+                        <td>5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="my-3">Explanation for Remainder Of Division</p>
+            <img src="../../imgs/tutorials/division-remainder.png" alt="division-remainder" class="mb-3" style="width: 100%">
+
+
+            <p>Let's start with a program that reads width and height
+                of a rectangle and prints it's area.</p>
+            <textarea class="tutorial-example numeric-rows">// So scanner can be used.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read inputs:
+        double width = Double.parseDouble(scanner.nextLine());
+        double height = Double.parseDouble(scanner.nextLine());
+
+        // Calc Area:
+        double area = width * height;
+        System.out.println("Area = " + area);
+    }
+}</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-only">3
+2</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+            <p>Explanation</p>
+            <ul>
+                <li>At <code>line 9 and 10</code> width and height are red.</li>
+                <li><code>Double.parseDouble</code> is used to convert the string input to double.</li>
+                <li>At <code>line 13</code> width and height are multiplied (via <code>*</code> operator).</li>
+            </ul>
+
+            <p>Let's demonstrate the rest of the operators:</p>
+            <textarea class="tutorial-example numeric-rows">// So scanner can be used.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read inputs:
+        int a = Integer.parseInt(scanner.next());
+        int b = Integer.parseInt(scanner.next());
+
+        System.out.println("A = " + a);
+        System.out.println("B = " + b);
+
+        System.out.println("A + B = " + (a + b));
+        System.out.println("A - B = " + (a - b));
+        System.out.println("A * B = " + (a * b));
+
+        System.out.println();
+        System.out.println("Remainder of Division:" + (a % b));
+        System.out.println();
+
+        System.out.println("Concating strings: ");
+        String str1 = "Web ";
+        String str2 = "Technologies";
+
+        System.out.println(str1 + str2);
+        String numericStr1 = "1";
+        String numericStr2 = "2";
+
+        System.out.println("1 + 2 = " + numericStr1 + numericStr2);
+    }
+}</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-onlys">5
+2</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">A = 5
+B = 2
+A + B = 7
+A - B = 3
+A * B = 10
+
+Remainder of Division:1
+
+Concat strings:
+Web Technologies
+1 + 2 = 12</textarea>
+
+            <p>Notice that <code>+</code> operator can be applied to both numeric and string variables.</p>
+        </div>

@@ -1,0 +1,62 @@
+                <div>
+                    <h2>Break</h2>
+                    <p class="note"><b>break</b> is used to forcefully stop loop even if it's
+                        condition is met.</p>
+        
+                    <textarea class="tutorial-example numeric-rows">sum = 0;
+for i in range(1, 11):
+    if sum > 20:
+        break;
+        
+    sum += i;
+        
+print(sum);</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">21</textarea>
+                    <p><code>line 4</code> ends the loop though it's condition is fulfilled.</p>
+                    <p>Value of <code>sum</code> is formed by adding <code>i</code> to it (1 + 2 + 3 + 4 + 5 + 6 = 21).</p>
+        
+                    <h2>Continue</h2>
+                    <p class="note"><b>Continue</b> skips the current iteration of the loop.</p>
+                    <textarea class="tutorial-example numeric-rows">for i in range(1, 7):
+    if i == 4:
+        continue;
+    
+    print(i);</textarea>
+                        <p>Output:</p>
+                    <textarea class="tutorial-example text-only">1
+2
+3
+5
+6</textarea>
+                    <p><code>line 3</code>stops the current iteration thus 4 isn't printed.</p>
+                    <p>Unlike <code>break</code>it doesn't skip the entire loop.</p>
+                
+                    <h2>Else in for loop</h2>
+                    <p>Else block after for loop executes only if the loop's not forcefully terminated (like using <code>break</code>).</p>
+                    <p>Example:</p>
+                    <textarea class="tutorial-example"># Loop that's not terminated by break
+for i in range(1, 3):
+    if i == 10:
+        break;
+
+else: print('A');
+
+
+# Loop that's terminated by break
+for i in range(1, 3):
+    if i == 2:
+        break;
+
+else: print('B');</textarea>
+
+<p>Output:</p>
+<textarea class="tutorial-example text-only">A</textarea>
+
+
+<p>The first loop is not terminated (because <code>i == 10</code> is always false). For that reason <code>A</code>
+is printed.</p>
+<p>The second loop is terminated (because <code>i == 2</code> is true in one of the loop's iteration). For that reason <code>B</code>
+    is not printed.</p>
+                
+                </div>

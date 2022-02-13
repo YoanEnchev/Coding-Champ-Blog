@@ -1,0 +1,270 @@
+        <div>
+        <p class="note"><b>Class Inheritance</b> is a way to extend a class.
+            The new class (child class) builds or overwrites logic
+            from the parent class (super class).</p>
+
+        <p>The syntax for class extension is:</p>
+        <textarea class="tutorial-example">class ChildClass extends ParentClass
+{
+    // code
+}</textarea>
+        <h2 class="h4 my-3">Overwriting methods:</h2>
+        <p class="note"><b>Overwritten method</b> is a method that has been
+            inherited from the parent but it's logic is changed in the child.</p>
+
+        <p>Syntax for overwriting function:</p>
+        <textarea class="tutorial-example">class ParentClass
+{
+	funcType funcName(args)
+	{
+		// code
+	}
+}
+
+class ChildClass extends ParentClass
+{
+	funcType funcName(args)
+	{
+        // overwriting function
+	}
+}</textarea>
+
+        <p>Let's have a base class <code>Vehicle</code> and child classes - <code>Car</code>,
+            <code>Scooter</code>, <code>Bicycle</code>. We'll set a simplified formula for the
+            insurance cost.</p>
+        <textarea class="tutorial-example numeric-rows">class Vehicle
+{
+    public
+    double getInsuranceCost(int months)
+    {
+        return 0;
+    }
+};
+
+// Scooter inherits Vehicle.
+class Scooter extends Vehicle
+{
+public
+    // overwriting method
+    double getInsuranceCost(int months)
+    {
+        return months * 15;
+    }
+}
+
+// Car inherits Vehicle.
+class Car extends Vehicle
+{
+public
+    // overwriting method
+    double getInsuranceCost(int months)
+    {
+        return months * 25;
+    }
+}
+
+// Bicycle inherits Vehicle.
+class Bicycle extends Vehicle
+{
+    // the class uses getInsuranceCost()
+    // inherited from Vehicle.
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scooter scooter = new Scooter();
+        System.out.println("Scooter Year Insurance: " +
+                scooter.getInsuranceCost(12) + " $");
+
+        Car car = new Car();
+        System.out.println("Car Year Insurance: " +
+                car.getInsuranceCost(12) +" $");
+
+        Bicycle bike = new Bicycle();
+        System.out.println("Bicycle Year Insurance: " +
+                bike.getInsuranceCost(12) + " $");
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only>">Scooter Year Insurance: 180.0 $
+Car Year Insurance: 300.0 $
+Bicycle Year Insurance: 0.0 $</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 11</code> the class <code>Scooter</code> inherits the <code>Vehicle</code> class.
+                And at <code>lines 15 to 18</code> the function
+                <code>getInsuranceCost</code> is overwritten.
+            </li>
+            <li>
+                At <code>line 22</code> the class <code>Car</code> extends the
+                <code>Vehicle</code> class.
+                The <code>Car</code> class overwrites <code>getInsuranceCost</code> function at
+                <code>lines 26 - 29</code>.</li>
+            <li>
+                At <code>line 33</code> the <code>Bicycle</code> class
+                extends <code>Vehicle</code>. It doesn't overwrite
+                the <code>getInsuranceCost</code> method. When called
+                (<code>line 52</code>) the code from the base class is executed.
+            </li>
+        </ul>
+        <h2 class="h4 my-3">Extending functions and constructors:</h2>
+
+        <p>Let's have a base class <code>Vehicle</code> and child class <code>Car</code>.
+            The child class will add one more member and also extend a constructor
+            and a function called <code>representation</code>.</p>
+        <textarea class="tutorial-example numeric-rows">class Vehicle
+{
+    protected
+    String brand;
+    String model;
+
+    public
+    Vehicle(String brandValue, String modelValue)
+    {
+        this.brand = brandValue;
+        this.model = modelValue;
+
+        System.out.println("Vehicle constructor");
+    }
+
+    void representation()
+    {
+        System.out.println("Brand: " + this.brand);
+    }
+}
+
+class Car extends Vehicle
+{
+private
+    int horsePowers;
+
+public
+    Car(String brandValue, String modelValue, int horsePowersValue)
+    {
+        super(brandValue, modelValue);
+        System.out.println("Car constructor");
+
+        horsePowers = horsePowersValue;
+    }
+
+    void representation()
+    {
+        super.representation();
+
+        System.out.println("Model: " + model);
+        System.out.println("Horse Powers: " + horsePowers);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Vehicle sampleBicycle = new Vehicle("Merida ", "ONE-FORTY 800");
+        sampleBicycle.representation();
+        System.out.println("--------------------");
+
+        Car fordCar = new Car("Ford", "Fiesta", 80);
+        fordCar.representation();
+        System.out.println("--------------------");
+
+        Car toyotaCar = new Car("Toyota", "Corolla", 100);
+        toyotaCar.representation();
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example">Vehicle constructor
+Brand: Merida
+--------------------
+Vehicle constructor
+Car constructor
+Brand: Ford
+Model: Fiesta
+Horse Powers: 80
+--------------------
+Vehicle constructor
+Car constructor
+Brand: Toyota
+Model: Corolla
+Horse Powers: 100</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>
+                At <code>line 3</code> instead of <code>private</code> the members are defined as
+                <code>protected</code>. That's because we want to extend the class
+                and inherit it's members. More details about it later in the lesson.
+            </li>
+            <li>
+                At <code>line 22</code> the class <code>Car</code> inherits <code>Vehicle</code>.
+            </li>
+            <li>
+                The <code>Car</code> class has 3 members -
+                <code>horsePowers</code> defined at <code>line 25</code> and also
+                <code>brand</code> and <code>model</code> (<code>lines 4 and 5</code>)
+                due to the class extension.
+            </li>
+            <li>
+                The <code>Car</code> class constructor calls the <code>Vehicle</code> constructor at
+                <code>line 30</code> via the <code>super</code> keyword.
+                When car object is created (<code>lines 52 and 56</code>) the code from the parent's class
+                constructor (<code>lines 10 - 13</code>)
+                executes first and afterwards the code from child's constructor (<code>lines 31 - 33</code>).
+            </li>
+            <li>
+                At <code>line 38</code> the <code>representation</code> function of the parent class is called.
+                When <code>representation</code> function is called for a <code>Vehicle</code> object at
+                <code>line 49</code>, only the brand is printed.
+            </li>
+            <li>
+                When <code>representation</code> function is called for a <code>Car</code> object at
+                <code>lines 57 and 61</code>, all 3 members (make, model, horsePowers) are printed.
+            </li>
+        </ul>
+        <h2 class="h4 my-3">Private vs protected members</h2>
+        <p>
+            Both private and protected members can be accessed or modified only in a class body.
+        </p>
+        <p class="note">
+            <b>Private Members</b> can be accessed or modified only in one class - the one they
+            are defined in.
+        </p>
+        <p class="note"><b>Protected members</b> can be accessed or modified in the class they are defined in and the classes
+            that extend it.</p>
+
+        <p>Let's look at the example:</p>
+        <textarea class="tutorial-example numeric-rows">class Vehicle
+{
+    protected
+    String brand;
+    String model;
+}
+
+class Car extends Vehicle
+{
+private
+        int horsePowers;
+
+public
+    Car(String brandValue, String modelValue, int horsePowersValue)
+    {
+        this.brand = brandValue;
+        this.model = modelValue;
+        this.horsePowers = horsePowersValue;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Car mercedesCar = new Car("Volkswagen", "Polo", 90);
+    }
+}</textarea>
+        <ul>
+            <li>Due to the extension class <code>Car</code> has 3 members - <code>brand</code>,
+                <code>model</code> and <code>horsePowers</code>.</li>
+            <li>If at <code>line 3</code> we replace <code>protected</code> with <code>private</code>,
+                the class <code>Car</code> will have only one member -
+                <code>horsePowers</code> and the code won't compile
+                due to <code>lines 16 and 17</code>.</li>
+        </ul>
+    </div>

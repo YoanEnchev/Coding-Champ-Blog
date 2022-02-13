@@ -1,0 +1,60 @@
+        <div>
+            <p class="note"><b>Encapsulation</b> is one of the 4 main OOP principles.</p>
+            <p class="note">
+                It protects the class data from access outside the class body.
+            </p>
+            <p class="note">Members that are supposed to be accessed only in the class
+            are labeled with <code>__</code> prefix.</p>
+    
+            <h2 class="h4 my-3">Example of encapsulation</h2>
+            <textarea class="tutorial-example numeric-rows">class Car:
+    # Getter and setters that control access
+    # to the private members:
+    
+    def getModel(self):
+        return self.__model;
+    
+    def setModel(self, value):
+        self.__model = value;
+    
+    def getManifactureYear(self):
+        return self.__manifactureYear;
+    
+    def setManifactureYear(self, value):
+        self.__manifactureYear = value;
+    
+car = Car();
+car.setModel("Toyota Corolla");
+car.setManifactureYear(2020);
+    
+print("Year:", car.getManifactureYear());
+print("Model:", car.getModel());</textarea>
+            <p>Result:</p>
+            <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+    
+            <p>Explanation:</p>
+            <ul>
+                <li>The private members (<code>__model</code> and <code>__manifactureYear</code>)
+                    are supposed to be accessed / modified by
+                    functions defined inside the class (in this case getters and setters).
+                </li>
+                <li>Access outside the class is done via the getters and setters.</li>
+            </ul>
+    
+            <h2 class="h4 my-3">Example of no encapsulation</h2>
+            <textarea class="tutorial-example numeric-rows">class Car:
+    pass;
+    
+car = Car();
+car.model = "Toyota Corolla";
+car.manifactureYear = 2020;
+    
+print("Year:", car.manifactureYear);
+print("Model:", car.model);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+    
+            <p>All members are accessed outside the class body.</p>
+        </div>

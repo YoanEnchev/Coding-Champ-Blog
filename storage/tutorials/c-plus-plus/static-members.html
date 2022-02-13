@@ -1,0 +1,114 @@
+        <div>
+            <p class="note"><b>Static functions and properties</b> are declared in the class body
+                but don't need created instances for their usage.</p>
+
+            <h2 class="h4 my-3">Static Properties</h2>
+            <p class="note"><b>Static properties</b> store value about the class. The value
+                is specific for the class.</p>
+
+            <p>Static properties are declared via the keyword <code>static</code>.</p>
+            <p>The syntax for declaring static member:</p>
+            <textarea class="tutorial-example">static memberType memberName;</textarea>
+
+            <p>The syntax for setting value to static member is:</p>
+            <textarea class="tutorial-example">ClassName::memberName = value;</textarea>
+
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+private:
+	string model;
+
+public:
+	Car(string modelValue)
+	{
+		cout << "Object created." << endl;
+
+		model = modelValue;
+
+		// Increment static member:
+		carsCount++;
+	}
+
+	static int carsCount;
+};
+
+// Set value to static member:
+int Car::carsCount = 0;
+
+void main()
+{
+	cout << "Initial Cars Count: " <<
+		Car::carsCount << endl;
+
+	// create instances:
+	Car carobj1("Toyota Corolla");
+	Car carobj2("Peugeot 508");
+	Car carobj3("Renault Clio");
+
+	cout << "Final Cars Count: " <<
+		Car::carsCount;
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Initial Cars Count: 0
+Object created.
+Object created.
+Object created.
+Final Cars Count: 3</textarea>
+
+            <p>Couple of things to notice:</p>
+            <ul>
+                <li>When an object is created via the parametrized constructor (<code>lines 12 - 20</code>),
+                    then the static member value is incremented (due to <code>line 19</code>).</li>
+                <li>At <code>line 26</code> a value is set to the static member. It happens before
+                    the the main function <code>lines 28 - 40</code> executes.</li>
+                <li>When the static member is printed for the first time (<code>line 31</code>),
+                    it's value is 0.</li>
+                <li>After objects were created via the parametrized constructor, it's value has
+                    reached <code>3</code> - the count of the created objects.</li>
+            </ul>
+            <h2 class="h4 my-3">Static Functions</h2>
+            <p class="note"><b>Static functions</b> cannot use non-static
+                class member though declared in class.
+            </p>
+            <p>They are defined via the keyword <code>static</code>.</p>
+
+            <p>Syntax for defining:</p>
+            <textarea class="tutorial-example">static funcType funcName(args)
+{
+    // code
+}</textarea>
+            <p>Syntax for calling:</p>
+            <textarea class="tutorial-example">ClassName::funcName(args);</textarea>
+
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Person
+{
+private:
+	string name;
+
+public:
+	static void printHi()
+	{
+		cout << "Hello!";
+	}
+};
+
+void main()
+{
+	Person::printHi();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hello!</textarea>
+        </div>

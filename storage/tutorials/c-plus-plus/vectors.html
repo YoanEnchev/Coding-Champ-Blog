@@ -1,0 +1,130 @@
+        <div>
+            <h2>Introduction</h2>
+            <p class="note"><b>Vector</b> is a collection similar to array but with no need  to specify size.</p>
+
+            <p>There are couple of things to remember about it:</p>
+            <section class="row comparisons">
+                <section class="col-12">
+                    <section class="blue px-3 py-2 h-100">
+                        <h3 class="h6 mt-3">Vector</h3>
+                        <ul>
+                            <li>Element at random index can easily be accessed.</li>
+                            <li>It's suitable for small sets of data.</li>
+                            <li>A size can be defined but it's not mandatory to specify it.</li>
+                        </ul>
+                    </section>
+                </section>
+            </section>
+
+            <p class="mt-4">In order to use it the following line should be added:</p>
+            <textarea class="tutorial-example">#include <vector></textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">vector<type> vectorName</textarea>
+            <p><code>type</code> specifies the values type - int, double, string, char etc...</p>
+
+            <h2>Initialization</h2>
+            <h3 class="h5 my-4">Empty Vector</h3>
+            <textarea class="tutorial-example">vector<int> numbers;</textarea>
+
+            <h3 class="h5 my-4">Initial Elements</h3>
+            <textarea class="tutorial-example">vector<double> scores { 87.5, 65, 75.8 };</textarea>
+
+            <h3 class="h5 my-4">Fixed size</h3>
+            <textarea class="tutorial-example">vector<int> vect(5);</textarea>
+            <p>5 elements all of which have value of 0. If strings were hold the value of the elements would be empty string - <code>""</code>.</p>
+
+
+            <h3 class="h5 my-4">Set Default Value</h3>
+            <textarea class="tutorial-example">vector<int> numbers(3, 5);</textarea>
+            <p>Creates <code>3</code> elements all of which have value of <code>5</code>.</p>
+
+
+            <h2>Adding element to the back</h2>
+            <p>This can be done via the <code>push_back</code> function. Like in the following code:</p>
+            <textarea class="tutorial-example">vector<string> names;
+
+names.push_back("Alex");
+names.push_back("John");</textarea>
+
+
+
+            <h2>Accessing specific index</h2>
+            <p class="note">Accessing element at specific index is identical to arrays.</p>
+
+            <p>Let's add elements to vector and access the element at index 1.</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> numbers;
+	numbers.push_back(5);
+	numbers.push_back(6);
+	numbers.push_back(7);
+
+	cout << numbers[1];
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">6</textarea>
+
+            <h3 class="h5 my-4">Outside of bounds</h3>
+            <p class="note">Accessing element outside of vector's bounds results in exception.</p>
+            <p>Let's look at the following example</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> numbers{ 15, 20, 35 };
+
+	cout << numbers[3]; // causes exception
+}</textarea>
+            <p><code>numbers</code> has 3 elements (indexes from 0 to 2) but at <code>line 10</code> the 3rd index is accessed.</p>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of elements in collection.</p>
+            <p>In order to get it the <code>size</code> function is used.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> numbers {15, 20, 35};
+
+	cout << numbers.size();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+
+            <h2>Looping elements</h2>
+            <p>Let's have a vector of ages and print only those who are greater than 20.</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> ages{ 18, 32, 22, 45, 19 };
+
+	for (int age : ages)
+	{
+		if (age > 20)
+		{
+			cout << age << " ";
+		}
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">32 22 45</textarea>
+        </div>

@@ -1,0 +1,67 @@
+        <div>
+            <p class="note">
+                <b>Private</b> properties and functions can be accessed or modified <b>only in the class body</b>.
+            </p>
+            <p class="note">
+                <b>Public</b> members can be accessed or modified <b>anywhere</b> - class body, main function,
+                other function.
+            </p>
+            <p>It can be understood via the following code:</p>
+            <textarea class="tutorial-example numeric-rows">#include <string>
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+private:
+	// set default value for id
+	string id = "1";
+
+public:
+	string name;
+	int age;
+
+	void printData()
+	{
+		cout << "Name:" << name;
+		cout << endl; // new line
+		cout << "Age: " << age;
+		cout << endl; // new line
+		cout << "Id: " << id;
+	}
+};
+
+int main()
+{
+	Person personObject;
+
+	personObject.name = "John";
+	personObject.age = 20;
+	// personObject.id = "new_id";
+	personObject.printData();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Name: John
+Age: 20
+Id: 1</textarea>
+            <p>There are a couple of things to notice about the
+                <b>private</b> property <code>id</code> and the <b>public</b> properties <code>name</code>
+                and <code>age</code>:</p>
+            <ul>
+                <li>Both public and private properties
+                    can be accessed/modified in the class body:
+                    for public properties - <code>lines 18 and 20</code>,
+                    for private properties - <code>line 22</code>.
+                </li>
+                <li>
+                    Outside the class body (like the main function) only public
+                    properties can be accessed/modified - <code>lines 30 and 31</code>.
+                </li>
+                <li>
+                    If we uncomment <code>line 32</code> the code will not compile. Because
+                    a private member (<code>id</code> in this case) cannot be accessed/modified outside
+                    the class body.
+                </li>
+            </ul>
+        </div>

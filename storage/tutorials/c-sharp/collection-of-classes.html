@@ -1,0 +1,100 @@
+        <div>
+        <p class="note"><b>Lists</b> are array-like collections.
+            Unlike arrays, the elements count can be dynamic - there is
+            no need to specify it.</p>
+
+        <p>In order to use list, a library needs to be imported:</p>
+        <textarea class="tutorial-example">using System.Collections.Generic;</textarea>
+
+
+        <h2 class="h4 my-3">Syntax</h2>
+        <p>Defining empty list:</p>
+        <textarea class="tutorial-example">List<type> listName = new List<type>();</textarea>
+
+        <p>Defining list with elements:</p>
+        <textarea class="tutorial-example">List<type> listName = new List<type>(){
+    elem1, elem2 ...
+};</textarea>
+
+        <h2 class="h4 my-3">List of class objects:</h2>
+        <p>List can contain class objects as elements. Example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Car
+    {
+        public string model { get; set; }
+        public double price { get; set; }
+
+        public Car(String model, double price)
+        {
+            this.model = model;
+            this.price = price;
+        }
+
+        public void printData()
+        {
+            Console.WriteLine("Model: " + this.model);
+            Console.WriteLine("Price: " + this.price);
+        }
+    }
+
+    class CarDealership
+    {
+        public List<Car> cars { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CarDealership carDealership = new CarDealership();
+
+            // Initialize list with values:
+            carDealership.cars = new List<Car>() {
+                new Car("Toyota Corolla", 25000),
+                new Car("Ford Fiesta", 20000),
+            };
+
+            // Add element to list;
+            carDealership.cars.Add(new Car("Renault Clio", 20000));
+
+            // Cars count:
+            Console.WriteLine("Car's count: " + carDealership.cars.Count);
+
+
+            // Looping through list elements:
+            foreach (Car car in carDealership.cars)
+            {
+                Console.WriteLine();
+                car.printData();
+            }
+        }
+    }
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Car's count: 3
+
+Model: Toyota Corolla
+Price: 25000
+
+Model: Ford Fiesta
+Price: 20000
+
+Model: Renault Clio
+Price: 20000</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 26</code> a list of classes is defined. </li>
+            <li>At <code>line 36</code> the list is created. It is initialized
+            with two objects.</li>
+            <li>At <code>line 42</code> an element is added to the list.</li>
+            <li>At <code>line 45</code> the count of elements is printed </li>
+            <li>at lines <code>49 - 53</code> list elements are looped.</li>
+        </ul>
+
+    </div>

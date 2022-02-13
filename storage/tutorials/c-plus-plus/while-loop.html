@@ -1,0 +1,74 @@
+        <div>
+            <p class="note"><b>Loops</b> are used to execute a code block
+            many times.</p>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">while(condition)
+{
+    // Code fragment to execute.
+}</textarea>
+
+            <h2>Example</h2>
+            <p>A loop can be used to print all numbers in certain range. Like from 1 to 10</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int num = 1;
+
+	while (num <= 10)
+	{
+		cout << num << " ";
+		num++;
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 2 3 4 5 6 7 8 9 10</textarea>
+            <p>At <code>line 9</code> the condition of the loop is set. Since <code>num</code> is less than 10 the
+            loop executes.</p>
+            <p>In order to print the numbers to 10, <code>num</code> increases by 1 at <code>line 12</code>.</p>
+            <p>The loop ends when <code>num</code> reaches value of 11.</p>
+
+            <h2>Infinite Loop</h2>
+            <p class="note">Infinite Loop has a condition that's always true.</p>
+            <p>It can be created due to development mistake or used in advanced algorithm.</p>
+            <p>Here are examples:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int num = 1;
+
+	while (num < 5)
+	{
+		cout << num << " ";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">1 1 1 1 1 1 1 1 1 ...</textarea>
+            <p>Since <code>num</code> is never changed, the condition <code>num < 5</code> is always true
+            and the loop executes infinitely (or until the program takes more ram than it is allowed).</p>
+            <p>In order to end the loop <code>num</code> needs to be incremented (like <code>num++</code>) inside the loop's body.</p>
+
+
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int num = 1;
+
+	while (true)
+	{
+		cout << "infinite ";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">infinite infinite infinite infinite infinite ...</textarea>
+            <p>Since the condition at <code>line 9</code> is always <code>true</code>, the loop keeps on repeating.</p>
+        </div>

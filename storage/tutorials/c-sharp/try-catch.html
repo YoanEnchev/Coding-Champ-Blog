@@ -1,0 +1,105 @@
+        <div>
+        <p class="note">During program execution an error can be thrown.
+            Instead of ending the program <code>an error can be caught</code> and a certain
+            code can be executed.</p>
+
+        <h2 class="h4 my-3">Error Handling</h2>
+        <p>Syntax for handling error:</p>
+        <textarea class="tutorial-example">try
+{
+    // code that may throw exception.
+}
+catch (ExceptionType exceptionName)
+{
+    // handling the error
+}</textarea>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                Console.WriteLine("Executing try block code.");
+
+                throw new Exception("My error message.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Catching an error: ");
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Executing try block code.
+Catching an error:
+My error message.</textarea>
+        <p>Since an error is thrown in the try block,
+            the code from the catch block is called.</p>
+
+        <h2 class="h4 my-3">Classes and Error Handling</h2>
+        <p>An error can be thrown when a validation fails in setter.</p>
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+	    public string name { get; set; }
+        public int age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Age cannot be less than zero.");
+                }
+
+                age = value;
+            }
+        }
+
+        public Person(string usernameValue, int ageValue)
+        {
+            this.name = usernameValue;
+            this.age = ageValue;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                Person personObj = new Person("Alex", -1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Object creation failed: ");
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Object creation failed:
+Age cannot be less than zero.</textarea>
+
+        <p>At <code>line 38</code> a negative number (<code>-1</code>)
+            is passed for age of the person object. This causes
+            an error to be throw (due to <code>line 18</code>).</p>
+    </div>

@@ -1,0 +1,89 @@
+        <div>
+        <p class="note">During program execution an error can be thrown.
+            Instead of ending the program <code>an error can be caught</code> and a certain
+            code can be executed.</p>
+
+        <h2 class="h4 my-3">Error Handling</h2>
+        <p>Syntax for handling error:</p>
+        <textarea class="tutorial-example">try
+{
+    // code that may throw exception.
+}
+catch (exceptionName)
+{
+    // handling the error
+}</textarea>
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">try
+{
+    console.log("Executing try block code.");
+
+    throw new Error("My error message.");
+}
+catch (ex)
+{
+    console.log("Catching an error:");
+    console.log(ex.message);
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Executing try block code.
+Catching an error:
+My error message.</textarea>
+        <p>Since an error is thrown in the try block,
+            the code from the catch block is called.</p>
+
+        <h2 class="h4 my-3">Classes and Error Handling</h2>
+        <p>An error can be thrown when a validation fails in setter.</p>
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows">class Person
+{
+    get age()
+    {
+        return this._age;
+    }
+
+    set age(ageValue)
+    {
+        if (ageValue < 0)
+        {
+            throw new Error("Age cannot be less than zero.\n");
+        }
+
+        this._age = ageValue;
+    }
+
+    get name()
+    {
+        return this._name;
+    }
+
+    set name(nameValue)
+    {
+        this._name = nameValue;
+    }
+
+    constructor(usernameValue, ageValue)
+    {
+        this.name = usernameValue;
+        this.age = ageValue;
+    }
+}
+
+try
+{
+    let personObj = new Person("Alex", -1);
+}
+catch (ex)
+{
+    console.log("Object creation failed:");
+    console.log(ex.message);
+}</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Object creation failed:
+Age cannot be less than zero.</textarea>
+
+        <p>At <code>line 37</code> a negative number (<code>-1</code>)
+            is passed for age of the person object. This causes
+            an error to be throw (due to <code>line 12</code>).</p>
+    </div>

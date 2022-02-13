@@ -1,0 +1,220 @@
+        <div>
+        <p class="note">The <b>compareTo</b> method is used
+        for sorting collection of class instances.</p>
+
+        <p class="note">The method is also an implementation
+            of the <b>Comparable interface</b>. It can be applied
+        to both <b>List</b> and <b>ArrayList</b>.</p>
+
+        <h2 class="h4 my-3">Syntax</h2>
+
+        <h3 class="h6">Interface implementation:</h3>
+        <textarea class="tutorial-example">class ClassName implements Comparable<ClassName></textarea>
+
+        <h3 class="h6">compareTo method:</h3>
+        <textarea class="tutorial-example">public int compareTo(ClassName classObj) {
+    // code
+}</textarea>
+
+        <h3 class="h6">Importing necessary package:</h3>
+        <textarea class="tutorial-example">import java.util.Collections;</textarea>
+
+        <h3 class="h6">Sorting class collection via the compareTo method:</h3>
+        <textarea class="tutorial-example">Collections.sort(list);</textarea>
+
+        <h2 class="h4 my-3">Examples</h2>
+        <h3 class="h6">Ascending Sort</h3>
+        <textarea class="tutorial-example numeric-rows">import java.util.ArrayList;
+import java.util.Collections;
+
+class Smartphone implements Comparable<Smartphone>
+{
+    private String model;
+    private double price;
+
+    Smartphone(String model, double price)
+    {
+        this.model = model;
+        this.price = price;
+    }
+
+    public int compareTo(Smartphone s) {
+        if(s.getPrice() > this.getPrice()) {
+            return -1;
+        }
+        else if(s.getPrice() == this.getPrice()) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+}
+
+class Shop
+{
+    public ArrayList<Smartphone> smartphones;
+
+    Shop()
+    {
+        this.smartphones = new ArrayList<Smartphone>();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Shop shop = new Shop();
+
+        Smartphone phone_1 = new Smartphone("Samsung Galaxy S 20", 1300);
+        Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+        Smartphone phone_3 = new Smartphone("Samsung Galaxy Fold", 2400);
+
+        shop.smartphones.add(phone_1);
+        shop.smartphones.add(phone_2);
+        shop.smartphones.add(phone_3);
+
+        // Sorting collection via the compareTo method:
+        Collections.sort(shop.smartphones);
+
+        for (Smartphone smartphone: shop.smartphones) {
+            System.out.println("--------");
+            System.out.println(smartphone.getModel());
+            System.out.println(smartphone.getPrice());
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">--------
+Samsung Galaxy S 20
+1300.0
+--------
+Samsung Galaxy Fold
+2400.0
+--------
+Iphone 11
+2600.0</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 15 - 24</code> the <code>compareTo</code> method is
+            defined. It's used to sort the phones by price ascending.</li>
+            <li>
+                If at <code>line 16</code> the sign <code>></code>
+                is changed to <code><</code>, the phones will be sorted by
+                descending.
+            </li>
+            <li>
+                At <code>line 59</code> the collection of phones is sorted.
+                The sorting uses the <code>compareTo</code> method.
+            </li>
+        </ul>
+
+        <h3 class="h6">Descending Sort</h3>
+        <textarea class="tutorial-example numeric-rows">import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Smartphone implements Comparable<Smartphone>
+{
+    private String model;
+    private double price;
+
+    Smartphone(String model, double price)
+    {
+        this.model = model;
+        this.price = price;
+    }
+
+    public int compareTo(Smartphone s) {
+        if(s.getPrice() < this.getPrice()) {
+            return -1;
+        }
+        else if(s.getPrice() == this.getPrice()) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+}
+
+class Shop
+{
+    public List<Smartphone> smartphones;
+
+    Shop()
+    {
+        this.smartphones = new ArrayList<Smartphone>();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Shop shop = new Shop();
+
+        Smartphone phone_1 = new Smartphone("Samsung Galaxy S 20", 1300);
+        Smartphone phone_2 = new Smartphone("Iphone 11", 2600);
+        Smartphone phone_3 = new Smartphone("Samsung Galaxy Fold", 2400);
+
+        shop.smartphones.add(phone_1);
+        shop.smartphones.add(phone_2);
+        shop.smartphones.add(phone_3);
+
+        // Sorting collection via the compareTo method:
+        Collections.sort(shop.smartphones);
+
+        for (Smartphone smartphone: shop.smartphones) {
+            System.out.println("--------");
+            System.out.println(smartphone.getModel());
+            System.out.println(smartphone.getPrice());
+        }
+    }
+}</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>This example has the almost the same code as the ascending
+            sort example</li>
+            <li>
+                There are only 2 differences:
+                <ul>
+                    <li>The comparision sign at <code>line 17</code> is
+                    changed from <code>></code> to <code><</code>.
+                    That's why the sorting is changed from ascending
+                    to descending.</li>
+                    <li>
+                        The collection is changed from <code>ArrayList</code>
+                        to <code>List</code>. The purpose of that is only to
+                        prove that <code>compareTo</code> method can be
+                        applied to both <code>ArrayList</code> and <code>List</code>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">--------
+Iphone 11
+2600.0
+--------
+Samsung Galaxy Fold
+2400.0
+--------
+Samsung Galaxy S 20
+1300.0</textarea>
+    </div>

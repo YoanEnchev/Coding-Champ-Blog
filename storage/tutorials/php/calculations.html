@@ -1,0 +1,176 @@
+        <div>
+            <section class="horizontal-scroller-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Operator</th>
+                        <th>Examples</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3">Addition</td>
+                        <td rowspan="3">+</td>
+                        <td>1 + 3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>2 + 4</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>3.5 + 2.4</td>
+                        <td>5.9</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td rowspan="3">Concatenation</td>
+                        <td rowspan="3">.</td>
+                        <td>'Awe' . 'some'</td>
+                        <td>Awesome</td>
+                    </tr>
+                    <tr>
+                        <td>'3' . '5'</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>10 . ' cats'</td>
+                        <td>10 cats</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Subtraction</td>
+                        <td rowspan="3">-</td>
+                        <td>5 - 3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2 - 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3 - 5</td>
+                        <td>-2</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Multiplication</td>
+                        <td rowspan="3">*</td>
+                        <td>2 * 2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 5</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 0</td>
+                        <td>0</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Division</td>
+                        <td rowspan="3">/</td>
+                        <td>10 / 2</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>0 / 3</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>5 / 0</td>
+                        <td>INF</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td rowspan="3">Remainder Of Division</td>
+                        <td rowspan="3">%</td>
+                        <td>10 % 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4 % 3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>17 % 6</td>
+                        <td>5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <p class="my-3">Explanation for Remainder Of Division</p>
+            <img src="../../imgs/tutorials/division-remainder.png" alt="division-remainder" class="mb-3" style="width: 100%">
+
+
+            <p>Let's start with a program that prints rectangle's area
+                by knowing it's width and height.</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$width = 2;
+$height = 3;
+
+// Calc Area:
+$area = $width * $height;
+echo "Area = " . $area;</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+            <p>Explanation</p>
+            <ul>
+                <li>At <code>line 6</code> width and height are multiplied (via <code>*</code> operator).</li>
+                <li>At <code>line 7</code> string and number are concatenated via <code>.</code> operator.</li>
+            </ul>
+
+            <p>Let's demonstrate the rest of the operators:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$a = 5;
+$b = 2;
+
+echo "A = " . $a;
+echo "<br>"; // Prints new line.
+
+echo "B = " . $b;
+echo "<br>";
+
+echo "A + B = " . ($a + $b);
+echo "<br>";
+echo "A - B = " . ($a - $b);
+echo "<br>";
+echo "A * B = " . ($a * $b);
+echo "<br>";
+
+echo "Remainder of Division:" . ($a % $b);
+echo "<br>";
+echo "Concating strings: ";
+echo "<br>";
+
+$str1 = "Web ";
+$str2 = "Technologies";
+echo $str1 . $str2;
+echo "<br>";
+
+$numericStr1 = "1";
+$numericStr2 = "2";
+echo "1 + 2 = " . $numericStr1 . $numericStr2;</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">A = 5
+B = 2
+A + B = 7
+A - B = 3
+A * B = 10
+Remainder of Division:1
+Concat strings:
+Web Technologies
+1 + 2 = 12</textarea>
+        </div>

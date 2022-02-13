@@ -1,0 +1,156 @@
+        <div>
+            <p class="note"><b>Array</b> stores multiple values of identical type.</p>
+            <p class="note"><b>Array</b> size (values count) is set during initialization.</p>
+
+            <h2>Initialization</h2>
+            <p>There are couple of ways to initialize array:</p>
+
+            <h3 class="h5 my-4">Empty array</h3>
+            <textarea class="tutorial-example">int[] arrayName = new int[10];</textarea>
+            <p>In this case, we declare an array which can contain 10 integer numbers.</p>
+
+            <h3 class="h5 my-4">Initial values</h3>
+            <textarea class="tutorial-example">string[] colors = { "red", "green", "blue" };</textarea>
+            <p>In this example an array of 3 string values is created.</p>
+
+            <h3 class="h5 my-4">Defining array size via variable</h3>
+            <textarea class="tutorial-example">int size = 4;
+int[] arrayName = new int[size];</textarea>
+            <p>Creates array with 4 elements.</p>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of elements in array.</p>
+            <p>It's accessed via the <code>Length</code> property.</p>
+
+            <textarea class="tutorial-example">double[] prices = { 15, 20, 30 };
+Console.Write(prices.Length);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+
+
+
+            <h2>Accessing values</h2>
+            <p class="note">Array's values are accessed via indexes <b>starting from 0</b>.</p>
+            <p>If we declare the following array:</p>
+            <textarea class="tutorial-example">int[] scores = { 60, 78, 95, 88 };</textarea>
+            <p>It's elements are:</p>
+            <img src="../../imgs/tutorials/array-indexing.png" alt="array-indexing" style="width: 100%">
+
+            <p class="mt-2">So if we type the following line:</p>
+            <textarea class="tutorial-example">Console.Write(scores[0] + " " + scores[1]);</textarea>
+            <p>It will print:</p>
+            <textarea class="tutorial-example text-only">60 78</textarea>
+
+            <h3 class="h5 my-4">Index out of Bounds</h3>
+            <p class="note">Accessing index outside of the array results in throwing exception.</p>
+
+            <p>Let's have an array with 4 elements. If we access the
+                4th or higher index, the program will throw exception.</p>
+            <p>Such example is:</p>
+            <textarea class="tutorial-example">int[] scores = { 60, 78, 95, 88 };
+System.out.print(scores[4]);</textarea>
+
+            <h3 class="h5 my-4">Printing All Elements</h3>
+            <p>Let's have an example in which all elements of array are printed.</p>
+            <textarea class="tutorial-example">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] scores = { 60, 78, 95, 88 };
+
+            for (int i = 0; i < scores.Length; i++)
+            {
+                Console.Write(scores[i] + " ");
+            }
+        }
+    }
+}
+</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">60 78 95 88</textarea>
+            <p>For loop is a convenient way to access all elements since it can provide numbers from 0 to array's count.</p>
+
+
+            <h3 class="h5 my-4">Accessing empty element</h3>
+            <p class="note">If not specified, elements hold default values.</p>
+            <p>It depends on their type (int, string, double etc...). </p>
+            <p>The most common default value is 0 for numeric types or "" for strings.</p>
+
+            <p>The following example prints element with set and unset value:</p>
+            <textarea class="tutorial-example">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] ages = new int[2];
+            ages[0] = 20;
+
+            Console.WriteLine(ages[0] + " " + ages[1]);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">20 0</textarea>
+
+            <h2>Inserting Elements</h2>
+            <p class="note">Elements can be inserted by specifying index and value.</p>
+
+            <p>Let's have a program which fills array with values:</p>
+            <textarea class="tutorial-example">namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] ages = new int[3];
+
+            ages[0] = 15;
+            ages[1] = 25;
+            ages[2] = 28;
+        }
+    }
+}</textarea>
+
+            <h3 class="h5 my-4">Wrong type insertion</h3>
+            <p>If we define an integer array but try to insert other type of value (like string), it will result in exception:</p>
+            <p>Such example is:</p>
+            <textarea class="tutorial-example">int[] ages = new int[2];
+ages[0] = 20;
+ages[1] = "Smith"; // causes exception</textarea>
+
+            <h2>Calculating Average</h2>
+            <p>To do that we need to find the sum of all elements and divide it to their count:</p>
+            <textarea class="tutorial-example">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] prices = { 15, 20, 30, 45 };
+
+            double sum = 0;
+            int count = prices.Length;
+
+            // Calculate Sum:
+            for (int i = 0; i < count; i++)
+            {
+                sum += prices[i];
+            }
+
+            // Print Average:
+            Console.Write(sum / count);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">27.5</textarea>
+        </div>

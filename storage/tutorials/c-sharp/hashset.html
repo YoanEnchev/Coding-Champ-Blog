@@ -1,0 +1,149 @@
+        <div>
+            <p class="note"><b>HashSet</b> is a collection containing
+                only unique elements.</p>
+
+            <h2>Introduction</h2>
+            <p>In order to use it, the following line needs to be added:</p>
+            <textarea class="tutorial-example">using System.Collections.Generic;</textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">HashSet<type> hashSetName = new HashSet<type>();</textarea>
+
+            <h2>Inserting Data</h2>
+            <p>Insertion is done via the <code>Add</code> function. Like in the following example:</p>
+            <textarea class="tutorial-example">
+using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<string> cities = new HashSet<string>();
+
+            cities.Add("Tokyo");
+            cities.Add("Chicago");
+            cities.Add("Tokyo");
+            cities.Add("Madrid");
+
+            foreach (string city in cities)
+            {
+                Console.Write(city + " ");
+            }
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Tokyo Chicago Madrid</textarea>
+            <p>Notice that <code>Tokyo</code> is contained only once, since no duplicates are allowed.</p>
+
+            <h2>Size</h2>
+            <p class="note">Size is the count of HashSet elements. It's accessed via the <code>Count</code> property.</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<string> cities = new HashSet<string>();
+
+            cities.Add("Tokyo");
+            cities.Add("Chicago");
+            cities.Add("Tokyo");
+            cities.Add("Madrid");
+
+            Console.Write(cities.Count);
+        }
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example">3</textarea>
+
+            <h2>Remove Element</h2>
+            <p>Certain values can be removed via the <code>remove</code> function.</p>
+
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<string> names = new HashSet<string>();
+
+            names.Add("Emily");
+            names.Add("Lily");
+            names.Add("Teo");
+
+            names.Remove("Teo");
+            foreach (string name in names)
+            {
+                Console.Write(name + " ");
+            }
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Emily Lily</textarea>
+
+
+            <h2>Contains</h2>
+            <p>A value can be checked if contained via the <code>contains</code> method.</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<string> names = new HashSet<string>();
+
+            names.Add("Leo");
+            names.Add("Shone");
+            names.Add("Alice");
+
+            Console.WriteLine(names.Contains("Shone"));
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">true</textarea>
+
+            <h2>Loop Through</h2>
+            <p>It can be iterated via for and for-each loop:</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HashSet<string> makes = new HashSet<string>();
+
+            makes.Add("Volvo");
+            makes.Add("Ford");
+            makes.Add("Audi");
+
+            foreach (string make in makes)
+            {
+                Console.Write(make + " ");
+            }
+        }
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Volvo Ford Audi</textarea>
+        </div>

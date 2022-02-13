@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+.CodeMirror {
+  margin: 20px 0px;
+  border: 1px solid #eee;
+  height: auto;
+}
+
+.CodeMirror {
+  /* background-color: rgb(251, 251, 255) !important; */
+  background: linear-gradient(15deg, #fefeff 0%, #fcfaff 0%, #f9f9ff 100%) !important;
+  border-radius: 5px;
+}
+
+.CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.CodeMirror-cursors {
+  visibility: hidden !important;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+
+.swiper-slide .CodeMirror-lines {
+  text-align: left;
+}
+
+.swiper-slide button {
+  background-color: #7629f8;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tutorials-listing li:hover {
+  background: aliceblue;
+}
+
+.alert {
+  text-align: center;
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  color: #fff;
+  width: 100%;
+}
+.alert span {
+  vertical-align: middle;
+}
+.alert .btn {
+  font-size: 13px;
+  background: #fff;
+  /*color: $body-color;*/
+  color: black;
+  margin-left: 1.5rem;
+  vertical-align: middle;
+  /*box-shadow: $box-shadow;*/
+}
+.alert.alert-dismissible {
+  padding-right: 1.25rem !important;
+}
+
+/*
+  @include media-breakpoint-down(xs) { 
+
+    .alert {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+
+      .btn {
+        display: block;
+        margin: .8rem auto 0;
+      }
+    }
+  }
+  */
+section.opened-test {
+  max-width: 800px;
+}
+section.opened-test .wrapper {
+  background-color: aliceblue;
+}
+section.opened-test .answers-listing .answer {
+  margin: 10px 0px;
+}
+section.opened-test .wrapper .questions-navigation,
+section.opened-test .wrapper .question-row,
+section.opened-test .wrapper .answers-listing .answer {
+  background-color: #7629f8;
+  border-radius: 5px;
+  color: white;
+}
+section.opened-test .answers-listing .answer.selected {
+  background: black;
+}
+section.opened-test .CodeMirror {
+  margin-bottom: 7px;
+}
+section.opened-test div.question-row p {
+  font-size: 25px;
+}
+section.opened-test .answers-listing .answer p {
+  font-size: 25px;
+  font-weight: 500;
+}
+section.opened-test .CodeMirror {
+  margin-bottom: 7px;
+}
+section.opened-test .question-container.swiper-slide {
+  max-width: 450px;
+}

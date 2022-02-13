@@ -1,0 +1,107 @@
+        <div>
+        <h2 class="h4 my-3">Getters</h2>
+        <p class="note"><b>Getters</b> return the value of a property. They may also make
+            a small modification of the returned result.</p>
+        <p>Let's look the following example:</p>
+        <textarea class="tutorial-example numeric-rows">class Square
+{
+    get area()
+    {
+        console.log('calling getter');
+        return this.side * this.side;
+    }
+}
+
+let square = new Square();
+
+square.side = 3;
+console.log(square.area);</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">calling getter
+9</textarea>
+
+        <h2 class="h4 my-3">Setters</h2>
+        <p class="note"><b>Setters</b> allow for a property to be modified.
+            They are important since they can provide validation
+            before a value is set.</p>
+
+        <p class="note">Together <b>getters</b> and <b>setters</b>
+        can control access and modification of a class member.</p>
+
+        <p> Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">class Person
+{
+    get name()
+    {
+        return this._name;
+    }
+
+    get age()
+    {
+        return this._age;
+    }
+
+    // basic setter function:
+    set name(nameValue)
+    {
+        this._name = nameValue;
+    }
+
+    // setter function with validation:
+    set age(ageValue)
+    {
+        if (ageValue < 0) {
+            this._age = 0;
+            return;
+        }
+
+        this._age = ageValue;
+    }
+    printData()
+    {
+        console.log("Name: " + this.name);
+        console.log("Age: " + this.age);
+    }
+}
+
+let person = new Person();
+person.name = "Emily";
+person.age = 20;
+// person.age = -1;
+person.printData();</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Name: Emily
+Age: 20</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>Value of the private member <code>name</code> is
+                modified at <code>line 21</code> without any validation.
+            </li>
+            <li>At <code>lines 25 - 33</code> is defined a setter that has validation.
+                If the validation fails a value of <code>0</code> is set at <code>line 28</code>. If validation passes
+                <code>(age >= 0)</code> then the passed value is set (<code>line 32</code>).
+            </li>
+            <li>
+                If we uncomment <code>line 44</code> then
+                the person object's age will have a value of zero. That's due to the validation at <code>line 26</code>.
+            </li>
+            <li>
+                Notice that the additional members (<code>_name</code> and <code>_age</code>) are used
+                inside the class body.
+            </li>
+            <li>Basically the getters and setters for <code>name</code> and <code>age</code>
+            access / modify the <code>_name</code> and <code>_age</code>.</li>
+            <li>if at <code>line 5</code> <code>_name</code> is replaced with <code>name</code>, then
+                a recursion will be formed. That's the reason why properties with <code>_</code> prefix are used.</li>
+            <li>Generally properties with <code>_</code> prefix are meant to be accessed only inside the class body.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Why using getters and setters?</h2>
+        <p class="note">Because private members can have validation before modification (setter) and
+            controlled access (getter).</p>
+        <p>It seems easier to have only public members. This way there is no need for getters
+            and setters. It's a better practice to have private members that are
+            accessed with getter and modified through setter. This way a validation can be
+            provided in a setter and the public access can be done only to some members -
+            those which have getters.</p>
+    </div>

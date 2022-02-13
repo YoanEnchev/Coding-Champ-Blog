@@ -1,0 +1,103 @@
+        <div>
+        <p>A class may have a property that is array and contains class instances.</p>
+
+        <p>Example</p>
+        <textarea class="tutorial-example numeric-rows">class Car {
+    constructor(model, price) {
+        this.model = model;
+        this.price = price;
+    }
+
+    printData() {
+        console.log("Model: " + this.model);
+        console.log("Price: " + this.price);
+    }
+}
+
+class CarDealership {
+    constructor() {
+        this.cars = [];
+    }
+
+    sortByPrice() {
+        // sort cars by price:
+        this.cars.sort(function (a, b) {
+            if(a.price < b.price) {
+                return -1;
+            }
+            else if (a.price === b.price) {
+                return 0;
+            }
+
+            return 1;
+        });
+    }
+
+    listCarsData() {
+        this.cars.forEach(function(car) {
+            console.log("--------");
+            car.printData();
+        });
+    }
+}
+
+carDealership = new CarDealership();
+
+car_1 = new Car("Ford Fiesta", 20000);
+car_2 = new Car("Toyota Corolla", 26000);
+car_3 = new Car("Renault Clio", 18000);
+
+carDealership.cars = [];
+
+// Add elements to the array:
+carDealership.cars.push(car_1);
+carDealership.cars.push(car_2);
+carDealership.cars.push(car_3);
+
+console.log("Before Sorting:");
+console.log('');
+
+carDealership.listCarsData();
+
+carDealership.sortByPrice();
+console.log('');
+console.log("After Sorting:");
+console.log('');
+
+carDealership.listCarsData();</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Before Sorting:
+
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000
+--------
+Model: Renault Clio
+Price: 18000
+
+
+After Sorting:
+
+--------
+Model: Renault Clio
+Price: 18000
+--------
+Model: Ford Fiesta
+Price: 20000
+--------
+Model: Toyota Corolla
+Price: 26000</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 15</code> an empty array is created.</li>
+            <li>At <code>lines 49 - 51</code> elements are added to the array.</li>
+            <li>At <code>lines 20 - 29</code> the array is sorted ascending by price.
+                If at <code>line 21</code> the sign <code><</code> is
+                replaced with <code>></code>, then the sorting would be descending.</li>
+        </ul>
+    </div>

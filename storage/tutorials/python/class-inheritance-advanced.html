@@ -1,0 +1,91 @@
+        <div>
+            <p class="note">In Python a class can inherit one or more classes.</p>
+            <h2 class="h4 my-3">Inheriting multiple classes</h2>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">class A:
+    def printA(self):
+        print("A");
+
+class B:
+    def printB(self):
+        print("B");
+
+class C(A, B):
+    def printC(self):
+        print("C");
+
+
+cObject = C();
+cObject.printA();
+cObject.printB();
+cObject.printC();</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">A
+B
+C</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>At <code>line 9</code> class <code>C</code> inherits two classes
+                    - <code>A</code> and <code>B</code>.</li>
+                <li>Because of that class <code>C</code> has 3 members
+                    functions - <code>printA</code>, <code>printB</code>
+                    and <code>printC</code>.</li>
+            </ul>
+
+            <h2 class="h4 my-3">Multilevel Inheritance</h2>
+            <p class="note">A class can inherit a class that inherits other
+                class. A long chain can be formed.</p>
+            <p class="note">Each child in the chain inherits
+                functions and members from the ones before it (it's parents grandparents etc...).</p>
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">class A:
+    def getA(self):
+        return "A";
+
+class B (A):
+    def getB(self):
+        return "B";
+
+class C (B):
+    def getC(self):
+        return "C";
+
+class D (C):
+    def getD(self):
+        return "D";
+
+
+sampleObject = D();
+print(sampleObject.getA());
+print(sampleObject.getB());
+print(sampleObject.getC());
+print(sampleObject.getD());</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">A
+B
+C
+D</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>There is an inheritance chain: <code>A</code> is inherited by <code>B</code>.
+                    <code>B</code> is inherited by <code>C</code>.
+                    <code>C</code> is inherited by <code>D</code>.
+                </li>
+                <li>
+                    At <code>line 5</code> class <code>B</code> inherits class <code>A</code>.
+                </li>
+                <li>At <code>line 9</code> class <code>C</code> inherits class <code>B</code>.
+                    <code>Class C</code>
+                    inherits the members from <code>B</code> and <code>A</code>.
+                    So class <code>C</code> has
+                    functions - <code>getA</code>, <code>getB</code> and <code>getC</code>.
+                </li>
+                <li>At <code>line 13</code> class <code>D</code>
+                    inherits class <code>C</code>. Class <code>D</code> is at
+                    the bottom of the inherit chain. So it inherits members
+                    from <code>A</code>, <code>B</code> and <code>C</code>.
+                    Class <code>D</code> has functions <code>getA</code>,
+                    <code>getB</code>, <code>getC</code> and <code>getD</code>.
+                </li>
+            </ul>
+        </div>

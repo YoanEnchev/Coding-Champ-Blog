@@ -1,0 +1,86 @@
+        <div>
+            <p class="note"><b>Function</b> is a code block that executes certain task.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">funcType funcName(args)
+{
+    // Code to execute.
+}</textarea>
+
+            <h2>Void Example</h2>
+            <p class="note">A void function doesn't return any value.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example">public class Main {
+    public static void main(String[] args) {
+        // Calling a function:
+        printHi();
+    }
+
+    static void printHi() {
+        System.out.print("Hi!");
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hi!</textarea>
+
+            <h2>Returning Result</h2>
+            <p class="note">Via the <b>return</b> keyword a result can be returned.</p>
+            <p>Let's have an example in which rectangle's area is calculated by passing arguments
+                about it's sides.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example numeric-rows">public class Main {
+    public static void main(String[] args) {
+        double area = calcRectangleArea(3, 4);
+        System.out.print(area);
+    }
+
+    static double calcRectangleArea(double widthArg, double heightArg) {
+        return widthArg * heightArg;
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">12</textarea>
+
+            <p>There are couple of things to mark:</p>
+            <ul>
+                <li>A functions is defined at <code>lines 7 - 9</code>. It accepts two arguments -
+                    <code>widthArg</code> and <code>heightArg</code> both of type <code>double</code>.</li>
+                <li>The function <code>calcRectangleArea</code> returns a <code>double</code> result.</li>
+                <li><code>calcRectangleArea</code> is called at <code>line 3</code>.</li>
+                <li>It's returned value is set in the variable <code>area</code>.</li>
+            </ul>
+
+            <h2>Common Exceptions</h2>
+            <h3 class="h5 my-4">Return Mismatch</h3>
+            <p>If a function returns value different than the specified type, it causes an exception.</p>
+            <textarea class="tutorial-example">static string returnName() {
+	return 5; // Causes exception.
+}</textarea>
+            <p>In this case <code>5</code> should be replaced with string value.</p>
+            <h3 class="h5 my-4">Arguments Type Mismatch</h3>
+            <textarea class="tutorial-example numeric-rows">public class Main {
+    public static void main(String[] args) {
+        functionName("John"); // causes exception
+    }
+
+    static int functionName(int arg) {
+        return 5;
+    }
+}</textarea>
+            <p>At<code>line 6</code> the function expects argument of type <code>int</code>.</p>
+            <p>At <code>line 3</code> an argument of string type is passed.</p>
+            <p>The passed argument at <code>line 3</code> should be replaced with integer value.</p>
+
+            <h3 class="h5 my-4">Arguments Count Mismatch</h3>
+            <textarea class="tutorial-example">public class Main {
+    public static void main(String[] args) {
+        calcTrapezoidArea(3,4); // causes exception
+    }
+
+    static double calcTrapezoidArea(double a, double b, double h) {
+        return (a + b) / 2 * h;
+    }
+}</textarea>
+            <p>The function <code>calcTrapezoidArea</code> expects 3 arguments but only 2 are passed to it.</p>
+        </div>

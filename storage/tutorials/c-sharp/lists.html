@@ -1,0 +1,141 @@
+        <div>
+            <h2>Introduction</h2>
+            <p class="note"><b>List</b> is a collection similar to array but with dynamic size.</p>
+
+            <p>Simply it's size is not necessary to be set and changes when element is added / removed.</p>
+
+            <p class="mt-4">In order to use it the following line should be added:</p>
+            <textarea class="tutorial-example">using System.Collections.Generic;</textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">List<int> ages = new List<int>();</textarea>
+            <p><code>type</code> specifies the values type - int, double, string etc...</p>
+
+            <h2>Initialization</h2>
+            <h3 class="h5 my-4">Empty</h3>
+            <textarea class="tutorial-example">List<int> arrList = new List<int>();</textarea>
+
+            <h3 class="h5 my-4">With Elements</h3>
+            <textarea class="tutorial-example">List<int> list = new List<int>() { 2, 3, 7 };</textarea>
+
+            <h2>Adding element to the back</h2>
+            <p>This can be done via the <code>Add</code> function. Like in the following code:</p>
+            <textarea class="tutorial-example">List<int> ages = new List<int>();
+
+ages.Add(18);
+ages.Add(32);</textarea>
+
+
+
+            <h2>Accessing Element</h2>
+            <p class="note">Elements are accessed via their index.</p>
+
+            <p>Let's add elements to list and access the element at index 1.</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = new List<int>();
+
+            numbers.Add(5);
+            numbers.Add(6);
+            numbers.Add(7);
+
+            Console.Write(numbers[1]);
+        }
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">6</textarea>
+
+            <h3 class="h5 my-4">Outside of bounds</h3>
+            <p class="note">Accessing element outside of list's bounds results in exception.</p>
+            <p>Let's look at the following example</p>
+            <textarea class="tutorial-example numeric-rows">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = new List<int>();
+
+            numbers.Add(15);
+            numbers.Add(26);
+            numbers.Add(37);
+
+            Console.Write(numbers[3]);
+        }
+    }
+}</textarea>
+            <p><code>numbers</code> has 3 elements (indexes from 0 to 2) but at <code>line 16</code> the 3rd index is accessed.</p>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of elements in collection.</p>
+            <p>In order to get it the <code>Count</code> property is used.</p>
+
+            <p>Example:</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = new List<int>();
+
+            numbers.Add(15);
+            numbers.Add(26);
+            numbers.Add(37);
+
+            Console.Write(numbers.Count);
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+
+            <h2>Looping elements</h2>
+            <p>Let's have a list of ages and print only those who are greater than 20.</p>
+            <textarea class="tutorial-example">using System;
+using System.Collections.Generic;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> ages = new List<int>();
+
+            ages.Add(18);
+            ages.Add(32);
+            ages.Add(22);
+            ages.Add(45);
+            ages.Add(19);
+
+
+            foreach (int age in ages)
+            {
+                if (age > 20)
+                {
+                    Console.Write(age + " ");
+                }
+            }
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">32 22 45</textarea>
+            <p>It can be done via for-loop too.</p>
+        </div>

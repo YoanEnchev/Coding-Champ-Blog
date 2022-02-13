@@ -1,0 +1,38 @@
+        <div>
+            <p class="note"><b>Recursion</b> is a technique in which a functions calls itself.</p>
+
+            <h2>Factorial Example</h2>
+            <p>Factorial is the multiplication of each numbers from 1 to N. For example 4 factorial = 4 * 3 * 2 * 1 = 24. </p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+
+$factorial = calcFactorial(4);
+echo $factorial;
+
+function calcFactorial($num) {
+    if ($num == 0) {
+        return 1;
+    }
+
+    return $num * calcFactorial($num - 1);
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">24</textarea>
+            <p>At <code>line 11</code> the function calls itself but with decremented value as argument.</p>
+            <p>The recursion should eventually end which is done at <code>line 8</code>.</p>
+
+            <h2>Stack Overflow Exception</h2>
+            <p class="note">Recursion must have an end condition so an endless self calling is prevented.</p>
+            <p>If not stack overflow exception is thrown.</p>
+
+            <p>The following example causes such:</p>
+            <textarea class="tutorial-example"><?php
+
+recursiveFunc(); // Causes exception.
+
+function recursiveFunc() {
+    recursiveFunc();
+}</textarea>
+                <p>Be careful when using recursion. It may force you to restart your computer or server
+                if the recursion is infinite.</p>
+        </div>

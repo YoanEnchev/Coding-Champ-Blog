@@ -1,0 +1,86 @@
+        <div>
+            <h2>Data Types</h2>
+            <p class="note">Data types define what information is stored</p>
+            <p>The most used of them are:</p>
+            <section class="horizontal-scroller-table">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <td>Type</td>
+                        <td>Description</td>
+                        <td>Example</td>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">int</th>
+                    <td scope="3">Whole number. </td>
+                    <td>$var = 5;</td>
+                </tr>
+                <tr>
+                    <th scope="row">double</th>
+                    <td scope="3">Floating point number.</td>
+                    <td>$var = 2.45;</td>
+                </tr>
+                <tr>
+                    <th scope="row">String</th>
+                    <td scope="3">Sequence of characters (text).</td>
+                    <td>$var = 'PHP is awesome!';</td>
+                </tr>
+                <tr>
+                    <th scope="row">char</th>
+                    <td scope="3">Represents a single symbol.</td>
+                    <td>$var = '*';</td>
+                </tr>
+                <tr>
+                    <th scope="row">boolean</th>
+                    <td scope="3">Can have only 2 values - <code>true</code> or <code>false</code>.</td>
+                    <td>$var = true;</td>
+                </tr>
+                </tbody>
+            </table>
+            </section>
+
+            <h2>Printing Data</h2>
+            <p>It's done using <code>echo</code>.</p>
+            <textarea class="tutorial-example">echo 'Message to print.';</textarea>
+
+            <h2>Variables</h2>
+            <p class="note">The variables are used to store data of certain type.</p>
+            <p>Their value can be changed any time.</p>
+
+            <p>Example of variables definitions:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+ // Declaring variable with value:
+ $num1 = 5;
+
+ // Declaring variable and setting value later:
+ $num2;
+ $num2 = -3;
+
+ // String values are set in single or double quotes.
+ $name1 = 'Alex';
+ $name2 = "Smith";
+
+ // Char values are set in single or double quotes.
+ $letter = 'c';
+
+ $boolVariable1 = true;
+ $boolVariable2 = false;</textarea>
+
+
+            <h2>Basic program example:</h2>
+            <p>Write a program in which variables are defined and printed.</p>
+
+            <p>Solution:</p>
+            <textarea class="tutorial-example numeric-rows"><?php
+$num = 5;
+$device = 'PC';
+
+echo $num;
+echo ' ';
+echo $device;</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">5 PC</textarea>
+        </div>

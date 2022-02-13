@@ -1,0 +1,43 @@
+        <div>
+            <p class="note">Nested if statement is placed inside other if block.</p>
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">if(condition1)
+{
+    // code to execute if condition1 is true
+    if(condition2)
+    {
+        // code to execute if condition1 is true and condition2 is true
+    }
+}</textarea>
+
+            <h2>Basic example</h2>
+            <p>Let's validate the price of a product in smartphone store and print proper messages about it.</p>
+            <p>The rule is that price must be above 500 $ and below 2000 $.</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double price = 3000;
+
+	if (price >= 500)
+	{
+		cout << "Price is above the minimum." << endl;
+
+		if (price > 2000)
+		{
+			cout << "But needs to be lower than 2000.";
+		}
+	}
+	else
+	{
+		cout << "Price is too low.";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Price is above the minimum.
+But needs to be lower than 2000.</textarea>
+            <p>Since both conditions at <code>line 9 and 13</code> are true, the code at
+            <code>line 15</code> is executed.</p>
+        </div>

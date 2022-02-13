@@ -1,0 +1,113 @@
+        <div>
+            <p class="note"><b>HashSet</b> is a collection containing
+                only unique elements.</p>
+
+            <h2>Introduction</h2>
+            <p>In order to use it, the following line needs to be added:</p>
+            <textarea class="tutorial-example">import java.util.HashSet;</textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">HashSet<type> hashSetName = new HashSet<type>();</textarea>
+
+            <h2>Inserting Data</h2>
+            <p>Insertion is done via the <code>add</code> function. Like in the following example:</p>
+            <textarea class="tutorial-example">
+import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        HashSet<String> cities = new HashSet<String>();
+
+        cities.add("Tokyo");
+        cities.add("Chicago");
+        cities.add("Tokyo");
+        cities.add("Madrid");
+        System.out.println(cities);
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">[Tokyo, Chicago, Madrid]</textarea>
+            <p>Notice that <code>Tokyo</code> is contained only once, since no duplicates are allowed.</p>
+
+            <h2>Size</h2>
+            <p class="note">Size is the count of HashSet elements. It's accessed via the <code>size</code> function.</p>
+            <textarea class="tutorial-example">import java.util.HashMap;
+import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        HashSet<String> names = new HashSet<String>();
+
+        names.add("John");
+        names.add("Smith");
+        names.add("Smith");
+        names.add("Bell");
+        System.out.println(names.size());
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example">3</textarea>
+
+            <h2>Remove Element</h2>
+            <p>Certain values can be removed via the <code>remove</code> function.</p>
+
+            <textarea class="tutorial-example">
+import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        HashSet<String> names = new HashSet<String>();
+
+        names.add("Emily");
+        names.add("Lily");
+        names.add("Teo");
+
+        names.remove("Teo");
+        System.out.println(names);
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">[Emily, Lily]</textarea>
+
+
+            <h2>Contains</h2>
+            <p>A value can be checked if contained via the <code>contains</code> method.</p>
+            <textarea class="tutorial-example">
+import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        HashSet<String> names = new HashSet<String>();
+
+        names.add("Leo");
+        names.add("Shone");
+        names.add("Alice");
+
+        System.out.println(names.contains("Shone"));
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">true</textarea>
+
+            <h2>Loop Through</h2>
+            <p>It can be iterated via for-each loop:</p>
+            <textarea class="tutorial-example">import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        HashSet<String> makes = new HashSet<String>();
+
+        makes.add("Volvo");
+        makes.add("Ford");
+        makes.add("Audi");
+
+        for (String make : makes) {
+            System.out.print(make + " ");
+        }
+    }
+}</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Volvo Ford Audi</textarea>
+        </div>

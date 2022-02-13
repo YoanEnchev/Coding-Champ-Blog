@@ -1,0 +1,126 @@
+        <div>
+            <p class="note">
+                <b>Polymorphism</b> is one of the 4 main OOP principles.
+                It's the ability to take many forms.
+            </p>
+
+            <h2 class="h4 my-3">Compile time Polymorphism</h2>
+            <p class="note">
+                <b>Compile time Polymorphism</b> occurs in <b>function overloading</b>
+                and <b>operator overloading</b>.
+            </p>
+
+            <p>Example of <b>function overloading</b> - many functions with the same
+                name that accept different arguments:</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+class Sumator
+{
+public:
+	double sum(double num1, double num2)
+	{
+		return num1 + num2;
+	}
+
+	double sum(double num1, double num2, double num3)
+	{
+		return num1 + num2 + num3;
+	}
+};
+
+
+void main()
+{
+	Sumator sumator;
+	cout << "1 + 2 = " << sumator.sum(1, 2) << endl;
+
+	cout << "3 + 4 + 5 = " << sumator.sum(3, 4, 5);
+}</textarea>
+            <p>Result:</p>
+            <textarea class="tutorial-example text-only">1 + 2 = 3
+3 + 4 + 5 = 12</textarea>
+
+            <h2 class="h4 my-3">Runtime Polymorphism</h2>
+            <p class="note">
+                <b>Runtime Polymorphism</b> occurs in <b>function overriding </b>.
+            </p>
+            <p>This means that the base class has a function that's being overwritten in the
+                children classes:</p>
+            <textarea class="tutorial-example">#include <iostream>
+
+using namespace std;
+
+class Figure
+{
+public:
+	// base class method that'll be overwritten:
+	double calcArea()
+	{
+		return 0;
+	}
+};
+
+// Square extends Figure class
+class Square : public Figure
+{
+private:
+	double side;
+
+public:
+	Square(double sideValue)
+	{
+		side = sideValue;
+	}
+
+	// overwriting base method:
+	double calcArea()
+	{
+		return side * side;
+	}
+};
+
+// Triangle extends Figure class
+class Triangle : public Figure
+{
+private:
+	double a;
+	double b;
+	double c;
+
+public:
+	Triangle(double aVal, double bVal, double cVal)
+	{
+		a = aVal;
+		b = bVal;
+		c = cVal;
+	}
+
+	// overwriting base method:
+	double calcArea()
+	{
+		double p = (a + b + c) / 2;
+		double area = sqrt(p * (p - a) * (p - b) * (p - c));
+
+		return area;
+	}
+};
+
+void main()
+{
+	Square square(2);
+	cout << "Square Area = " <<
+		square.calcArea() << endl;
+
+	Triangle triangle(3, 4, 5);
+	cout << "Triangle Area = " <<
+		triangle.calcArea();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Square Area = 4
+Triangle Area = 6</textarea>
+
+            <p>The function <code>calcArea</code> in <code>Figure</code> class
+                is overwritten by <code>Square</code> and <code>Triangle</code> classes.</p>
+        </div>

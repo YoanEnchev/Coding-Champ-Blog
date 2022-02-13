@@ -1,0 +1,72 @@
+.puzzles-form input {
+  margin-left: 2.5rem;
+}
+.puzzles-form .operators input {
+  width: 60px;
+}
+.puzzles-form .variables_constants input {
+  width: 100px;
+}
+.puzzles-form .values input,
+.puzzles-form .others input,
+.puzzles-form .correct-patterns input {
+  width: 120px;
+}
+
+.puzzles-listing .puzzle-container {
+  max-width: 650px;
+  background-color: aliceblue;
+}
+.puzzles-listing .puzzle-container .title {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
+  border-radius: 5px;
+}
+.puzzles-listing .puzzle-container .card-header {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
+}
+.puzzles-listing .puzzle-container .CodeMirror {
+  font-size: 18px;
+  margin: 0px;
+  max-height: 200px;
+}
+.puzzles-listing .puzzle-container .filled-words-counter {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
+  border-radius: 16px;
+  display: inline-block;
+  padding: 4px 15px;
+  float: right;
+  font-weight: 400;
+}
+.puzzles-listing .puzzle-container .words-to-fill-container {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
+}
+.puzzles-listing .puzzle-container .words-to-fill-container .word {
+  padding: 5px 14px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 5px 2px;
+  color: white;
+}
+.puzzles-listing .puzzle-container .row div button {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
+}
+.puzzles-listing .puzzle-container .missing-word {
+  background: rgba(8, 10, 255, 0.5);
+  border-radius: 5px;
+  min-width: 40px;
+  text-align: center;
+  padding: 0px 10px;
+  color: white;
+  display: inline-block;
+}
+.puzzles-listing .puzzle-container .category-block {
+  width: fit-content;
+}
+.puzzles-listing .puzzle-container .edit-puzzle-btn {
+  background: blueviolet;
+  border-radius: 5px;
+}
+.puzzles-listing .puzzle-container .delete-puzzle-btn {
+  background: red;
+  border-radius: 5px;
+}

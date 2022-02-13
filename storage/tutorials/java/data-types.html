@@ -1,0 +1,99 @@
+        <div>
+            <h2>Data Types</h2>
+            <p class="note">Data types define what information is stored</p>
+            <p>The most used of them are:</p>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">int</th>
+                    <td scope="3">Whole number.</td>
+                </tr>
+                <tr>
+                    <th scope="row">double</th>
+                    <td scope="3">Floating point number.</td>
+                </tr>
+                <tr>
+                    <th scope="row">String</th>
+                    <td scope="3">Sequence of characters (text).</td>
+                </tr>
+                <tr>
+                    <th scope="row">char</th>
+                    <td scope="3">Represents a single symbol.</td>
+                </tr>
+                <tr>
+                    <th scope="row">boolean</th>
+                    <td scope="3">Can have only 2 values - <code>true</code> or <code>false</code>.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>Reading And Printing Data</h2>
+            <ul>
+                <li><code>Scanner scanner = new Scanner(System.in);</code>
+                    followed by <code>scanner.nextLine();</code> - reading data.</li>
+                <li><code>System.out.println();</code> - printing data.</li>
+            </ul>
+
+            <p>In order to use <code>Scanner</code> the following line needs to be added
+                <code>import java.util.Scanner;</code>.</p>
+
+            <h2>Variables</h2>
+            <p class="note">The variables are used to store data of certain type.</p>
+            <p>Their value can be changed any time.</p>
+
+            <p>Example of variables definitions:</p>
+            <textarea class="tutorial-example numeric-rows">public class Main {
+    public static void main(String[] args) {
+        // Declaring variable with value:
+        int num1 = 5;
+
+        // Declaring variable and setting value later:
+        int num2;
+        num2 = -3;
+
+        // String values are set between double quotes.
+        String name = "Alex";
+
+        // Char values are set between single quotes.
+        char letter = 'c';
+
+        boolean boolVariable1 = true;
+        boolean boolVariable2 = false;
+    }
+}</textarea>
+
+
+            <h2>Basic program example:</h2>
+            <p>Write a program that prints "Starting the program."
+                Afterwards it must read a word and print it back.</p>
+
+            <p>Solution:</p>
+            <textarea class="tutorial-example numeric-rows">// So scanner can be used.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Starting the program.");
+
+        // Read user's input:
+        Scanner scanner = new Scanner(System.in);
+        String read = scanner.nextLine();
+
+        // Print back the user's input:
+        System.out.println(read);
+    }
+}</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-only">blue</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Starting the program.
+blue</textarea>
+
+            <p>Explanation: </p>
+            <ul>
+                <li> <code>import java.util.Scanner;</code> is added so <code>Scanner</code>
+                    can be used.</li>
+                <li> <code>System.out.println</code> is used to print message to the user.</li>
+            </ul>
+        </div>

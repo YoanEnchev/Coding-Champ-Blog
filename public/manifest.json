@@ -1,0 +1,21 @@
+{
+    "name": "Coding Champ",
+    "description": "Coding Champ - Learn Programming via challenges.",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "start_url": ".",
+    "theme_color": "#ffffff",
+    "background_color": "#1da7da",
+    "display": "standalone",
+    "orientation": "portrait"
+}

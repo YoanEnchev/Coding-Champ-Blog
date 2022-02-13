@@ -1,0 +1,113 @@
+        <div>
+        <p class="note">
+            <b>Polymorphism</b> is one of the 4 main OOP principles.
+            It's the ability to take many forms.
+        </p>
+
+        <h2 class="h4 my-3">Compile time Polymorphism</h2>
+        <p class="note">
+            <b>Compile time Polymorphism</b> occurs in <b>function overloading</b>.
+        </p>
+
+        <p>Example of <b>function overloading</b> - many functions with the same
+            name that accept different arguments:</p>
+        <textarea class="tutorial-example numeric-rows">class Sumator
+{
+    public
+    double sum(double num1, double num2)
+    {
+        return num1 + num2;
+    }
+
+    double sum(double num1, double num2, double num3)
+    {
+        return num1 + num2 + num3;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Sumator sumator = new Sumator();
+        System.out.println("1 + 2 = " + sumator.sum(1, 2));
+        System.out.println("3 + 4 + 5 = " + sumator.sum(3, 4, 5));
+    }
+}</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">1 + 2 = 3.0
+3 + 4 + 5 = 12.0</textarea>
+
+        <h2 class="h4 my-3">Runtime Polymorphism</h2>
+        <p class="note">
+            <b>Runtime Polymorphism</b> occurs in <b>function overriding </b>.
+        </p>
+        <p>This means that the base class has a function that's being overwritten in the
+            children classes:</p>
+        <textarea class="tutorial-example">class Figure
+{
+    public
+    // base class method that'll be overwritten:
+    double calcArea()
+    {
+        return 0;
+    }
+}
+
+class Square extends Figure
+{
+private
+    double side;
+
+    Square(double sideValue)
+    {
+        side = sideValue;
+    }
+
+    // overwriting base method:
+    public double calcArea()
+    {
+        return side * side;
+    }
+}
+
+class Triangle extends Figure
+{
+private
+    double a;
+    double b;
+    double c;
+
+    Triangle(double aVal, double bVal, double cVal)
+    {
+        a = aVal;
+        b = bVal;
+        c = cVal;
+    }
+
+    // overwriting base method:
+    public double calcArea()
+    {
+        double p = (a + b + c) / 2;
+        double area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+        return area;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Square square = new Square(2);
+        System.out.println("Square Area = " + square.calcArea());
+
+        Triangle triangle = new Triangle(3, 4, 5);
+        System.out.println("Triangle Area = " + triangle.calcArea());
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Square Area = 4.0
+Triangle Area = 6.0</textarea>
+
+        <p>The function <code>calcArea</code> in <code>Figure</code> class
+            is overwritten by <code>Square</code> and <code>Triangle</code> classes.</p>
+    </div>

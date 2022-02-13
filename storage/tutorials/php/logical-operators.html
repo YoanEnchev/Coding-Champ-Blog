@@ -1,0 +1,110 @@
+        <div>
+            <p class="note"><b>Logical Operators</b> return
+                boolean result which makes them suitable for if statements.</p>
+
+            <section class="horizontal-scroller-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3">!</td>
+                        <td rowspan="3">Not - inverse the value.</td>
+                        <td>!true</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>!false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>!(2 + 3 == 5)</td>
+                        <td>false</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3">&&</td>
+                        <td rowspan="3">And
+                            <ul>
+                                <li>true if all statements are true. </li>
+                                <li>false - if one or more statements are false.</li>
+                            </ul>
+                        </td>
+                        <td>true && true && true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>false && false && false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>true && false</td>
+                        <td>false</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3">||</td>
+                        <td rowspan="3">Or
+                            <ul>
+                                <li>true if one or more statements are true. </li>
+                                <li>false - if all statements are false.</li>
+                            </ul>
+                        </td>
+                        <td>true || true || true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>false || false || false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>true || false</td>
+                        <td>true</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <h2>Example</h2>
+            <p>Let's look at the following example. Depending on a test score, determine whether the score
+                is low, medium, high or invalid following these rules:</p>
+            <ul>
+                <li>0 to 50 - low</li>
+                <li>51 to 75 - medium</li>
+                <li>76 to 100 - high</li>
+                <li>less than 0 or more than 100 - invalid</li>
+            </ul>
+            <textarea class="tutorial-example numeric-rows"><?php
+$score = 80;
+
+if ($score >= 0 && $score <= 50) {
+    echo "low";
+}
+
+if ($score >= 51 && $score <= 75) {
+    echo "medium";
+}
+
+if ($score >= 76 && $score <= 100) {
+    echo "high";
+}
+
+if ($score < 0 || $score > 100) {
+    echo "invalid";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">high</textarea>
+            <p>Explanation:</p>
+            <ul>
+                <li>To check whether a number is between 2 values && (AND) operator can be used.</li>
+                <li><code>Line 4</code> checks whether number is greater or equal to 0
+                    and if it's less or equal to 50.</li>
+                <li><code>Line 16</code> checks whether number is less than 0 or if it's greater than 100.</li>
+            </ul>
+        </div>

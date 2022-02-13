@@ -1,0 +1,40 @@
+        <div>
+            <p class="note"><b>Reference passing</b> allows variable to be modified
+                by the function it's passed to.</p>
+
+            <h2>Passing By Value</h2>
+            <p class="note">Primitive types (numbers, strings etc...)
+                are passed by value.</p>
+
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example">def incrementValue(num):
+    num += 1;
+
+num = 0;
+incrementValue(num);
+
+print(num);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">0</textarea>
+
+            <p><code>num</code> is incremented by 1 in the <code>incrementValue</code> function. Since it's passed
+                by value it remains <code>0</code> outside the <code>incrementValue</code> function.</p>
+
+
+            <h2>Passing By Reference</h2>
+            <p class="note">Arrays and dictionaries are always passed by reference.</p>
+
+            <textarea class="tutorial-example">def modifyArray(arrayArg):
+    arrayArg[0] = 3;
+    arrayArg[1] = 4;
+
+arr = [1, 2];
+modifyArray(arr);
+
+print(arr[0], arr[1]);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3 4</textarea>
+
+            <p>Since arrays are passed by reference, <code>arr</code>
+            values remain modified outside the <code>modifyArray</code> function.</p>
+        </div>

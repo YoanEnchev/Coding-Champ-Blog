@@ -1,0 +1,48 @@
+        <div>
+            <p class="note"><b>Reference passing</b> allows variable to be modified
+                by the function it's passed to.</p>
+
+            <h2>Passing By Value</h2>
+            <p class="note">Primitive types (like numbers and strings)
+                are passed by value.</p>
+
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example">let num = 0;
+incrementValue(num);
+
+console.log(num);
+
+function incrementValue(num) {
+    num++;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">0</textarea>
+
+            <p><code>num</code> is incremented by 1 in the<code>incrementValue</code> function. Since it's passed
+                by value it remains <code>0</code> outside the <code>incrementValue</code> function.</p>
+
+
+            <h2>Passing By Reference</h2>
+            <p class="note">Arrays and objects are always passed by reference.</p>
+
+            <textarea class="tutorial-example">let arr = [1, 2];
+modifyArray(arr);
+console.log(arr[0] + " " + arr[1]);
+
+let obj = {};
+obj.name = "Alex";
+changeObj(obj);
+console.log(obj.name);
+
+function modifyArray(arrayArg) {
+    arrayArg[0] = 3;
+    arrayArg[1] = 4;
+}
+
+function changeObj(objArg) {
+    objArg.name = 'Changed';
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3 4
+Changed</textarea>
+        </div>

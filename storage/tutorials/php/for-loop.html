@@ -1,0 +1,43 @@
+        <div>
+            <p class="note"><b>For loop</b> sets condition variable
+                initialization and modification on one line.</p>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">for(initialization; condition; modification) {
+    // Loop's body.
+}</textarea>
+            <p>initialization - sets variables used in the loop (like <code>$i = 0</code>)</p>
+            <p>condition - Until when the cycle will keep on executing. Like <code>$i <= 10</code>.</p>
+            <p>modification - could avoid infinite loops (like <code>$i++</code>).</p>
+
+            <h2>Basic Example</h2>
+            <p>Let's have a program that prints each number from 1 to 10.</p>
+            <textarea class="tutorial-example"><?php
+for ($i = 1; $i <= 10; $i++) {
+    echo $i . " ";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">1 2 3 4 5 6 7 8 9 10</textarea>
+            <p>The initialization<code>$i = 1</code> performs first - before loop's iterations.</p>
+            <p><code>$i++</code> executes in the end of every iteration.</p>
+
+            <h2>Infinite loops</h2>
+            <p>An infinite for-loop has a condition that's always true or it's unset.</p>
+            <p>Let's look at the following example</p>
+            <textarea class="tutorial-example"><?php
+for (;;) {
+    echo "0 ";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">0 0 0 0 0 0 0 0 0 ...</textarea>
+            <p>Since condition is not specified the loop repeats infinitely.</p>
+
+            <p>There is more than 1 way of defining infinite loop.</p>
+            <textarea class="tutorial-example"><?php
+for ($i = 1;;$i++) {
+    echo $i . " ";
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">1 2 3 4 5 6 7 8 9 10 11 ...</textarea>
+            <p>In this case the only segment that's not specified is the condition therefore the cycle doesn't end.</p>
+        </div>

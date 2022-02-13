@@ -1,0 +1,58 @@
+        <div>
+            <p class="note">
+                <b>Polymorphism</b> is one of the 4 main OOP principles.
+                It's the ability to take many forms.
+            </p>
+    
+            <h2 class="h4 my-3">Runtime Polymorphism</h2>
+            <p class="note">
+                <b>Runtime Polymorphism</b> occurs in <b>function overriding </b>.
+            </p>
+            <p>This means that the base class has a function that's being overwritten in the
+                children classes:</p>
+            <textarea class="tutorial-example">import math;
+
+class Figure:
+    # base class method that'll be overwritten:
+    def calcArea():
+        return 0;
+    
+class Square(Figure):
+    def __init__(self, sideValue):
+        self.side = sideValue;
+    
+    # overwriting base method:
+    def calcArea(self):
+        return self.side * self.side;
+    
+class Triangle(Figure):
+    def __init__(self, aVal, bVal, cVal):
+        self.a = aVal;
+        self.b = bVal;
+        self.c = cVal;
+    
+    # overwriting base method:
+    def calcArea(self):
+        # Get triangles side:
+        a = self.a;
+        b = self.b;
+        c = self.c;
+    
+        # Calculate Area
+        p = (a + b + c) / 2;
+        area = math.sqrt(p * (p - a) * (p - b) * (p - c));
+    
+        return area;
+    
+square = Square(2);
+print("Square Area =", square.calcArea());
+    
+triangle = Triangle(3, 4, 5);
+print("Triangle Area =", triangle.calcArea());</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Square Area = 4
+Triangle Area = 6</textarea>
+    
+            <p>The function <code>calcArea</code> in <code>Figure</code> class
+                is overwritten by <code>Square</code> and <code>Triangle</code> classes.</p>
+        </div>

@@ -1,0 +1,75 @@
+        <div>
+            <p class="note"><b>Static functions and properties</b> are declared in the class body
+                but don't need created instances for their usage.</p>
+    
+            <h2 class="h4 my-3">Static properties</h2>
+            <p class="note"><b>Static properties</b> store value about the class. The value
+                is specific for the class.</p>
+    
+            <p>The syntax for setting value to static property is:</p>
+            <textarea class="tutorial-example">ClassName.memberName = value;</textarea>
+    
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">class Car:
+    
+    def __init__(self, modelValue):
+        print("Object created.");
+        self.model = modelValue;
+        
+        # Increment static member:
+        Car.carsCount += 1;
+        
+        
+# Set value to static member:
+Car.carsCount = 0;
+    
+print("Initial Cars Count:", Car.carsCount);
+    
+# create instances:
+carobj1 = Car("Toyota Corolla");
+carobj2 = Car("Peugeot 508");
+carobj3 = Car("Renault Clio");
+    
+print("Final Cars Count:", Car.carsCount);</textarea>
+    
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Initial Cars Count: 0
+Object created.
+Object created.
+Object created.
+Final Cars Count: 3</textarea>
+    
+            <p>Couple of things to notice:</p>
+            <ul>
+                <li>When an object is created via the constructor (<code>lines 3 - 8</code>),
+                    the static member value is incremented (due to <code>line 8</code>).</li>
+                <li>At <code>line 12</code> an initial value is set to the static member.</li>
+                <li>When the static member is printed for the first time (<code>line 14</code>), it's value
+                    is zero.</li>
+                <li>After objects were created via the constructor, it's value has
+                    reached <code>3</code> - the count of the created objects.</li>
+            </ul>
+            <h2 class="h4 my-3">Static Functions</h2>
+            <p class="note"><b>Static functions</b> cannot use non-static
+                class properties though declared in class.
+            </p>
+            <p>They are defined via the <code>@staticmethod</code> decorator.</p>
+    
+            <p>Syntax for defining:</p>
+            <textarea class="tutorial-example">@staticmethod
+def the_static_method(args):</textarea>
+            <p>Syntax for calling:</p>
+            <textarea class="tutorial-example">ClassName.funcName(args);</textarea>
+    
+            <p>Here's an example:</p>
+            <textarea class="tutorial-example numeric-rows">class Person:
+    @staticmethod
+    def printHi():
+        print("Hello!");
+    
+Person.printHi();</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Hello!</textarea>
+            <p>Notice that <code>printHi</code> does not have any <code>self</code>
+                argument used to access non-static members.</p>
+        </div>

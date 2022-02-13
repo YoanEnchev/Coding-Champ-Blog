@@ -1,0 +1,110 @@
+        <div>
+        <p class="note"><b>Encapsulation</b> is one of the 4 main OOP principles.</p>
+        <p class="note">
+            It protects the class data from access outside the class body.
+        </p>
+
+        <h2 class="h4 my-3">Example of encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Car
+    {
+        // Data inaccesible outside the class body:
+        private string _model;
+        private int _manifactureYear;
+
+        // Getter and setters that control access
+        // to the private members:
+        public string model
+        {
+            get
+            {
+                return _model;
+            }
+
+            set
+            {
+                _model = value;
+            }
+        }
+
+        public int manifactureYear
+        {
+            get
+            {
+                return _manifactureYear;
+            }
+
+            set
+            {
+                _manifactureYear = value;
+            }
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car();
+            car.model = "Toyota Corolla";
+            car.manifactureYear = 2020;
+
+            // Console.WriteLine("Model: " + car._model);
+
+            Console.WriteLine("Year: " + car.manifactureYear);
+            Console.WriteLine("Model: " + car.model);
+        }
+    }
+}</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>The private members (<code>_model</code> and <code>_manifactureYear</code>) can only be accessed / modified by
+                functions defined inside the class (in this case getters and setters). Access outside the class body is done via
+                helping members (<code>model</code> and <code>manifactureYear</code>).
+            </li>
+            <li>If we uncomment <code>line 50</code> the code won't compile. A direct access
+                to private members cannot be done outside the class body.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Example of no encapsulation</h2>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Car
+    {
+        // data accessible outside the class body:
+        public string model;
+        public int manifactureYear;
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car();
+            car.model = "Toyota Corolla";
+            car.manifactureYear = 2020;
+
+            Console.WriteLine("Year: " + car.manifactureYear);
+            Console.WriteLine("Model: " + car.model);
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Year: 2020
+Model: Toyota Corolla</textarea>
+
+        <p>All members are accessible outside the class body.</p>
+    </div>

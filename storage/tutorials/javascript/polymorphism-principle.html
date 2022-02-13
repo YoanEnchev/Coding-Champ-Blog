@@ -1,0 +1,75 @@
+        <div>
+        <p class="note">
+            <b>Polymorphism</b> is one of the 4 main OOP principles.
+            It's the ability to take many forms.
+        </p>
+
+        <h2 class="h4 my-3">Runtime Polymorphism</h2>
+        <p class="note">
+            <b>Runtime Polymorphism</b> occurs in <b>function overriding </b>.
+        </p>
+        <p>This means that the base class has a function that's being overwritten in the
+            children classes:</p>
+        <textarea class="tutorial-example">class Figure
+{
+    // base class method that'll be overwritten:
+    calcArea()
+    {
+        return 0;
+    }
+}
+
+class Square extends Figure
+{
+    constructor(sideValue)
+    {
+        super();
+        this.side = sideValue;
+    }
+
+    // overwriting base method:
+    calcArea()
+    {
+        return this.side * this.side;
+    }
+}
+
+class Triangle extends Figure
+{
+    constructor(aVal, bVal, cVal)
+    {
+        super();
+
+        this.a = aVal;
+        this.b = bVal;
+        this.c = cVal;
+    }
+
+    // overwriting base method:
+    calcArea()
+    {
+        // Get triangles side:
+        let a = this.a;
+        let b = this.b;
+        let c = this.c;
+
+        // Calculate Area
+        let p = (a + b + c) / 2;
+        let area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+        return area;
+    }
+}
+
+let square = new Square(2);
+console.log("Square Area = " + square.calcArea());
+
+let triangle = new Triangle(3, 4, 5);
+console.log("Triangle Area = " + triangle.calcArea());</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Square Area = 4
+Triangle Area = 6</textarea>
+
+        <p>The function <code>calcArea</code> in <code>Figure</code> class
+            is overwritten by <code>Square</code> and <code>Triangle</code> classes.</p>
+    </div>

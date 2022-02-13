@@ -1,0 +1,1 @@
+Sample file so the folder is not ignored by git due to emptiness.

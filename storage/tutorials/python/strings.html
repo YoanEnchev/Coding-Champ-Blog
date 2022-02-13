@@ -1,0 +1,78 @@
+        <div>
+            <p><b>String</b> is a sequence of symbols. All of the
+            symbols can be accessed via their indexes starting from 0.</p>
+
+            <h2>Indexes</h2>
+            <p>Let's say we have the string "computer". It's structure is
+                the following:</p>
+                <img src="../../imgs/tutorials/string.png" alt="string-structure" class="mb-3" style="width: 100%">
+
+
+            <p>So if we need to print the first letter (c) and the 3rd letter (m), we do:</p>
+            <textarea class="tutorial-example">word = "computer";
+print(word[0], word[2]);</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">c m</textarea>
+
+            <h2>Length</h2>
+            <p class="note"><b>Length</b> is the count of the symbols contained in a string.</p>
+            <p>It's accessed via the <code>len</code> function.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example">word = "Hello!";
+print(len(word));</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">6</textarea>
+
+            <p>Via <code>len</code> we can access the last symbol of a string.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example">str = "The quick brown fox jumps over the lazy dog!";
+print(str[len(str) - 1])</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">!</textarea>
+
+            <h2>Access outside of bounds</h2>
+            <p class="note">Accessing string outside of it's bounds results in exception.</p>
+            <p>Let's look the following example:</p>
+            <textarea class="tutorial-example">str = "Phone";
+str[5]</textarea>
+<p>The string has indexes from 0 to 4. Accessing index outside of that bound (in this case 5) causes exception.</p>
+        
+            <h2>Contains</h2>
+            <p>We can check if string is contained in a string via the <code>in</code> operator.</p>
+            <p>Examples:</p>
+            <textarea class="tutorial-example">print('m' in 'simple');
+print('si' in 'simple');
+
+print('z' in 'simple');
+print('S' in 'simple');</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">True
+True
+False
+False</textarea>
+                <p><code>in</code> can be used to check if single or multiple symbols are contained in string.</p>
+                <p>If a negative statment is necessary, then <code>not in</code>
+                needs to be used.</p>
+                <p>Examples:</p>
+                <textarea class="tutorial-example">print('*' not in 'sky');
+print('k' not in 'sky');</textarea>
+                <p>Output:</p>
+                <textarea class="tutorial-example">True
+False</textarea>
+
+
+            <h2>String iteration</h2>
+            <p>All symbols of a string can be iterated via for loop.</p>
+            <p>Let's print all letters of a word that are not vowels:</p>
+            
+            <textarea class="tutorial-example">word = 'composure';
+
+for letter in word:
+    if letter not in 'aeiou':
+        print(letter)</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">c m p s r</textarea>
+        <p>In this case <code>letter not in 'aeiou'</code> means that
+        <code>letter</code> is a symbol that's not a vowel letter.</p>
+
+    </div>

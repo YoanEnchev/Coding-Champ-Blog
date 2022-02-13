@@ -1,0 +1,50 @@
+        <div>
+        <h2 class="h4 my-3">Abstract Class</h2>
+        <p class="note"><b>Abstract Class</b> is a class that can't
+            be instantiated (objects cannot be created).</p>
+        <p>It's supposed to represent something abstract and not specific.</p>
+
+        <p>Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">class Vehicle
+{
+    getInsuranceCost(months){
+        return  0;
+    }
+
+    constructor() {
+        if (this.constructor === Vehicle) {
+            throw new Error('Abstract class "Vehicle" cannot be instantiated directly.');
+        }
+    }
+}
+
+class Car extends Vehicle {
+    // Overwriting method
+    getInsuranceCost(months)
+    {
+        return 25 * months;
+    }
+}
+
+class Bicycle extends Vehicle {}
+
+// let vehicle = new Vehicle();
+let car = new Car();
+console.log( "Car's Year Insurance: " + car.getInsuranceCost(12) + " $");
+
+let bicycle = new Bicycle();
+console.log( "Bike's Year Insurance: " + bicycle.getInsuranceCost(12) + " $");
+</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Car's Year Insurance: 300 $
+Bike's Year Insurance: 0 $</textarea>
+        <p>Explanation</p>
+        <ul>
+            <li>The abstract class <code>Vehicle</code>
+                is defined at <code>lines 1-12</code>.</li>
+            <li>The name of the abstract class is <code>Vehicle</code>.
+                This is something indefinite and it's inherited by other classes.</li>
+            <li>If we uncomment <code>line 24</code> the code won't
+                compile. That's due to the error set at <code>line 9</code>.</li>
+        </ul>
+    </div>

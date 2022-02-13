@@ -1,0 +1,17 @@
+.categories-btns {
+  text-align: center;
+}
+
+.categories-btns button {
+  margin: -5px;
+  background: transparent;
+  border: 1px solid black;
+}
+
+
+
+.categories-btns button.active {
+  background-color: #7629f8 !important;
+  background: linear-gradient(to right, #4776e6, #8e54e9) !important;
+  color: white;
+}

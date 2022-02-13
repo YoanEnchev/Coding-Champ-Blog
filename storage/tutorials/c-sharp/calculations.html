@@ -1,0 +1,184 @@
+        <div>
+            <div class="horizontal-scroller-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Operator</th>
+                        <th>Examples</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3">Addition</td>
+                        <td rowspan="3">+</td>
+                        <td>1 + 3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>2 + 4</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>"ab" + "cd"</td>
+                        <td>abcd</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Subtraction</td>
+                        <td rowspan="3">-</td>
+                        <td>5 - 3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2 - 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3 - 5</td>
+                        <td>-2</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Multiplication</td>
+                        <td rowspan="3">*</td>
+                        <td>2 * 2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 5</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>3 * 0</td>
+                        <td>0</td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="3">Division</td>
+                        <td rowspan="3">/</td>
+                        <td>10 / 2</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>0 / 3</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>5 / 0</td>
+                        <td>Exception - cannot divide by 0.</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td rowspan="3">Remainder Of Division</td>
+                        <td rowspan="3">%</td>
+                        <td>10 % 2</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4 % 3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>17 % 6</td>
+                        <td>5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="my-3">Explanation for Remainder Of Division</p>
+            <img src="../../imgs/tutorials/division-remainder.png" alt="division-remainder" class="mb-3" style="width: 100%">
+
+
+            <p>Let's start with a program that reads width and height
+                of a rectangle and prints it's area.</p>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double width = Double.Parse(Console.ReadLine());
+            double height = Double.Parse(Console.ReadLine());
+
+            // Calc Area:
+            double area = width * height;
+            Console.WriteLine("Area = " + area);
+        }
+    }
+}
+</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-only">3
+2</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+            <p>Explanation</p>
+            <ul>
+                <li>At <code>line 9 and 10</code> width and height are red.</li>
+                <li><code>Double.Parse</code> is used to convert the string input to double.</li>
+                <li>At <code>line 13</code> width and height are multiplied (via <code>*</code> operator).</li>
+            </ul>
+
+            <p>Let's demonstrate the rest of the operators:</p>
+            <textarea class="tutorial-example numeric-rows">using System;
+
+namespace csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Read inputs:
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("A = " + a);
+            Console.WriteLine("B = " + b);
+            Console.WriteLine();
+            Console.WriteLine("A + B = " + (a + b));
+            Console.WriteLine("A - B = " + (a - b));
+            Console.WriteLine("A * B = " + (a * b));
+            Console.WriteLine();
+            Console.WriteLine("Remainder of Division:" + (a % b));
+            Console.WriteLine();
+            Console.WriteLine("Concating strings: ");
+            string str1 = "Web ";
+            string str2 = "Technologies";
+
+            Console.WriteLine(str1 + str2);
+            string numericStr1 = "1";
+            string numericStr2 = "2";
+
+            Console.WriteLine("1 + 2 = " + numericStr1 + numericStr2);
+        }
+    }
+}</textarea>
+            <p>Input:</p>
+            <textarea class="tutorial-example text-onlys">5
+2</textarea>
+
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">A = 5
+B = 2
+A + B = 7
+A - B = 3
+A * B = 10
+
+Remainder of Division:1
+
+Concat strings:
+Web Technologies
+1 + 2 = 12</textarea>
+
+            <p>Notice that <code>+</code> operator can be applied to both numeric and string variables.</p>
+        </div>

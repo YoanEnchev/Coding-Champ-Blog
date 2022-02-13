@@ -1,0 +1,147 @@
+        <div>
+            <h2>Introduction</h2>
+            <p class="note"><b>List</b> is a collection similar to array but without specific size.</p>
+
+            <p>There are couple of things to remember about it:</p>
+            <section class="row comparisons">
+                <section class="col-12">
+                    <section class="blue px-3 py-2 h-100">
+                        <h3 class="h6 mt-3">List</h3>
+                        <ul>
+                            <li>Element at random index cannot be accessed directly.
+                                To do it an iterator must be used.</li>
+                            <li>It's suitable for large sets of data.</li>
+                            <li>A size (elements count) cannot be defined.</li>
+                        </ul>
+                    </section>
+                </section>
+            </section>
+
+            <p class="mt-4">In order to use it the following line should be added:</p>
+            <textarea class="tutorial-example">#include <list></textarea>
+
+            <p>Also if there is need of access to element at specific index, the following needs to be included:</p>
+            <textarea class="tutorial-example">#include <iterator></textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">list<type> listName</textarea>
+            <p><code>type</code> specifies the values type - int, double, string, char etc...</p>
+
+            <h2>Initialization</h2>
+            <h3 class="h5 my-4">Empty List</h3>
+            <textarea class="tutorial-example">list<int> numbers;</textarea>
+
+            <h3 class="h5 my-4">Initial Elements</h3>
+            <textarea class="tutorial-example">list<double> scores { 87.5, 65, 75.8 };</textarea>
+
+            <h2>Looping elements</h2>
+            <p>Let's have a list of ages and print only those who are greater than 20.</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <list>
+
+using namespace std;
+
+int main()
+{
+	list<int> ages{ 18, 32, 22, 45, 19};
+
+	for (int age : ages)
+	{
+		if (age > 20)
+		{
+			cout << age << " ";
+		}
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">32 22 45</textarea>
+
+            <h2>Adding element to the back</h2>
+            <p>This can be done via the <code>push_back</code> function. Like in the following code:</p>
+            <textarea class="tutorial-example">list<string> names;
+
+names.push_back("Alex");
+names.push_back("John");</textarea>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of elements in collection.</p>
+            <p>In order to get it the <code>size</code> function is used.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <list>
+
+using namespace std;
+
+int main()
+{
+	list<double> heights{160, 170, 180};
+	cout << heights.size();
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+
+            <h2>Accessing specific index</h2>
+            <p>Let's add elements to list and access the element at index 1.</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+#include <string>
+#include <list>
+
+// Used to access element at specific index:
+#include <iterator>
+
+using namespace std;
+
+int main()
+{
+	list<string> colors;
+
+	colors.push_back("blue");
+	colors.push_back("green");
+	colors.push_back("pink");
+	colors.push_back("white");
+	colors.push_back("violet");
+
+	// Using iterator reach element at index 3.
+	auto iterator = colors.begin();
+	advance(iterator, 3);
+
+	string colorAtIndex3 = *iterator;
+	cout << colorAtIndex3;
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">white</textarea>
+            <p>There are couple of things to notice:</p>
+            <ul>
+                <li>In order to access element at specific index the iterator library needs to be added
+                    (<code>line 6</code>).</li>
+                <li>The iterator starts from the 0-th index of collection - <code>line 21</code>.</li>
+                <li>Afterwards it's moved to the 3-rd index -  <code>line 22</code>.</li>
+                <li>The iterator points to a specific element which is accessed at <code>line 24</code>.</li>
+            </ul>
+
+            <h3 class="h5 my-4">Outside of bounds</h3>
+            <p class="note">Iterator which moves outside ot list bounds results in exception.</p>
+            <p>Let's look at the following:</p>
+            <textarea class="tutorial-example">#include <iostream>
+#include <string>
+#include <list>
+
+// Used to access element at specific index:
+#include <iterator>
+
+using namespace std;
+
+int main()
+{
+	list<string> colors;
+
+	colors.push_back("blue");
+	colors.push_back("green");
+	colors.push_back("pink");
+
+	auto iterator = colors.begin();
+	advance(iterator, 5); // Results in exception.
+}</textarea>
+            <p>The collection has 3 elements but the iterator moves 5 elements ahead.
+            This causes an exception.</p>
+        </div>

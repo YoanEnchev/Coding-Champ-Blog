@@ -1,0 +1,74 @@
+                <div>
+                    <h2 class="h4 my-3">Getters</h2>
+                    <p class="note"><b>Getters</b> return the value of a property. They may also make
+                        a small modification of the returned result.</p>
+                    <p>Let's look the following example:</p>
+                    <textarea class="tutorial-example numeric-rows">class Square:
+    __side = 5; # default value for __side prop
+    
+    def get_side(self):
+        return self.__side;
+        
+
+sqObj = Square();
+print(sqObj.get_side());</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">5</textarea>
+                    <p>Members that have <code>__</code> prefix are meant to be accessed only inside the class body.</p>
+                    <p>If we need to access it outside the class body a getter needs to be defined.</p>
+                    <p>Basically <code>get_side</code> accesses the private member <code>__side</code>.</p>
+                    <p>Accessing a private member (<code>__side</code> in this case) won't throw exception
+                    but it's a good coding convention private members to be accessed only inside the class body.</p>
+            
+                    <h2 class="h4 my-3">Setters</h2>
+                    <p class="note"><b>Setters</b> allow for a property to be modified.
+                        They are important since they can provide validation
+                        before a value is set.</p>
+            
+                    <p class="note">Together <b>getters</b> and <b>setters</b>
+                    can control access and modification of a class member.</p>
+            
+                    <p> Let's look at the following example:</p>
+                    <textarea class="tutorial-example numeric-rows">class Person:
+    def get_age(self):
+        return self.__age;
+        
+    def set_age(self, value):
+        if value < 0:
+            value = 0;
+        
+        self.__age = value;
+        
+obj1 = Person();
+obj1.set_age(20);
+print(obj1.get_age());
+
+obj2 = Person();
+obj2.set_age(-10);
+print(obj2.get_age());</textarea>
+                    <p>Output:</p>
+                    <textarea class="tutorial-example text-only">20
+0</textarea>
+                    <p>Explanation:</p>
+                    <ul>
+                        <li><code>__age</code> is a private member (because it has <code>__</code> prefix)
+                        so it's supposed to be accessed / modified via it's getters and setters.</li>
+
+                        <li>For <code>obj1</code> a value of 20 is set for the <code>__age</code>
+                        property via it's setter - <code>set_age</code>.</li>
+
+                        <li>For <code>obj2</code> a value of -10 is attempted to be set for the <code>__age</code>
+                        property. Due to the validation at <code>line 6</code> a value of 0 is set.</li>
+
+
+                    </ul>
+            
+                    <h2 class="h4 my-3">Why using getters and setters?</h2>
+                    <p class="note">Because private members can have validation before modification (setter) and
+                        controlled access (getter).</p>
+                    <p>It seems easier to have only public members (without <code>__</code> prefix). This way there is no need for getters
+                        and setters. It's a better practice to have private members that are
+                        accessed with getter and modified through setter. This way a validation can be
+                        provided in a setter and the public access can be done only to some members -
+                        those which have getters.</p>
+                </div>

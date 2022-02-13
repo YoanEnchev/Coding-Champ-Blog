@@ -1,0 +1,89 @@
+        <div>
+            <p class="note"><b>else</b> - to execute code block if
+            condition is not met.</p>
+
+            <p class="note"><b>else if</b> - to check alternative condition
+            if the main one is false.</p>
+
+            <h2>Syntax</h2>
+            <p>else</p>
+            <textarea class="tutorial-example">if (condition)
+{
+    // code to execute if condition is true.
+}
+else
+{
+    // code to execute if condition is false.
+}</textarea>
+            <p>else if</p>
+            <textarea class="tutorial-example">if (condition1)
+{
+    // code to execute if condition1 is true.
+}
+else if (condition2)
+{
+    // code to execute if condition1 is false and condition 1 is true.
+}
+else
+{
+    // code to execute if condition1 and condition2 are false.
+}</textarea>
+            <h2>Else Example</h2>
+            <p>Let's look at a program that checks whether speed
+            is above or below the speed limit for cities (50 km/h).</p>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double speed = 60;
+
+	if (speed <= 50)
+	{
+		cout << "Below Limit";
+	}
+	else
+	{
+		cout << "Above Limit";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">Above Limit</textarea>
+            <p>Since the condition at <code>line 9</code> is false, the code
+            inside else block executes.</p>
+
+            <h2>Else If Example</h2>
+            <p>Let's have a program that categorizes a person depending on his/her height.</p>
+            <p>Rules are the following:</p>
+            <ul>
+                <li>below 160cm - short</li>
+                <li>between 160cm to 185 cm - medium</li>
+                <li>above 185 cm - tall</li>
+            </ul>
+            <textarea class="tutorial-example numeric-rows">#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double height = 172;
+
+	if (height <= 160)
+	{
+		cout << "short";
+	}
+	else if (height <= 185)
+	{
+		cout << "medium";
+	}
+	else
+	{
+		cout << "tall";
+	}
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">medium</textarea>
+            <p>Since the condition at <code>line 9</code> is false and the
+            condition at <code>line 13</code> is true, the code inside else if block executes.</p>
+        </div>

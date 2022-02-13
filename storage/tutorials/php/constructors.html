@@ -1,0 +1,194 @@
+        <div>
+        <p class="note"><b>Constructor</b> is used to create objects. It is a function
+            that executes when object is created.</p>
+        <p>There are different types of constructors.</p>
+
+        <h2 class="h4 my-3">Default Constructor</h2>
+        <p class="note"><b>Default constructor</b> can be used without defining it.</p>
+        <p class="note">If defined it sets default values to class members.</p>
+        <p>Syntax of default constructor:</p>
+        <textarea class="tutorial-example">function ClassName()
+{
+    // code
+}</textarea>
+
+        <p>Syntax of creating object using default constructor:</p>
+        <textarea class="tutorial-example">$objName = new ClassName();</textarea>
+
+        <p>Example of default constructor usage without defining it:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Person
+{
+    private $name;
+    private $age;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+}
+
+$person = new Person();
+echo "Name: " . $person->getName() . "\n";
+echo "Age: " . $person->getAge() . "\n";</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Name:
+Age: </textarea>
+        <p>An object is created via default constructor at <code>line 18</code></p>
+        <p>The <code>name</code>  member has pretty weird
+            value even for default one. For this reason we can define default
+            constructor to set default values.</p>
+
+        <p>Example of defining and using default constructor:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Person
+{
+    private $name;
+    private $age;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    // default constructor:
+    public function Person()
+    {
+        echo "Object creation." . "\n";
+
+        $this->name = "Unknown";
+        $this->age = 0;
+    }
+}
+
+$person = new Person();
+echo "Name: " . $person->getName() . "\n";
+echo "Age: " . $person->getAge() . "\n";</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Object creation.
+Name: Unknown
+Age: 0</textarea>
+        <p>There are couple of things to notice:</p>
+        <ul>
+            <li>The default constructor is defined at <code>18 - 24 lines </code>.</li>
+            <li>At <code>line 27</code> an object is created via the default constructor.
+                The code of the default constructor executes and "Object creation." is printed.</li>
+            <li>The printed name and age (<code>lines 28 and 29</code>) are the same as the
+                ones set in the default constructor (<code>lines 22 and 23</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Parameterized Constructor</h2>
+        <p class="note">The <b>parameterized constructor</b> accepts parameters which
+            usually are used to set value for the object's members.</p>
+        <p>Syntax for parameterized constructor:</p>
+        <textarea class="tutorial-example">
+function ClassName(arg 1, arg 2 ...)
+{
+    // code
+}</textarea>
+        <p>Syntax of creating objects using parameterized constructor:</p>
+        <textarea class="tutorial-example">$objName = new ClassName(arg 1, arg 2 ...);</textarea>
+        <p>Example of class using parameterized constructors</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Person
+{
+    // default value for members:
+    private $name = "Unknown";
+    private $age = 0;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    public function setName($nameNewValue)
+    {
+        $this->name = $nameNewValue;
+    }
+
+    public function setAge($ageNewValue)
+    {
+        $this->age = $ageNewValue;
+    }
+
+    public function printData()
+    {
+        echo "Name: " . $this->getName() . "\n";
+        echo "Age: " . $this->getAge() . "\n";
+    }
+
+    // Parameterized constructor - 2 arguments
+    public function Person($nameValue, $ageValue)
+    {
+        echo "Parametrized constructor. \n";
+
+        $this->setName($nameValue);
+        $this->setAge($ageValue);
+    }
+}
+
+// creating object via
+// parameterized constructor:
+$person = new Person("Alex" ,21);
+$person->printData();</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Parametrized constructor.
+Name: Alex
+Age: 21</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 35 - 41</code> there is a constructor accepting two parameters.</li>
+            <li>The constructor with two parameters is used at <code>line 46</code> and thus
+                "Parametrized constructor." is printed (due to <code>line 37</code>).</li>
+        </ul>
+
+        <h2 class="h4 my-3">Defining constructor via __construct keyword</h2>
+        <p>Except a function with same name as the class, a <code>__construct</code>
+            function can be used for defining constructors.</p>
+
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class Person
+{
+    // default value for members:
+    private $name;
+    private $age;
+
+    public function __construct($nameArg, $ageArg)
+    {
+        echo "Creating object via __construct \n";
+
+        $this->name = $nameArg;
+        $this->age = $ageArg;
+    }
+
+    public function printData()
+    {
+        echo "Name: " . $this->name . "\n";
+        echo "Age: " . $this->age . "\n";
+    }
+}
+
+$person1 = new Person("John", 22);
+$person1->printData();</textarea>
+
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Creating object via __construct
+Name: John
+Age: 22</textarea>
+    </div>

@@ -1,0 +1,121 @@
+        <div>
+            <p class="note"><b>HashMap</b> stores sorted key - value pairs.
+                The keys are unique, can't be modified but can be deleted.</p>
+
+            <h2>Introduction</h2>
+            <p>In order to use it, the following line needs to be added:</p>
+            <textarea class="tutorial-example">import java.util.HashMap;</textarea>
+
+            <h2>Syntax</h2>
+            <textarea class="tutorial-example">HashMap<keyType, valueType> mapName = new HashMap<keyType, valueType>();</textarea>
+
+            <h2>Inserting Data</h2>
+            <p>The inserted data must correspond to the key's and values type.</p>
+            <p>Example:</p>
+            <textarea class="tutorial-example">HashMap<String, Integer> scores = new HashMap<String, Integer>();
+
+scores.put("Smith", 89);
+scores.put("Alex", 85);
+// scores.put(87, "John");</textarea>
+            <p>In this example, 2 records have been inserted with <code>String</code> keys and <code>Integer</code> values.</p>
+            <p>If we uncomment the last line, an exception will be thrown.</p>
+
+            <h2>Accessing Values</h2>
+            <p class="note">Values can be accessed via their keys.</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example numeric-rows">import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Double> drinks = new HashMap<String, Double>();
+
+        drinks.put("Coke", 1.55);
+        drinks.put("Water", 0.80);
+
+        System.out.print(drinks.get("Coke"));
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example">1.55</textarea>
+            <p>The key-value pair for <code>Coke</code> is set at <code>line 7</code>
+                and accessed at <code>line 10</code>.</p>
+
+
+            <h3 class="h5 my-4">Not Set Key</h3>
+            <p class="note">Accessing key that's not set in the map results in a default value - null.</p>
+            <p>Let's look at the following example:</p>
+            <textarea class="tutorial-example">import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Double> drinks = new HashMap<String, Double>();
+
+        drinks.put("Orange Juice", 1.55);
+        drinks.put("Water", 0.80);
+
+        System.out.print(drinks.get("Coke"));
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">null</textarea>
+            <p>The map doesn't contain any <code>Coke</code> key, so null is printed.</p>
+
+            <h2>Iterating Elements</h2>
+            <p>Let's have a program in which students scores are stored in map and printed afterwards.</p>
+            <textarea class="tutorial-example">import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Integer> scores = new HashMap<String, Integer>();
+
+        scores.put("Smith", 89);
+        scores.put("Alex", 75);
+        scores.put("John", 87);
+
+        // keySet gets HashMap keys.
+        for (String name : scores.keySet()) {
+            System.out.println(name + " " + scores.get(name));
+        }
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">
+Alex    75
+Smith    89
+John    87</textarea>
+            <p>Notice that maps store data sorted by their keys. For that reason the names are printed in alphabetical order.</p>
+
+
+            <h2>Removing Elements</h2>
+            <p>That's done via the <code>remove</code> function which accepts key as argument. Like in this example:</p>
+            <textarea class="tutorial-example">HashMap<String, Double> drinks = new HashMap<String, Double>();
+
+drinks.put("Coke", 1.50);
+drinks.put("Orange Juice", 2.30);
+
+drinks.remove("Coke");</textarea>
+
+            <h2>Size</h2>
+            <p class="note"><b>Size</b> is the count of the key-value pairs.</p>
+            <p>It can be accessed via the <code>size</code> function.</p>
+            <p>Let's look at this example:</p>
+            <textarea class="tutorial-example">import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Double> drinks = new HashMap<String, Double>();
+
+        drinks.put("Coke", 1.50);
+        drinks.put("Orange Juice", 2.30);
+        drinks.put("Water", 0.80);
+        drinks.put("Apple Juice", 2.35);
+
+        drinks.remove("Coke");
+
+        System.out.print(drinks.size());
+    }
+}</textarea>
+            <p>Output:</p>
+            <textarea class="tutorial-example text-only">3</textarea>
+            <p>4 records were inserted and 1 is deleted afterwards. This makes for 3 key-value pairs.</p>
+        </div>

@@ -1,0 +1,180 @@
+        <div>
+        <h2 class="h4 my-3">Getters</h2>
+        <p class="note"><b>Getters</b> give public access to private data. They may also make
+            a small modification of the returned result.</p>
+
+        <p>The syntax for defining getter is:</p>
+        <textarea class="tutorial-example">type name { get; }</textarea>
+
+        <p>Let's look the following example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    public class Square
+    {
+        // getter and default value for side;
+        public double side { get; } = 4;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Square square = new Square();
+
+            // usage of getter:
+            double side = square.side;
+
+            // square.side = 8;
+
+            Console.WriteLine(side);
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">4</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>line 8</code> a getter is defined and a default value is
+            set for the class member side.</li>
+            <li>If we uncomment <code>line 20</code> the code won't compile. That's because
+                a setter is not defined.
+            </li>
+        </ul>
+
+        <h2 class="h4 my-3">Setters</h2>
+        <p class="note"><b>Setters</b> allow for a private variable to be modified.
+            They are important since they can provide validation
+            before a value is set.</p>
+
+        <p>The syntax for defining setter is:</p>
+        <textarea class="tutorial-example">type name { set; }</textarea>
+
+        <p> Let's look at the following example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+
+        public void printData()
+        {
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Age: " + age);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person person = new Person();
+            person.name = "Emily";
+            person.age = 20;
+            person.printData();
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Name: Emily
+Age: 20</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>At <code>lines 7 and 8</code> members are defined
+                with getter and setter.
+            </li>
+            <li>
+                At <code>line 22 and 23</code> the setters are used.
+            </li>
+        </ul>
+
+        <h2 class="h4 my-3">Customizing getters and setters</h2>
+        <p>Via customization a getter may return a modification of the member
+        and a setter may hold validation.</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+    class Square
+    {
+        double _side;
+        public double side
+        {
+            get
+            {
+                return Math.Round(_side, 2);
+            }
+
+            set
+            {
+                Console.WriteLine("Value to be set: " + value);
+
+                if (value <= 0)
+                {
+                    return;
+                }
+
+                this._side = value;
+            }
+        }
+
+        public double calcArea()
+        {
+            return _side * _side;
+        }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Square 1:");
+            Square square_1 = new Square();
+            square_1.side = 2.12345; // setter
+
+            Console.WriteLine("Side = " + square_1.side);// getter
+            Console.WriteLine("Area = " + square_1.calcArea());
+
+            Console.WriteLine("- - - - - -");
+            Console.WriteLine("Square 2:");
+
+            Square square_2 = new Square();
+            square_2.side = -1; // setter
+
+            Console.WriteLine("Side = " + square_2.side); // getter
+        }
+    }
+}</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">Square 1:
+Value to be set: 2.12345
+Side = 2,12
+Area = 4.5090399025
+- - - - - -
+Square 2:
+Value to be set: -1
+Side = 0</textarea>
+
+        <p>Explanation:</p>
+        <ul>
+            <li>There are 2 members defined at <code>line 7 and 8</code>.</li>
+            <li>There are getters and setters for <code>side</code>
+            that access / modify <code>_side</code>.</li>
+            <li>The getter returns the value rounded to two digits
+                after decimal point (<code>line 12</code>).</li>
+            <li>At the setter the value is validated. If validation
+            fails the new value is not set (remains the default one - 0).</li>
+            <li>The additional member <code>_side</code> is needed for both getter and setter.
+            If <code>line 24</code> is replaced with <code>this.side = value;</code>
+            then an infinite recursion will be formed for the setter function.</li>
+        </ul>
+
+        <h2 class="h4 my-3">Why using getters and setters?</h2>
+        <p class="note">Because members can have validation before modification (setter) and
+            controlled access (getter).</p>
+    </div>

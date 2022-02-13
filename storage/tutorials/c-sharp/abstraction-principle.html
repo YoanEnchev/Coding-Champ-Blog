@@ -1,0 +1,55 @@
+        <div>
+        <p class="note">
+            <b>Abstraction</b> is one of the 4 main OOP principles.
+        </p>
+        <p class="note">
+            The objective is to present only the necessary information to the user.
+            The unnecessary details remain hidden.
+        </p>
+        <p>Example:</p>
+        <textarea class="tutorial-example numeric-rows">using System;
+
+namespace ConsoleApp1
+{
+
+    class Triangle
+    {
+        private double a;
+        private double b;
+        private double c;
+
+        public Triangle(double aVal, double bVal, double cVal)
+        {
+            a = aVal;
+            b = bVal;
+            c = cVal;
+        }
+
+        public double calcArea()
+        {
+            double p = (a + b + c) / 2;
+            double area = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+
+            return area;
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Triangle triangle = new Triangle(3, 4, 5);
+            Console.WriteLine("Area = " + triangle.calcArea());
+        }
+    }
+}</textarea>
+        <p>Result:</p>
+        <textarea class="tutorial-example text-only">Area = 6</textarea>
+
+        <p>In this example the person who uses the class is only concerned about the area
+            of the triangle.</p>
+        <p>The one who uses the class doesn't care about the way an area
+            is calculated. The important information is the calculated area.
+            The details that remain hidden are the calculations for the area.</p>
+    </div>

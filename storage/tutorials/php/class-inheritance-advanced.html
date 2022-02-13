@@ -1,0 +1,91 @@
+        <div>
+        <h2 class="h4 my-3">Multilevel Inheritance</h2>
+        <p class="note">A class can inherit a class that inherits other
+            class. A long chain can be formed.</p>
+        <p class="note">Each child in the chain inherits
+            functions and members from the ones before it (it's parents grandparents etc...).</p>
+        <p>Here's an example:</p>
+        <textarea class="tutorial-example numeric-rows"><?php
+class A
+{
+    protected $a;
+
+    public function getA()
+    {
+        return $this->a;
+    }
+}
+
+class B extends A
+{
+    protected $b;
+
+    public function getB()
+    {
+        return $this->b;
+    }
+}
+
+class C extends B
+{
+    protected $c;
+
+    public function getC()
+    {
+        return $this->c;
+    }
+}
+
+class D extends C
+{
+    private $d;
+
+    public  function getD()
+    {
+        return $this->d;
+    }
+
+    public function __construct($aValue, $bValue, $cValue, $dValue)
+    {
+        $this->a = $aValue;
+        $this->b = $bValue;
+        $this->c = $cValue;
+        $this->d = $dValue;
+    }
+}
+
+$sampleObject = new D("AValue", "BValue", "CValue", "DValue");
+
+echo $sampleObject->getA() . "\n";
+echo $sampleObject->getB() . "\n";
+echo $sampleObject->getC() . "\n";
+echo $sampleObject->getD() . "\n";</textarea>
+        <p>Output:</p>
+        <textarea class="tutorial-example text-only">AValue
+BValue
+CValue
+DValue</textarea>
+        <p>Explanation:</p>
+        <ul>
+            <li>There is an inheritance chain: <code>A</code> is inherited by <code>B</code>.
+                <code>B</code> is inherited by <code>C</code>.
+                <code>C</code> is inherited by <code>D</code>.
+            </li>
+            <li>
+                At <code>line 12</code> class <code>B</code> inherits class <code>A</code>.
+            </li>
+            <li>At <code>line 22</code> class <code>C</code> inherits class <code>B</code>.
+                <code>Class C</code>
+                inherits the members from <code>B</code> and <code>A</code>.
+                So class <code>C</code> has
+                members - <code>a</code>, <code>b</code> and <code>c</code>.
+            </li>
+            <li>At <code>line 32</code> class <code>D</code>
+                extends class <code>C</code>. Class <code>D</code> is at
+                the bottom of the inherit chain. So it inherits members
+                from <code>A</code>, <code>B</code> and <code>C</code>.
+                Class <code>D</code> has members <code>a</code>,
+                <code>b</code>, <code>c</code> and <code>d</code>
+            </li>
+        </ul>
+    </div>

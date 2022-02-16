@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @if(isset($tracking))
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SW5RDKHPT"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-2SW5RDKHPT');
-        </script>
-    @endif
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -92,8 +80,8 @@
                 Tutorials
               </a>
               <div class="dropdown-menu" aria-labelledby="tutorialsDropdownLink">
-                  @foreach(config('techEntities_link_url_pretty_name') as $url => $name)
-                    <a class="dropdown-item" href="{{ route('tutorials.index', ['techEntityUrl' => $url]) }}">{{$name}}</a>
+                  @foreach($techEntities as $techEntity)
+                    <a class="dropdown-item" href="{{ route('tutorials.index', ['techEntityUrl' => $techEntity->url_name]) }}">{{$techEntity->pretty_name}}</a>
                   @endforeach
               </div>
             </li>

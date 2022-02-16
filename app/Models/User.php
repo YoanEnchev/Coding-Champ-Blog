@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -31,16 +31,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function socialLogin()
-    {
-        return $this->belongsTo('App\SocialLogin');
-    }
-
-    public function purchases()
-    {
-        return $this->hasMany('App\UserPurchase');
-    }
-
     // Needed for access to the fake ID.
     public function getFakeIdAttribute()
     {

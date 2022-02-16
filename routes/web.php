@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// TODO: bind languages by it's url_name instead of pretty name
+
+use App\Models\TechEntity;
+
+View::share('techEntities', TechEntity::all());
 
 Auth::routes(['register' => false]);
-
-use Propaganistas\LaravelFakeId\Facades\FakeId;
 
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {

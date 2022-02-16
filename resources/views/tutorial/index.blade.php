@@ -13,13 +13,14 @@
             <div class="swiper-container tutorials-swiper">
                 <div class="swiper-wrapper">
                     <?php $tutorialNum = 1; ?>
-                    @foreach($categories as $categoryData)
+                    
+                    @foreach($categories as $category)
                         <div class="swiper-slide" data-slide-index="{{ $loop->index }}">
                             <div class="row mx-3">
-                                @foreach($categoryData as $category => $tutorial)
+                                @foreach($category->tutorials as $tutorial)
                                     <a class="col-12 col-sm-6 col-md-4 tutorial-list-item px-0 mb-3"
                                         href="{{route('tutorials.show', [
-                                            'techEntityUrl' => $tutorial->tech_entity_url_name,
+                                            'techEntityUrl' => $techEntity->url_name,
                                             'tutorialUrl' => $tutorial->url_name
                                         ])}}">
                                         <div class="mx-2">

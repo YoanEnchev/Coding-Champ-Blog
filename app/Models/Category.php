@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Category extends Model
 {
     public $timestamps = false;
 
     public function tutorials()
     {
-        return $this->morphedByMany('App\Models\Tutorial');
+        return $this->hasMany('App\Models\Tutorial');
     }
 }

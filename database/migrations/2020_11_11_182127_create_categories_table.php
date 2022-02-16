@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('url_name');
             $table->string('pretty_name');
+            $table->unsignedInteger('priority');
         });
     }
 

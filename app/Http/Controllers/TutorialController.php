@@ -2,101 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\TechEntity;
-use App\Tutorial;
-use App\Category;
-use App\Helpers\Converter;
+use App\Models\TechEntity;
+use App\Models\Tutorial;
+use App\Models\Category;
+use App\Repositories\TechEntityRepository;
+use App\Repositories\CategoryRepository;
+
 use Illuminate\Http\Request;
 use \DB;
 use Illuminate\Support\Facades\File;
 
-class TutorialController extends Controller {
-    public function listInAdminPanel(TechEntity $techEntity) {
-        
-        $techEntityId = $techEntity->id;
-        $categories = Category::with(['tutorials' => function($t) use ($techEntityId) {
-            $t->where('tech_entity_id', '=', $techEntityId)
-                ->with(['questions', 'puzzles'])
-                ->orderBy('priority');
-        }])
-        ->get();
+class TutorialController extends Controller
+{
 
-        $techEntities = TechEntity::all();
+    public function __construct(TechEntityRepository $techEntityRepo, CategoryRepository $categoryRepo, TutorialRepository $tutorialRepo) 
+    {
+        $this->techEntityRepo = $techEntityRepo;
+        $this->categoryRepo = $categoryRepo;
+        $this->tutorialRepo = $tutorialRepo;
+    }
+
+    public function listInAdminPanel(TechEntity $techEntity) {
+
+        $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
+        $techEntities = $this->techEntityRepo->getAll();
 
         $selectedTechEntity = $techEntity;
 
-        return view('tutorial.listing', compact('categories',
-        'techEntities', 'selectedTechEntity'));
+        return view('tutorial.listing', compact('categories', 'techEntities', 'selectedTechEntity'));
     }
 
-    public function index($techEntityUrl) {
+    public function index(string $techEntityUrl) {
 
-        $tutorials = Tutorial::select('tutorials.pretty_name as pretty_name', 'tutorials.url_name as url_name', 'categories.pretty_name as category_pretty_name',
-            'categories.url_name as category_url_name', 'tech_entities.url_name as tech_entity_url_name', 'tech_entities.pretty_name as tech_entity_pretty_name')
-            ->join('tech_entities', 'tutorials.tech_entity_id', '=', 'tech_entities.id')
-            ->join('categories', 'categories.id', '=', 'tutorials.category_id')
-            ->where('tech_entities.url_name', $techEntityUrl)
-            ->orderBy('tutorials.priority')
-            ->get();
+        $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
+        if($techEntity === null) abort(403);
 
-        $categories = [
-            'Basics' => [],
-            'Advanced' => [],
-            'OOP' => []
-        ];
-
-        foreach ($tutorials as $tutorial) {
-            $categories[$tutorial->category_pretty_name][] = $tutorial;
-        }
-
+        $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
         $noScroll = true;
-        $language = $tutorials[0]->tech_entity_pretty_name;
+
+        // For SEO purposes
+        $language = $techEntity->pretty_name;
         $title = $language . ' Tutorials';
-
         $description = 'Simplified tutorials for ' . $language . '. Learn if statements, loops, arrays, data structures, functions, classes, object oriented programming (OOP) and much more.';
-        $tracking = true;
 
-        return view('tutorial.index', compact('categories', 'noScroll', 'title', 'description', 'tracking'));
+        return view('tutorial.index', compact('categories', 'techEntity', 'noScroll', 'title', 'description'));
     }
 
-    public function show($techEntityUrl, $tutorialUrl) {
+    public function show(string $techEntityUrl, string $tutorialUrl) {
+        
+        $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
+        if($techEntity === null) abort(403);
 
-        if(!(is_string($techEntityUrl) || is_string($tutorialUrl))) {
-            return abort(403);
-        }
+        $tutorials = $this->techEntityRepo->getTutorials(); // Shown in side navigation.
+        $tutorial = $this->tutorialRepo->getTutorialsByTechEntityAndUrlName($techEntity, $tutorialUrl);
 
-        $tutorials = Tutorial::select('tutorials.url_name as url_name', 'tutorials.pretty_name as pretty_name','tech_entities.cm_mode as cm_mode',
-        'tech_entities.url_name as techEntityUrlName', 'tech_entities.pretty_name as techEntitPrettyName', 'tutorials.keywords as keywords', 'tutorials.description as description')
-            ->join('tech_entities', 'tutorials.tech_entity_id', '=', 'tech_entities.id')
-            ->join('categories', 'tutorials.category_id', '=', 'categories.id')
-            ->where('tech_entities.url_name', '=', $techEntityUrl)
-            ->orderBy('categories.id')
-            ->orderBy('tutorials.priority')
-            ->get();
+        if(!File::exists($tutorial->filePath)) abort(403);
 
-        if($tutorials->isEmpty()) {
-            return abort(403);
-        }
+        $cmMode = $tutorial->cm_mode;
+        
+        // For SEO purposes: 
+        $title = $techEntity->pretty_name . ' - ' . $tutorialName;
+        $description = $actualTut->description;
+        $keywords = $actualTut->keywords;
 
-        $tutorialName = ucwords(str_replace("_", " ", $tutorialUrl));
-        $tutorialName = ucwords(trim(str_replace("-", " ", $tutorialName)));
-
-        $pathtoFile = storage_path('tutorials/' . $techEntityUrl . '/' . $tutorialUrl . '.html');
-
-        if(File::exists($pathtoFile)) {
-            $content = File::get($pathtoFile);
-            $actualTut = $tutorials->where('url_name', $tutorialUrl)->first();
-
-            $cmMode = $actualTut->cm_mode;
-            $title = $actualTut->techEntitPrettyName . ' - ' . $tutorialName;
-            $description = $actualTut->description;
-            $keywords = $actualTut->keywords;
-            $tracking = true;
-
-            return view('tutorial.show', compact('techEntityUrl' ,'tutorialName', 'title', 'tutorials', 'description', 'keywords', 'content', 'cmMode', 'tracking'));
-        }
-
-        return abort(403);
+        return view('tutorial.show', compact('techEntityUrl' ,'tutorialName', 'title', 'tutorials', 'description', 'keywords', 'content', 'cmMode'));
     }
 
     // Accessed via ajax

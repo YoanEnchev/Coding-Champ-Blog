@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Propaganistas\LaravelFakeId\RoutesWithFakeIds;
 
 class Tutorial extends Model
@@ -26,33 +27,26 @@ class Tutorial extends Model
 
     public function techEntity()
     {
-        return $this->belongsTo('App\TechEntity');
-    }
-
-    public function questions()
-    {
-        return $this->hasMany('App\Question');
-    }
-
-    public function puzzles()
-    {
-        return $this->hasMany('App\Puzzle');
+        return $this->belongsTo('App\Models\TechEntity');
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function tags()
     {
-        return $this->morphToMany('App\Tag');
+        return $this->belongsToMany('App\Models\Tag', 'tutorial_tag');
     }
 
-    
-    public function getUrlAttribute()
+    public function getFilePathAttribute()
     {
-        // TODO: handle names like "Class Inheritance - Part 1"
-        return str_replace('-', '', strtolower($this->name));
+        return storage_path('tutorials/' . $techEntityUrl . '/' . $tutorialUrl . '.html');
+    }
+
+    public function getContentAttribute()
+    {
+        return File::get($this->file_path);
     }
 }

@@ -14,6 +14,8 @@ class CreateTutorialTagTable extends Migration
     public function up()
     {
         Schema::create('tutorial_tag', function (Blueprint $table) {
+            $table->increments('id');
+            
             $table->unsignedInteger('tutorial_id');
             $table->foreign('tutorial_id')->references('id')->on('tutorials');
 

@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TechEntityRepository;
+
 class PrivacyAndTermsController extends Controller {
 
+    public function __construct(TechEntityRepository $techEntityRepo) 
+    {
+        $this->techEntityRepo = $techEntityRepo;
+    }
+
     public function showPrivacyPolicy() {
-        return view('privacy-policy');
+
+        $techEntities = $this->techEntityRepo->getAll();
+        return view('privacy-policy', compact('techEntities'));
     }
 
     public function showTermsAndConditions() {
-        return view('terms-and-conditions');
+
+        $techEntities = $this->techEntityRepo->getAll();
+        return view('terms-and-conditions', compact('techEntities'));
     }
 }

@@ -1,4 +1,4 @@
-let Codemirror = {
+let CodeMirrorWrapper = {
     'build': (textareas, mode, height) => {
         /* Stupidity of CodeMirror - only selector with id can be passed. */
         textareas.map(function (index, elem) {
@@ -18,7 +18,7 @@ let Codemirror = {
             if(textarea.hasClass('text-only')) {
                 cmMode = 'text';
             }
-console.log(cmMode);
+
             let cm = CodeMirror.fromTextArea(document.getElementById(id), {
                 lineNumbers: textarea.hasClass('numeric-rows'),
                 matchBrackets: true,
@@ -44,4 +44,4 @@ console.log(cmMode);
     },
 };
 
-export default Codemirror;
+export default CodeMirrorWrapper;

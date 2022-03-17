@@ -42,7 +42,7 @@ class Tutorial extends Model
 
     public function getFilePathAttribute()
     {
-        return storage_path('tutorials/' . $techEntityUrl . '/' . $tutorialUrl . '.html');
+        return storage_path('tutorials/' . $this->techEntity->url_name . '/' . $this->url_name . '.html');
     }
 
     public function getContentAttribute()

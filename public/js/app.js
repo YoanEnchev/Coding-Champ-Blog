@@ -33512,16 +33512,11 @@ var CategoriesBtns = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _puzzlesAndQuestionsEdit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./puzzlesAndQuestionsEdit */ "./resources/js/puzzlesAndQuestionsEdit.js");
-/* harmony import */ var _general__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./general */ "./resources/js/general.js");
-/* harmony import */ var _tutorialsPriority__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tutorialsPriority */ "./resources/js/tutorialsPriority.js");
-/* harmony import */ var _tutorialsListing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tutorialsListing */ "./resources/js/tutorialsListing.js");
-/* harmony import */ var _CategoriesBtns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CategoriesBtns */ "./resources/js/CategoriesBtns.js");
-/* harmony import */ var _tutorialsShow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tutorialsShow */ "./resources/js/tutorialsShow.js");
-/* harmony import */ var _projectsPriority__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./projectsPriority */ "./resources/js/projectsPriority.js");
-/* harmony import */ var _challenges__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./challenges */ "./resources/js/challenges.js");
-/* harmony import */ var _challengesPriority__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./challengesPriority */ "./resources/js/challengesPriority.js");
-/* harmony import */ var _challengeSolution__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./challengeSolution */ "./resources/js/challengeSolution.js");
+/* harmony import */ var _general__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./general */ "./resources/js/general.js");
+/* harmony import */ var _tutorialsPriority__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tutorialsPriority */ "./resources/js/tutorialsPriority.js");
+/* harmony import */ var _tutorialsListing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tutorialsListing */ "./resources/js/tutorialsListing.js");
+/* harmony import */ var _CategoriesBtns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CategoriesBtns */ "./resources/js/CategoriesBtns.js");
+/* harmony import */ var _tutorialsShow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tutorialsShow */ "./resources/js/tutorialsShow.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -33534,47 +33529,22 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
-
-
-
-
-
-if ($('.opened-test').length) {
-  _puzzlesAndQuestionsEdit__WEBPACK_IMPORTED_MODULE_0__["default"].init();
-  _general__WEBPACK_IMPORTED_MODULE_1__["default"].init();
-}
+_general__WEBPACK_IMPORTED_MODULE_0__["default"].init();
 
 if ($('.tutorials-priority').length) {
-  _tutorialsPriority__WEBPACK_IMPORTED_MODULE_2__["default"].init();
+  _tutorialsPriority__WEBPACK_IMPORTED_MODULE_1__["default"].init();
 }
 
 if ($('.tutorials-listing-page').length) {
-  _tutorialsListing__WEBPACK_IMPORTED_MODULE_3__["default"].init();
+  _tutorialsListing__WEBPACK_IMPORTED_MODULE_2__["default"].init();
 }
 
 if ($('.categories-btns button').length) {
-  _CategoriesBtns__WEBPACK_IMPORTED_MODULE_4__["default"].init();
+  _CategoriesBtns__WEBPACK_IMPORTED_MODULE_3__["default"].init();
 }
 
 if ($('.opened-tutorial').length) {
-  _tutorialsShow__WEBPACK_IMPORTED_MODULE_5__["default"].init();
-}
-
-if ($('.projects-priority').length) {
-  _projectsPriority__WEBPACK_IMPORTED_MODULE_6__["default"].init();
-}
-
-if ($('.charpter-item').length) {
-  _challenges__WEBPACK_IMPORTED_MODULE_7__["default"].init();
-}
-
-if ($('.challenges-priority').length) {
-  _challengesPriority__WEBPACK_IMPORTED_MODULE_8__["default"].init();
-}
-
-if ($('.challenge-solution').length) {
-  _challengeSolution__WEBPACK_IMPORTED_MODULE_9__["default"].init();
+  _tutorialsShow__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 }
 
 /***/ }),
@@ -33623,236 +33593,6 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/challengeSolution.js":
-/*!*******************************************!*\
-  !*** ./resources/js/challengeSolution.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/Codemirror */ "./resources/js/helpers/Codemirror.js");
-
-var ChallengeSolution = {
-  'init': function init() {
-    _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__["default"].build($('textarea'), fromPHP.cmMode);
-    $('.copy-code').click(function () {
-      var btn = $(this);
-      var code = $('textarea').val();
-      var textarea = $('<textarea>')[0];
-      textarea.style.opacity = "0";
-      textarea.style["pointer-events"] = "none";
-      $(textarea).insertAfter(btn);
-      textarea.value = code;
-      textarea.focus();
-      textarea.select();
-      document.execCommand('copy');
-      $(textarea).remove();
-      btn.html('Copied');
-      setTimeout(function () {
-        btn.text('Copy Code');
-      }, 5000);
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (ChallengeSolution);
-
-/***/ }),
-
-/***/ "./resources/js/challenges.js":
-/*!************************************!*\
-  !*** ./resources/js/challenges.js ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var charpterItem = $('.charpter-item');
-var charptersList = $('.charpters-list');
-var body = $('body');
-var successMsg = $('.success-message');
-var errorMsg = $('.fail-message');
-var challenges = {
-  'init': function init() {
-    // Create & Edit:
-    $('.add-charpter').click(function () {
-      challenges.addItem();
-      challenges.updateCharptersNumbers();
-      challenges.updateHiddenInputs();
-    });
-    body.on('click', '.remove-btn', function (e) {
-      $(e.target).closest('.charpter-item').remove();
-      challenges.updateCharptersNumbers();
-    });
-    body.on('keyup', 'input.charpter-word, input.charpter-word-solution', challenges.updateHiddenInputs);
-    body.on('submit', '.charpter-form', function (e) {
-      e.preventDefault();
-      var form = $(e.target);
-      $.post(form.attr('action'), form.serialize()).done(function (response) {
-        successMsg.text(response.message);
-        errorMsg.text('');
-      }).fail(function (response) {
-        successMsg.text('');
-        errorMsg.text(response.responseJSON.message);
-      });
-      ;
-    });
-    var charptersData = fromPHP.charpters;
-
-    if (charptersData === null) {
-      // ony Create:
-      charptersList.append(charpterItem.clone());
-      return;
-    } // Only Edit:
-    // Fill existing records data:
-
-
-    var charpsCount = charptersData.codes.length;
-    ;
-
-    var _loop = function _loop(i) {
-      var item = challenges.addItem();
-      item.find('textarea.code').val(charptersData.codes[i]);
-      item.find('textarea.description').val(charptersData.descriptions[i]);
-      var wordElems = item.find('.charpter-word');
-      charptersData.words[i].forEach(function (word, i) {
-        $(wordElems.get(i)).val(word);
-      });
-      var solutionWordElems = item.find('.charpter-word-solution');
-      charptersData.solutions[i].forEach(function (solWord, i) {
-        $(solutionWordElems.get(i)).val(solWord);
-      });
-    };
-
-    for (var i = 0; i < charpsCount; i++) {
-      _loop(i);
-    }
-
-    challenges.updateCharptersNumbers();
-    challenges.updateHiddenInputs();
-  },
-  'addItem': function addItem() {
-    var item = charpterItem.clone();
-    charptersList.append(item);
-    return item;
-  },
-  'updateHiddenInputs': function updateHiddenInputs() {
-    $('.charpters-list .charpter-item').each(function (index, charpterItem) {
-      charpterItem = $(charpterItem);
-      var charpterWords = charpterItem.find('input.charpter-word').map(function (index, charpterWord) {
-        return $(charpterWord).val();
-      }).toArray().filter(function (w) {
-        return w;
-      }); // Removes empty strings
-
-      var charpterSolution = charpterItem.find('input.charpter-word-solution').map(function (index, charpterWordSolutsion) {
-        return $(charpterWordSolutsion).val();
-      }).toArray().filter(function (w) {
-        return w;
-      }); // Removes empty strings
-
-      charpterItem.find('input.charpter-word-hidden').val(JSON.stringify(charpterWords));
-      charpterItem.find('input.charpter-word-solution-hidden').val(JSON.stringify(charpterSolution));
-    });
-  },
-  'updateCharptersNumbers': function updateCharptersNumbers() {
-    $('.charpter-item').each(function (index, item) {
-      item = $(item);
-      var num = index + 1;
-      item.find('.charpter-number').html(num);
-      var id = "c".concat(num);
-      item.find('.card-header').attr('data-target', "#".concat(id));
-      item.find('.card-body').attr('id', id);
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (challenges);
-
-/***/ }),
-
-/***/ "./resources/js/challengesPriority.js":
-/*!********************************************!*\
-  !*** ./resources/js/challengesPriority.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var ChallengesPriority = {
-  'init': function init() {
-    var techEntitySelect = $('#tech-entities-select');
-    var tbodyPriorityListing = $('table.challenges-priority tbody');
-    var body = $('body');
-    var swapBaseUrl = fromPHP.swapBaseUrl;
-    var swapWithAboveTemplate = $('#swap-with-above');
-    var swapWithBelowTemplate = $('#swap-with-below');
-    techEntitySelect.change( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var challenges, optionsHtmlArr;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return $.get("".concat(fromPHP.challengesBaseUrl, "/").concat(techEntitySelect.val()));
-
-            case 2:
-              challenges = _context.sent;
-              optionsHtmlArr = challenges.map(function (challenge, index) {
-                var actionsHTML = '';
-
-                if (index !== 0) {
-                  var template = swapWithAboveTemplate.clone();
-                  template.find('form').attr('action', "".concat(swapBaseUrl, "/").concat(challenge.fake_id, "/").concat(challenges[index - 1].fake_id));
-                  actionsHTML += template.html();
-                }
-
-                if (index !== challenges.length - 1) {
-                  var _template = swapWithBelowTemplate.clone();
-
-                  _template.find('form').attr('action', "".concat(swapBaseUrl, "/").concat(challenge.fake_id, "/").concat(challenges[index + 1].fake_id));
-
-                  actionsHTML += _template.html();
-                }
-
-                return "<tr>\n                    <td>".concat(challenge.name, "</td>\n                    <td>").concat(actionsHTML, "</td>\n                </tr>");
-              });
-              tbodyPriorityListing.html(optionsHtmlArr.join());
-
-            case 5:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    })));
-    body.on('click', '.move-up', function () {
-      var tr = $(e.target).closest('tr');
-      var otherTr = tr.prev();
-      console.log(tr.attr('data-id'), otherTr.attr('data-id'));
-      $("#element1").before($("#element2"));
-    });
-    body.on('click', '.move-down', function () {
-      var tr = $(e.target).closest('tr');
-      var otherTr = tr.next();
-      console.log(tr.attr('data-id'), otherTr.attr('data-id'));
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (ChallengesPriority);
-
-/***/ }),
-
 /***/ "./resources/js/general.js":
 /*!*********************************!*\
   !*** ./resources/js/general.js ***!
@@ -33887,16 +33627,16 @@ var general = {
 
 /***/ }),
 
-/***/ "./resources/js/helpers/Codemirror.js":
-/*!********************************************!*\
-  !*** ./resources/js/helpers/Codemirror.js ***!
-  \********************************************/
+/***/ "./resources/js/helpers/CodeMirrorWrapper.js":
+/*!***************************************************!*\
+  !*** ./resources/js/helpers/CodeMirrorWrapper.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var Codemirror = {
+var CodeMirrorWrapper = {
   'build': function build(textareas, mode, height) {
     /* Stupidity of CodeMirror - only selector with id can be passed. */
     textareas.map(function (index, elem) {
@@ -33915,7 +33655,6 @@ var Codemirror = {
         cmMode = 'text';
       }
 
-      console.log(cmMode);
       var cm = CodeMirror.fromTextArea(document.getElementById(id), {
         lineNumbers: textarea.hasClass('numeric-rows'),
         matchBrackets: true,
@@ -33938,173 +33677,7 @@ var Codemirror = {
     }
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Codemirror);
-
-/***/ }),
-
-/***/ "./resources/js/projectsPriority.js":
-/*!******************************************!*\
-  !*** ./resources/js/projectsPriority.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var ProjectsPriority = {
-  'init': function init() {
-    var techEntitySelect = $('#tech-entities-select');
-    var tbodyPriorityListing = $('table.projects-priority tbody');
-    var body = $('body');
-    var swapBaseUrl = fromPHP.swapBaseUrl;
-    var swapWithAboveTemplate = $('#swap-with-above');
-    var swapWithBelowTemplate = $('#swap-with-below');
-    techEntitySelect.change( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var projects, optionsHtmlArr;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return $.get("".concat(fromPHP.projectsBaseUrl, "/").concat(techEntitySelect.val()));
-
-            case 2:
-              projects = _context.sent;
-              optionsHtmlArr = projects.map(function (project, index) {
-                var actionsHTML = '';
-
-                if (index !== 0) {
-                  var template = swapWithAboveTemplate.clone();
-                  template.find('form').attr('action', "".concat(swapBaseUrl, "/").concat(project.fake_id, "/").concat(projects[index - 1].fake_id));
-                  actionsHTML += template.html();
-                }
-
-                if (index !== projects.length - 1) {
-                  var _template = swapWithBelowTemplate.clone();
-
-                  _template.find('form').attr('action', "".concat(swapBaseUrl, "/").concat(project.fake_id, "/").concat(projects[index + 1].fake_id));
-
-                  actionsHTML += _template.html();
-                }
-
-                return "<tr>\n                    <td>".concat(project.name, "</td>\n                    <td>").concat(actionsHTML, "</td>\n                </tr>");
-              });
-              tbodyPriorityListing.html(optionsHtmlArr.join());
-
-            case 5:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    })));
-    body.on('click', '.move-up', function () {
-      var tr = $(e.target).closest('tr');
-      var otherTr = tr.prev();
-      console.log(tr.attr('data-id'), otherTr.attr('data-id'));
-      $("#element1").before($("#element2"));
-    });
-    body.on('click', '.move-down', function () {
-      var tr = $(e.target).closest('tr');
-      var otherTr = tr.next();
-      console.log(tr.attr('data-id'), otherTr.attr('data-id'));
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (ProjectsPriority);
-
-/***/ }),
-
-/***/ "./resources/js/puzzlesAndQuestionsEdit.js":
-/*!*************************************************!*\
-  !*** ./resources/js/puzzlesAndQuestionsEdit.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/Codemirror */ "./resources/js/helpers/Codemirror.js");
-
-var puzzlesAndQuestionsEdit = {
-  'init': function init() {
-    var swiperContainersStrings = ['swiper-container-questions', 'swiper-container-puzzles'];
-    swiperContainersStrings.forEach(function (className) {
-      var swiper = new Swiper('.' + className, {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'progressbar'
-        }
-      });
-    });
-    var cmMode = fromPHP.techEntity.cm_mode;
-    _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__["default"].build($('textarea.question-code-fragment, textarea.puzzle-code, textarea.puzzle-output'), cmMode
-    /*'193px'*/
-    );
-    $('.opened-puzzle').find('.CodeMirror .cm-variable, .CodeMirror .cm-def, .CodeMirror .cm-property').each(function () {
-      var elem = $(this);
-
-      if (elem.html().trim() === 'fillword') {
-        elem.addClass('missing-word');
-        elem.addClass('puzzle-word');
-        elem.html('?');
-      }
-    });
-    $('.modal-ajax-form').submit(function (e) {
-      e.preventDefault();
-      var form = $(event.target).closest('form');
-      var msgContainer = form.find('.messages');
-      var successMsg = msgContainer.find('.succ-msg');
-      var errorMsg = msgContainer.find('.err-msg');
-      $.post(form.attr('action'), form.serialize()).done(function (response) {
-        successMsg.text(response.message);
-        errorMsg.text('');
-      }).fail(function (response) {
-        successMsg.text('');
-        errorMsg.text(response.responseJSON.message);
-      });
-    });
-    $('.puzzle-container').each(function (index, elem) {
-      var puzzle = fromPHP.puzzles[index];
-      var missingWords = $(elem).find('.missing-word');
-      var matrix = puzzle.correct_patterns;
-      var solutionElementsCount = matrix.length;
-      $(elem).find('.missing-word').each(function (fillwordIndex, fillwordElem) {
-        var solutionsToMissingWord = [];
-
-        for (var i = 0; i < solutionElementsCount; i++) {
-          solutionsToMissingWord.push(matrix[i][fillwordIndex]);
-        }
-
-        $(fillwordElem).html(solutionsToMissingWord.join('  or  '));
-      });
-    });
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (puzzlesAndQuestionsEdit);
+/* harmony default export */ __webpack_exports__["default"] = (CodeMirrorWrapper);
 
 /***/ }),
 
@@ -34231,13 +33804,13 @@ var tutorialsPriority = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/Codemirror */ "./resources/js/helpers/Codemirror.js");
+/* harmony import */ var _helpers_CodeMirrorWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/CodeMirrorWrapper */ "./resources/js/helpers/CodeMirrorWrapper.js");
 
 var TutorialsShow = {
   'init': function init() {
     var allTextareas = $('textarea');
     $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter('textarea:not(".text-only")');
-    _helpers_Codemirror__WEBPACK_IMPORTED_MODULE_0__["default"].build(allTextareas, fromPHP.cmMode);
+    _helpers_CodeMirrorWrapper__WEBPACK_IMPORTED_MODULE_0__["default"].build(allTextareas, fromPHP.cmMode);
     $('body').on('click', '.copy-code', function () {
       var btn = $(this);
       var code = btn.prev().prev().val();
@@ -34279,8 +33852,8 @@ var TutorialsShow = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Yoan\Documents\GitHub\N E W\Coding-Champ-Backend\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Yoan\Documents\GitHub\N E W\Coding-Champ-Backend\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Yoan\Documents\GitHub\N E W\Mock Up\Coding-Champ-Blog\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Yoan\Documents\GitHub\N E W\Mock Up\Coding-Champ-Blog\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

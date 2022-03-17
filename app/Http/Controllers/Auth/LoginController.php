@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\TeamInvitation;
-use App\User;
+use App\Models\User;
+use App\Repositories\TechEntityRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,23 +34,22 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TechEntityRepository $techEntityRepo)
     {
         $this->middleware('guest')->except('logout');
+        $this->techEntityRepo = $techEntityRepo;
     }
 
     public function login(Request $request)
     {
         $email = $request->email;
 
-        if($email !== 'joanbojchev@gmail.com') return abort(403);
+        // Allow only for one user to login for now.
+        if($email !== config('auth.admin_email')) return abort(403);
 
-        if (Auth::attempt ([ 'email' => $email, 'password' => $request->password ])) {
+        if (Auth::attempt([ 'email' => $email, 'password' => $request->password ])) {
             session([ 'email' => $email ]);
 
-            /* go to the requested page that requires login ( usually if link is clicked in email)
-             or go to home route if no page is requested (by default)*/
-             
              return redirect()->to('/');
 
         } else {
@@ -63,7 +63,9 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        return view('auth.login');
+        $techEntities = $this->techEntityRepo->getAll();
+
+        return view('auth.login', compact('techEntities'));
     }
 
 

@@ -13,8 +13,6 @@
 
 use App\Models\TechEntity;
 
-View::share('techEntities', TechEntity::all());
-
 Auth::routes(['register' => false]);
 
 

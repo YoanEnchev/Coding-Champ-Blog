@@ -1,4 +1,4 @@
-import Codemirror from './helpers/Codemirror';
+import CodeMirrorWrapper from './helpers/CodeMirrorWrapper';
 
 let TutorialsShow = {
     'init': () => {
@@ -6,7 +6,7 @@ let TutorialsShow = {
 
         $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter('textarea:not(".text-only")');
 
-        Codemirror.build(allTextareas, fromPHP.cmMode);
+        CodeMirrorWrapper.build(allTextareas, fromPHP.cmMode);
 
         $('body').on('click', '.copy-code', function() {
             let btn = $(this);

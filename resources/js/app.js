@@ -8,22 +8,13 @@
 require('./bootstrap');
 
 
-import puzzlesAndQuestionsEdit from './puzzlesAndQuestionsEdit';
 import general from './general';
 import tutorialsPriority from './tutorialsPriority';
 import tutorialsListing from './tutorialsListing';
 import CategoriesBtns from './CategoriesBtns';
 import TutorialsShow from './tutorialsShow';
-import ProjectsPriority from './projectsPriority';
-import challenges from './challenges';
-import ChallengesPriority from './challengesPriority';
-import ChallengeSolution from './challengeSolution';
 
-
-if($('.opened-test').length) {
-    puzzlesAndQuestionsEdit.init();
-    general.init();
-}
+general.init();
 
 if($('.tutorials-priority').length) {
     tutorialsPriority.init();
@@ -39,20 +30,4 @@ if($('.categories-btns button').length) {
 
 if($('.opened-tutorial').length) {
     TutorialsShow.init();
-}
-
-if($('.projects-priority').length) {
-    ProjectsPriority.init();
-}
-
-if($('.charpter-item').length) {
-    challenges.init();
-}
-
-if($('.challenges-priority').length) {
-    ChallengesPriority.init();
-}
-
-if($('.challenge-solution').length) {
-    ChallengeSolution.init();
 }

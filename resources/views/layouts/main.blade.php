@@ -24,7 +24,7 @@
 
     <meta property="og:url" content="{{url()->current()}}">
     
-    @if(isset($tutorialName))
+    @if(isset($tutorialIsOpened) && $tutorialIsOpened)
         {{--If tutorial is opened--}}
         <meta property="og:type" content="article">
     @endif

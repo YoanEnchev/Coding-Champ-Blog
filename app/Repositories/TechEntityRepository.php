@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
 use App\Models\TechEntity;
-use App\Models\Tutorial;
 
 class TechEntityRepository extends BaseRepository
 {
@@ -18,7 +17,8 @@ class TechEntityRepository extends BaseRepository
     public function getTutorials(TechEntity $techEntity)
     {
         // Sort by 2 criterias (category priority and tutorial priority).
-        return Tutorial::with(['category' => function($categoriesQuery) use ($techEntity) {
+        return $techEntity->tutorials()
+        ->with(['category' => function($categoriesQuery) use ($techEntity) {
             $categoriesQuery->orderBy('priority');
         }])
         ->orderBy('priority')

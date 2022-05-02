@@ -1,8 +1,7 @@
 div.tutorials-listing-page {
     .tutorial-list-item { 
         > div{
-            background: #8e54e9;
-            background: linear-gradient(to right, #4776e6, #8e54e9);
+            background: $blue;
             border-radius: 5px;
             height:100%;
         }
@@ -27,7 +26,7 @@ div.tutorials-listing-page {
     }
 
     .tutorial-list-item :hover {
-        background: black;
+        background: $hoverBlue;
     }
 
     max-width: 1300px;

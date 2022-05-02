@@ -7,18 +7,30 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="opened-tutorial col-md-9">
+            <div class="tutorial-content col-md-9">
                 <h1 class="text-center h3 mb-4 mt-4">{{$title}}</h1>
-                {!! $tutorial->content !!}
-            </div>
-            <aside class="col-md-3 hidden-sm">
-                <div class="app-stores">
-                    <p>Practice with tests, puzzles and battles with our mobile app!</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.crazycoding">
-                        <img src="../../imgs/google-play-badge.png" alt="Coding Champ">
-                    </a>
+                <div class="tutorial-content">
+                    {!! $tutorial->content !!}
                 </div>
 
+                <p class="h2 mt-5 mb-0">Comments</p>
+                
+                <div class="comments-list">
+                    @foreach($tutorial->getHierarchicalComments() as $comment)
+                        @include('comments.item', compact('comment'))
+                    @endforeach
+                </div>
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label class="w-100">Comment
+                            <textarea class="form-control" rows="5"></textarea>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="hidden" name="parent_id">
+                </form>
+            </div>
+            <aside class="col-md-3 hidden-sm">
                 <h2 class="h6 mt-4">Languages</h2>
                 <ul class="nav nav-pills nav-stacked languages-list mt-3">
                     @foreach($techEntities as $loopTechEntity)

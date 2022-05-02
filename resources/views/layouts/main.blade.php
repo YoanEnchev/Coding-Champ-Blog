@@ -19,7 +19,7 @@
         <meta name="keywords" content="{{$keywords}}">
     @endif
     
-    <meta property="og:site_name" content="Coding Champ">
+    <meta property="og:site_name" content="Coding Blog">
     <meta property="og:title" content="{{isset($title) ? $title : ''}}">
 
     <meta property="og:url" content="{{url()->current()}}">
@@ -40,8 +40,8 @@
     <link rel="mask-icon" href="https://tutorialzine.com/safari-pinned-tab.svg" color="#1da7da">
     --}}
     
-    <meta name="apple-mobile-web-app-title" content="Coding Champ">
-    <meta name="application-name" content="Coding Champ">
+    <meta name="apple-mobile-web-app-title" content="Coding Blog">
+    <meta name="application-name" content="Coding Blog">
 
     <meta name="theme-color" content="#ffffff">
 
@@ -65,7 +65,7 @@
 <body {{isset($noScroll) ? 'style=overflow-y:hidden' : ''}}>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('/') }}">Coding Champ</a>
+        <a class="navbar-brand" href="{{ url('/') }}">Coding Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,11 +109,13 @@
                 </li>
               @endif
               <li class="nav-item">
-                  <form action="{{ route('logout') }}" method="POST">
-                      {{ csrf_field() }}
-                      <button class="nav-link btn btn-link font-weight-normal font-size-md" type="submit">LogOut</button>
-                    </form>
-                </li>
+                <form action="{{ route('logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    <button class="nav-link btn btn-link font-weight-normal font-size-md" type="submit">LogOut</button>
+                </form>
+              </li>
+            @else
+             xxx  
             @endif
           </ul>
         </div>
@@ -122,20 +124,16 @@
     @yield('content')
     <footer class="footer-basic p-2">
         <p class="copyright mt-0">
-          Coding Champ © {{date("Y")}}
-          <a href="{{route('privacy-policy')}}">Privacy Policy</a>
-          <a href="{{route('terms-and-conditions')}}">Terms And Conditions</a>
+          Coding Blog © {{date("Y")}}
         </p>
     </footer>
 </div>
 </body>
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js" integrity="sha512-geFV99KIlNElg1jwzHE6caxE2tLBEw5l+e2cTRPJz273bbiQqpEuqvQzGAmJTdMfUJjoSDXkaUInwjiIz1HfqA==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    {{--CM mode:--}}
 
     @if(isset($cmMode))
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js" integrity="sha512-zuvaVNiXwWY7U7HEdXsoTislTEElpKLELFoyQw0Bg7zfGhC4vG8eAhCxIQAvHmprW7dFhTq5zshUko4K3B4mSA==" crossorigin="anonymous"></script>
@@ -154,7 +152,7 @@
             @endif
         @endif
      @endif
-    {{--/CM mode:--}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
     <script>

@@ -1,4 +1,4 @@
-.opened-tutorial {
+.tutorial-content {
    
     p.code-result{
         background: #cfcfcf;
@@ -143,7 +143,7 @@ aside {
         }
         
         li.active {
-            background: linear-gradient(to right, #4776e6, #8e54e9);
+            background: $activeAside;
 
             a {
                 color:white;
@@ -151,7 +151,7 @@ aside {
         }
         
         li:hover {
-            background: linear-gradient(to right, #4776e6, #8e54e9);
+            background: $activeAside;
             cursor: pointer;
 
             a {
@@ -163,19 +163,18 @@ aside {
     ul {
         margin-top: 2rem;
     }
+}
 
-    .app-stores {
-        img {
-            width: 100%;
-            max-width: 250px;
-        }
+.comments-list {
 
-        p {
-            font-weight: 500;
-            font-size: 17px;
-        }
-
-        margin-top: 4.5rem!important;
+    overflow-y: auto;
+    
+    .comment {
+        min-width: 250px;
+    }
+    
+    .subcomments {
+        margin-left: 25px;
     }
 }
 

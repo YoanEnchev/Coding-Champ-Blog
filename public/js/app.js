@@ -33543,7 +33543,7 @@ if ($('.categories-btns button').length) {
   _CategoriesBtns__WEBPACK_IMPORTED_MODULE_3__["default"].init();
 }
 
-if ($('.opened-tutorial').length) {
+if ($('.tutorial-content').length) {
   _tutorialsShow__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 }
 
@@ -33808,8 +33808,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var TutorialsShow = {
   'init': function init() {
-    var allTextareas = $('textarea');
-    $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter('textarea:not(".text-only")');
+    var tutorialTextareaSelector = '.tutorial-example';
+    var allTextareas = $(tutorialTextareaSelector);
+    $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter("".concat(tutorialTextareaSelector, ":not(\".text-only\")"));
     _helpers_CodeMirrorWrapper__WEBPACK_IMPORTED_MODULE_0__["default"].build(allTextareas, fromPHP.cmMode);
     $('body').on('click', '.copy-code', function () {
       var btn = $(this);

@@ -28,6 +28,6 @@ if($('.categories-btns button').length) {
     CategoriesBtns.init();
 }
 
-if($('.opened-tutorial').length) {
+if($('.tutorial-content').length) {
     TutorialsShow.init();
 }

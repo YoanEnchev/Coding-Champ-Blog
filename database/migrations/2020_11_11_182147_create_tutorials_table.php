@@ -41,7 +41,8 @@ class CreateTutorialsTable extends Migration
     {
         Schema::table('tutorials', function(Blueprint $table)
         {
-            $table->dropForeign(['tech_entity_id', 'category_id']);
+            $table->dropForeign(['tech_entity_id']);
+            $table->dropForeign(['category_id']);
         });
 
         Schema::dropIfExists('tutorials');

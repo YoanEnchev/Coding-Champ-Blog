@@ -1,0 +1,20 @@
+
+ul.language-list {
+    list-style: none;
+
+    li div {
+        background-color: $blue;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 33px;
+
+        &:hover {
+            background-color: $hoverBlue;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    }
+}

@@ -21,8 +21,6 @@ class CreateTutorialTagTable extends Migration
 
             $table->unsignedInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags');
-            // Migrations are not used anymore.
-            // Tables structures are edited manually though db client.
         });
     }
 

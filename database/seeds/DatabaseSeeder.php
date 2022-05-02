@@ -7,6 +7,7 @@ use App\Models\TechEntity;
 use App\Models\Tutorial;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -62,6 +63,8 @@ class DatabaseSeeder extends Seeder
         $tags = factory(Tag::class, 30)->create();
 
         $priority = 1;
+        $users = factory(User::class, 30)->create();
+
         foreach($languagesData as $lang => $data) {
             $data['priority'] = $priority++;
             $data['pretty_name'] = $lang;
@@ -80,6 +83,32 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 $tutorial->tags()->sync($tags->random(6)->pluck('id')->toArray());
+
+                // Add comments and subcomments.
+                $rootComment1 = factory(Comment::class)->create([
+                    'tutorial_id' => $tutorial->id,
+                    'user_id' => $users->random()->id
+                ]);
+                $rootComment2 = factory(Comment::class)->create([
+                    'tutorial_id' => $tutorial->id,
+                    'user_id' => $users->random()->id
+                ]);
+
+                $subComment1 = factory(Comment::class)->create([
+                    'tutorial_id' => $tutorial->id,
+                    'parent_id' => $rootComment1->id,
+                    'user_id' => $users->random()->id
+                ]);
+                $subComment2 = factory(Comment::class)->create([
+                    'tutorial_id' => $tutorial->id,
+                    'parent_id' => $rootComment2->id,
+                    'user_id' => $users->random()->id
+                ]);
+                factory(Comment::class)->create([
+                    'tutorial_id' => $tutorial->id,
+                    'parent_id' => $subComment2->id,
+                    'user_id' => $users->random()->id
+                ]);
             }
         }
 

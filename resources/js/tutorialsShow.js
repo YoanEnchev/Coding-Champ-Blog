@@ -2,9 +2,10 @@ import CodeMirrorWrapper from './helpers/CodeMirrorWrapper';
 
 let TutorialsShow = {
     'init': () => {
-        let allTextareas = $('textarea');
+        let tutorialTextareaSelector = '.tutorial-example';
+        let allTextareas = $(tutorialTextareaSelector);
 
-        $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter('textarea:not(".text-only")');
+        $('<button type="button" class="btn copy-code mb-3">Copy Code</button>').insertAfter(`${tutorialTextareaSelector}:not(".text-only")`);
 
         CodeMirrorWrapper.build(allTextareas, fromPHP.cmMode);
 

@@ -33,11 +33,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth', '
 });
 
 
-// Routes for user browsing the website:
 Route::get('/', 'HomeController@show')->name('home');
-Route::get('/privacy-policy', 'PrivacyAndTermsController@showPrivacyPolicy')->name('privacy-policy');
-Route::get('/terms-and-conditions', 'PrivacyAndTermsController@showTermsAndConditions')->name('terms-and-conditions');
 
-Route::get('tutorials', 'TechEntityController@index')->name('techEntities.index');
 Route::get('tutorials/{techEntityUrl}', 'TutorialController@index')->name('tutorials.index');
 Route::get('tutorials/{techEntityUrl}/{tutorialUrl}', 'TutorialController@show')->name('tutorials.show');

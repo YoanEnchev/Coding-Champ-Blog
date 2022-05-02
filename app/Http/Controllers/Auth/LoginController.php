@@ -45,7 +45,7 @@ class LoginController extends Controller
         $email = $request->email;
 
         // Allow only for one user to login for now.
-        if($email !== config('auth.admin_email')) return abort(403);
+        if($email !== config('auth.admin_email')) return redirect()->back()->withError("Accessible only from admin.")->withInput();
 
         if (Auth::attempt([ 'email' => $email, 'password' => $request->password ])) {
             session([ 'email' => $email ]);

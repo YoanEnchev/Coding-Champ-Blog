@@ -40,6 +40,36 @@ class Tutorial extends Model
         return $this->belongsToMany('App\Models\Tag', 'tutorial_tag');
     }
 
+    // Flat collection of comments
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    // Extract Hierarchy of comments without unnecessary DB requests.
+    //
+    // Comment 1
+    //   Comment 2
+    //   Comment 3
+    //      Comment 5
+    // Comment 4
+    public function getHierarchicalComments()
+    {
+        $allComments = $this->comments()
+            ->with('user')
+            ->get();
+        
+        $orphanedComments = $allComments
+            ->filter(fn(Comment $comment) => $comment->isOrphaned());
+
+        // Attach subcomments attribute:
+        $orphanedComments->map(function(Comment $comment) use($allComments) {
+            $comment->attachSubcommentsHelper($allComments);
+        });
+
+        return $orphanedComments;
+    }
+
     public function getFilePathAttribute()
     {
         return storage_path('tutorials/' . $this->techEntity->url_name . '/' . $this->url_name . '.html');

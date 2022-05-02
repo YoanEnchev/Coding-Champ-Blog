@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Repositories\TechEntityRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\TutorialRepository;
-
 use Illuminate\Http\Request;
 use \DB;
 use Illuminate\Support\Facades\File;
@@ -23,14 +22,16 @@ class TutorialController extends Controller
         $this->tutorialRepo = $tutorialRepo;
     }
 
-    public function create() {
+    public function create()
+    {
         $categories = $this->categoryRepo->getAll();
         $techEntities = $this->techEntityRepo->getAll();
 
         return view('tutorial.create', compact('categories', 'techEntities'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $request->validate([
             'tech_entity_id' => 'required | numeric',
@@ -44,25 +45,16 @@ class TutorialController extends Controller
         try {
             DB::transaction(function ($data) use ($request) {
                 $name = $request->name;
-                $urlFriendly = Converter::makeWordUrlFriendly($name);
-
-                $techEntityId = $request->tech_entity_id;
-                $categoryId = $request->category_id;
 
                 // So tutorial is listed as last.
-                $priority = Tutorial::where([
-                    ['tech_entity_id', '=', $techEntityId],
-                    ['category_id', '=', $categoryId]
-                ])->max('priority') + 1;
-
-                $tutorial = new Tutorial();
-                $tutorial->tech_entity_id = $techEntityId;
-                $tutorial->category_id = $categoryId;
-                $tutorial->url_name = $urlFriendly;
-                $tutorial->pretty_name = $name;
-                $tutorial->priority = $priority;
-                $tutorial->keywords = "";
-                $tutorial->save();
+                $this->tutorialRepo->create([
+                    'tech_entity_id' => $request->tech_entity_id,
+                    'category_id' => $request->category_id,
+                    'url_name' => Converter::makeWordUrlFriendly($name),
+                    'pretty_name' => $name,
+                    'priority' => $this->tutorialRepo->getMaxPriority() + 1,
+                    'keywords' => ""
+                ]);
             });
         } catch (\Exception $e) {
             $message = $e->getMessage();
@@ -72,11 +64,12 @@ class TutorialController extends Controller
         return redirect()->back()->with([$status => $message]);
     }
 
-    // Listing for everyone:
-    public function index(string $techEntityUrl) {
+    // Listing accessed by everyone:
+    public function index(string $techEntityUrl)
+    {
 
         $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
-        if($techEntity === null) abort(403);
+        if($techEntity === null) abort(400);
 
         $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
         $techEntities = $this->techEntityRepo->getAll();
@@ -90,7 +83,8 @@ class TutorialController extends Controller
         return view('tutorial.index', compact('categories', 'techEntity', 'techEntities', 'noScroll', 'title', 'description'));
     }
 
-    public function listInAdminPanel(TechEntity $techEntity) {
+    public function listInAdminPanel(TechEntity $techEntity)
+    {
 
         $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
         $techEntities = $this->techEntityRepo->getAll();
@@ -100,44 +94,46 @@ class TutorialController extends Controller
         return view('tutorial.listing', compact('categories', 'techEntities', 'selectedTechEntity'));
     }
 
-    public function show(string $techEntityUrl, string $tutorialUrl) {
+    public function show(string $techEntityUrl, string $tutorialUrl)
+    {
         
         $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
-        if($techEntity === null) abort(403);
+        if($techEntity === null) abort(400);
 
         $tutorials = $this->techEntityRepo->getTutorials($techEntity); // Shown in side navigation.
         $tutorial = $this->tutorialRepo->getTutorialsByTechEntityAndUrlName($techEntity, $tutorialUrl, ['techEntity']);
+        $comments = $tutorial->getHierarchicalComments();
+
         $techEntities = $this->techEntityRepo->getAll();
 
-        if($tutorial === null || !File::exists($tutorial->filePath)) abort(403);
+        if($tutorial === null || !File::exists($tutorial->filePath)) abort(400);
         $title = $techEntity->pretty_name . ' - ' . $tutorial->pretty_name;
 
         $cmMode = $techEntity->cm_mode;
 
-        return view('tutorial.show', compact('techEntity', 'techEntities', 'tutorial', 'tutorials', 'title', 'cmMode'));
+        return view('tutorial.show', compact('techEntity', 'techEntities', 'tutorial', 'tutorials', 'comments', 'title', 'cmMode'));
     }
 
     // Accessed via ajax
-    public function getTutorialsInTechEntityAndCat(TechEntity $techEntity, Category $category) {
-        
-        $tutorials = Tutorial::where([
-            ['tech_entity_id', '=', $techEntity->id],
-            ['category_id', '=', $category->id]
-        ])
-        ->orderBy('priority')
-        ->get();
+    public function getTutorialsInTechEntityAndCat(TechEntity $techEntity, Category $category)
+    {
+        $tutorials = $this->tutorialRepo->getTutorialsInTechEntityAndCat($techEntity, $category);
 
         return response()->json($tutorials, 200);
     }
 
-    public function priorityListing() {
+    public function priorityListing()
+    {
+        
         $techEntities = $this->techEntityRepo->getAll();
         $categories = $this->categoryRepo->getAll();
 
         return view('tutorial.priority-listing', compact('techEntities', 'categories'));
     }
 
-    public function edit(Tutorial $tutorial) {
+    public function edit(Tutorial $tutorial)
+    {
+
         $puzzles = $tutorial->puzzles;
         $questions = $tutorial->questions;
         $category = $tutorial->category->pretty_name;
@@ -162,7 +158,9 @@ class TutorialController extends Controller
         'puzzlesWordsCategories', 'category', 'cmMode'));
     }
 
-    public function update(Tutorial $tutorial, Request $request) {
+    public function update(Tutorial $tutorial, Request $request)
+    {
+
         $request->validate([
             'pretty_name' => 'required | string',
             'url_name' => 'required | string',
@@ -180,19 +178,23 @@ class TutorialController extends Controller
             $description = $request->description;
 
             DB::transaction(function () use($request, $tutorial, $urlName, $keywords, $description) {
-                $tutorial->url_name = $urlName;
-                $tutorial->pretty_name = $request->pretty_name;
                 
-                if($keywords && is_string($keywords)) $tutorial->keywords = $keywords;
-                if($description && is_string($description)) $tutorial->description = $description;
+                $updateData = [
+                    'url_name' => $urlName,
+                    'pretty_name' => $request->pretty_name
+                ];
+                
+                if($keywords && is_string($keywords)) $updateData['keywords'] = $keywords;
+                if($description && is_string($description)) $updateData['description'] = $description;
 
-                $tutorial->save();
+                $this->tutorialRepo->updateInstance($tutorial, $updateData);
             });
 
             $techEntityUrl = $tutorial->techEntity->url_name;
 
             File::move(storage_path('tutorials/' . $techEntityUrl . '/' . $tutorialOldUrl . '.html'),
                 storage_path('tutorials/' . $techEntityUrl . '/' . $urlName . '.html'));
+
         } catch (\Exception $e) {
             $message = 'Invalid data for names.';
             $status = 'error';
@@ -201,7 +203,9 @@ class TutorialController extends Controller
         return redirect()->back()->with([$status => $message]);
     }
 
-    public function swapPriorities(Tutorial $tutorial1, Tutorial $tutorial2) {
+    public function swapPriorities(Tutorial $tutorial1, Tutorial $tutorial2)
+    {
+        
         $p1 = $tutorial1->priority;
         $p2 = $tutorial2->priority;
 
@@ -214,7 +218,9 @@ class TutorialController extends Controller
         return redirect()->back()->with(['success' => 'Swaped Tutorials Priority']);
     }
 
-    public function destroy(Tutorial $tutorial) {
+    public function destroy(Tutorial $tutorial)
+    {
+        
         $status = 'success';
         $message = 'Deleted tutorial successfully.';
         
@@ -223,7 +229,7 @@ class TutorialController extends Controller
             $status = 'error';
         }
         else {
-            $tutorial->delete();
+            $this->tutorialRepo->deleteInstance($tutorial);
         }
 
         return redirect()->back()->with([$status => $message]);

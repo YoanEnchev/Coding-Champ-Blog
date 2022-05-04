@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Repositories\BaseRepository;
 use App\Models\Tutorial;
 use App\Models\TechEntity;
+use App\Models\Category;
 
 class TutorialRepository extends BaseRepository
 {
@@ -18,9 +19,9 @@ class TutorialRepository extends BaseRepository
             ->first();
     }
 
-    public function getMaxPriority()
+    public function getMaxPriority($techEntityId, $categoryId)
     {
-        return $model::where([
+        return $this->model::where([
             ['tech_entity_id', '=', $techEntityId],
             ['category_id', '=', $categoryId]
         ])->max('priority') + 1;
@@ -28,7 +29,7 @@ class TutorialRepository extends BaseRepository
 
     public function getTutorialsInTechEntityAndCat(TechEntity $techEntity, Category $category)
     {
-        return $model::where([
+        return $this->model::where([
             ['tech_entity_id', '=', $techEntity->id],
             ['category_id', '=', $category->id]
         ])

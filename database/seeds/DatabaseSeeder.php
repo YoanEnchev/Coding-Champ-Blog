@@ -52,6 +52,13 @@ class DatabaseSeeder extends Seeder
             ['url_name' => 'oop', 'pretty_name' => 'OOP']
         ];
 
+        // Create admin user:
+        factory(User::class)->create([
+            'email' => 'admin@admin.com',
+            'is_admin' => 1,
+            'password' => bcrypt(env('ADMIN_USER_PASSWORD'))
+        ]);
+
         $priority = 1;
         foreach($categoriesData as $categoryData) {
             $categoryData['priority'] = $priority++;
@@ -111,18 +118,5 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-
-        factory(User::class)->create([
-            'email' => 'admin@admin.com',
-            'is_admin' => 1
-        ]);
-    }
-
-    public function removeDotPaths($pathsArr)
-    {
-        $cleanned = array_diff($pathsArr, ['.', '..']);
-
-        // Reindex array
-        return array_values($cleanned);
     }
 }

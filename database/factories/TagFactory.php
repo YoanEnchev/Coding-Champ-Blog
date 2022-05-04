@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Helpers\NameHelper as NameHelper;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,11 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Tag::class, function (Faker $faker) {
+    
+    $name = $faker->unique()->name;
+    
     return [
-        'name' => $faker->name
+        'pretty_name' => $name,
+        'url_name' => NameHelper::makeNameUrlFriendly($name)
     ];
 });

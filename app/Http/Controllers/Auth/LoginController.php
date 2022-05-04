@@ -43,22 +43,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $email = $request->email;
-
-        // Allow only for one user to login for now.
-        if($email !== config('auth.admin_email')) return redirect()->back()->withError("Accessible only from admin.")->withInput();
-
-        if (Auth::attempt([ 'email' => $email, 'password' => $request->password ])) {
-            session([ 'email' => $email ]);
+        
+        if (Auth::attempt(['email' => $email, 'password' => $request->password ])) {
+            session(['email' => $email]);
 
              return redirect()->to('/');
-
-        } else {
-            $errors = [
-                'email' => "Invalid Credentials. Please try again."
-            ];
-            
-            return redirect()->back()->withErrors($errors)->withInput();
         }
+
+        return redirect()->back()->withError("Invalid credentials.")->withInput();
     }
 
     public function showLoginForm(Request $request)

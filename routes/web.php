@@ -11,17 +11,10 @@
 |
 */
 
-use App\Models\TechEntity;
-
-Auth::routes(['register' => false]);
-
+Auth::routes();
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('tutorial', 'TutorialController')->except('show', 'index');
-
-    Route::group(['prefix' => 'generator/', 'as' => 'generate.'], function () {
-        Route::get('update-sitemap', 'GeneratorController@updateSitemap')->name('sitemap');
-    });    
 	
     Route::group(['prefix' => 'tutorials/', 'as' => 'tutorial.'], function () {
         Route::get('priority-listing', 'TutorialController@priorityListing')->name('priority-listing');
@@ -37,3 +30,4 @@ Route::get('/', 'HomeController@show')->name('home');
 
 Route::get('tutorials/{techEntityUrl}', 'TutorialController@index')->name('tutorials.index');
 Route::get('tutorials/{techEntityUrl}/{tutorialUrl}', 'TutorialController@show')->name('tutorials.show');
+Route::get('tags/{techEntityUrl}/{tagUrlName}', 'TagController@show')->name('tags.show');

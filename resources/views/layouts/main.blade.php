@@ -63,71 +63,60 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body {{isset($noScroll) ? 'style=overflow-y:hidden' : ''}}>
-<div id="app">
+  <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('/') }}">Coding Blog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/') }}">Home
-              <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="tutorialsDropdownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Tutorials
-              </a>
-              <div class="dropdown-menu" aria-labelledby="tutorialsDropdownLink">
-                  @foreach($techEntities as $techEntity)
-                    <a class="dropdown-item" href="{{ route('tutorials.index', ['techEntityUrl' => $techEntity->url_name]) }}">{{$techEntity->pretty_name}}</a>
-                  @endforeach
-              </div>
-            </li>
-            @if(Auth::user())
-      
-              @if(Auth::user()->is_admin)
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin Panel
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="{{ route('admin.generate.mobile-app-data-file', ['use_explanation' => true]) }}">Generate Data File For MA (With Explanation)</a>
-                      <a class="dropdown-item" href="{{ route('admin.generate.mobile-app-data-file', ['use_explanation' => false]) }}">Generate Data File For MA (No Explanation)</a>
-      
-                      <a class="dropdown-item" href="{{ route('admin.tutorial.index', ['techEntity' => \App\TechEntity::first()]) }}">Tutorials Editing</a>
-                      <a class="dropdown-item" href="{{ route('admin.generate.sitemap')}}">Update sitemap.xml</a>
-
-                      <a class="dropdown-item" href="{{ route('admin.user-battles.index')}}">Robot Battles</a>
-                      
-                      <a class="dropdown-item" href="{{ route('admin.project.index', ['techEntity' => \App\TechEntity::first()]) }}">Projects</a>
-                      <a class="dropdown-item" href="{{ route('admin.challenge.index', ['techEntity' => \App\TechEntity::first()]) }}">Challenges</a>
-                      
-                      <a class="dropdown-item" href="{{ route('admin.generate.list-ids') }}">List User Ids</a>
-                  </div>
-                </li>
-              @endif
-              <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST">
-                    {{ csrf_field() }}
-                    <button class="nav-link btn btn-link font-weight-normal font-size-md" type="submit">LogOut</button>
-                </form>
+      <a class="navbar-brand" href="{{ url('/') }}">Coding Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}">Home
+            <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialsDropdownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tutorials
+            </a>
+            <div class="dropdown-menu" aria-labelledby="tutorialsDropdownLink">
+                @foreach($techEntities as $techEntity)
+                  <a class="dropdown-item" href="{{ route('tutorials.index', ['techEntityUrl' => $techEntity->url_name]) }}">{{$techEntity->pretty_name}}</a>
+                @endforeach
+            </div>
+          </li>
+          @if(Auth::user())
+    
+            @if(Auth::user()->is_admin)
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin Panel
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('admin.tutorial.index', ['techEntity' => \App\Models\TechEntity::first()]) }}">Tutorials Editing</a>
+                </div>
               </li>
-            @else
-             xxx  
             @endif
-          </ul>
-        </div>
-      </nav>
-  @include('partials.messages')
+            <li class="nav-item">
+              <form action="{{ route('logout') }}" method="POST">
+                  {{ csrf_field() }}
+                  <button class="nav-link btn btn-link font-weight-normal font-size-md" type="submit">LogOut</button>
+              </form>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('register')}}">Sign up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('login')}}">Sign in</a>
+            </li>
+          @endif
+        </ul>
+      </div>
+    </nav>
+    @include('partials.messages')
     @yield('content')
-    <footer class="footer-basic p-2">
-        <p class="copyright mt-0">
-          Coding Blog © {{date("Y")}}
-        </p>
-    </footer>
-</div>
+  </div>
 </body>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

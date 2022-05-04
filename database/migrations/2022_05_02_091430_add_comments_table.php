@@ -28,6 +28,7 @@ class AddCommentsTable extends Migration
                 ->onDelete('set null');
 
             $table->string('text', 500);
+            $table->timestamps();
         });
     }
 

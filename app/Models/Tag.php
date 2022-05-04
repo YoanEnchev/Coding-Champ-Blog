@@ -10,6 +10,6 @@ class Tag extends Model
 
     public function tutorials()
     {
-        return $this->morphedByMany('App\Models\Tutorial');
+        return $this->belongsToMany('App\Models\Tutorial', 'tutorial_tag');
     }
 }

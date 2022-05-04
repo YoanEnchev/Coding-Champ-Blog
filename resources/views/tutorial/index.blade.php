@@ -16,7 +16,7 @@
                     
                     @foreach($categories as $category)
                         <div class="swiper-slide" data-slide-index="{{ $loop->index }}">
-                            <div class="row mx-3">
+                            <div class="row mx-3 tutorials-listing-container">
                                 @foreach($category->tutorials as $tutorial)
                                     <a class="col-12 col-sm-6 col-md-4 tutorial-list-item px-0 mb-3"
                                         href="{{route('tutorials.show', [

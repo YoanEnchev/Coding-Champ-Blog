@@ -3,7 +3,7 @@
 @section('content')
 <section class="clean-block clean-hero" style="background-image: url( {{url('imgs/home/desk.jpg')}} ); color: rgba(9, 162, 255, 0.85);">
     <div class="text">
-        <h2>Coding Blog.</h2>
+        <h2>Coding Blog</h2>
         <p>Learn programming through simple tutorials and code examples.</p>
     </div>
 </section>

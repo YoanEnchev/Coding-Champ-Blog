@@ -8,18 +8,23 @@ use App\Models\Category;
 use App\Repositories\TechEntityRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\TutorialRepository;
+use App\Repositories\TagRepository;
+use App\Helpers\NameHelper;
 use Illuminate\Http\Request;
-use \DB;
 use Illuminate\Support\Facades\File;
+use \DB, \Exception, \Log;
+
 
 class TutorialController extends Controller
 {
 
-    public function __construct(TechEntityRepository $techEntityRepo, CategoryRepository $categoryRepo, TutorialRepository $tutorialRepo) 
+    public function __construct(TechEntityRepository $techEntityRepo, CategoryRepository $categoryRepo,
+                                TutorialRepository $tutorialRepo, TagRepository $tagRepo) 
     {
         $this->techEntityRepo = $techEntityRepo;
         $this->categoryRepo = $categoryRepo;
         $this->tutorialRepo = $tutorialRepo;
+        $this->tagRepo = $tagRepo;
     }
 
     public function create()
@@ -43,20 +48,21 @@ class TutorialController extends Controller
         $status = 'success';
 
         try {
-            DB::transaction(function ($data) use ($request) {
-                $name = $request->name;
+            $name = $request->name;
 
-                // So tutorial is listed as last.
-                $this->tutorialRepo->create([
-                    'tech_entity_id' => $request->tech_entity_id,
-                    'category_id' => $request->category_id,
-                    'url_name' => Converter::makeWordUrlFriendly($name),
-                    'pretty_name' => $name,
-                    'priority' => $this->tutorialRepo->getMaxPriority() + 1,
-                    'keywords' => ""
-                ]);
-            });
-        } catch (\Exception $e) {
+            // So tutorial is listed as last.
+            $this->tutorialRepo->create([
+                'tech_entity_id' => $request->tech_entity_id,
+                'category_id' => $request->category_id,
+                'url_name' => NameHelper::makeNameUrlFriendly($name),
+                'pretty_name' => $name,
+                'priority' => $this->tutorialRepo->getMaxPriority($request->tech_entity_id, $request->category_id) + 1,
+                'keywords' => "", // Set in edit form.
+                'description' => ''
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+            
             $message = $e->getMessage();
             $status = 'error';
         }
@@ -110,8 +116,9 @@ class TutorialController extends Controller
         $title = $techEntity->pretty_name . ' - ' . $tutorial->pretty_name;
 
         $cmMode = $techEntity->cm_mode;
+        $tags = $this->tagRepo->getTagsForTutorial($tutorial);
 
-        return view('tutorial.show', compact('techEntity', 'techEntities', 'tutorial', 'tutorials', 'comments', 'title', 'cmMode'));
+        return view('tutorial.show', compact('techEntity', 'techEntities', 'tutorial', 'tutorials', 'tags', 'comments', 'title', 'cmMode'));
     }
 
     // Accessed via ajax
@@ -133,29 +140,15 @@ class TutorialController extends Controller
 
     public function edit(Tutorial $tutorial)
     {
-
-        $puzzles = $tutorial->puzzles;
-        $questions = $tutorial->questions;
         $category = $tutorial->category->pretty_name;
-        
-        $puzzlesCount = $puzzles->count();
-        $questionsCount = $questions->count();
+
         $techEntities = $this->techEntityRepo->getAll();
+        $categories = $this->categoryRepo->getAll();
         
-
         $techEntity = $tutorial->techEntity;
-        $puzzlesWordsCategories = [
-            'operators' => 'Operators',
-            'values' => 'Values',
-            'variables_constants' => 'Variables / Constants',
-            'others' => 'Others'
-        ];
-
         $cmMode = $techEntity->cm_mode;
 
-        return view('tutorial.edit',  compact('tutorial', 'puzzles',
-        'questions', 'puzzlesCount', 'questionsCount', 'techEntity', 'techEntities', 
-        'puzzlesWordsCategories', 'category', 'cmMode'));
+        return view('tutorial.edit',  compact('tutorial', 'techEntity', 'techEntities', 'categories', 'category', 'cmMode'));
     }
 
     public function update(Tutorial $tutorial, Request $request)
@@ -169,7 +162,7 @@ class TutorialController extends Controller
         $message = 'Updated tutorial names successfully.';
         $status = 'success';
 
-        $urlName = $request->url_name;;
+        $urlName = $request->url_name;
 
         try {
 
@@ -220,16 +213,15 @@ class TutorialController extends Controller
 
     public function destroy(Tutorial $tutorial)
     {
-        
         $status = 'success';
-        $message = 'Deleted tutorial successfully.';
-        
-        if($tutorial->puzzles()->count() > 0 || $tutorial->questions()->count() > 0) {
-            $message = 'There are puzzles and questions for the tutorial.';
-            $status = 'error';
-        }
-        else {
+        $message = 'Tutorial deleted successfully.';
+
+        try {
             $this->tutorialRepo->deleteInstance($tutorial);
+        }
+        catch (Exception $ex) {
+            $status = 'error';
+            $message = 'Tutorial deletion failed.';
         }
 
         return redirect()->back()->with([$status => $message]);

@@ -7,8 +7,6 @@ use App\Models\Tutorial;
 
 class Comment extends Model
 {
-    public $timestamps = false;
-
     public function tutorials()
     {
         return $this->hasMany(Tutorial::class);
@@ -37,5 +35,10 @@ class Comment extends Model
 
             $comment->attachSubcommentsHelper($allCommentsCollection);
         }
+    }
+
+    public function getCreatedAtFormattedAttribute(): string
+    {
+        return $this->created_at->format('M d, Y');
     }
 }

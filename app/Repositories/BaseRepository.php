@@ -8,7 +8,7 @@ class BaseRepository
 {
     public $model;
 
-    public function create(array $details) 
+    public function create(array $details)
     {
         return $this->model::create($details);
     }

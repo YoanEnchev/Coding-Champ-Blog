@@ -20,7 +20,6 @@
             </div>
         </div>
         
-        {{--TODO: larger font, improved design and sidebar--}}
         <?php $counter = 1; ?>
         @foreach($categories as $category)
             <h2>{{$category->pretty_name}}</h2>
@@ -33,10 +32,6 @@
                             <span>{{$tutorial->pretty_name}}</span>
                         </div>
                         <div>
-                            {{--if is admin--}}
-                            <span class="badge badge-primary badge-pill">{{ $tutorial->questions->count() }} Questions</span>
-                            <span class="badge badge-dark badge-pill mr-0">{{ $tutorial->puzzles->count() }} Puzzles</span>
-                            
                             @if($tutorial->description)
                                 <span class="badge badge-info badge-pill mr-0">Has Description</span>
                             @endif

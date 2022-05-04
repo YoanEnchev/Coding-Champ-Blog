@@ -171,10 +171,39 @@ aside {
     
     .comment {
         min-width: 250px;
+
+        .content-wrapper {
+            background: rgb(20,12,122,0.1);
+            padding: 17px;
+            border-radius: 6px;
+        }
+
+        .subcomments {
+            margin-left: 60px;
+        }
+
+        .reply:hover {
+            cursor: pointer;
+        }
     }
-    
-    .subcomments {
-        margin-left: 25px;
+}
+
+.tags-list {
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        margin: 0 12px 8px 0px;
+        border: 1px solid #cecece;
+        color: white;
+        border-radius: 20px;
+        font-size: 19px;
+        text-decoration: none;
+        transition: .2s;
+        background-color: #8fb5fa;
+
+        &:hover {
+            background-color: #71a3ff;
+        }
     }
 }
 

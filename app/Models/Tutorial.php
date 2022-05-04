@@ -11,6 +11,8 @@ class Tutorial extends Model
     use RoutesWithFakeIds;
     public $timestamps = false;
 
+    protected $fillable = ['tech_entity_id', 'category_id', 'pretty_name', 'url_name', 'keywords', 'description', 'priority'];
+
     public function jsonSerialize()
     {
         return [

@@ -1,12 +1,12 @@
 @extends('layouts.main', [
     'title' => $title,
     'description' => $tutorial->description,
-    'tutorialIsOpened' => true
+    'isArticle' => true
 ])
     
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <div class="tutorial-content col-md-9">
                 <h1 class="text-center h3 mb-4 mt-4">{{$title}}</h1>
                 <div class="tutorial-content">

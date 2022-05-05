@@ -2,8 +2,15 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
+@import '../../node_modules/codemirror/lib/codemirror.css';
+@import '../../node_modules/codemirror/addon/scroll/simplescrollbars.css';
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/swiper/swiper-bundle.css';
+@import '../../node_modules/sweetalert2/dist/sweetalert2.css';
+
 @import 'variables';
+
 @import 'general.scss';
 @import 'tutorials-listing_admin';
 @import 'tutorials-listing-for-users';

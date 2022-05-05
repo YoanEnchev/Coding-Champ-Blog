@@ -1,7 +1,17 @@
+// TODO: import codemirror
+import CodeMirror from 'codemirror';
+import 'codemirror/addon/scroll/simplescrollbars';
+
+import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/htmlmixed/htmlmixed';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/php/php';
+import 'codemirror/mode/python/python';
+
 let CodeMirrorWrapper = {
     'build': (textareas, mode, height) => {
         /* Stupidity of CodeMirror - only selector with id can be passed. */
-        textareas.map(function (index, elem) {
+        textareas.map((index, elem) => {
             $(elem).attr('id', index);
         });
     
@@ -37,7 +47,6 @@ let CodeMirrorWrapper = {
             cm.setSize("100%", height === undefined ? "100%" : height);
     
             cm.on('copy', function(cm, e) {
-                // ignore copy by codemirror.  and will copy by browser
                 e.codemirrorIgnore = true;
             });
         }

@@ -75,7 +75,7 @@ class TutorialController extends Controller
     {
 
         $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
-        if($techEntity === null) abort(400);
+        if($techEntity === null) abort(404);
 
         $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
         $techEntities = $this->techEntityRepo->getAll();
@@ -97,22 +97,24 @@ class TutorialController extends Controller
 
         $selectedTechEntity = $techEntity;
 
-        return view('tutorial.listing', compact('categories', 'techEntities', 'selectedTechEntity'));
+        return view('tutorial.admin-index', compact('categories', 'techEntities', 'selectedTechEntity'));
     }
 
     public function show(string $techEntityUrl, string $tutorialUrl)
     {
         
         $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
-        if($techEntity === null) abort(400);
+        if($techEntity === null) abort(404);
 
         $tutorials = $this->techEntityRepo->getTutorials($techEntity); // Shown in side navigation.
         $tutorial = $this->tutorialRepo->getTutorialsByTechEntityAndUrlName($techEntity, $tutorialUrl, ['techEntity']);
+        if($tutorial === null) return abort(404);
+        
         $comments = $tutorial->getHierarchicalComments();
 
         $techEntities = $this->techEntityRepo->getAll();
 
-        if($tutorial === null || !File::exists($tutorial->filePath)) abort(400);
+        if($tutorial === null || !File::exists($tutorial->filePath)) abort(404);
         $title = $techEntity->pretty_name . ' - ' . $tutorial->pretty_name;
 
         $cmMode = $techEntity->cm_mode;
@@ -159,7 +161,7 @@ class TutorialController extends Controller
             'url_name' => 'required | string',
         ]);
 
-        $message = 'Updated tutorial names successfully.';
+        $message = 'Updated tutorial successfully.';
         $status = 'success';
 
         $urlName = $request->url_name;
@@ -188,7 +190,7 @@ class TutorialController extends Controller
             File::move(storage_path('tutorials/' . $techEntityUrl . '/' . $tutorialOldUrl . '.html'),
                 storage_path('tutorials/' . $techEntityUrl . '/' . $urlName . '.html'));
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $message = 'Invalid data for names.';
             $status = 'error';
         }

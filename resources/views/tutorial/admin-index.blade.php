@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="dropdown">
+        <div class="dropdown mb-3">
             <button class="btn btn-primary dropdown-toggle mt-2" type="button" id="tech-entity-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{$selectedTechEntity->pretty_name}}
             </button>
@@ -24,7 +24,7 @@
         @foreach($categories as $category)
             <h2>{{$category->pretty_name}}</h2>
     
-            <ul class="list-group tutorials-listing">
+            <ul class="list-group tutorials-listing mt-4 mb-5">
                 @foreach($category->tutorials as $tutorial)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
@@ -40,7 +40,10 @@
                                 <span class="badge badge-success badge-pill mr-3">Has Keywords</span>
                             @endif
                             
-                            <button class="btn btn-primary">View</button>
+                            <a href="{{route('tutorials.show', [
+                                'techEntityUrl' => $selectedTechEntity->url_name,
+                                'tutorialUrl' => $tutorial->url_name
+                            ])}}" role="button" class="btn btn-primary">View</a>
                             <a href="{{route('admin.tutorial.edit', compact('tutorial'))}}" role="button" class="btn btn-dark">Edit</a>
                             
                             <form method="POST" action="{{route('admin.tutorial.destroy',  compact('tutorial'))}}" class="d-inline-block">

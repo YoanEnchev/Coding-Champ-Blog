@@ -18,10 +18,10 @@ class TagController extends Controller {
         $techEntities = $this->techEntityRepo->getAll();
 
         $techEntity = $this->techEntityRepo->getByUrlName($techEntityUrl);
-        if($techEntity === null) abort(400);
+        if($techEntity === null) abort(404);
 
         $tag = $this->tagRepo->getTagByUrlName($tagUrlName, ['tutorials']);
-        if($tag === null) return abort(400);
+        if($tag === null) return abort(404);
         
         $tutorials = $this->tagRepo->getTutorialsForTagAndTechEntity($tag, $techEntity);
 

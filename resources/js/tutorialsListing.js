@@ -1,5 +1,10 @@
+import Swiper from 'Swiper';
+
 let tutorialsListing = {
     'init': () => {
+
+
+        
 
         const categoriesNavigationBtns = $('#categories-navigation button');
 

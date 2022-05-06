@@ -1,4 +1,4 @@
-let tutorialsPriority = {
+let TutorialsPriority = {
     'init': () => {
         const techEntitySelect = $('#tech-entities-select');
         const categoriesSelect = $('#categories-select');
@@ -8,8 +8,6 @@ let tutorialsPriority = {
 
         const swapWithAboveTemplate = $('#swap-with-above');
         const swapWithBelowTemplate = $('#swap-with-below');
-
-        console.log(swapBaseUrl);
 
         [techEntitySelect, categoriesSelect].forEach((elem) => {
             elem.change(async () => {
@@ -57,4 +55,4 @@ let tutorialsPriority = {
     }
 };
 
-export default tutorialsPriority;
+export default TutorialsPriority;

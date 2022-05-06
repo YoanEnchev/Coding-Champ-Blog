@@ -1,28 +1,23 @@
 import $ from "jquery";
 global.jQuery = global.$ = $; // Load jquery so it can be used by Bootstrap 4.
-import bootstrap from 'bootstrap'
+import bootstrap from 'bootstrap' // Loads bootstrap features even if IDE marks it as unused.
 
 
 import general from './general';
-import tutorialsPriority from './tutorialsPriority';
-import tutorialsListing from './tutorialsListing';
-import CategoriesBtns from './CategoriesBtns';
-import TutorialsShow from './tutorialsShow';
+import TutorialsPriority from './TutorialsPriority';
+import TutorialsListing from './TutorialsListing';
+import TutorialsShow from './TutorialsShow';
 
 general.init();
 
 if($('.tutorials-priority').length) {
-    tutorialsPriority.init();
+    TutorialsPriority.init();
 }
 
-if($('.tutorials-listing-page').length) {
-    tutorialsListing.init();
+if($('#tutorials-index').length) {
+    TutorialsListing.init();
 }
 
-if($('.categories-btns button').length) {
-    CategoriesBtns.init();
-}
-
-if($('.tutorial-content').length) {
+if($('#tutorials-show').length) {
     TutorialsShow.init();
 }

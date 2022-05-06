@@ -79,14 +79,13 @@ class TutorialController extends Controller
 
         $categories = $this->categoryRepo->getCategoriesWithTutorialsForTechEntity($techEntity);
         $techEntities = $this->techEntityRepo->getAll();
-        $noScroll = true;
 
         // For SEO purposes
         $language = $techEntity->pretty_name;
         $title = $language . ' Tutorials';
         $description = 'Simplified tutorials for ' . $language . '. Learn if statements, loops, arrays, data structures, functions, classes, object oriented programming (OOP) and much more.';
 
-        return view('tutorial.index', compact('categories', 'techEntity', 'techEntities', 'noScroll', 'title', 'description'));
+        return view('tutorial.index', compact('categories', 'techEntity', 'techEntities', 'title', 'description'));
     }
 
     public function listInAdminPanel(TechEntity $techEntity)

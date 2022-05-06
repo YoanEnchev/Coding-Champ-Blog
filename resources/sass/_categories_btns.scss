@@ -1,14 +1,31 @@
 .categories-btns {
   text-align: center;
-}
 
-.categories-btns button {
-  margin: -5px;
-  background: transparent;
-  border: 1px solid black;
-}
+  button {
+    background: transparent;
+    border: 1px solid black;
+  
+    &.active {
+      background: $blue;
+      color: white;
+    }
+  
+    &:not(:first-child):not(:last-child) {
+      border-left: none;
+      border-right: none;
+    }
 
-.categories-btns button.active {
-  background: $blue;
-  color: white;
+    &:first-child {
+      margin-right: 1px;
+    }
+
+    /* Minor border fixes when middle item is hovered. */
+    &:last-child {
+      margin-left: 0px !important;
+    }
+    
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }

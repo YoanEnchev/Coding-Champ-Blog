@@ -2,6 +2,9 @@ import CodeMirrorWrapper from './helpers/CodeMirrorWrapper';
 
 let TutorialsShow = {
     'init': () => {
+        // Since tutorial's DOM elements are rendered through blade, react cannot be used.
+        // So it must done only via vanilla js or jquery.
+
         let tutorialTextareaSelector = '.tutorial-example';
         let allTextareas = $(tutorialTextareaSelector);
 
@@ -9,8 +12,9 @@ let TutorialsShow = {
 
         CodeMirrorWrapper.build(allTextareas, fromPHP.cmMode);
 
-        $('body').on('click', '.copy-code', function() {
-            let btn = $(this);
+        $('body').on('click', '.copy-code', (e) => {
+            
+            let btn = $(e.target);
             let code = btn.prev().prev().val()
 
             let textarea = document.createElement("textarea");
@@ -28,7 +32,7 @@ let TutorialsShow = {
 
             btn.html('Copied');
 
-            setTimeout(function() {
+            setTimeout(() => {
                 btn.text('Copy Code');
             }, 5000);
         })

@@ -1,4 +1,5 @@
 @extends('layouts.main', [
+    'pageID' => 'tutorials-show',
     'title' => $title,
     'description' => $tutorial->description,
     'isArticle' => true

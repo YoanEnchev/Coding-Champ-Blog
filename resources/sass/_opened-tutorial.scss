@@ -13,8 +13,7 @@
         font-size: 18px;
         line-height: 30px;
         margin-bottom: 16px;
-        /*background: aliceblue;*/
-        background: linear-gradient(15deg, rgba(254,254,255,1) 0%, rgba(238,223,255,0.6608857413790874) 0%, rgba(221,223,255,0.5946605758161734) 100%);
+        background: $lightBlue;
     }
 
     .row.comparisons {
@@ -106,12 +105,12 @@
     }
 
     .copy-code {
-        background:  rgb(140, 43, 250);
+        background: $blue;
         color: white;
     }
 
     .copy-code:hover {
-        background: #8e54e9;
+        background: $hoverBlue;
     }
 }
 
@@ -126,7 +125,7 @@ aside {
             text-align: center;
             margin-bottom: 8px;
             border-radius: 7px;
-            background: rgba(221, 198, 255, 0.5946605758);
+            background: $lightBlue;
             
             a {
                 color: black;
@@ -143,7 +142,7 @@ aside {
         }
         
         li.active {
-            background: $activeAside;
+            background: $hoverBlue;
 
             a {
                 color:white;
@@ -151,7 +150,7 @@ aside {
         }
         
         li:hover {
-            background: $activeAside;
+            background: $hoverBlue;
             cursor: pointer;
 
             a {
@@ -173,9 +172,13 @@ aside {
         min-width: 250px;
 
         .content-wrapper {
-            background: rgb(20,12,122,0.1);
-            padding: 17px;
-            border-radius: 6px;
+            padding: 18px 14px;
+            border-radius: 10px;
+            border: 1px solid #cfcfcf;
+
+            .username {
+                font-size: 18px;
+            }
         }
 
         .subcomments {
@@ -185,6 +188,14 @@ aside {
         .reply:hover {
             cursor: pointer;
         }
+    }
+}
+
+.comment-btn {
+    background: $blue;
+
+    &:hover {
+        background: $hoverBlue;
     }
 }
 

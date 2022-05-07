@@ -23,10 +23,22 @@ class TagRepository extends BaseRepository
             ->first();
     }
 
+    public function getTagByPrettyName(string $prettyName, array $eager = [])
+    {
+        return Tag::where('pretty_name', $prettyName)
+            ->with($eager)
+            ->first();
+    }
+
     // Make sure tutorials are eager loaded for tag before calling this function.
     // This way one DB request is saved.
     public function getTutorialsForTagAndTechEntity(Tag $tag, TechEntity $techEntity)
     {
         return $tag->tutorials->where('tech_entity_id', $techEntity->id);
+    }
+
+    public function clearUnusedTags() : void
+    {
+        $this->model::doesnthave('tutorials')->delete();
     }
 }

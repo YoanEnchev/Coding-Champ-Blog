@@ -12288,7 +12288,7 @@ body {
 }
 
 div.tutorials-listing-container {
-  max-width: 1300px;
+  max-width: none;
 }
 
 div.tutorials-listing-container .tutorial-list-item {
@@ -12406,8 +12406,7 @@ div.tutorials-listing-container .swiper-slide {
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 16px;
-  /*background: aliceblue;*/
-  background: linear-gradient(15deg, #fefeff 0%, rgba(238, 223, 255, 0.6608857414) 0%, rgba(221, 223, 255, 0.5946605758) 100%);
+  background: #cddefe;
 }
 
 .tutorial-content .row.comparisons {
@@ -12499,12 +12498,12 @@ div.tutorials-listing-container .swiper-slide {
 }
 
 .tutorial-content .copy-code {
-  background: #8c2bfa;
+  background: #6495ed;
   color: white;
 }
 
 .tutorial-content .copy-code:hover {
-  background: #8e54e9;
+  background: #517bc7;
 }
 
 aside ul li {
@@ -12514,7 +12513,7 @@ aside ul li {
   text-align: center;
   margin-bottom: 8px;
   border-radius: 7px;
-  background: rgba(221, 198, 255, 0.5946605758);
+  background: #cddefe;
 }
 
 aside ul li a {
@@ -12531,7 +12530,7 @@ aside ul li a:hover {
 }
 
 aside ul li.active {
-  background: linear-gradient(to right, #4776e6, #8e54e9);
+  background: #517bc7;
 }
 
 aside ul li.active a {
@@ -12539,7 +12538,7 @@ aside ul li.active a {
 }
 
 aside ul li:hover {
-  background: linear-gradient(to right, #4776e6, #8e54e9);
+  background: #517bc7;
   cursor: pointer;
 }
 
@@ -12560,9 +12559,13 @@ aside ul {
 }
 
 .comments-list .comment .content-wrapper {
-  background: rgba(20, 12, 122, 0.1);
-  padding: 17px;
-  border-radius: 6px;
+  padding: 18px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+}
+
+.comments-list .comment .content-wrapper .username {
+  font-size: 18px;
 }
 
 .comments-list .comment .subcomments {
@@ -12571,6 +12574,14 @@ aside ul {
 
 .comments-list .comment .reply:hover {
   cursor: pointer;
+}
+
+.comment-btn {
+  background: #6495ed;
+}
+
+.comment-btn:hover {
+  background: #517bc7;
 }
 
 .tags-list .tag {

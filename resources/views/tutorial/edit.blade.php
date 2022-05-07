@@ -5,7 +5,7 @@
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <div>
             <span>{{ $tutorial->pretty_name }}</span>
-            <span class="badge badge-primary badge-pill">{{ $category }}</span>
+            <span class="badge badge-primary badge-pill">{{ $category->pretty_name }}</span>
         </div>
         <span class="badge badge-dark badge-pill">{{ $techEntity->pretty_name }}</span>
     </li>
@@ -13,18 +13,10 @@
 
 <form method="POST" action="{{route('admin.tutorial.update', compact('tutorial'))}}" class="mx-4 mt-5 mb-3">
     <div class="form-group">
-        <label for="tech-entity">Tech Entity</label>
-        <select class="form-control" id="tech-entity" name="tech_entity_id">
-            @foreach($techEntities as $techEntityLoop)
-                <option {{ $techEntityLoop->id === $techEntity->id ? 'selected' : '' }} value="{{$techEntityLoop->id}}">{{$techEntityLoop->pretty_name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
         <label for="category">Category</label>
         <select class="form-control" id="category" name="category_id">
-            @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->pretty_name}}</option>
+            @foreach($categories as $categoryLoop)
+                <option value="{{$categoryLoop->id}}" @if($category->id === $categoryLoop->id) selected @endif>{{$categoryLoop->pretty_name}}</option>
             @endforeach
         </select>
     </div>
@@ -45,10 +37,14 @@
         <label for="keywords">Keywords</label>
         <input type="text" class="form-control" id="keywords" value="{{ $tutorial->keywords }}" name="keywords">
     </div>
+    <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" class="form-control" id="tags" value="{{$tagsText}}" name="tags_text">
+    </div>
 
 
 
-    <button type="submit" class="btn btn-primary">Edit Names</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
 
     {{ method_field('PUT') }}
     {{ csrf_field() }}

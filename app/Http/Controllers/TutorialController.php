@@ -10,6 +10,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\TutorialRepository;
 use App\Repositories\TagRepository;
 use App\Helpers\NameHelper;
+use App\Helpers\TagsHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use \DB, \Exception, \Log;
@@ -51,7 +52,7 @@ class TutorialController extends Controller
             $name = $request->name;
 
             // So tutorial is listed as last.
-            $this->tutorialRepo->create([
+            $tutorial = $this->tutorialRepo->create([
                 'tech_entity_id' => $request->tech_entity_id,
                 'category_id' => $request->category_id,
                 'url_name' => NameHelper::makeNameUrlFriendly($name),
@@ -60,6 +61,8 @@ class TutorialController extends Controller
                 'keywords' => "", // Set in edit form.
                 'description' => ''
             ]);
+
+            File::put($tutorial->file_path, 'TODO: rewrite content.');
         } catch (Exception $e) {
             Log::error($e);
             
@@ -141,7 +144,7 @@ class TutorialController extends Controller
 
     public function edit(Tutorial $tutorial)
     {
-        $category = $tutorial->category->pretty_name;
+        $category = $tutorial->category;
 
         $techEntities = $this->techEntityRepo->getAll();
         $categories = $this->categoryRepo->getAll();
@@ -149,15 +152,21 @@ class TutorialController extends Controller
         $techEntity = $tutorial->techEntity;
         $cmMode = $techEntity->cm_mode;
 
-        return view('tutorial.edit',  compact('tutorial', 'techEntity', 'techEntities', 'categories', 'category', 'cmMode'));
+        $tagsText = TagsHelper::getTagsAsText($tutorial->tags);
+
+        return view('tutorial.edit',  compact('tutorial', 'techEntity', 'techEntities', 'categories', 'category', 'tagsText', 'cmMode'));
     }
 
     public function update(Tutorial $tutorial, Request $request)
     {
 
         $request->validate([
+            'category_id' => 'required | numeric',
             'pretty_name' => 'required | string',
             'url_name' => 'required | string',
+            'description' => 'required | string',
+            'keywords' => 'required | string',
+            'tags_text' => 'required | string'
         ]);
 
         $message = 'Updated tutorial successfully.';
@@ -174,6 +183,7 @@ class TutorialController extends Controller
             DB::transaction(function () use($request, $tutorial, $urlName, $keywords, $description) {
                 
                 $updateData = [
+                    'category_id' => $request->category_id,
                     'url_name' => $urlName,
                     'pretty_name' => $request->pretty_name
                 ];
@@ -182,6 +192,11 @@ class TutorialController extends Controller
                 if($description && is_string($description)) $updateData['description'] = $description;
 
                 $this->tutorialRepo->updateInstance($tutorial, $updateData);
+
+                $tagIds = TagsHelper::getTagsIdsFromText($request->tags_text, $this->tagRepo);
+                $tutorial->tags()->sync($tagIds);
+                
+                $this->tagRepo->clearUnusedTags();
             });
 
             $techEntityUrl = $tutorial->techEntity->url_name;
@@ -190,7 +205,9 @@ class TutorialController extends Controller
                 storage_path('tutorials/' . $techEntityUrl . '/' . $urlName . '.html'));
 
         } catch (Exception $e) {
-            $message = 'Invalid data for names.';
+            Log::error($e);
+
+            $message = 'Invalid data.';
             $status = 'error';
         }
 
@@ -199,6 +216,9 @@ class TutorialController extends Controller
 
     public function swapPriorities(Tutorial $tutorial1, Tutorial $tutorial2)
     {
+
+        $status = 'Swaped Tutorials Priority';
+        $type = 'success';
         
         $p1 = $tutorial1->priority;
         $p2 = $tutorial2->priority;
@@ -206,10 +226,19 @@ class TutorialController extends Controller
         $tutorial1->priority = $p2;
         $tutorial2->priority = $p1;
 
-        $tutorial1->save();
-        $tutorial2->save();
+        try {
+            DB::transaction(function () use($tutorial1, $tutorial2) {
+                $tutorial1->save();
+                $tutorial2->save();
+            });
+        } catch (Exception $e) {
+            Log::error($e);
 
-        return redirect()->back()->with(['success' => 'Swaped Tutorials Priority']);
+            $status = 'Failing swapping.';
+            $type = 'error';
+        }
+
+        return response()->json([$type => $status]);
     }
 
     public function destroy(Tutorial $tutorial)
@@ -218,9 +247,13 @@ class TutorialController extends Controller
         $message = 'Tutorial deleted successfully.';
 
         try {
+            $filePath = $tutorial->file_path;
             $this->tutorialRepo->deleteInstance($tutorial);
+            File::delete($filePath);
         }
-        catch (Exception $ex) {
+        catch (Exception $e) {
+            Log::error($e);
+
             $status = 'error';
             $message = 'Tutorial deletion failed.';
         }

@@ -34,7 +34,7 @@
                                 <textarea class="form-control" rows="5" placeholder="Add a comment" maxlength="500"></textarea>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                        <button type="submit" class="btn comment-btn text-white">Post Comment</button>
                         <input type="hidden" name="parent_id">
                     </form>
                 </div>

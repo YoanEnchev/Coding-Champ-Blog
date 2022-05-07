@@ -77,6 +77,7 @@ class DatabaseSeeder extends Seeder
             $data['pretty_name'] = $lang;
 
             $techEntity = factory(TechEntity::class)->create($data);
+            $tutorialPriority = 1;
             
             // Can't be accessed via the Storage facade. Probably because it's not inside the storage/app folder.
             foreach(File::allFiles(storage_path() . '/tutorials/' . $data['url_name']) as $file) {
@@ -86,7 +87,8 @@ class DatabaseSeeder extends Seeder
                     'tech_entity_id' => $techEntity->id,
                     'category_id' => $categories->random()->id,
                     'url_name' => $fileName,
-                    'pretty_name' => ucwords(str_replace('-', ' ', $fileName))
+                    'pretty_name' => ucwords(str_replace('-', ' ', $fileName)),
+                    'priority' => $tutorialPriority++
                 ]);
 
                 $tutorial->tags()->sync($tags->random(6)->pluck('id')->toArray());

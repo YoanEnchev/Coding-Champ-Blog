@@ -17,6 +17,5 @@ $factory->define(App\Models\Tutorial::class, function (Faker $faker) {
     return [
         'keywords' => 'keyword 1, keyword 2, keyword 3',
         'description' => $faker->text,
-        'priority' => $faker->numberBetween(1, 30)
     ];
 });

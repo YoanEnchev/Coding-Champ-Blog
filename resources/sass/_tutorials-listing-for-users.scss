@@ -29,7 +29,7 @@ div.tutorials-listing-container {
         background: $hoverBlue;
     }
 
-    max-width: 1300px;
+    max-width: none;
 
     .swiper-slide {
         height: calc(100vh - 190px) !important;

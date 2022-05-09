@@ -69,11 +69,12 @@
         @if(Auth::user())
           @if(Auth::user()->is_admin)
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Admin Panel
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <div class="dropdown-menu">
                   <a class="dropdown-item" href="{{ route('admin.tutorial.index', ['techEntity' => \App\Models\TechEntity::first()]) }}">Tutorials Editing</a>
+                  <a class="dropdown-item" href="{{ route('admin.tech-entity.index') }}">Tech Entities</a>
               </div>
             </li>
           @endif
@@ -85,10 +86,10 @@
           </li>
         @else
           <li class="nav-item">
-            <a class="nav-link" href="{{route('register')}}">Sign up</a>
+            <a class="nav-link" href="{{ route('register') }}">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('login')}}">Sign in</a>
+            <a class="nav-link" href="{{ route('login') }}">Sign in</a>
           </li>
         @endif
       </ul>

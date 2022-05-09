@@ -12576,11 +12576,13 @@ aside ul {
   cursor: pointer;
 }
 
-.comment-btn {
+.comment-btn,
+.sign-in-to-comment {
   background: #6495ed;
 }
 
-.comment-btn:hover {
+.comment-btn:hover,
+.sign-in-to-comment:hover {
   background: #517bc7;
 }
 

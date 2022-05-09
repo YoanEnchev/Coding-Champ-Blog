@@ -42,4 +42,9 @@ class BaseRepository
     {
         $model->delete();
     }
+
+    public function containsColumnWithValue(string $col, string $val) : bool
+    {
+        return $this->model::where($col, $val)->exists();
+    }
 }

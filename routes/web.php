@@ -13,15 +13,22 @@
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
-    Route::resource('tutorial', 'TutorialController')->except('show', 'index');
-	
-    Route::group(['prefix' => 'tutorials/', 'as' => 'tutorial.'], function () {
-        Route::get('priority-listing', 'TutorialController@priorityListing')->name('priority-listing');
-        Route::post('swap/{tutorial1}/{tutorial2}', 'TutorialController@swapPriorities')->name('swap-priorities');
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::post('tutorials/{tutorial}/comment', 'CommentController@store')->name('comment.store');
 
-        Route::get('{techEntity}', 'TutorialController@listInAdminPanel')->name('index');
-        Route::get('{techEntity}/{category}', 'TutorialController@getTutorialsInTechEntityAndCat')->name('in-techEntity.category');
+    Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['admin']], function () {
+        Route::resource('tutorial', 'TutorialController')->except('show', 'index');
+        
+        Route::resource('tech-entity', 'TechEntityController')->except('delete', 'show');
+        
+        Route::group(['prefix' => 'tutorials/', 'as' => 'tutorial.'], function () {
+            Route::get('priority-listing', 'TutorialController@priorityListing')->name('priority-listing');
+            Route::post('swap/{tutorial1}/{tutorial2}', 'TutorialController@swapPriorities')->name('swap-priorities');
+    
+            Route::get('{techEntity}', 'TutorialController@listInAdminPanel')->name('index');
+            Route::get('{techEntity}/{category}', 'TutorialController@getTutorialsInTechEntityAndCat')->name('in-techEntity.category');
+        });
     });
 });
 

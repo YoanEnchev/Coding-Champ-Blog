@@ -66,7 +66,7 @@ class Tutorial extends Model
 
         // Attach subcomments attribute:
         $orphanedComments->map(function(Comment $comment) use($allComments) {
-            $comment->attachSubcommentsHelper($allComments);
+            $comment->attachHelpingAttributes($allComments);
         });
 
         return $orphanedComments;

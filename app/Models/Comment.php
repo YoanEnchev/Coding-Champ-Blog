@@ -7,6 +7,8 @@ use App\Models\Tutorial;
 
 class Comment extends Model
 {
+    protected $fillable = ['tutorial_id', 'user_id', 'parent_id', 'text'];
+
     public function tutorials()
     {
         return $this->hasMany(Tutorial::class);
@@ -27,13 +29,18 @@ class Comment extends Model
         return !isset($this->parent_id);
     }
 
-    public function attachSubcommentsHelper(object $allCommentsCollection) : void
+    public function attachHelpingAttributes(object $allCommentsCollection) : void
     {
-        $this->subcomments = $allCommentsCollection->where('parent_id', $this->id);
+        $subcommentsCollection = $allCommentsCollection->where('parent_id', $this->id);
+        
+        // Reindex array so it'parsed as array instead of JSON object when it's passed to JS:
+        $this->subcomments = [...$subcommentsCollection];
+       
+        $this->date = $this->created_at_formatted;
 
-        foreach ($this->subcomments as $comment) {
+        foreach ($subcommentsCollection as $comment) {
 
-            $comment->attachSubcommentsHelper($allCommentsCollection);
+            $comment->attachHelpingAttributes($allCommentsCollection);
         }
     }
 

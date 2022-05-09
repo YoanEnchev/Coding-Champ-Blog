@@ -112,8 +112,8 @@ class TutorialController extends Controller
         $tutorial = $this->tutorialRepo->getTutorialsByTechEntityAndUrlName($techEntity, $tutorialUrl, ['techEntity']);
         if($tutorial === null) return abort(404);
         
-        $comments = $tutorial->getHierarchicalComments();
-
+        // ... is used so it'parsed as array instead of JSON object when it's passed to JS
+        $comments = [...$tutorial->getHierarchicalComments()];
         $techEntities = $this->techEntityRepo->getAll();
 
         if($tutorial === null || !File::exists($tutorial->filePath)) abort(404);

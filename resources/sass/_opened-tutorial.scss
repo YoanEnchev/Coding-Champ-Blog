@@ -191,13 +191,14 @@ aside {
     }
 }
 
-.comment-btn {
+.comment-btn, .sign-in-to-comment {
     background: $blue;
 
     &:hover {
         background: $hoverBlue;
     }
 }
+
 
 .tags-list {
     .tag {

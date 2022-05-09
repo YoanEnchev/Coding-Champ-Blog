@@ -1,7 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css
+/public/js
 /storage/*.key
+/storage/logs/laravel.log
 /vendor
 .env
 .phpunit.result.cache

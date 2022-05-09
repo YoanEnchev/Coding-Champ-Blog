@@ -22,21 +22,12 @@
                 </div>
 
                 <p class="h2 mt-5 mb-0">Comments</p>
-                <div class="comments-list">
-                    @foreach($tutorial->getHierarchicalComments() as $comment)
-                        @include('comments.item', compact('comment'))
-                    @endforeach
+                <div class="comments-list" id="comments-list">
                 </div>
-                <div class="add-comment-container mt-3">
-                    <form method="POST" action="">
-                        <div class="form-group">
-                            <label class="w-100">
-                                <textarea class="form-control" rows="5" placeholder="Add a comment" maxlength="500"></textarea>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn comment-btn text-white">Post Comment</button>
-                        <input type="hidden" name="parent_id">
-                    </form>
+                <div class="add-comment-container mt-3">                    
+                    @if(!Auth::check())
+                        <a class="btn w-100 sign-in-to-comment text-white" href="{{ route('login') }}">Sign in to comment</a>
+                    @endif
                 </div>
             </div>
             <aside class="col-md-3 hidden-sm">
@@ -67,6 +58,10 @@
 
 @section('js-vars')
     var fromPHP = {
-        cmMode: "{{$techEntity->cm_mode}}"
+        cmMode: "{{$techEntity->cm_mode}}",
+        comments: @json($comments),
+        addCommentUrl: "{{ route('comment.store', compact('tutorial')) }}",
+        csrfToken: '{{ csrf_token() }}',
+        isLoggedIn: '{{Auth::check() ? 'yes' : 'no'}}'
     };
 @endsection

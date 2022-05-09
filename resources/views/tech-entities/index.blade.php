@@ -1,15 +1,34 @@
-@extends('layouts.main')
+@extends('layouts.main', [
+    'title' => 'Tech Entities'
+])
 
 @section('content')
-<h1 class="h2 mt-5 text-center" style="margin-bottom: 2rem">Programming Languages</h1>
 
-<ul class="nav nav-pills nav-stacked languages-list mt-3 row mx-3">
-    @foreach(config('techEntities_link_url_pretty_name') as $url => $name)
-        <li class="col-12 col-sm-6 col-md-4 mb-3">
-            <div class="d-flex align-items-center justify-content-center tech-entity-container">
-                <a class="text-white py-3 h3" href="{{ route('tutorials.index', ['techEntityUrl' => $url]) }}">{{$name}}</a>
-            </div>
-        </li>
-    @endforeach
-</ul>
+    <div class="container">
+        <h1 class="h2 mt-5 text-center mb-3">Tech Entities</h1>
+        <a class="btn btn-success mb-3" role="button" href="{{route('admin.tech-entity.create')}}">Create Tech Entity</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach($techEntities as $techEntity)
+                    <tr>
+                        <td>{{ $techEntity->pretty_name }}</td>
+                        <td>
+                            <a class="btn btn-dark" href="{{ route('admin.tech-entity.edit',  compact('techEntity')) }}">Edit</a>
+                            <form method="POST" action="{{ route('admin.tech-entity.destroy',  compact('techEntity')) }}" class="d-inline-block">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+             </tbody>
+        </table>
+    </div>
 @endsection

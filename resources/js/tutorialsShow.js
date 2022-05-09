@@ -1,7 +1,15 @@
 import CodeMirrorWrapper from './helpers/CodeMirrorWrapper';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import CommentsList from './components/TutorialShow/CommentsList';
 
 let TutorialsShow = {
     'init': () => {
+
+        ReactDOM.createRoot(document.getElementById('comments-list'))
+            .render(<CommentsList comments={fromPHP.comments} />)
+
+
         // Since tutorial's DOM elements are rendered through blade, react cannot be used.
         // So it must done only via vanilla js or jquery.
 

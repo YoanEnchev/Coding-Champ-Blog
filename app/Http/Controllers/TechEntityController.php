@@ -65,7 +65,7 @@ class TechEntityController extends Controller {
         return view('tech-entities.edit', compact('techEntities', 'techEntity'));
     }
 
-    public function update(TechEntity $techEntity ,Request $request)
+    public function update(TechEntity $techEntity, Request $request)
     {
         $params = $request->all();
         $validator = Validator::make($params, config('validations.tech_entity'));
@@ -80,7 +80,7 @@ class TechEntityController extends Controller {
         }
 
         $reqUrlName = $request->url_name;
-        if($reqUrlName !== $techEntity->url_name && $this->techEntityRepo->containsColumnWithValue('url_name', $request->url_name)) {
+        if($reqUrlName !== $techEntity->url_name && $this->techEntityRepo->containsColumnWithValue('url_name', $reqUrlName)) {
             return redirect()->back()->withErrors(['url_name' => 'Tech Entity with such url name already exists.'])->withInput();
         }
 

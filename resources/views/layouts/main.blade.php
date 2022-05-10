@@ -75,6 +75,7 @@
               <div class="dropdown-menu">
                   <a class="dropdown-item" href="{{ route('admin.tutorial.index', ['techEntity' => \App\Models\TechEntity::first()]) }}">Tutorials Editing</a>
                   <a class="dropdown-item" href="{{ route('admin.tech-entity.index') }}">Tech Entities</a>
+                  <a class="dropdown-item" href="{{ route('admin.category.index') }}">Categories</a>
               </div>
             </li>
           @endif

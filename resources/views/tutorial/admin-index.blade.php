@@ -1,4 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.main', [
+    'pageID' => 'admin-tutorials'
+])
 
 @section('content')
     <div class="container">

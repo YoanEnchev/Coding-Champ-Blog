@@ -1,12 +1,12 @@
 @extends('layouts.main', [
-    'title' => 'Edit Tech Entity'
+    'title' => 'Edit Category'
 ])
 
 @section('content')
 
     <div class="container">
-        @include('tech-entities.partials.create-edit-form', [
-            'url' => route('admin.tech-entity.update', compact('techEntity')),
+        @include('categories.partials.create-edit-form', [
+            'url' => route('admin.category.update', compact('category')),
             'btnText' => 'Edit',
             'isEdit' => true
         ])

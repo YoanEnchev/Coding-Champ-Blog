@@ -17,5 +17,8 @@ $factory->define(App\Models\Tutorial::class, function (Faker $faker) {
     return [
         'keywords' => 'keyword 1, keyword 2, keyword 3',
         'description' => $faker->text,
+        'url_name' => $faker->name, 
+        'pretty_name' => $faker->name,
+        'priority' => 1
     ];
 });

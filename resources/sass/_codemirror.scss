@@ -1,0 +1,17 @@
+.CodeMirror {
+    margin: 20px 0px;
+    border: 1px solid #eee;
+    height: auto;
+    background: linear-gradient(15deg, rgba(254,254,255,1) 0%, rgba(252,250,255,1) 0%, rgba(249,249,255,1) 100%) !important;
+    border-radius: 5px;
+
+    .CodeMirror-scroll {
+      height: auto;
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
+  
+    .CodeMirror-cursors {
+      visibility: hidden !important;
+    }
+}

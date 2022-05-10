@@ -14,5 +14,10 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\TechEntity::class, function (Faker $faker) {
-    return [];
+    return [
+        'url_name' => $faker->name, 
+        'pretty_name' => $faker->name,
+        'cm_mode' => $faker->name,
+        'priority' => 1
+    ];
 });

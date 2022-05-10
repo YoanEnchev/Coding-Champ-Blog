@@ -96,27 +96,32 @@ class DatabaseSeeder extends Seeder
                 // Add comments and subcomments.
                 $rootComment1 = factory(Comment::class)->create([
                     'tutorial_id' => $tutorial->id,
-                    'user_id' => $users->random()->id
+                    'user_id' => $users->random()->id,
+                    'text' => 'Comment Example 1'
                 ]);
                 $rootComment2 = factory(Comment::class)->create([
                     'tutorial_id' => $tutorial->id,
-                    'user_id' => $users->random()->id
+                    'user_id' => $users->random()->id,
+                    'text' => 'Comment Example 2'
                 ]);
 
                 $subComment1 = factory(Comment::class)->create([
                     'tutorial_id' => $tutorial->id,
                     'parent_id' => $rootComment1->id,
-                    'user_id' => $users->random()->id
+                    'user_id' => $users->random()->id,
+                    'text' => 'Subcomment Example 1'
                 ]);
                 $subComment2 = factory(Comment::class)->create([
                     'tutorial_id' => $tutorial->id,
                     'parent_id' => $rootComment2->id,
-                    'user_id' => $users->random()->id
+                    'user_id' => $users->random()->id,
+                    'text' => 'Subcomment Example 2'
                 ]);
                 factory(Comment::class)->create([
                     'tutorial_id' => $tutorial->id,
                     'parent_id' => $subComment2->id,
-                    'user_id' => $users->random()->id
+                    'user_id' => $users->random()->id,
+                    'text' => 'Sub Subcomment Example'
                 ]);
             }
         }

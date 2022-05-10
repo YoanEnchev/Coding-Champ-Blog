@@ -20,7 +20,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['admin']], function () {
         Route::resource('tutorial', 'TutorialController')->except('show', 'index');
         
-        Route::resource('tech-entity', 'TechEntityController')->except('delete', 'show');
+        Route::resource('tech-entity', 'TechEntityController')->except('show', 'delete');
+        Route::resource('category', 'CategoryController')->except('show', 'delete');
         
         Route::group(['prefix' => 'tutorials/', 'as' => 'tutorial.'], function () {
             Route::get('priority-listing', 'TutorialController@priorityListing')->name('priority-listing');

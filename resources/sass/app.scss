@@ -10,13 +10,15 @@
 @import '../../node_modules/sweetalert2/dist/sweetalert2.css';
 
 @import 'variables';
-
 @import 'general.scss';
-@import 'tutorials-listing_admin';
-@import 'tutorials-listing-for-users';
-@import 'alerts';
+@import 'codemirror';
 @import 'categories_btns';
-@import 'opened-tutorial';
-@import 'header-blue';
-@import 'clean-block';
+
+@import 'home/header-blue';
+@import 'home/clean-block';
 @import 'home/lang-item';
+
+@import 'tutorials-listing-admin';
+@import 'tutorials-listing';
+@import 'tutorials-show';
+@import 'tutorial-item';

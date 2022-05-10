@@ -12236,95 +12236,8 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown
   bottom: 0;
   left: auto;
 }
-.CodeMirror {
-  margin: 20px 0px;
-  border: 1px solid #eee;
-  height: auto;
-}
-
-.CodeMirror {
-  /* background-color: rgb(251, 251, 255) !important; */
-  background: linear-gradient(15deg, #fefeff 0%, #fcfaff 0%, #f9f9ff 100%) !important;
-  border-radius: 5px;
-}
-
-.CodeMirror-scroll {
-  height: auto;
-  overflow-y: hidden;
-  overflow-x: auto;
-}
-
-.CodeMirror-cursors {
-  visibility: hidden !important;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: transparent;
-}
-
-.swiper-slide .CodeMirror-lines {
-  text-align: left;
-}
-
-.swiper-slide button {
-  background-color: #7629f8;
-  font-size: 20px;
-  font-weight: bold;
-}
-
 body {
   background-color: aliceblue;
-}
-
-.tutorials-listing li:hover {
-  background: aliceblue;
-}
-
-div.tutorials-listing-container {
-  max-width: none;
-}
-
-div.tutorials-listing-container .tutorial-list-item {
-  text-decoration: none;
-}
-
-div.tutorials-listing-container .tutorial-list-item > div {
-  background: #6495ed;
-  border-radius: 5px;
-  height: 100%;
-}
-
-div.tutorials-listing-container .tutorial-list-item .tutorial-number {
-  color: white;
-  font-weight: bold;
-  padding: 2px 8px;
-  color: white;
-  background: rgba(80, 35, 198, 0.3);
-  border-radius: 5px;
-  position: absolute;
-  top: 10px;
-  left: 15px;
-}
-
-div.tutorials-listing-container .tutorial-list-item h3 {
-  padding-bottom: 1.8rem !important;
-}
-
-div.tutorials-listing-container .tutorial-list-item :hover {
-  background: #517bc7;
-}
-
-div.tutorials-listing-container .swiper-slide {
-  height: calc(100vh - 190px) !important;
-  overflow: hidden;
-  overflow-y: auto;
 }
 
 .alert {
@@ -12354,6 +12267,24 @@ div.tutorials-listing-container .swiper-slide {
 
 .alert.alert-dismissible {
   padding-right: 1.25rem !important;
+}
+
+.CodeMirror {
+  margin: 20px 0px;
+  border: 1px solid #eee;
+  height: auto;
+  background: linear-gradient(15deg, #fefeff 0%, #fcfaff 0%, #f9f9ff 100%) !important;
+  border-radius: 5px;
+}
+
+.CodeMirror .CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.CodeMirror .CodeMirror-cursors {
+  visibility: hidden !important;
 }
 
 .categories-btns {
@@ -12386,227 +12317,6 @@ div.tutorials-listing-container .swiper-slide {
 
 .categories-btns button:focus {
   box-shadow: none;
-}
-
-.tutorial-content {
-  /*Basically anything except codemirror is supposed to have such font*/
-}
-
-.tutorial-content p.code-result {
-  background: #cfcfcf;
-}
-
-.tutorial-content p.note {
-  padding: 8px 24px;
-  border-left: 4px solid;
-  -o-border-image: linear-gradient(to top, #04a0f6, #5e06f6) 1 100%;
-     border-image: linear-gradient(to top, #04a0f6, #5e06f6) 1 100%;
-  border-radius: 4px;
-  display: block;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 16px;
-  background: #cddefe;
-}
-
-.tutorial-content .row.comparisons {
-  margin: 0;
-}
-
-.tutorial-content .row.comparisons .pink {
-  background: rgba(255, 93, 196, 0.4);
-}
-
-.tutorial-content .row.comparisons .blue {
-  background: rgba(0, 0, 255, 0.2);
-}
-
-.tutorial-content .row.comparisons > div {
-  padding: 0;
-}
-
-.tutorial-content .row.comparisons ul {
-  list-style: none;
-}
-
-.tutorial-content .row.comparisons ul li {
-  margin-bottom: 20px;
-}
-
-.tutorial-content .row.comparisons ul li.left-tutorial-list-item {
-  margin-right: 15px;
-}
-
-.tutorial-content h1,
-.tutorial-content h2,
-.tutorial-content h3 {
-  font-weight: bold;
-}
-
-.tutorial-content :not(.CodeMirror *) {
-  font-family: "Nunito", sans-serif;
-}
-
-.tutorial-content h2 {
-  margin-bottom: 30px !important;
-  margin-top: 20px !important;
-  font-size: 22px;
-}
-
-.tutorial-content h3 {
-  font-size: 18px;
-}
-
-.tutorial-content .horizontal-scroller-table {
-  overflow-x: scroll;
-  overflow: auto;
-}
-
-.tutorial-content .horizontal-scroller-table::-webkit-scrollbar {
-  height: 5px;
-  background-color: #F5F5F5;
-}
-
-.tutorial-content .horizontal-scroller-table::-webkit-scrollbar-thumb {
-  background: #5C6CE7;
-}
-
-.tutorial-content .horizontal-scroller-table::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #F5F5F5;
-  border-radius: 10px;
-}
-
-.tutorial-content .CodeMirror {
-  font-size: 14px;
-  margin: 20px 0px;
-  border: 1px solid #eee;
-  height: auto;
-  background: linear-gradient(15deg, #fefeff 0%, #fcfaff 0%, #f9f9ff 100%) !important;
-  border-radius: 5px;
-  height: auto;
-  font-family: monospace;
-}
-
-.tutorial-content code {
-  color: #4a00ff;
-  background-color: #f7f2ff;
-}
-
-.tutorial-content img {
-  max-width: 400px;
-}
-
-.tutorial-content .copy-code {
-  background: #6495ed;
-  color: white;
-}
-
-.tutorial-content .copy-code:hover {
-  background: #517bc7;
-}
-
-aside ul li {
-  border-radius: 5px;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 8px;
-  border-radius: 7px;
-  background: #cddefe;
-}
-
-aside ul li a {
-  color: black;
-  text-align: center;
-  position: relative;
-  top: -1.5px;
-  padding: 4px;
-  display: block;
-}
-
-aside ul li a:hover {
-  text-decoration: none;
-}
-
-aside ul li.active {
-  background: #517bc7;
-}
-
-aside ul li.active a {
-  color: white;
-}
-
-aside ul li:hover {
-  background: #517bc7;
-  cursor: pointer;
-}
-
-aside ul li:hover a {
-  color: white;
-}
-
-aside ul {
-  margin-top: 2rem;
-}
-
-.comments-list {
-  overflow-y: auto;
-}
-
-.comments-list .comment {
-  min-width: 250px;
-}
-
-.comments-list .comment .content-wrapper {
-  padding: 18px 14px;
-  border-radius: 10px;
-  border: 1px solid #cfcfcf;
-}
-
-.comments-list .comment .content-wrapper .username {
-  font-size: 18px;
-}
-
-.comments-list .comment .subcomments {
-  margin-left: 60px;
-}
-
-.comments-list .comment .reply:hover {
-  cursor: pointer;
-}
-
-.comment-btn,
-.sign-in-to-comment {
-  background: #6495ed;
-}
-
-.comment-btn:hover,
-.sign-in-to-comment:hover {
-  background: #517bc7;
-}
-
-.tags-list .tag {
-  display: inline-block;
-  padding: 2px 10px;
-  margin: 0 12px 8px 0px;
-  border: 1px solid #cecece;
-  color: white;
-  border-radius: 20px;
-  font-size: 19px;
-  text-decoration: none;
-  transition: 0.2s;
-  background-color: #8fb5fa;
-}
-
-.tags-list .tag:hover {
-  background-color: #71a3ff;
-}
-
-@media (max-width: 768px) {
-  .container {
-    max-width: 95% !important;
-  }
 }
 
 .header-blue {
@@ -12917,6 +12627,271 @@ ul.language-list li div:hover {
 
 ul.language-list li div a {
   text-decoration: none;
+}
+
+body#admin-tutorials .tutorials-listing li:hover {
+  background: aliceblue;
+}
+
+body#tutorials-index div.tutorials-listing-container {
+  max-width: none;
+}
+
+body#tutorials-index div.tutorials-listing-container .swiper-slide {
+  height: calc(100vh - 190px) !important;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+body#tutorials-show .tutorial-content {
+  /*Basically anything except codemirror is supposed to have such font*/
+}
+
+body#tutorials-show .tutorial-content p.code-result {
+  background: #cfcfcf;
+}
+
+body#tutorials-show .tutorial-content p.note {
+  padding: 8px 24px;
+  border-left: 4px solid;
+  -o-border-image: linear-gradient(to top, #04a0f6, #5e06f6) 1 100%;
+     border-image: linear-gradient(to top, #04a0f6, #5e06f6) 1 100%;
+  border-radius: 4px;
+  display: block;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 16px;
+  background: #cddefe;
+}
+
+body#tutorials-show .tutorial-content .row.comparisons {
+  margin: 0;
+}
+
+body#tutorials-show .tutorial-content .row.comparisons .pink {
+  background: rgba(255, 93, 196, 0.4);
+}
+
+body#tutorials-show .tutorial-content .row.comparisons .blue {
+  background: rgba(0, 0, 255, 0.2);
+}
+
+body#tutorials-show .tutorial-content .row.comparisons > div {
+  padding: 0;
+}
+
+body#tutorials-show .tutorial-content .row.comparisons ul {
+  list-style: none;
+}
+
+body#tutorials-show .tutorial-content .row.comparisons ul li {
+  margin-bottom: 20px;
+}
+
+body#tutorials-show .tutorial-content .row.comparisons ul li.left-tutorial-list-item {
+  margin-right: 15px;
+}
+
+body#tutorials-show .tutorial-content h1,
+body#tutorials-show .tutorial-content h2,
+body#tutorials-show .tutorial-content h3 {
+  font-weight: bold;
+}
+
+body#tutorials-show .tutorial-content :not(.CodeMirror *) {
+  font-family: "Nunito", sans-serif;
+}
+
+body#tutorials-show .tutorial-content h2 {
+  margin-bottom: 30px !important;
+  margin-top: 20px !important;
+  font-size: 22px;
+}
+
+body#tutorials-show .tutorial-content h3 {
+  font-size: 18px;
+}
+
+body#tutorials-show .tutorial-content .horizontal-scroller-table {
+  overflow-x: scroll;
+  overflow: auto;
+}
+
+body#tutorials-show .tutorial-content .horizontal-scroller-table::-webkit-scrollbar {
+  height: 5px;
+  background-color: #F5F5F5;
+}
+
+body#tutorials-show .tutorial-content .horizontal-scroller-table::-webkit-scrollbar-thumb {
+  background: #5C6CE7;
+}
+
+body#tutorials-show .tutorial-content .horizontal-scroller-table::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+body#tutorials-show .tutorial-content .CodeMirror {
+  font-size: 14px;
+  margin: 20px 0px;
+  border: 1px solid #eee;
+  height: auto;
+  background: linear-gradient(15deg, #fefeff 0%, #fcfaff 0%, #f9f9ff 100%) !important;
+  border-radius: 5px;
+  height: auto;
+  font-family: monospace;
+}
+
+body#tutorials-show .tutorial-content code {
+  color: #4a00ff;
+  background-color: #f7f2ff;
+}
+
+body#tutorials-show .tutorial-content img {
+  max-width: 400px;
+}
+
+body#tutorials-show .tutorial-content .copy-code {
+  background: #6495ed;
+  color: white;
+}
+
+body#tutorials-show .tutorial-content .copy-code:hover {
+  background: #517bc7;
+}
+
+body#tutorials-show aside ul li {
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+  border-radius: 7px;
+  background: #cddefe;
+}
+
+body#tutorials-show aside ul li a {
+  color: black;
+  text-align: center;
+  position: relative;
+  top: -1.5px;
+  padding: 4px;
+  display: block;
+}
+
+body#tutorials-show aside ul li a:hover {
+  text-decoration: none;
+}
+
+body#tutorials-show aside ul li.active {
+  background: #517bc7;
+}
+
+body#tutorials-show aside ul li.active a {
+  color: white;
+}
+
+body#tutorials-show aside ul li:hover {
+  background: #517bc7;
+  cursor: pointer;
+}
+
+body#tutorials-show aside ul li:hover a {
+  color: white;
+}
+
+body#tutorials-show aside ul {
+  margin-top: 2rem;
+}
+
+body#tutorials-show .comments-list {
+  overflow-y: auto;
+}
+
+body#tutorials-show .comments-list .comment {
+  min-width: 250px;
+}
+
+body#tutorials-show .comments-list .comment .content-wrapper {
+  padding: 18px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+}
+
+body#tutorials-show .comments-list .comment .content-wrapper .username {
+  font-size: 18px;
+}
+
+body#tutorials-show .comments-list .comment .subcomments {
+  margin-left: 60px;
+}
+
+body#tutorials-show .comments-list .comment .reply:hover {
+  cursor: pointer;
+}
+
+body#tutorials-show .comment-btn,
+body#tutorials-show .sign-in-to-comment {
+  background: #6495ed;
+}
+
+body#tutorials-show .comment-btn:hover,
+body#tutorials-show .sign-in-to-comment:hover {
+  background: #517bc7;
+}
+
+body#tutorials-show .tags-list .tag {
+  display: inline-block;
+  padding: 2px 10px;
+  margin: 0 12px 8px 0px;
+  border: 1px solid #cecece;
+  color: white;
+  border-radius: 20px;
+  font-size: 19px;
+  text-decoration: none;
+  transition: 0.2s;
+  background-color: #8fb5fa;
+}
+
+body#tutorials-show .tags-list .tag:hover {
+  background-color: #71a3ff;
+}
+
+@media (max-width: 768px) {
+  body#tutorials-show .container {
+    max-width: 95% !important;
+  }
+}
+
+a.tutorial-list-item {
+  text-decoration: none;
+}
+
+a.tutorial-list-item > div {
+  background: #6495ed;
+  border-radius: 5px;
+  height: 100%;
+}
+
+a.tutorial-list-item > div:hover {
+  background: #517bc7;
+}
+
+a.tutorial-list-item .tutorial-number {
+  color: white;
+  font-weight: bold;
+  padding: 2px 8px;
+  color: white;
+  background: rgba(80, 35, 198, 0.3);
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+a.tutorial-list-item h3 {
+  padding-bottom: 1.8rem !important;
 }
 
 

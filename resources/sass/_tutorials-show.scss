@@ -1,0 +1,229 @@
+body#tutorials-show {
+    
+    .tutorial-content {
+   
+        p.code-result{
+            background: #cfcfcf;
+        }
+    
+        p.note {
+            padding: 8px 24px;
+            border-left: 4px solid;
+            border-image: linear-gradient( to top, #04a0f6, #5e06f6) 1 100%;
+            border-radius: 4px;
+            display: block;
+            font-size: 18px;
+            line-height: 30px;
+            margin-bottom: 16px;
+            background: $lightBlue;
+        }
+    
+        .row.comparisons {
+            margin: 0;
+        
+            .pink {
+                background: rgba(255, 93, 196, 0.4);
+            }
+    
+            .blue {
+                background: rgba(0, 0, 255, 0.2);
+            }   
+            
+            > div {
+             
+                padding: 0;
+            }
+    
+            ul {
+                list-style: none;
+    
+                li {
+                    margin-bottom: 20px;
+                }
+    
+                li.left-tutorial-list-item {
+                    margin-right: 15px;
+                }
+            }
+        }
+    
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+    
+        /*Basically anything except codemirror is supposed to have such font*/
+        :not(.CodeMirror *) {
+            font-family: 'Nunito', sans-serif;
+        }
+    
+        h2 {
+            margin-bottom: 30px !important;
+            margin-top: 20px !important;
+            font-size: 22px;
+        }
+    
+        h3 {
+            font-size: 18px;
+        }
+    
+        .horizontal-scroller-table {
+            overflow-x: scroll;
+            overflow: auto;
+        }
+    
+        .horizontal-scroller-table::-webkit-scrollbar {
+            height: 5px;
+            background-color: #F5F5F5;
+        }
+    
+        .horizontal-scroller-table::-webkit-scrollbar-thumb {
+            background: #5C6CE7;
+        }
+    
+        .horizontal-scroller-table::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+        
+        .CodeMirror {
+            font-size: 14px;
+            margin: 20px 0px;
+            border: 1px solid #eee;
+            height: auto;
+            background: linear-gradient(15deg, rgba(254,254,255,1) 0%, rgba(252,250,255,1) 0%, rgba(249,249,255,1) 100%) !important;
+            border-radius: 5px;
+            height: auto;
+            font-family: monospace;
+        }
+    
+        code {
+            color: #4a00ff;
+            background-color: #f7f2ff;
+        }
+    
+        img {
+            max-width: 400px;
+        }
+    
+        .copy-code {
+            background: $blue;
+            color: white;
+        }
+    
+        .copy-code:hover {
+            background: $hoverBlue;
+        }
+    }
+    
+    aside {
+        ul {
+    
+            li {
+                
+                border-radius: 5px;
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 8px;
+                border-radius: 7px;
+                background: $lightBlue;
+                
+                a {
+                    color: black;
+                    text-align: center;
+                    position: relative;
+                    top: -1.5px;
+                    padding: 4px;
+                    display: block;
+                }
+                
+                a:hover {
+                    text-decoration: none;
+                }
+            }
+            
+            li.active {
+                background: $hoverBlue;
+    
+                a {
+                    color:white;
+                }
+            }
+            
+            li:hover {
+                background: $hoverBlue;
+                cursor: pointer;
+    
+                a {
+                    color:white;
+                }
+            }
+        }
+    
+        ul {
+            margin-top: 2rem;
+        }
+    }
+    
+    .comments-list {
+    
+        overflow-y: auto;
+        
+        .comment {
+            min-width: 250px;
+    
+            .content-wrapper {
+                padding: 18px 14px;
+                border-radius: 10px;
+                border: 1px solid #cfcfcf;
+    
+                .username {
+                    font-size: 18px;
+                }
+            }
+    
+            .subcomments {
+                margin-left: 60px;
+            }
+    
+            .reply:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .comment-btn, .sign-in-to-comment {
+        background: $blue;
+    
+        &:hover {
+            background: $hoverBlue;
+        }
+    }
+    
+    
+    .tags-list {
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            margin: 0 12px 8px 0px;
+            border: 1px solid #cecece;
+            color: white;
+            border-radius: 20px;
+            font-size: 19px;
+            text-decoration: none;
+            transition: .2s;
+            background-color: #8fb5fa;
+    
+            &:hover {
+                background-color: #71a3ff;
+            }
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            max-width: 95% !important;
+        }
+    }
+}

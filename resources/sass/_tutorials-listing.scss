@@ -1,0 +1,12 @@
+body#tutorials-index {
+    div.tutorials-listing-container {
+
+        max-width: none;
+    
+        .swiper-slide {
+            height: calc(100vh - 190px) !important;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+    }
+}

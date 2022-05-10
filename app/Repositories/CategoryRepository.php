@@ -20,4 +20,9 @@ class CategoryRepository extends BaseRepository
         ->orderBy('priority')
         ->get();
     }
+
+    public function hasAnyTutorials(Category $category)
+    {
+        return $category->tutorials()->count() > 0;
+    }
 }

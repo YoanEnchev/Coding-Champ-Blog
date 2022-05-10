@@ -15,5 +15,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
+        'url_name' => $faker->name, 
+        'pretty_name' => $faker->name,
+        'priority' => 1
     ];
 });

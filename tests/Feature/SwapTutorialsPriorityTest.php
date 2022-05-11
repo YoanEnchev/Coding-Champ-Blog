@@ -4,7 +4,10 @@ namespace Tests\Feature;
 
 use App\Models\Tutorial;
 use App\Models\User;
+use App\Models\TechEntity;
+use App\Models\Category;
 use Tests\TestCase;
+use Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SwapTutorialsPriorityTest extends TestCase
@@ -38,9 +41,25 @@ class SwapTutorialsPriorityTest extends TestCase
 
 
         // If no user is logged in - unsuccessful swap.
-        $response = $this->post(route('admin.swap-priorities', compact('tutorial1', 'tutorial2')));
-        $response->assertStatus(403);
-        $this->assertEquals($tutorial1, 1);
-        $this->assertEquals($tutorial2, 2);
+        $response = $this->post(route('admin.tutorial.swap-priorities', compact('tutorial1', 'tutorial2')));
+        $response->assertStatus(302);
+        $this->assertEquals(1, Tutorial::find($tutorial1->id)->priority);
+        $this->assertEquals(2, Tutorial::find($tutorial2->id)->priority);
+
+
+        // If non admin user is logged in - unsuccessful swap.
+        Auth::login($nonAdminUser);
+        $response = $this->post(route('admin.tutorial.swap-priorities', compact('tutorial1', 'tutorial2')));
+        $response->assertStatus(302);
+        $this->assertEquals(1, Tutorial::find($tutorial1->id)->priority);
+        $this->assertEquals(2, Tutorial::find($tutorial2->id)->priority);
+
+
+        // If admin user is logged in - successful swap.
+        Auth::login($adminUser);
+        $response = $this->post(route('admin.tutorial.swap-priorities', compact('tutorial1', 'tutorial2')));
+        $response->assertStatus(200);
+        $this->assertEquals(2, Tutorial::find($tutorial1->id)->priority);
+        $this->assertEquals(1, Tutorial::find($tutorial2->id)->priority);
     }
 }
